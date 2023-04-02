@@ -7,19 +7,11 @@
   <title>DOM 2</title>
 </head>
 <body>
-  <p>Paragraph </p>
-  <div>Text Lorem ipsum dolor sit.</div>
-  <h3>Head 3</h3>
+  <p title="Paragraph">Paragraph </p>
   <script>
-    let strs = ["Element 1","Element 2","Element 3"]
-    document.body.innerHTML =
-    `
-     <ol>
-      <li>${strs[0]}</li>
-      <li>${strs[1]}</li>
-      <li>${strs[2]}</li>
-    </ol>
-    `
+    let element = document.querySelector('p')
+    element.setAttribute('class','new_text')
+    element.setAttribute('id','first_id')
   </script>
 </body>
 </html>

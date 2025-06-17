@@ -20,4 +20,5 @@ Thumbs.db
 .vscode/
 
 !*.svg
-! app/**.*
+!app/
+!app/**

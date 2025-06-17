@@ -128,7 +128,7 @@ npm run format
 
 ---
 
-![back to top](#title)
+[back to top](#title)
 
 [MIT](./LICENSE)
 

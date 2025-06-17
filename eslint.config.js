@@ -1,13 +1,13 @@
-const js = require("@eslint/js");
-const globals = require("globals");
-const { defineConfig } = require("eslint/config");
+import js from '@eslint/js';
+import globals from 'globals';
+import { defineConfig } from 'eslint/config';
 
-module.exports = defineConfig([
+export default defineConfig([
   {
-    files: ["**/*.{js,cjs,mjs}"],
+    files: ['**/*.{js,cjs,mjs}'],
     languageOptions: {
       ecmaVersion: 2021,
-      sourceType: "commonjs",
+      sourceType: 'module',
       globals: {
         ...globals.node,
         ...globals.jest,
@@ -16,18 +16,19 @@ module.exports = defineConfig([
     plugins: {
       js,
     },
-    rules: Object.assign({}, js.configs.recommended.rules, {
-      "arrow-parens": "off",
-      "max-len": "off",
-      "comma-dangle": "off",
-      "quote-props": "off",
-      "operator-linebreak": "off",
-      semi: "off",
-      quotes: "off",
-      indent: "off",
-      "no-mixed-spaces-and-tabs": "off",
-      "no-multiple-empty-lines": "off",
-      "padded-blocks": "off",
-    }),
+    rules: {
+      ...js.configs.recommended.rules,
+      'arrow-parens': 'off',
+      'max-len': 'off',
+      'comma-dangle': 'off',
+      'quote-props': 'off',
+      'operator-linebreak': 'off',
+      semi: 'off',
+      quotes: 'off',
+      indent: 'off',
+      'no-mixed-spaces-and-tabs': 'off',
+      'no-multiple-empty-lines': 'off',
+      'padded-blocks': 'off',
+    },
   },
 ]);

@@ -37,9 +37,13 @@ jobs:
       - name: 🧪 Run Tests
         run: npm test
 
+      - name: 🧪 Run Tests with Coverage
+        run: npm run test:coverage
+
       - name: ☁️ Upload coverage to Codecov
         uses: codecov/codecov-action@v4
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
           directory: ./coverage
 
       - name: 🔍 Show Git Diff

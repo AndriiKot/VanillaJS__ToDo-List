@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Run Tests, Lint, Format, Generate Docs
+    name: Run Tests, Lint, Format
     runs-on: ubuntu-latest
 
     steps:
@@ -41,9 +41,6 @@ jobs:
         uses: codecov/codecov-action@v4
         with:
           directory: ./coverage
-
-      - name: 📝 Generate README.md files
-        run: node index.js
 
       - name: 🔍 Show Git Diff
         run: git --no-pager diff || echo "No changes"

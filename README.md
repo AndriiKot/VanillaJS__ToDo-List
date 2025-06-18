@@ -166,6 +166,8 @@ You can run it using Docker or directly with Node.js.
     </tbody>
   </table>
 
+</details>
+
 ---
 
 <details>
@@ -227,7 +229,7 @@ docker rm <container_id>
 docker rmi js-project
 ```
 
-</details>
+  </details>
 
 </details>
 

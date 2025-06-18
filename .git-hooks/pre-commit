@@ -1,2 +1,19 @@
 #!/usr/bin/env node
 
+import { execSync } from 'node:child_process';
+
+try {
+  // Run Prettier
+  execSync('npm run format', { stdio: 'inherit' });
+
+  // Run ESLint
+  execSync('npm run lint', { stdio: 'inherit' });
+
+  // Run tests
+  execSync('npm run test', { stdio: 'inherit' });
+
+  console.log('✅ pre-commit: formatting, linting, and tests passed');
+} catch (error) {
+  console.error('❌ pre-commit: check failed. Commit aborted.');
+  process.exit(1);
+}

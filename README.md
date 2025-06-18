@@ -43,7 +43,7 @@ You can run it using Docker or directly with Node.js.
           <img src="icons/svg/css.svg" alt="CSS">
         </a>
       </td>
-      <td height=100 width=200>
+      <td height=100 width=100>
         <a href="https://ecma-international.org/publications-and-standards/standards/">
           <img src="icons/svg/javascript.svg" alt="JavaScript/ECMAScript">
         </a>

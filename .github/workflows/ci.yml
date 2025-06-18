@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Run Tests, Lint, Format, Generate Docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 📦 Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: 💅 Run Prettier
+        run: npm run format
+
+      - name: 🧹 Run ESLint
+        run: npm run lint
+
+      - name: 🧪 Run Tests
+        run: npm test
+
+      - name: ☁️ Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          directory: ./coverage
+
+      - name: 📝 Generate README.md files
+        run: node index.js
+
+      - name: 🔍 Show Git Diff
+        run: git --no-pager diff || echo "No changes"

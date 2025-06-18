@@ -9,9 +9,22 @@
     <title>To Do List (VanillaJS)</title>
   </head>
   <body>
-    <main>
-      <h1 id="title">To Do List (VanillaJS)</h1>
-      <section id="todo-list"></section>
+    <main class="todo">
+      <div class="todo__box">
+        <h2 class="todo__title">
+          To Do List
+        </h2>
+        <div class="todo__row">
+          <input class="todo__input" type="text" autocomplete="off" placeholder="What needs to be done?"/>
+          <button class="todo__btn">Add</button>
+        </div>
+        <ul class="todo__list">
+          <li class="todo__item todo__item--checked">Task 1</li>
+          <li class="todo__item">Task 2</li>
+          <li class="todo__item">Task 3</li>
+          <li class="todo__item">Task 4</li>
+        </ul>
+      </div>
     </main>
   </body>
 </html>

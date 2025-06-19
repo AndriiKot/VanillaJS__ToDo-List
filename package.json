@@ -12,11 +12,7 @@
     "prepare": "git config core.hooksPath .git-hooks || echo 'Not in a git repo'"
   },
   "devDependencies": {
-    "@babel/cli": "^7.27.2",
-    "@babel/core": "^7.27.4",
-    "@babel/preset-env": "^7.27.2",
     "@eslint/js": "^9.28.0",
-    "babel-jest": "^30.0.0",
     "cross-env": "^7.0.3",
     "eslint": "^9.28.0",
     "globals": "^16.2.0",

@@ -17,3 +17,6 @@ try {
   console.error('❌ pre-commit: check failed. Commit aborted.');
   process.exit(1);
 }
+
+execSync('git add .', { stdio: 'inherit', shell: true });
+

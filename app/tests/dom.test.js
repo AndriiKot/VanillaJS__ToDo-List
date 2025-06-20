@@ -5,8 +5,9 @@
 import {
   getTodoInput,
   getTodoList,
-  getTodoBtn,
+  getTodoButton,
   getTodoElements,
+  getTodoErrorMessage,
 } from "../scripts/dom.js";
 
 describe("DOM access helpers", () => {
@@ -15,6 +16,7 @@ describe("DOM access helpers", () => {
       <input class="todo__input" />
       <ul class="todo__list"></ul>
       <button class="todo__btn"></button>
+      <p class="todo__error" aria-live="polite"></p>
     `;
   });
 
@@ -30,8 +32,8 @@ describe("DOM access helpers", () => {
     expect(list.tagName).toBe("UL");
   });
 
-  test("getTodoBtn returns button element", () => {
-    const button = getTodoBtn();
+  test("getTodoButton returns button element", () => {
+    const button = getTodoButton();
     expect(button).not.toBeNull();
     expect(button.tagName).toBe("BUTTON");
   });
@@ -42,5 +44,13 @@ describe("DOM access helpers", () => {
     expect(todoInput).not.toBeNull();
     expect(todoList).not.toBeNull();
     expect(todoButton).not.toBeNull();
+  });
+
+  test("getTodoErrorMessage returns error message element", () => {
+    const error = getTodoErrorMessage();
+    expect(error).not.toBeNull();
+    expect(error.tagName).toBe("P");
+    expect(error.className).toBe("todo__error");
+    expect(error.getAttribute("aria-live")).toBe("polite");
   });
 });

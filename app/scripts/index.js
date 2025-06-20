@@ -58,13 +58,8 @@ const appendTodoItem = (list, item) => {
 };
 
 const showError = (message) => {
-  let error = document.querySelector(".todo__error");
-  if (!error) {
-    error = document.createElement("p");
-    error.className = "todo__error";
-    error.style.color = "red";
-    error.style.marginTop = "8px";
-    document.querySelector(".todo__box").appendChild(error);
+  const error = document.querySelector(".todo__error");
+  if (error) {
+    error.textContent = message;
   }
-  error.textContent = message;
 };

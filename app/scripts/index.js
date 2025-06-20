@@ -9,6 +9,16 @@ window.addEventListener("DOMContentLoaded", () => {
     addTask(todoInput, todoList);
   });
 
+  todoInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      addTask(todoInput, todoList);
+    }
+  });
+
+  todoInput.addEventListener("input", () => {
+    showError("");
+  });
+
   todoInput.focus();
 });
 

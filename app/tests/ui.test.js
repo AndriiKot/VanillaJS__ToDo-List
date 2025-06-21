@@ -2,8 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { jest } from "@jest/globals";
-import { showError, focusInput, getTrimmedValue } from "../scripts/ui.js";
+import { showValidMessage, getTrimmedValue } from "../scripts/ui.js";
 
 describe("UI helpers", () => {
   let input, errorElement;
@@ -18,15 +17,9 @@ describe("UI helpers", () => {
     errorElement = document.querySelector(".todo__error");
   });
 
-  test("showError sets the error message", () => {
-    showError(errorElement, "Some error");
+  test("showValidMessage sets the error message", () => {
+    showValidMessage(errorElement, "Some error");
     expect(errorElement.textContent).toBe("Some error");
-  });
-
-  test("focusInput calls focus on input element", () => {
-    const focusSpy = jest.spyOn(input, "focus");
-    focusInput(input);
-    expect(focusSpy).toHaveBeenCalled();
   });
 
   test("getTrimmedValue returns trimmed input value", () => {

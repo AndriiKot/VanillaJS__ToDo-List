@@ -1,10 +1,12 @@
 "use strict";
 
 import { getTodoElements } from "./dom.js";
-import { addTask, showError } from "./task.js";
+import { addTask } from "./task.js";
+import { showValidMessage } from "./ui.js";
 
 export const initTodoApp = () => {
-  const { todoInput, todoList, todoButton } = getTodoElements();
+  const { todoInput, todoList, todoButton, todoValidMessage } =
+    getTodoElements();
 
   todoButton.addEventListener("click", () => {
     addTask(todoInput, todoList);
@@ -17,6 +19,6 @@ export const initTodoApp = () => {
   });
 
   todoInput.addEventListener("input", () => {
-    showError("");
+    showValidMessage(todoValidMessage, "");
   });
 };

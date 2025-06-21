@@ -7,7 +7,7 @@ import {
   getTodoList,
   getTodoButton,
   getTodoElements,
-  getTodoErrorMessage,
+  getTodoValidMessage,
 } from "../scripts/dom.js";
 
 describe("DOM access helpers", () => {
@@ -46,8 +46,8 @@ describe("DOM access helpers", () => {
     expect(todoButton).not.toBeNull();
   });
 
-  test("getTodoErrorMessage returns error message element", () => {
-    const error = getTodoErrorMessage();
+  test("getTodoValidMessage returns error message element", () => {
+    const error = getTodoValidMessage();
     expect(error).not.toBeNull();
     expect(error.tagName).toBe("P");
     expect(error.className).toBe("todo__error");

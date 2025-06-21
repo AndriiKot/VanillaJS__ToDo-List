@@ -1,5 +1,9 @@
-"use sctrict";
+"use strict";
 
-export const isEmpty = (str) => str === "";
+export const safeString = (value) => {
+  return typeof value === "string" ? value : "";
+};
 
-export const trim = (str) => str.trim();
+export const trim = (str) => safeString(str).trim();
+
+export const isEmpty = (str) => trim(str) === "";

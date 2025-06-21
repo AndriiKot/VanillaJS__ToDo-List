@@ -39,44 +39,80 @@ describe("safeString", () => {
       expect(safeString(undefined)).toBe("");
     });
 
-    test("returns '' for number", () => {
+    test("returns '' for numbers", () => {
       expect(safeString(123)).toBe("");
+      expect(safeString(NaN)).toBe("");
+      expect(safeString(Infinity)).toBe("");
+      expect(safeString(-Infinity)).toBe("");
     });
 
-    test("returns '' for boolean true", () => {
+    test("returns '' for booleans", () => {
       expect(safeString(true)).toBe("");
-    });
-
-    test("returns '' for boolean false", () => {
       expect(safeString(false)).toBe("");
     });
 
-    test("returns '' for symbol type", () => {
-      expect(safeString(Symbol())).toBe("");
+    test("returns '' for symbol", () => {
+      expect(safeString(Symbol("abc"))).toBe("");
     });
 
-    test("returns '' for bigint type", () => {
-      expect(safeString(BigInt(10))).toBe("");
+    test("returns '' for bigint", () => {
+      expect(safeString(BigInt(123))).toBe("");
     });
   });
 
-  describe("complex types", () => {
+  describe("non-string objects", () => {
     test("returns '' for array", () => {
       expect(safeString([])).toBe("");
       expect(safeString(["a"])).toBe("");
+      expect(safeString([1, 2, 3])).toBe("");
     });
 
-    test("returns '' for object", () => {
+    test("returns '' for plain object", () => {
       expect(safeString({})).toBe("");
+      expect(safeString({ a: 1 })).toBe("");
+    });
+
+    test("returns '' for RegExp", () => {
+      expect(safeString(/abc/)).toBe("");
+    });
+
+    test("returns '' for Date object", () => {
+      expect(safeString(new Date())).toBe("");
+    });
+
+    test("returns '' for Map and Set", () => {
+      expect(safeString(new Map())).toBe("");
+      expect(safeString(new Set())).toBe("");
+    });
+
+    test("returns '' for WeakMap and WeakSet", () => {
+      expect(safeString(new WeakMap())).toBe("");
+      expect(safeString(new WeakSet())).toBe("");
+    });
+
+    test("returns '' for Promise", () => {
+      expect(safeString(Promise.resolve("abc"))).toBe("");
+    });
+
+    test("returns '' for Error", () => {
+      expect(safeString(new Error("fail"))).toBe("");
+    });
+
+    test("returns '' for Buffer (Node.js)", () => {
+      if (typeof Buffer !== "undefined") {
+        expect(safeString(Buffer.from("abc"))).toBe("");
+      }
+    });
+  });
+
+  describe("function and wrapper types", () => {
+    test("returns '' for function", () => {
+      expect(safeString(() => "hello")).toBe("");
     });
 
     test("returns '' for String object wrapper", () => {
       expect(safeString(new String("test"))).toBe("");
       expect(safeString(new String(""))).toBe("");
-    });
-
-    test("returns '' for function type", () => {
-      expect(safeString(() => "test")).toBe("");
     });
   });
 });

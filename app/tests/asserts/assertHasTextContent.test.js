@@ -1,9 +1,8 @@
-// hasTextContent.test.js
 import { hasTextContent } from "../../scripts/ui.js";
 
 describe("hasTextContent", () => {
   describe("valid DOM elements with textContent", () => {
-    const elementsWithTextContent = [
+    const validTags = [
       "div",
       "span",
       "p",
@@ -40,22 +39,19 @@ describe("hasTextContent", () => {
       "figcaption",
     ];
 
-    test.each(elementsWithTextContent)(
-      "returns true for <%s> element",
-      (tagName) => {
-        const el = document.createElement(tagName);
-        expect(hasTextContent(el)).toBe(true);
-      },
-    );
+    test.each(validTags)("returns true for <%s> element", (tagName) => {
+      const el = document.createElement(tagName);
+      expect(hasTextContent(el)).toBe(true);
+    });
 
     test("returns true for HTMLDocument", () => {
       expect(hasTextContent(document)).toBe(true);
     });
   });
 
-  describe("DOM nodes that are NOT elements or documents", () => {
+  describe("valid Node types but NOT DOM elements", () => {
     test("returns false for Text node", () => {
-      const textNode = document.createTextNode("Hello");
+      const textNode = document.createTextNode("hello");
       expect(hasTextContent(textNode)).toBe(false);
     });
 
@@ -70,7 +66,7 @@ describe("hasTextContent", () => {
     });
   });
 
-  describe("invalid types (non-DOM)", () => {
+  describe("invalid types (not DOM elements)", () => {
     const invalidValues = [
       null,
       undefined,

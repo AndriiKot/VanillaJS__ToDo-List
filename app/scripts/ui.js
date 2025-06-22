@@ -10,4 +10,8 @@ export const hiddenNotValidMessage = (element) => {
   return showNotValidMessage(element, "");
 };
 
-export const getTrimmedValue = (input) => trim(input.value);
+export const getInputValue = (input) => input.value;
+
+export const clearInput = (input) => (input.value = "");
+
+export const getTrimmedInputValue = (input) => trim(getInputValue(input));

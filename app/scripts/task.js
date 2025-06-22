@@ -1,7 +1,8 @@
 "use strict";
 
 import { getTodoValidMessage } from "./dom.js";
-import { showNotValidMessage } from "./ui.js";
+import { showNotValidMessage, clearInput, getInputValue } from "./ui.js";
+import { trim, isEmpty } from "./utils.js";
 
 const todoValidMessage = getTodoValidMessage();
 
@@ -12,20 +13,16 @@ const addTask = (input, list) => {
     appendTodoItem(list, todoItem);
   }
   clearInput(input);
+  input.focus();
 };
 
 const validateInput = (input) => {
-  const task = input.value.trim();
-  if (task === "") {
+  const task = trim(getInputValue(input));
+  if (isEmpty(task)) {
     showNotValidMessage(todoValidMessage, "Task can't be empty");
     return;
   }
-  showNotValidMessage(todoValidMessage, "");
   return task;
-};
-
-const clearInput = (input) => {
-  input.value = "";
 };
 
 const createTodoItem = (taskText) => {

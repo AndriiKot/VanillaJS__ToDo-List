@@ -4,106 +4,63 @@ import { trim } from "../../scripts/utils.js";
 
 describe("trim", () => {
   describe("normal strings", () => {
-    test("trims spaces around the string", () => {
-      expect(trim("  abc ")).toBe("abc");
-    });
-
-    test("returns the same string when no trimming needed", () => {
-      expect(trim("abc")).toBe("abc");
-    });
-
-    test("returns '' for empty string", () => {
-      expect(trim("")).toBe("");
-    });
-
-    test("returns '' for string with only spaces", () => {
-      expect(trim("     ")).toBe("");
-    });
-
-    test("does not trim internal spaces", () => {
-      expect(trim(" a b c ")).toBe("a b c");
-    });
-
-    test("trims tabs and newlines", () => {
-      expect(trim("\t abc \n")).toBe("abc");
-    });
-
-    test("returns same string with internal tabs/newlines", () => {
-      expect(trim(" a\tb\nc ")).toBe("a\tb\nc");
+    test.each([
+      ["trims spaces around the string", "  abc ", "abc"],
+      ["returns same string when no trimming needed", "abc", "abc"],
+      ["returns empty string for empty string", "", ""],
+      ["returns empty string for string with only spaces", "     ", ""],
+      ["does not trim internal spaces", " a b c ", "a b c"],
+      ["trims tabs and newlines", "\t abc \n", "abc"],
+      [
+        "returns same string with internal tabs/newlines",
+        " a\tb\nc ",
+        "a\tb\nc",
+      ],
+      ["trims mixed whitespace chars", " \n\tabc\t\n ", "abc"],
+      ["string with unicode spaces", "\u2002\u2003abc\u2002\u2003", "abc"],
+      ["string with zero-width spaces inside", "a\u200bbc", "a\u200bbc"],
+      [
+        "trims spaces from a very long string",
+        " ".repeat(1000) + "long string" + " ".repeat(1000),
+        "long string",
+      ],
+    ])("%s", (_desc, input, expected) => {
+      expect(trim(input)).toBe(expected);
     });
   });
 
   describe("non-string inputs", () => {
-    test("returns '' for null", () => {
-      expect(trim(null)).toBe("");
+    test.each([
+      ["null", null, ""],
+      ["undefined", undefined, ""],
+      ["number 123", 123, ""],
+      ["number 0", 0, ""],
+      ["NaN", NaN, ""],
+      ["Infinity", Infinity, ""],
+      ["-Infinity", -Infinity, ""],
+      ["boolean true", true, ""],
+      ["boolean false", false, ""],
+      ["empty array", [], ""],
+      ["array with string", ["a"], ""],
+      ["array with numbers", [1, 2, 3], ""],
+      ["empty object", {}, ""],
+      ["object with props", { a: 1 }, ""],
+      ["function", () => "abc", ""],
+      ["symbol", Symbol("abc"), ""],
+      ["BigInt", BigInt(123), ""],
+      ["RegExp", /abc/, ""],
+      ["Date object", new Date(), ""],
+      ["Map", new Map(), ""],
+      ["Set", new Set(), ""],
+      ["WeakMap", new WeakMap(), ""],
+      ["WeakSet", new WeakSet(), ""],
+      ["Promise", Promise.resolve("abc"), ""],
+      ["Error object", new Error("fail"), ""],
+    ])("%s", (_desc, input, expected) => {
+      expect(trim(input)).toBe(expected);
     });
 
-    test("returns '' for undefined", () => {
-      expect(trim(undefined)).toBe("");
-    });
-
-    test("returns '' for numbers", () => {
-      expect(trim(123)).toBe("");
-      expect(trim(NaN)).toBe("");
-      expect(trim(Infinity)).toBe("");
-      expect(trim(-Infinity)).toBe("");
-    });
-
-    test("returns '' for booleans", () => {
-      expect(trim(true)).toBe("");
-      expect(trim(false)).toBe("");
-    });
-
-    test("returns '' for arrays", () => {
-      expect(trim([])).toBe("");
-      expect(trim(["a"])).toBe("");
-      expect(trim([1, 2, 3])).toBe("");
-    });
-
-    test("returns '' for objects", () => {
-      expect(trim({})).toBe("");
-      expect(trim({ a: 1 })).toBe("");
-    });
-
-    test("returns '' for functions", () => {
-      expect(trim(() => "abc")).toBe("");
-    });
-
-    test("returns '' for symbols", () => {
-      expect(trim(Symbol("abc"))).toBe("");
-    });
-
-    test("returns '' for BigInt", () => {
-      expect(trim(BigInt(123))).toBe("");
-    });
-
-    test("returns '' for RegExp", () => {
-      expect(trim(/abc/)).toBe("");
-    });
-
-    test("returns '' for Date object", () => {
-      expect(trim(new Date())).toBe("");
-    });
-
-    test("returns '' for Map and Set", () => {
-      expect(trim(new Map())).toBe("");
-      expect(trim(new Set())).toBe("");
-    });
-
-    test("returns '' for WeakMap and WeakSet", () => {
-      expect(trim(new WeakMap())).toBe("");
-      expect(trim(new WeakSet())).toBe("");
-    });
-
-    test("returns '' for Promise", () => {
-      expect(trim(Promise.resolve("abc"))).toBe("");
-    });
-
-    test("returns '' for Error", () => {
-      expect(trim(new Error("fail"))).toBe("");
-    });
-
-    test("returns '' for Buffer (Node.js)", () => {
+    test("Buffer (Node.js) if defined", () => {
       if (typeof Buffer !== "undefined") {
         expect(trim(Buffer.from("abc"))).toBe("");
       }
@@ -111,12 +68,11 @@ describe("trim", () => {
   });
 
   describe("String object wrapper", () => {
-    test("returns '' for new String('abc')", () => {
-      expect(trim(new String("abc"))).toBe("");
-    });
-
-    test("returns '' for new String('')", () => {
-      expect(trim(new String(""))).toBe("");
+    test.each([
+      ["new String('abc')", new String("abc"), ""],
+      ["new String('')", new String(""), ""],
+    ])("%s", (_desc, input, expected) => {
+      expect(trim(input)).toBe(expected);
     });
   });
 });

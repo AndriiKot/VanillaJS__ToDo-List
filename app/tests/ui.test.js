@@ -34,6 +34,14 @@ describe("UI functions", () => {
     expect(getInputValue(input)).toBe("Test task");
   });
 
+  test("getInputValue throws when input is null", () => {
+    expect(() => getInputValue(null)).toThrow();
+  });
+
+  test("getInputValue throws when input has no value property", () => {
+    expect(() => getInputValue({})).toThrow();
+  });
+
   test("clearInput sets value to empty string", () => {
     input.value = "Clear this";
     clearInput(input);

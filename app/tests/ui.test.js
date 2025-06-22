@@ -2,7 +2,11 @@
  * @jest-environment jsdom
  */
 
-import { showValidMessage, getTrimmedValue } from "../scripts/ui.js";
+import {
+  showNotValidMessage,
+  getTrimmedValue,
+  hiddenNotValidMessage,
+} from "../scripts/ui.js";
 
 describe("UI helpers", () => {
   let input, errorElement;
@@ -17,9 +21,14 @@ describe("UI helpers", () => {
     errorElement = document.querySelector(".todo__error");
   });
 
-  test("showValidMessage sets the error message", () => {
-    showValidMessage(errorElement, "Some error");
+  test("showNotValidMessage sets the error message", () => {
+    showNotValidMessage(errorElement, "Some error");
     expect(errorElement.textContent).toBe("Some error");
+  });
+
+  test("hiddenNotValidMessage hidden the error message", () => {
+    hiddenNotValidMessage(errorElement);
+    expect(errorElement.textContent).toBe("");
   });
 
   test("getTrimmedValue returns trimmed input value", () => {

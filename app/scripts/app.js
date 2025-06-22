@@ -2,7 +2,7 @@
 
 import { getTodoElements } from "./dom.js";
 import { addTask } from "./task.js";
-import { showValidMessage } from "./ui.js";
+import { hiddenNotValidMessage } from "./ui.js";
 
 export const initTodoApp = () => {
   const { todoInput, todoList, todoButton, todoValidMessage } =
@@ -19,6 +19,6 @@ export const initTodoApp = () => {
   });
 
   todoInput.addEventListener("input", () => {
-    showValidMessage(todoValidMessage, "");
+    hiddenNotValidMessage(todoValidMessage);
   });
 };

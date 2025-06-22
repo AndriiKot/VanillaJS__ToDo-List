@@ -6,6 +6,10 @@ export const isDomElement = (el) => {
   return el instanceof Element || el instanceof HTMLDocument;
 };
 
+export const hasTextContent = (el) => {
+  return el instanceof Node && "textContent" in el;
+};
+
 export const isInputElement = (el) => {
   return isDomElement(el) && el.tagName === "INPUT";
 };

@@ -49,7 +49,6 @@ describe("assertIsString", () => {
 
     test.each(invalidValues)("throws TypeError for %p", (value) => {
       expect(() => assertIsString(value)).toThrow(TypeError);
-      // Сообщение по умолчанию: Expected value to be a string
       expect(() => assertIsString(value)).toThrow(/Expected .* to be a string/);
     });
 

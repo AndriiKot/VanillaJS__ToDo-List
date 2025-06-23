@@ -1,4 +1,3 @@
-// hasTextContent.test.js
 import { hasTextContent } from "../../scripts/ui.js";
 
 describe("hasTextContent", () => {

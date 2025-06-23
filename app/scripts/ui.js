@@ -1,6 +1,6 @@
 "use strict";
 
-import { trim } from "./utils.js";
+import { trim, isEmpty } from "./utils.js";
 import {
   assertHasTextContent,
   assertIsString,
@@ -16,6 +16,10 @@ export const isInputElement = (el) => {
 };
 
 export const getTrimmedInputValue = (input) => trim(getInputValue(input));
+
+export const isValidInputValue = (input) => {
+  return !isEmpty(getTrimmedInputValue(input));
+};
 
 export const clearInput = (input) => {
   assertIsInputElement(input);
@@ -38,9 +42,9 @@ export const setTextContent = (el, text) => {
 };
 
 export const showNotValidMessage = (element, message) => {
-  element.textContent = message;
+  return setTextContent(element, message);
 };
 
 export const hiddenNotValidMessage = (element) => {
-  return showNotValidMessage(element, "");
+  return setTextContent(element, "");
 };

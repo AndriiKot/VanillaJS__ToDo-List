@@ -10,6 +10,7 @@ export const initTodoApp = () => {
 
   todoButton.addEventListener("click", () => {
     addTask(todoInput, todoList);
+    console.log("click");
   });
 
   todoInput.addEventListener("keydown", (e) => {

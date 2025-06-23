@@ -1,10 +1,10 @@
-import { setTextContent } from "../../scripts/ui.js";
+import { showNotValidMessage } from "../../scripts/ui.js";
 
-describe("setTextContent", () => {
+describe("showNotValidMessage", () => {
   describe("valid cases", () => {
     test("sets textContent on valid element with valid string", () => {
       const el = document.createElement("p");
-      setTextContent(el, "Hello");
+      showNotValidMessage(el, "Hello");
       expect(el.textContent).toBe("Hello");
     });
 
@@ -16,7 +16,7 @@ describe("setTextContent", () => {
       ["long string", "a".repeat(1000)],
     ])("sets %s as textContent", (_desc, value) => {
       const el = document.createElement("div");
-      setTextContent(el, value);
+      showNotValidMessage(el, value);
       expect(el.textContent).toBe(value);
     });
   });
@@ -62,8 +62,8 @@ describe("setTextContent", () => {
     test.each(notDomElements)(
       "throws TypeError if element is %p",
       (invalidEl) => {
-        expect(() => setTextContent(invalidEl, "text")).toThrow(TypeError);
-        expect(() => setTextContent(invalidEl, "text")).toThrow(
+        expect(() => showNotValidMessage(invalidEl, "text")).toThrow(TypeError);
+        expect(() => showNotValidMessage(invalidEl, "text")).toThrow(
           "Expected first argument to be a DOM element",
         );
       },
@@ -77,39 +77,34 @@ describe("setTextContent", () => {
       true,
       false,
       0,
-      1,
-      -1,
-      42,
+      123,
+      -10,
       NaN,
       Infinity,
       -Infinity,
-      Symbol("el"),
-      BigInt(10),
       {},
-      { textContent: "fake" },
       [],
-      ["div"],
-      () => {},
+      [1, 2],
+      () => "text",
       function () {},
-      new String("str"),
-      new Number(123),
-      new Boolean(false),
+      Symbol("text"),
+      BigInt(100),
       new Date(),
       new Map(),
       new Set(),
       new WeakMap(),
       new WeakSet(),
       new Error("fail"),
-      document.createTextNode("text"),
-      document.createComment("comment"),
-      document.createDocumentFragment(),
+      new String("wrapped"), // object, not primitive
+      new Number(5),
+      new Boolean(true),
       Promise.resolve("ok"),
     ];
 
     test.each(invalidTexts)("throws TypeError if text is %p", (invalidText) => {
       const el = document.createElement("div");
-      expect(() => setTextContent(el, invalidText)).toThrow(TypeError);
-      expect(() => setTextContent(el, invalidText)).toThrow(
+      expect(() => showNotValidMessage(el, invalidText)).toThrow(TypeError);
+      expect(() => showNotValidMessage(el, invalidText)).toThrow(
         "Expected second argument to be a string",
       );
     });

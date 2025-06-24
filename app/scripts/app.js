@@ -1,7 +1,7 @@
 "use strict";
 
 import { getTodoElements } from "./dom.js";
-import { addTask } from "./task.js";
+import { handleTaskSubmission as addTask } from "./task.js";
 import { hiddenNotValidMessage } from "./ui.js";
 
 export const initTodoApp = () => {

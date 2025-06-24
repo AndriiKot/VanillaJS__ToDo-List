@@ -85,10 +85,6 @@ export const appendTodoItemLi = (list, item) => {
   list.appendChild(item);
 };
 
-export const showNotValidMessage = (element, message) => {
-  return setTextContent(element, message);
-};
-
 export const hiddenNotValidMessage = (element) => {
   return setTextContent(element, "");
 };

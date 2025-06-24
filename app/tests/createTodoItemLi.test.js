@@ -6,7 +6,7 @@ describe("createTodoItemLi", () => {
     const li = createTodoItemLi(text);
 
     expect(li).toBeInstanceOf(HTMLLIElement);
-    expect(li.className).toBe("todo__item"); // предполагается, что это значение todoLiElementClassName
+    expect(li.className).toBe("todo__item");
     expect(li.textContent).toBe(text);
   });
 

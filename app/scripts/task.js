@@ -1,39 +1,39 @@
 "use strict";
 
 import { getTodoValidMessage } from "./dom.js";
-import { showNotValidMessage, clearInput, getTrimmedInputValue } from "./ui.js";
-import { isEmpty } from "./utils.js";
+import {
+  showNotValidMessage,
+  clearInput,
+  isValidInputValue,
+  createListItem,
+  setListItemClassName,
+  setListItemTextContent,
+  appendTodoItemLi,
+} from "./ui.js";
 
-const todoValidMessage = getTodoValidMessage();
+const todoElementMessage = getTodoValidMessage();
+const todoLiElementClassName = "todo__item";
+
+const isValidateTask = (task) => {
+  return isValidInputValue(task);
+};
 
 const addTask = (input, list) => {
-  const task = validateInput(input);
-  if (task) {
-    const todoItem = createTodoItem(task);
-    appendTodoItem(list, todoItem);
+  if (isValidateTask(input)) {
+    const todoItem = createTodoItemLi(input.value);
+    appendTodoItemLi(list, todoItem);
+  } else {
+    showNotValidMessage(todoElementMessage, "Task cannot be empty");
   }
   clearInput(input);
   input.focus();
 };
 
-const validateInput = (input) => {
-  const task = getTrimmedInputValue(input);
-  if (isEmpty(task)) {
-    showNotValidMessage(todoValidMessage, "Task can't be empty");
-    return;
-  }
-  return task;
-};
-
-const createTodoItem = (taskText) => {
-  const li = document.createElement("li");
-  li.className = "todo__item";
-  li.textContent = taskText;
+const createTodoItemLi = (taskText) => {
+  const li = createListItem();
+  setListItemClassName(li, todoLiElementClassName);
+  setListItemTextContent(li, taskText);
   return li;
 };
 
-const appendTodoItem = (list, item) => {
-  list.appendChild(item);
-};
-
-export { addTask, validateInput, clearInput, createTodoItem, appendTodoItem };
+export { addTask, clearInput, createTodoItemLi, appendTodoItemLi };

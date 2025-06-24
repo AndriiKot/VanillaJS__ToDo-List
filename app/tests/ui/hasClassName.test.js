@@ -1,8 +1,8 @@
-import { hasTextContent } from "../../scripts/ui.js";
+import { hasClassName } from "../../scripts/ui.js";
 
-describe("hasTextContent", () => {
-  describe("valid HTML elements with textContent", () => {
-    const validTags = [
+describe("hasClassName", () => {
+  describe("valid HTML elements with className", () => {
+    const elementsWithClassName = [
       "div",
       "span",
       "p",
@@ -39,34 +39,37 @@ describe("hasTextContent", () => {
       "figcaption",
     ];
 
-    test.each(validTags)("returns true for <%s> element", (tagName) => {
-      const el = document.createElement(tagName);
-      expect(hasTextContent(el)).toBe(true);
-    });
+    test.each(elementsWithClassName)(
+      "returns true for <%s> element",
+      (tagName) => {
+        const el = document.createElement(tagName);
+        expect(hasClassName(el)).toBe(true);
+      },
+    );
   });
 
-  describe("non-element DOM nodes", () => {
+  describe("non-HTMLElement nodes", () => {
     test("returns false for HTMLDocument", () => {
-      expect(hasTextContent(document)).toBe(false);
+      expect(hasClassName(document)).toBe(false);
     });
 
     test("returns false for Text node", () => {
-      const textNode = document.createTextNode("hello");
-      expect(hasTextContent(textNode)).toBe(false);
+      const textNode = document.createTextNode("Hello");
+      expect(hasClassName(textNode)).toBe(false);
     });
 
     test("returns false for Comment node", () => {
       const comment = document.createComment("comment");
-      expect(hasTextContent(comment)).toBe(false);
+      expect(hasClassName(comment)).toBe(false);
     });
 
     test("returns false for DocumentFragment", () => {
       const fragment = document.createDocumentFragment();
-      expect(hasTextContent(fragment)).toBe(false);
+      expect(hasClassName(fragment)).toBe(false);
     });
   });
 
-  describe("invalid types (not DOM elements)", () => {
+  describe("invalid types (non-DOM)", () => {
     const invalidValues = [
       null,
       undefined,
@@ -82,7 +85,7 @@ describe("hasTextContent", () => {
       [],
       ["div"],
       {},
-      { textContent: "fake" },
+      { className: "fake" },
       () => {},
       Symbol("abc"),
       BigInt(123),
@@ -101,7 +104,7 @@ describe("hasTextContent", () => {
     }
 
     test.each(invalidValues)("returns false for %p", (value) => {
-      expect(hasTextContent(value)).toBe(false);
+      expect(hasClassName(value)).toBe(false);
     });
   });
 
@@ -109,7 +112,7 @@ describe("hasTextContent", () => {
     test.each([new String("abc"), new String("")])(
       "returns false for %p",
       (value) => {
-        expect(hasTextContent(value)).toBe(false);
+        expect(hasClassName(value)).toBe(false);
       },
     );
   });

@@ -1,9 +1,13 @@
-import { isDomElement } from "../../scripts/ui.js";
+import { isListItemLiElement } from "../../scripts/ui.js";
 
-describe("isDomElement", () => {
-  describe("valid DOM elements", () => {
-    const validElements = [
-      "input",
+describe("isListItemLiElement", () => {
+  test("returns true for <li> element", () => {
+    const li = document.createElement("li");
+    expect(isListItemLiElement(li)).toBe(true);
+  });
+
+  describe("valid DOM elements but NOT <li>", () => {
+    const elements = [
       "div",
       "span",
       "p",
@@ -16,7 +20,7 @@ describe("isDomElement", () => {
       "iframe",
       "img",
       "ul",
-      "li",
+      "input",
       "table",
       "thead",
       "tbody",
@@ -40,13 +44,13 @@ describe("isDomElement", () => {
       "figcaption",
     ];
 
-    test.each(validElements)("returns true for <%s> element", (tagName) => {
+    test.each(elements)("returns false for <%s> element", (tagName) => {
       const el = document.createElement(tagName);
-      expect(isDomElement(el)).toBe(true);
+      expect(isListItemLiElement(el)).toBe(false);
     });
 
-    test("returns true for HTMLDocument", () => {
-      expect(isDomElement(document)).toBe(true);
+    test("returns false for HTMLDocument", () => {
+      expect(isListItemLiElement(document)).toBe(false);
     });
   });
 
@@ -54,9 +58,7 @@ describe("isDomElement", () => {
     const invalidValues = [
       null,
       undefined,
-      "",
-      "<div>",
-      0,
+      "<li>",
       123,
       NaN,
       Infinity,
@@ -64,36 +66,36 @@ describe("isDomElement", () => {
       true,
       false,
       [],
-      ["div"],
+      ["li"],
       {},
-      { nodeType: 1, nodeName: "DIV" }, // похожий на DOM, но не DOM элемент
+      { tagName: "LI" },
       () => {},
-      Symbol("abc"),
+      Symbol("li"),
       BigInt(123),
-      /abc/,
+      /li/,
       new Date(),
       new Map(),
       new Set(),
       new WeakMap(),
       new WeakSet(),
-      Promise.resolve("abc"),
+      Promise.resolve("li"),
       new Error("fail"),
     ];
 
     if (typeof Buffer !== "undefined") {
-      invalidValues.push(Buffer.from("abc"));
+      invalidValues.push(Buffer.from("li"));
     }
 
     test.each(invalidValues)("returns false for %p", (value) => {
-      expect(isDomElement(value)).toBe(false);
+      expect(isListItemLiElement(value)).toBe(false);
     });
   });
 
   describe("String object wrappers", () => {
-    test.each([new String("abc"), new String("")])(
+    test.each([new String("li"), new String("")])(
       "returns false for %p",
       (value) => {
-        expect(isDomElement(value)).toBe(false);
+        expect(isListItemLiElement(value)).toBe(false);
       },
     );
   });

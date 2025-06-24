@@ -3,16 +3,27 @@
 import { trim, isEmpty } from "./utils.js";
 import {
   assertHasTextContent,
+  assertHasClassName,
   assertIsString,
   assertIsInputElement,
+  assertIsListUlElement,
+  assertIsListItemLiElement,
 } from "./asserts.js";
 
-export const isDomElement = (el) => {
-  return el instanceof Element || el instanceof HTMLDocument;
+export const isHTMLTagElement = (el) => {
+  return el instanceof HTMLElement;
 };
 
 export const isInputElement = (el) => {
-  return isDomElement(el) && el.tagName === "INPUT";
+  return isHTMLTagElement(el) && el.tagName === "INPUT";
+};
+
+export const isListUlElement = (el) => {
+  return isHTMLTagElement(el) && el.tagName === "UL";
+};
+
+export const isListItemLiElement = (el) => {
+  return isHTMLTagElement(el) && el.tagName === "LI";
 };
 
 export const getTrimmedInputValue = (input) => trim(getInputValue(input));
@@ -32,13 +43,41 @@ export const getInputValue = (input) => {
 };
 
 export const hasTextContent = (el) => {
-  return isDomElement(el) && "textContent" in el;
+  return isHTMLTagElement(el) && "textContent" in el;
 };
 
 export const setTextContent = (el, text) => {
   assertHasTextContent(el, "first argument");
   assertIsString(text, "second argument");
   el.textContent = text;
+};
+
+export const createListItem = () => {
+  return document.createElement("li");
+};
+export const hasClassName = (el) => {
+  return isHTMLTagElement(el) && "className" in el;
+};
+
+export const getHTMLElementClassName = (el) => {
+  assertHasClassName(el);
+  return el.className;
+};
+
+export const setListItemTextContent = (li, text) => {
+  setTextContent(li, text);
+};
+
+export const setListItemClassName = (li, text) => {
+  assertHasClassName(li, "first argument");
+  assertIsString(text, "second argument");
+  li.className = text;
+};
+
+export const appendTodoItemLi = (list, item) => {
+  assertIsListUlElement(list, "first argument");
+  assertIsListItemLiElement(item, "second argument");
+  list.appendChild(item);
 };
 
 export const showNotValidMessage = (element, message) => {

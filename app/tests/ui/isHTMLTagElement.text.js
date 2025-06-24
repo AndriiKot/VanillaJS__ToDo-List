@@ -1,18 +1,19 @@
-import { hasTextContent } from "../../scripts/ui.js";
+import { isHTMLTagElement } from "../../scripts/ui.js";
 
-describe("hasTextContent", () => {
-  describe("valid HTML elements with textContent", () => {
-    const validTags = [
+describe("isHTMLTagElement", () => {
+  describe("valid HTML tag elements", () => {
+    const validElements = [
+      "input",
       "div",
       "span",
       "p",
-      "input",
       "textarea",
       "button",
       "select",
       "option",
       "label",
       "form",
+      "iframe",
       "img",
       "ul",
       "li",
@@ -39,34 +40,34 @@ describe("hasTextContent", () => {
       "figcaption",
     ];
 
-    test.each(validTags)("returns true for <%s> element", (tagName) => {
+    test.each(validElements)("returns true for <%s> element", (tagName) => {
       const el = document.createElement(tagName);
-      expect(hasTextContent(el)).toBe(true);
+      expect(isHTMLTagElement(el)).toBe(true);
     });
   });
 
-  describe("non-element DOM nodes", () => {
-    test("returns false for HTMLDocument", () => {
-      expect(hasTextContent(document)).toBe(false);
+  describe("non-HTMLElement nodes", () => {
+    test("returns false for HTMLDocument (document)", () => {
+      expect(isHTMLTagElement(document)).toBe(false);
     });
 
     test("returns false for Text node", () => {
       const textNode = document.createTextNode("hello");
-      expect(hasTextContent(textNode)).toBe(false);
+      expect(isHTMLTagElement(textNode)).toBe(false);
     });
 
     test("returns false for Comment node", () => {
       const comment = document.createComment("comment");
-      expect(hasTextContent(comment)).toBe(false);
+      expect(isHTMLTagElement(comment)).toBe(false);
     });
 
     test("returns false for DocumentFragment", () => {
       const fragment = document.createDocumentFragment();
-      expect(hasTextContent(fragment)).toBe(false);
+      expect(isHTMLTagElement(fragment)).toBe(false);
     });
   });
 
-  describe("invalid types (not DOM elements)", () => {
+  describe("invalid values (non-DOM)", () => {
     const invalidValues = [
       null,
       undefined,
@@ -82,7 +83,7 @@ describe("hasTextContent", () => {
       [],
       ["div"],
       {},
-      { textContent: "fake" },
+      { nodeType: 1, nodeName: "DIV" }, // fake DOM-like object
       () => {},
       Symbol("abc"),
       BigInt(123),
@@ -101,7 +102,7 @@ describe("hasTextContent", () => {
     }
 
     test.each(invalidValues)("returns false for %p", (value) => {
-      expect(hasTextContent(value)).toBe(false);
+      expect(isHTMLTagElement(value)).toBe(false);
     });
   });
 
@@ -109,7 +110,7 @@ describe("hasTextContent", () => {
     test.each([new String("abc"), new String("")])(
       "returns false for %p",
       (value) => {
-        expect(hasTextContent(value)).toBe(false);
+        expect(isHTMLTagElement(value)).toBe(false);
       },
     );
   });

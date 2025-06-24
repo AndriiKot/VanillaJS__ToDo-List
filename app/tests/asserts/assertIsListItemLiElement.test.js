@@ -1,10 +1,10 @@
-import { assertIsInputElement } from "../../scripts/asserts.js";
+import { assertIsListItemLiElement } from "../../scripts/asserts.js";
 
-describe("assertIsInputElement", () => {
-  describe("valid input elements (should NOT throw)", () => {
-    test("does not throw for a valid <input> element", () => {
-      const input = document.createElement("input");
-      expect(() => assertIsInputElement(input)).not.toThrow();
+describe("assertIsListItemLiElement", () => {
+  describe("valid <li> elements (should NOT throw)", () => {
+    test("does not throw for a valid <li> element", () => {
+      const li = document.createElement("li");
+      expect(() => assertIsListItemLiElement(li)).not.toThrow();
     });
   });
 
@@ -13,7 +13,7 @@ describe("assertIsInputElement", () => {
       null,
       undefined,
       "",
-      "text",
+      "li",
       123,
       true,
       false,
@@ -27,9 +27,9 @@ describe("assertIsInputElement", () => {
       Symbol("el"),
       BigInt(10),
       {},
-      { textContent: "fake" },
+      { tagName: "LI" },
       [],
-      ["div"],
+      ["li"],
       () => {},
       function () {},
       new String("str"),
@@ -42,8 +42,8 @@ describe("assertIsInputElement", () => {
       new WeakSet(),
       new Error("fail"),
       document.createElement("div"),
-      document.createElement("textarea"),
-      document.createElement("select"),
+      document.createElement("ul"),
+      document.createElement("input"),
       document.createTextNode("text"),
       document.createComment("comment"),
       document.createDocumentFragment(),
@@ -51,9 +51,9 @@ describe("assertIsInputElement", () => {
     ];
 
     test.each(invalidValues)("throws TypeError for %p", (value) => {
-      expect(() => assertIsInputElement(value)).toThrow(TypeError);
-      expect(() => assertIsInputElement(value)).toThrow(
-        /Expected a DOM element of type <input>/,
+      expect(() => assertIsListItemLiElement(value)).toThrow(TypeError);
+      expect(() => assertIsListItemLiElement(value)).toThrow(
+        /Expected .* to be a <li> HTMLElement/,
       );
     });
   });

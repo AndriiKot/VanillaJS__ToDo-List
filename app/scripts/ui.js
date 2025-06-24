@@ -37,6 +37,11 @@ export const clearInput = (input) => {
   input.value = "";
 };
 
+export const inputFocus = (input) => {
+  assertIsInputElement(input);
+  input.focus();
+};
+
 export const getInputValue = (input) => {
   assertIsInputElement(input);
   return input.value;

@@ -9,6 +9,7 @@ import {
   setListItemClassName,
   setListItemTextContent,
   appendTodoItemLi,
+  getInputValue,
 } from "./ui.js";
 
 const todoElementMessage = getTodoValidMessage();
@@ -20,7 +21,8 @@ const isValidateTask = (task) => {
 
 const addTask = (input, list) => {
   if (isValidateTask(input)) {
-    const todoItem = createTodoItemLi(input.value);
+    const inputValue = getInputValue(input);
+    const todoItem = createTodoItemLi(inputValue);
     appendTodoItemLi(list, todoItem);
   } else {
     showNotValidMessage(todoElementMessage, "Task cannot be empty");

@@ -1,4 +1,4 @@
-import { isInputElement, isListUlElement, isListItemLiElement } from "../ui";
+import { isInputElement, isListUlElement, isListItemLiElement } from "@ui";
 
 export const assertIsInputElement = (el) => {
   if (isInputElement(el)) return;

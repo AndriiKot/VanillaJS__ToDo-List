@@ -1,6 +1,6 @@
 "use strict";
 
-import { getTodoValidMessage } from "./selectors.js";
+import { getTodoValidMessage } from "@selectors";
 import {
   clearInput,
   isValidInputValue,

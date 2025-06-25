@@ -1,6 +1,6 @@
-import { isHTMLTagElement, hasTextContent, hasClassName } from "../ui";
-import { isEmpty } from "../utils.js";
-import { VALID_HTML_TAGS } from "../validHtmlTags.js";
+import { isHTMLTagElement, hasTextContent, hasClassName } from "@ui";
+import { isEmpty } from "@utils";
+import { VALID_HTML_TAGS } from "@VALID_HTML_TAGS";
 
 export const assertIsHTMLTagElement = (el) => {
   if (!isHTMLTagElement(el)) {

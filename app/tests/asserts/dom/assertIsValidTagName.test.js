@@ -1,5 +1,5 @@
 import { assertIsValidTagName } from "../../../scripts/asserts/";
-import { VALID_HTML_TAGS } from "../../../scripts/validHtmlTags.js";
+import { VALID_HTML_TAGS } from "@VALID_HTML_TAGS";
 
 describe("assertIsValidTagName", () => {
   describe("valid HTML tag names (MUST be in exact casing)", () => {

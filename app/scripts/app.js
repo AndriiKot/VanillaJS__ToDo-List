@@ -1,8 +1,8 @@
 "use strict";
 
-import { getTodoElements } from "./selectors.js";
-import { handleTaskSubmission as addTask } from "./task.js";
-import { hiddenNotValidMessage } from "./handlers/hiddenNotValidMessage.js";
+import { getTodoElements } from "@selectors";
+import { handleTaskSubmission as addTask } from "@scripts/task.js";
+import { hiddenNotValidMessage } from "@handlers/hiddenNotValidMessage.js";
 
 export const initTodoApp = () => {
   const { todoInput, todoList, todoButton, todoValidMessage } =

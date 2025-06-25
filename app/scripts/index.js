@@ -1,5 +1,5 @@
 "use strict";
 
-import { initTodoApp } from "./app.js";
+import { initTodoApp } from "@scripts/app";
 
 window.addEventListener("DOMContentLoaded", initTodoApp);

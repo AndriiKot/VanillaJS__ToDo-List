@@ -1,5 +1,5 @@
 import { addTaskToList, clearInput } from "../task.js";
-import { inputFocus } from "../ui/";
+import { inputFocus } from "@ui";
 
 export const submitTaskSuccessfully = (list, input) => {
   addTaskToList(list, input);

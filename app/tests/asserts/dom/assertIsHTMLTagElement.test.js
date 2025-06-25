@@ -1,5 +1,5 @@
 import { assertIsHTMLTagElement } from "../../../scripts/asserts/";
-import { VALID_HTML_TAGS } from "../../../scripts/validHtmlTags";
+import { VALID_HTML_TAGS } from "@VALID_HTML_TAGS";
 
 describe("assertIsHTMLTagElement", () => {
   describe("valid HTML elements (should NOT throw)", () => {

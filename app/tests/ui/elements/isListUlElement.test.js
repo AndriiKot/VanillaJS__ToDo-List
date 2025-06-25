@@ -1,4 +1,4 @@
-import { isListUlElement } from "../../scripts/ui.js";
+import { isListUlElement } from "../../../scripts/ui/";
 
 describe("isListUlElement", () => {
   test("returns true for <ul> element", () => {

@@ -1,6 +1,6 @@
 "use strict";
 
-import { getElement } from "./ui/index.js";
+import { getElement } from "./ui/";
 
 export const getTodoInput = () => getElement(".todo__input");
 export const getTodoList = () => getElement(".todo__list");

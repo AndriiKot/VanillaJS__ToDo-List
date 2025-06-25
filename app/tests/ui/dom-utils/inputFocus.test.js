@@ -1,11 +1,14 @@
-import { clearInput } from "../../scripts/ui.js";
+import { inputFocus } from "../../../scripts/ui/";
+import { jest } from "@jest/globals";
 
-describe("clearInput", () => {
-  test("clears the value of a valid <input> element", () => {
+describe("inputFocus", () => {
+  test("calls focus() on a valid <input> element", () => {
     const input = document.createElement("input");
-    input.value = "Some text";
-    clearInput(input);
-    expect(input.value).toBe("");
+    const focusSpy = jest.spyOn(input, "focus");
+
+    inputFocus(input);
+
+    expect(focusSpy).toHaveBeenCalled();
   });
 
   describe("throws TypeError for invalid inputs", () => {
@@ -45,8 +48,8 @@ describe("clearInput", () => {
     ];
 
     test.each(invalidInputs)("throws TypeError for %p", (value) => {
-      expect(() => clearInput(value)).toThrow(TypeError);
-      expect(() => clearInput(value)).toThrow(
+      expect(() => inputFocus(value)).toThrow(TypeError);
+      expect(() => inputFocus(value)).toThrow(
         /Expected a DOM element of type <input>/,
       );
     });

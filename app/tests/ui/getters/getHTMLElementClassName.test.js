@@ -1,4 +1,4 @@
-import { getHTMLElementClassName } from "../../scripts/ui.js";
+import { getHTMLElementClassName } from "../../../scripts/ui/";
 
 describe("getHTMLElementClassName", () => {
   describe("valid HTML elements", () => {

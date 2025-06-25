@@ -1,4 +1,4 @@
-import { isInputElement } from "../../scripts/ui.js";
+import { isInputElement } from "../../../scripts/ui/";
 
 describe("isInputElement", () => {
   test("returns true for input element", () => {

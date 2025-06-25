@@ -1,19 +1,18 @@
-import { isHTMLTagElement } from "../../scripts/ui.js";
+import { hasClassName } from "../../../scripts/ui/";
 
-describe("isHTMLTagElement", () => {
-  describe("valid HTML tag elements", () => {
-    const validElements = [
-      "input",
+describe("hasClassName", () => {
+  describe("valid HTML elements with className", () => {
+    const elementsWithClassName = [
       "div",
       "span",
       "p",
+      "input",
       "textarea",
       "button",
       "select",
       "option",
       "label",
       "form",
-      "iframe",
       "img",
       "ul",
       "li",
@@ -40,34 +39,37 @@ describe("isHTMLTagElement", () => {
       "figcaption",
     ];
 
-    test.each(validElements)("returns true for <%s> element", (tagName) => {
-      const el = document.createElement(tagName);
-      expect(isHTMLTagElement(el)).toBe(true);
-    });
+    test.each(elementsWithClassName)(
+      "returns true for <%s> element",
+      (tagName) => {
+        const el = document.createElement(tagName);
+        expect(hasClassName(el)).toBe(true);
+      },
+    );
   });
 
   describe("non-HTMLElement nodes", () => {
-    test("returns false for HTMLDocument (document)", () => {
-      expect(isHTMLTagElement(document)).toBe(false);
+    test("returns false for HTMLDocument", () => {
+      expect(hasClassName(document)).toBe(false);
     });
 
     test("returns false for Text node", () => {
-      const textNode = document.createTextNode("hello");
-      expect(isHTMLTagElement(textNode)).toBe(false);
+      const textNode = document.createTextNode("Hello");
+      expect(hasClassName(textNode)).toBe(false);
     });
 
     test("returns false for Comment node", () => {
       const comment = document.createComment("comment");
-      expect(isHTMLTagElement(comment)).toBe(false);
+      expect(hasClassName(comment)).toBe(false);
     });
 
     test("returns false for DocumentFragment", () => {
       const fragment = document.createDocumentFragment();
-      expect(isHTMLTagElement(fragment)).toBe(false);
+      expect(hasClassName(fragment)).toBe(false);
     });
   });
 
-  describe("invalid values (non-DOM)", () => {
+  describe("invalid types (non-DOM)", () => {
     const invalidValues = [
       null,
       undefined,
@@ -83,7 +85,7 @@ describe("isHTMLTagElement", () => {
       [],
       ["div"],
       {},
-      { nodeType: 1, nodeName: "DIV" }, // fake DOM-like object
+      { className: "fake" },
       () => {},
       Symbol("abc"),
       BigInt(123),
@@ -102,7 +104,7 @@ describe("isHTMLTagElement", () => {
     }
 
     test.each(invalidValues)("returns false for %p", (value) => {
-      expect(isHTMLTagElement(value)).toBe(false);
+      expect(hasClassName(value)).toBe(false);
     });
   });
 
@@ -110,7 +112,7 @@ describe("isHTMLTagElement", () => {
     test.each([new String("abc"), new String("")])(
       "returns false for %p",
       (value) => {
-        expect(isHTMLTagElement(value)).toBe(false);
+        expect(hasClassName(value)).toBe(false);
       },
     );
   });

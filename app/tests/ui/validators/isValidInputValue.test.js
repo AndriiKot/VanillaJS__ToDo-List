@@ -1,4 +1,4 @@
-import { isValidInputValue } from "../../scripts/ui.js"; // поправь путь при необходимости
+import { isValidInputValue } from "../../../scripts/ui/";
 
 describe("isValidInputValue", () => {
   describe("valid <input> elements", () => {

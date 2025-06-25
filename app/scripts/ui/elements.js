@@ -1,4 +1,5 @@
 export const isHTMLTagElement = (el) => el instanceof HTMLElement;
+
 export const isInputElement = (el) =>
   isHTMLTagElement(el) && el.tagName === "INPUT";
 

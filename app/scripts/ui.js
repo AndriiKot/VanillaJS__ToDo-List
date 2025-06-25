@@ -8,7 +8,7 @@ import {
   assertIsInputElement,
   assertIsListUlElement,
   assertIsListItemLiElement,
-} from "./asserts.js";
+} from "./asserts/";
 
 export const isHTMLTagElement = (el) => {
   return el instanceof HTMLElement;

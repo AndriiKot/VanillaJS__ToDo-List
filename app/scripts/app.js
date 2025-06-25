@@ -2,7 +2,7 @@
 
 import { getTodoElements } from "./dom.js";
 import { handleTaskSubmission as addTask } from "./task.js";
-import { hiddenNotValidMessage } from "./ui.js";
+import { hiddenNotValidMessage } from "./handlers/hiddenNotValidMessage.js";
 
 export const initTodoApp = () => {
   const { todoInput, todoList, todoButton, todoValidMessage } =

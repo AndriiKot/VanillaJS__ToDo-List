@@ -84,7 +84,3 @@ export const appendTodoItemLi = (list, item) => {
   assertIsListItemLiElement(item, "second argument");
   list.appendChild(item);
 };
-
-export const hiddenNotValidMessage = (element) => {
-  return setTextContent(element, "");
-};

@@ -1,4 +1,4 @@
-import { hiddenNotValidMessage } from "../../scripts/ui.js";
+import { hiddenNotValidMessage } from "../../scripts/handlers/hiddenNotValidMessage.js";
 
 describe("hiddenNotValidMessage", () => {
   describe("valid cases", () => {

@@ -1,4 +1,3 @@
-// asserts/elements.js
 import { isInputElement, isListUlElement, isListItemLiElement } from "../ui";
 
 export const assertIsInputElement = (el) => {

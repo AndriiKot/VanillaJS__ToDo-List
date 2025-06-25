@@ -1,6 +1,6 @@
 "use strict";
 
-import { getTodoElements } from "./dom.js";
+import { getTodoElements } from "./selectors.js";
 import { handleTaskSubmission as addTask } from "./task.js";
 import { hiddenNotValidMessage } from "./handlers/hiddenNotValidMessage.js";
 

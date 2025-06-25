@@ -8,7 +8,7 @@ import {
   getTodoButton,
   getTodoElements,
   getTodoValidMessage,
-} from "../scripts/dom.js";
+} from "../scripts/selectors.js";
 
 describe("DOM access helpers", () => {
   beforeEach(() => {

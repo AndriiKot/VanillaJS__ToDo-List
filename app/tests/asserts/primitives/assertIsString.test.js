@@ -44,7 +44,7 @@ describe("assertIsString", () => {
       new WeakSet(),
       Promise.resolve(),
       new Error("error"),
-      new String("string object wrapper"),
+      new String("string object wrapper"), // объект-обертка, не строка
     ];
 
     test.each(invalidValues)("throws TypeError for %p", (value) => {
@@ -52,10 +52,27 @@ describe("assertIsString", () => {
       expect(() => assertIsString(value)).toThrow(/Expected .* to be a string/);
     });
 
-    test("supports custom argName", () => {
+    test("supports custom argName in error message", () => {
       expect(() => assertIsString(123, "myArg")).toThrow(
-        "Expected myArg to be a string",
+        /Expected myArg to be a string/,
       );
+    });
+  });
+  describe("assertIsString - fallback to Object.prototype.toString.call", () => {
+    test("uses Object.prototype.toString.call if String(value) throws", () => {
+      const badToString = {
+        toString() {
+          throw new Error("Cannot convert to string");
+        },
+      };
+
+      expect(() => assertIsString(badToString)).toThrow(TypeError);
+
+      try {
+        assertIsString(badToString);
+      } catch (e) {
+        expect(e.message).toMatch(/\[object Object\]/);
+      }
     });
   });
 });

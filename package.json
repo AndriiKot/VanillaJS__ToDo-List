@@ -4,12 +4,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "generate:jsconfig": "node generate-jsconfig.js",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch",
-    "test:coverage": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage",    
+    "test:coverage": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage",
     "format": "prettier app --write",
     "lint": "eslint app",
-    "prepare": "git config core.hooksPath .git-hooks || echo 'Not in a git repo'"
+    "prepare": "node -e \"require('fs').existsSync('./generate-jsconfig.js') && require('child_process').execSync('npm run generate:jsconfig')\" && git config core.hooksPath .git-hooks || echo 'Not in a git repo'"
   },
   "devDependencies": {
     "@eslint/js": "^9.28.0",

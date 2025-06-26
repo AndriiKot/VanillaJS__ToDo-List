@@ -2,22 +2,54 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@app/*": ["app/*"],
-      "@scripts/*": ["app/scripts/*"],
-      "@ui/*": ["app/scripts/ui/*"],
-      "@asserts/*": ["app/scripts/asserts/*"],
-      "@handlers/*": ["app/scripts/handlers/*"],
-      "@tests/*": ["app/tests/*"],
-      "@test-utils/*": ["app/tests/test-utils/*"],
-      "@main": ["app/scripts/main.js"],
-      "@utils/*": ["app/scripts/utils.js"],
-      "@task": ["app/scripts/task.js"],
-      "@selectors": ["app/scripts/selectors.js"],
-      "@html": ["app/index.html"],
-      "@assets/*": ["app/assets/*"],
-      "@constants": ["app/scripts/constants/*"],
-      "@VALID_HTML_TAGS": ["app/scripts/constants/VALID_HTML_TAGS.js"]
+      "@app": [
+        "app"
+      ],
+      "@scripts": [
+        "app/scripts"
+      ],
+      "@ui": [
+        "app/scripts/ui"
+      ],
+      "@asserts": [
+        "app/scripts/asserts"
+      ],
+      "@handlers": [
+        "app/scripts/handlers"
+      ],
+      "@tests": [
+        "app/tests"
+      ],
+      "@test-utils": [
+        "app/tests/test-utils"
+      ],
+      "@utils": [
+        "app/scripts/utils.js"
+      ],
+      "@main": [
+        "app/scripts/main.js"
+      ],
+      "@task": [
+        "app/scripts/task.js"
+      ],
+      "@selectors": [
+        "app/scripts/selectors.js"
+      ],
+      "@html": [
+        "app/index.html"
+      ],
+      "@assets": [
+        "app/assets"
+      ],
+      "@constants": [
+        "app/scripts/constants"
+      ],
+      "@VALID_HTML_TAGS": [
+        "app/scripts/constants/VALID_HTML_TAGS.js"
+      ]
     }
   },
-  "include": ["app"]
+  "include": [
+    "app"
+  ]
 }

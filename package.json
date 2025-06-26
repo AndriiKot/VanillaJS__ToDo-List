@@ -10,7 +10,7 @@
     "test:coverage": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage",
     "format": "prettier app --write",
     "lint": "eslint app",
-    "prepare": "node -e \"require('fs').existsSync('./generate-jsconfig.js') && require('child_process').execSync('npm run generate:jsconfig')\" && git config core.hooksPath .git-hooks || echo 'Not in a git repo'"
+    "prepare": "node tools/prepare.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.28.0",

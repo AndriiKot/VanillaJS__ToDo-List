@@ -1,4 +1,4 @@
-import { assertIsListUlElement, assertIsListItemLiElement } from "../asserts/";
+import { assertIsListUlElement, assertIsListItemLiElement } from "@asserts";
 
 export const appendTodoItemLi = (list, item) => {
   assertIsListUlElement(list, "first argument");

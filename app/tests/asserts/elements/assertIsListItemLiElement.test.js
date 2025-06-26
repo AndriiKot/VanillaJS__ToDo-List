@@ -1,4 +1,4 @@
-import { assertIsListItemLiElement } from "../../../scripts/asserts/";
+import { assertIsListItemLiElement } from "@asserts";
 
 describe("assertIsListItemLiElement", () => {
   describe("valid <li> elements (should NOT throw)", () => {

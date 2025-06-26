@@ -1,4 +1,4 @@
-import { getInputValue } from "../../../scripts/ui/";
+import { getInputValue } from "@ui";
 
 describe("getInputValue", () => {
   test("returns the value of a valid <input> element", () => {

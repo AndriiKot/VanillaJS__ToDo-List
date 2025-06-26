@@ -1,4 +1,4 @@
-import { isHTMLTagElement } from "../../../scripts/ui/";
+import { isHTMLTagElement } from "@ui";
 
 describe("isHTMLTagElement", () => {
   describe("valid HTML tag elements", () => {

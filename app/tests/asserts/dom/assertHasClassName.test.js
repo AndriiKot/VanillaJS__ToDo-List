@@ -1,4 +1,4 @@
-import { assertHasClassName } from "../../../scripts/asserts/";
+import { assertHasClassName } from "@asserts";
 
 describe("assertHasClassName", () => {
   describe("valid HTML elements with className", () => {

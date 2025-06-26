@@ -1,4 +1,4 @@
-import { assertIsValidTagName } from "../../../scripts/asserts/";
+import { assertIsValidTagName } from "@asserts";
 import { VALID_HTML_TAGS } from "@VALID_HTML_TAGS";
 
 describe("assertIsValidTagName", () => {

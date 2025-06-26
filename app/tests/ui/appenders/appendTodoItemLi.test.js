@@ -1,4 +1,4 @@
-import { appendTodoItemLi } from "../../../scripts/ui/";
+import { appendTodoItemLi } from "@ui";
 
 describe("appendTodoItemLi", () => {
   test("appends item to list when valid arguments are passed", () => {

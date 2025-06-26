@@ -1,4 +1,4 @@
-import { assertHasTextContent } from "../../../scripts/asserts/";
+import { assertHasTextContent } from "@asserts";
 
 describe("assertHasTextContent", () => {
   describe("valid HTML elements with textContent", () => {

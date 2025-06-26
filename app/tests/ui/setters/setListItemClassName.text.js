@@ -1,4 +1,4 @@
-import { setListItemClassName } from "../../../scripts/ui/";
+import { setListItemClassName } from "@ui";
 
 describe("setListItemClassName", () => {
   describe("valid cases", () => {

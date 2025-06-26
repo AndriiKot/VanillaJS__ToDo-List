@@ -1,4 +1,4 @@
-import { hasTextContent } from "../../../scripts/ui/";
+import { hasTextContent } from "@ui";
 
 describe("hasTextContent", () => {
   describe("valid HTML elements with textContent", () => {

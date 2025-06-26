@@ -1,6 +1,6 @@
 "use strict";
 
-import { safeString } from "../../scripts/utils.js";
+import { safeString } from "@utils";
 
 describe("safeString", () => {
   describe("valid string inputs", () => {

@@ -1,6 +1,6 @@
 "use strict";
 
-import { isEmpty } from "../../scripts/utils.js";
+import { isEmpty } from "@utils";
 
 describe("isEmpty", () => {
   // 🔤 Normal string values

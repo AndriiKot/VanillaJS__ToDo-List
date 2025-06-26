@@ -1,4 +1,4 @@
-import { isString } from "../../scripts/utils.js";
+import { isString } from "@utils";
 
 describe("isString", () => {
   describe("primitive strings", () => {

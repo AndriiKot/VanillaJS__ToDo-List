@@ -2,7 +2,7 @@ import {
   assertHasTextContent,
   assertIsString,
   assertHasClassName,
-} from "../asserts/";
+} from "@asserts";
 
 export const setTextContent = (el, text) => {
   assertHasTextContent(el, "first argument");

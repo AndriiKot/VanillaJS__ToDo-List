@@ -1,5 +1,5 @@
-import { trim, isEmpty } from "../utils.js";
-import { getInputValue } from "./getters.js";
+import { trim, isEmpty } from "@utils";
+import { getInputValue } from "@ui";
 
 export const getTrimmedInputValue = (input) => trim(getInputValue(input));
 

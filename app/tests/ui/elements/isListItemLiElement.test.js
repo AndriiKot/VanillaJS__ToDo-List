@@ -1,4 +1,4 @@
-import { isListItemLiElement } from "../../../scripts/ui/";
+import { isListItemLiElement } from "@ui";
 
 describe("isListItemLiElement", () => {
   test("returns true for <li> element", () => {

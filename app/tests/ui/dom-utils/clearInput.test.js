@@ -1,4 +1,4 @@
-import { clearInput } from "../../../scripts/ui/";
+import { clearInput } from "@ui";
 
 describe("clearInput", () => {
   test("clears the value of a valid <input> element", () => {

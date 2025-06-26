@@ -1,6 +1,6 @@
 "use strict";
 
-import { trim } from "../../scripts/utils.js";
+import { trim } from "@utils";
 
 describe("trim", () => {
   describe("normal strings", () => {

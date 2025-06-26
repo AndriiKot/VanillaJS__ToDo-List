@@ -1,4 +1,4 @@
-import { getElement } from "../../../scripts/ui/";
+import { getElement } from "@ui";
 
 describe("getElement", () => {
   beforeEach(() => {

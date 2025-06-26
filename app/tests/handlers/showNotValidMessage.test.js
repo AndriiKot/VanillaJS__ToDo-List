@@ -1,4 +1,4 @@
-import { showNotValidMessage } from "../../scripts/handlers/showNotValidMessage.js";
+import { showNotValidMessage } from "@handlers";
 
 describe("showNotValidMessage", () => {
   describe("valid cases", () => {

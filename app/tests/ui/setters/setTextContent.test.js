@@ -1,4 +1,4 @@
-import { setTextContent } from "../../../scripts/ui/";
+import { setTextContent } from "@ui";
 
 describe("setTextContent", () => {
   describe("valid cases", () => {

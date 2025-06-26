@@ -9,7 +9,7 @@ import {
   setListItemTextContent,
   appendTodoItemLi,
   getInputValue,
-} from "./ui/";
+} from "@ui";
 
 import { submitTaskSuccessfully } from "./handlers/submitTaskSuccessfully.js";
 import { showNotValidMessage } from "./handlers/showNotValidMessage.js";

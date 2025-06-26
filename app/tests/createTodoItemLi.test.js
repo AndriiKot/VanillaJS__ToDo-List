@@ -1,4 +1,4 @@
-import { createTodoItemLi } from "../scripts/task.js";
+import { createTodoItemLi } from "@task";
 
 describe("createTodoItemLi", () => {
   test("returns <li> element with correct class and text content", () => {

@@ -1,4 +1,4 @@
-import { inputFocus } from "../../../scripts/ui/";
+import { inputFocus } from "@ui";
 import { jest } from "@jest/globals";
 
 describe("inputFocus", () => {

@@ -1,4 +1,4 @@
-import { isValidInputValue } from "../../../scripts/ui/";
+import { isValidInputValue } from "@ui";
 
 describe("isValidInputValue", () => {
   describe("valid <input> elements", () => {

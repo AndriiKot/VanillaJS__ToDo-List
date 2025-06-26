@@ -1,4 +1,4 @@
-import { createListItem } from "../../../scripts/ui/";
+import { createListItem } from "@ui";
 
 describe("createListItem", () => {
   test("returns an HTMLLIElement", () => {

@@ -1,4 +1,4 @@
-import { hasClassName } from "../../../scripts/ui/";
+import { hasClassName } from "@ui";
 
 describe("hasClassName", () => {
   describe("valid HTML elements with className", () => {

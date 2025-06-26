@@ -1,4 +1,4 @@
-import { assertIsInputElement } from "../../../scripts/asserts/";
+import { assertIsInputElement } from "@asserts";
 
 describe("assertIsInputElement", () => {
   describe("valid input elements (should NOT throw)", () => {

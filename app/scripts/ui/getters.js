@@ -2,7 +2,7 @@ import {
   assertIsInputElement,
   assertHasClassName,
   assertIsString,
-} from "../asserts/";
+} from "@asserts";
 
 export const getElement = (selector) => {
   assertIsString(selector);

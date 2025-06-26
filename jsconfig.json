@@ -41,6 +41,9 @@
       "@assets": [
         "app/assets"
       ],
+      "@constants": [
+        "app/scripts/constants"
+      ],
       "@VALID_HTML_TAGS": [
         "app/scripts/constants/VALID_HTML_TAGS.js"
       ]

@@ -20,6 +20,6 @@ export const aliases = {
   "@selectors": path.join(root, "scripts/selectors.js"),
   "@html": path.join(root, "index.html"),
   "@assets": path.join(root, "assets"),
-//   "@constants": path.join(root, "scripts/constants"),
+  "@constants": path.join(root, "scripts/constants"),
   "@VALID_HTML_TAGS": path.join(root, "scripts/constants/VALID_HTML_TAGS.js"),
 };

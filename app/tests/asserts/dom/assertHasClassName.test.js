@@ -110,4 +110,16 @@ describe("assertHasClassName", () => {
       expect(() => assertHasClassName(value)).toThrow();
     });
   });
+
+  describe("fallback catch block coverage", () => {
+    test("uses Object.prototype.toString.call when String(el) throws", () => {
+      const badObject = {
+        toString() {
+          throw new Error("fail in toString");
+        },
+      };
+
+      expect(() => assertHasClassName(badObject)).toThrow(TypeError);
+    });
+  });
 });

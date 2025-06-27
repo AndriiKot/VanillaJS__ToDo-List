@@ -8,6 +8,12 @@
       "@scripts": [
         "app/scripts"
       ],
+      "@components": [
+        "app/scripts/components"
+      ],
+      "@config": [
+        "app/scripts/config"
+      ],
       "@ui": [
         "app/scripts/ui"
       ],
@@ -24,16 +30,16 @@
         "app/tests/test-utils"
       ],
       "@utils": [
-        "app/scripts/utils.js"
+        "app/scripts/utils"
       ],
       "@main": [
         "app/scripts/main.js"
       ],
       "@task": [
-        "app/scripts/task.js"
+        "app/scripts/core"
       ],
       "@selectors": [
-        "app/scripts/selectors.js"
+        "app/scripts/core"
       ],
       "@html": [
         "app/index.html"
@@ -41,11 +47,8 @@
       "@assets": [
         "app/assets"
       ],
-      "@constants": [
-        "app/scripts/constants"
-      ],
       "@VALID_HTML_TAGS": [
-        "app/scripts/constants/VALID_HTML_TAGS.js"
+        "app/scripts/config"
       ]
     }
   },

@@ -11,8 +11,10 @@ import {
   getInputValue,
 } from "@ui";
 
-import { submitTaskSuccessfully } from "./handlers/submitTaskSuccessfully.js";
-import { showNotValidMessage } from "./handlers/showNotValidMessage.js";
+import { submitTaskSuccessfully } from "@handlers";
+import { showNotValidMessage } from "@handlers";
+
+// const getTodoValidMessage = () => document.querySelector(".todo__error");
 
 const todoElementMessage = getTodoValidMessage();
 const todoLiElementClassName = "todo__item";

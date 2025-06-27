@@ -1,11 +1,4 @@
-import { aliases } from "./path-aliases.js";
-
-const jestAliases = Object.entries(aliases).reduce((acc, [key, value]) => {
-  const jestKey = key.replace("@", "^@?");
-  const jestValue = typeof value === "string" ? value : value;
-  acc[jestKey] = jestValue;
-  return acc;
-}, {});
+import { jestAliases } from "./tools/jest/generateAliases.js";
 
 export default {
   roots: ["<rootDir>/app"],

@@ -11,16 +11,13 @@ export default {
   roots: ["<rootDir>/app"],
   testEnvironment: "jest-environment-jsdom",
   moduleFileExtensions: ["js", "json"],
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
 
   moduleNameMapper: {
     ...jestAliases,
-    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   },
 
-  // Для покрытия кода
   collectCoverageFrom: [
-    "scripts/**/*.{js,jsx}",
+    "scripts/**/*.{js}",
     "!scripts/test-utils/**",
     "!**/node_modules/**",
   ],

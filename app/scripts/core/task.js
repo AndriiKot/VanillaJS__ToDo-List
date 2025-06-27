@@ -2,7 +2,7 @@
 
 import { getTodoValidMessage } from "@selectors";
 import {
-  clearInput,
+  clearInputValue,
   isValidInputValue,
   createListItem,
   setListItemClassName,
@@ -46,7 +46,7 @@ const addTaskToList = (list, input) => {
 
 export {
   handleTaskSubmission,
-  clearInput,
+  clearInputValue,
   createTodoItemLi,
   appendTodoItemLi,
   addTaskToList,

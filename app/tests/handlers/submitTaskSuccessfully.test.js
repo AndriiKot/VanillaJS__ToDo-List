@@ -2,11 +2,11 @@ import { jest } from "@jest/globals";
 
 jest.unstable_mockModule("@task", () => ({
   addTaskToList: jest.fn(),
-  clearInput: jest.fn(),
+  clearInputValue: jest.fn(),
 }));
 
 jest.unstable_mockModule("@ui", () => ({
-  inputFocus: jest.fn(),
+  focusInput: jest.fn(),
   setTextContent: jest.fn(),
   createListItem: jest.fn(),
   appendTodoItemLi: jest.fn(),
@@ -14,8 +14,8 @@ jest.unstable_mockModule("@ui", () => ({
 
 let submitTaskSuccessfully;
 let addTaskToList;
-let clearInput;
-let inputFocus;
+let clearInputValue;
+let focusInput;
 
 beforeAll(async () => {
   const taskModule = await import("@task");
@@ -23,8 +23,8 @@ beforeAll(async () => {
   const handlersModule = await import("@handlers");
 
   addTaskToList = taskModule.addTaskToList;
-  clearInput = taskModule.clearInput;
-  inputFocus = uiModule.inputFocus;
+  clearInputValue = taskModule.clearInputValue;
+  focusInput = uiModule.focusInput;
   submitTaskSuccessfully = handlersModule.submitTaskSuccessfully;
 });
 
@@ -33,14 +33,14 @@ describe("submitTaskSuccessfully", () => {
     jest.clearAllMocks();
   });
 
-  test("calls addTaskToList, clearInput, and inputFocus with correct arguments", () => {
+  test("calls addTaskToList, clearInputValue, and focusInput with correct arguments", () => {
     const fakeList = {};
     const fakeInput = {};
 
     submitTaskSuccessfully(fakeList, fakeInput);
 
     expect(addTaskToList).toHaveBeenCalledWith(fakeList, fakeInput);
-    expect(clearInput).toHaveBeenCalledWith(fakeInput);
-    expect(inputFocus).toHaveBeenCalledWith(fakeInput);
+    expect(clearInputValue).toHaveBeenCalledWith(fakeInput);
+    expect(focusInput).toHaveBeenCalledWith(fakeInput);
   });
 });

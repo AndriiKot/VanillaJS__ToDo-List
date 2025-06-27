@@ -1,8 +1,8 @@
-import { addTaskToList, clearInput } from "@task";
-import { inputFocus } from "@ui";
+import { addTaskToList, clearInputValue } from "@task";
+import { focusInput } from "@ui";
 
 export const submitTaskSuccessfully = (list, input) => {
   addTaskToList(list, input);
-  clearInput(input);
-  inputFocus(input);
+  clearInputValue(input);
+  focusInput(input);
 };

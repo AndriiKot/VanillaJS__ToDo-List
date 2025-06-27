@@ -1,10 +1,10 @@
-import { clearInput } from "@ui";
+import { clearInputValue } from "@ui";
 
-describe("clearInput", () => {
+describe("clearInputValue", () => {
   test("clears the value of a valid <input> element", () => {
     const input = document.createElement("input");
     input.value = "Some text";
-    clearInput(input);
+    clearInputValue(input);
     expect(input.value).toBe("");
   });
 
@@ -45,8 +45,8 @@ describe("clearInput", () => {
     ];
 
     test.each(invalidInputs)("throws TypeError for %p", (value) => {
-      expect(() => clearInput(value)).toThrow(TypeError);
-      expect(() => clearInput(value)).toThrow(
+      expect(() => clearInputValue(value)).toThrow(TypeError);
+      expect(() => clearInputValue(value)).toThrow(
         /Expected a DOM element of type <input>/,
       );
     });

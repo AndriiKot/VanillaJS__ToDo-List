@@ -19,7 +19,7 @@ export const aliases = {
   "@utils": path.join(root, "scripts/utils/"),
   "@main": path.join(root, "scripts/main.js"),
   "@task": path.join(root, "scripts/core/"),
-  "@selectors": path.join(root, "scripts/core/"),
+  "@selectors": path.join(root, "scripts/selectors/"),
   "@html": path.join(root, "index.html"),
   "@assets": path.join(root, "assets"),
 };

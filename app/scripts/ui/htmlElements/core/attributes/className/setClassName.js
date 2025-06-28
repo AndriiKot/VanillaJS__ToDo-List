@@ -1,7 +1,7 @@
 import { assertHasClassName, assertIsString } from "@asserts";
 
-export const setClassName = (li, className) => {
-  assertHasClassName(li, "first argument");
+export const setClassName = (el, className) => {
+  assertHasClassName(el, "first argument");
   assertIsString(className, "second argument");
-  li.className = className;
+  el.className = className;
 };

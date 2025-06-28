@@ -39,7 +39,7 @@
         "app/scripts/core"
       ],
       "@selectors": [
-        "app/scripts/core"
+        "app/scripts/selectors"
       ],
       "@html": [
         "app/index.html"

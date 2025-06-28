@@ -1,6 +1,7 @@
-import { assertHasClassName, assertIsString } from "@asserts";
+import { assertIsListItemLiElement } from "@asserts";
+import { setClassName } from "@ui";
+
 export const setListItemClassName = (li, className) => {
-  assertHasClassName(li, "first argument");
-  assertIsString(className, "second argument");
-  li.className = className;
+  assertIsListItemLiElement(li);
+  setClassName(li, className);
 };

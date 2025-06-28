@@ -7,7 +7,7 @@ import {
   createListItem,
   setListItemClassName,
   setListItemTextContent,
-  appendTodoItemLi,
+  appendListItemLi,
   getInputValue,
 } from "@ui";
 
@@ -41,13 +41,13 @@ const createTodoItemLi = (taskText) => {
 const addTaskToList = (list, input) => {
   const taskText = getInputValue(input);
   const todoItem = createTodoItemLi(taskText);
-  appendTodoItemLi(list, todoItem);
+  appendListItemLi(list, todoItem);
 };
 
 export {
   handleTaskSubmission,
   clearInputValue,
   createTodoItemLi,
-  appendTodoItemLi,
+  appendListItemLi,
   addTaskToList,
 };

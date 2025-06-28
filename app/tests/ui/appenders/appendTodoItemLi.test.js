@@ -1,11 +1,11 @@
-import { appendTodoItemLi } from "@ui";
+import { appendListItemLi } from "@ui";
 
-describe("appendTodoItemLi", () => {
+describe("appendListItemLi", () => {
   test("appends item to list when valid arguments are passed", () => {
     const list = document.createElement("ul");
     const item = document.createElement("li");
 
-    appendTodoItemLi(list, item);
+    appendListItemLi(list, item);
 
     expect(list.contains(item)).toBe(true);
   });
@@ -14,7 +14,7 @@ describe("appendTodoItemLi", () => {
     const invalidList = document.createElement("div"); // not UL
     const item = document.createElement("li");
 
-    expect(() => appendTodoItemLi(invalidList, item)).toThrow(
+    expect(() => appendListItemLi(invalidList, item)).toThrow(
       /<ul> HTMLElement/,
     );
   });
@@ -23,7 +23,7 @@ describe("appendTodoItemLi", () => {
     const list = document.createElement("ul");
     const invalidItem = document.createElement("div"); // not LI
 
-    expect(() => appendTodoItemLi(list, invalidItem)).toThrow(
+    expect(() => appendListItemLi(list, invalidItem)).toThrow(
       /<li> HTMLElement/,
     );
   });

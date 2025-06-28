@@ -9,7 +9,7 @@ jest.unstable_mockModule("@ui", () => ({
   focusInput: jest.fn(),
   setTextContent: jest.fn(),
   createListItem: jest.fn(),
-  appendTodoItemLi: jest.fn(),
+  appendListItemLi: jest.fn(),
 }));
 
 let submitTaskSuccessfully;

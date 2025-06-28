@@ -8,8 +8,8 @@
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch",
     "test:coverage": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage",
-    "format": "prettier app --write",
-    "lint": "eslint app",
+    "format": "prettier . --write",
+    "lint": "eslint .",
     "prepare": "node tools/prepare.js"
   },
   "devDependencies": {

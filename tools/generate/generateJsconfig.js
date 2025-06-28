@@ -14,7 +14,7 @@ const jsconfig = {
       Object.entries(aliases).map(([key, absPath]) => [
         key,
         [relativePath(absPath)],
-      ])
+      ]),
     ),
   },
   include: ["app"],

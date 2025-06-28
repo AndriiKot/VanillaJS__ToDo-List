@@ -2,7 +2,6 @@
 
 # ToDo List (VanillaJS)
 
-
 A Vanilla JavaScript "Todo List" application with unit tests, ESLint, Prettier,
 and a development server.
 You can run it using Docker or directly with Node.js.
@@ -173,17 +172,17 @@ You can run it using Docker or directly with Node.js.
 <details>
   <summary>
 
-####  Run with Docker
+#### Run with Docker
 
   </summary>
 
-#####  Build the image
+##### Build the image
 
 ```bash
 docker build -t js-project .
 ```
 
-#####  Run the app (dev server)
+##### Run the app (dev server)
 
 ```bash
 docker run -p 8080:8080 js-project dev
@@ -191,12 +190,11 @@ docker run -p 8080:8080 js-project dev
 
 Open [http://localhost:8080](http://localhost:8080) in your browser.
 
-#####  Run tests
+##### Run tests
 
 ```bash
 docker run --rm js-project
 ```
-
 
 <details>
   <summary>
@@ -211,7 +209,7 @@ docker run --rm js-project
 docker ps
 ```
 
-#####  Stop a container
+##### Stop a container
 
 ```bash
 docker stop <container_id>
@@ -256,7 +254,7 @@ npm run dev
 
 Open [http://localhost:8080](http://localhost:8080) in your browser.
 
-#####  Run tests
+##### Run tests
 
 ```bash
 npm test
@@ -280,17 +278,15 @@ npm run format
 
 #### 📝 `package.json` Scripts
 
-| Command           | Description                            |
-|------------------|----------------------------------------|
-| `npm run dev`     | Start the local server (`live-server`) |
-| `npm test`        | Run tests using Jest                   |
-| `npm run lint`    | Run ESLint                             |
-| `npm run format`  | Format code using Prettier             |
+| Command          | Description                            |
+| ---------------- | -------------------------------------- |
+| `npm run dev`    | Start the local server (`live-server`) |
+| `npm test`       | Run tests using Jest                   |
+| `npm run lint`   | Run ESLint                             |
+| `npm run format` | Format code using Prettier             |
 
 ---
 
 [back to top](#title)
 
 [MIT](./LICENSE)
-
-

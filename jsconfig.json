@@ -2,54 +2,19 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@app": [
-        "app"
-      ],
-      "@scripts": [
-        "app/scripts"
-      ],
-      "@components": [
-        "app/scripts/components"
-      ],
-      "@config": [
-        "app/scripts/config"
-      ],
-      "@ui": [
-        "app/scripts/ui"
-      ],
-      "@asserts": [
-        "app/scripts/asserts"
-      ],
-      "@handlers": [
-        "app/scripts/handlers"
-      ],
-      "@tests": [
-        "app/tests"
-      ],
-      "@test-utils": [
-        "app/tests/test-utils"
-      ],
-      "@utils": [
-        "app/scripts/utils"
-      ],
-      "@main": [
-        "app/scripts/main.js"
-      ],
-      "@task": [
-        "app/scripts/core"
-      ],
-      "@selectors": [
-        "app/scripts/selectors"
-      ],
-      "@html": [
-        "app/index.html"
-      ],
-      "@assets": [
-        "app/assets"
-      ]
+      "@frontend": ["frontend"],
+      "@assets": ["frontend/assets"],
+      "@scripts": ["frontend/scripts"],
+      "@tests": ["frontend/tests"],
+      "@asserts": ["frontend/scripts/asserts"],
+      "@features": ["frontend/scripts/features"],
+      "@handlers": ["frontend/scripts/features/todo/handlers"],
+      "@ui": ["frontend/scripts/ui"],
+      "@utils": ["frontend/scripts/utils"],
+      "@app": ["frontend/scripts/app.js"],
+      "@selectors": ["frontend/scripts/selectors"],
+      "@html": ["frontend/index.html"]
     }
   },
-  "include": [
-    "app"
-  ]
+  "include": ["app"]
 }

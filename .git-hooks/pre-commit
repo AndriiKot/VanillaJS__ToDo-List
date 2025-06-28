@@ -38,7 +38,7 @@ try {
     generateJsconfig();
   } else {
     console.log(
-      "ℹ️ path-aliases.js unchanged. Skipping jsconfig.json generation."
+      "ℹ️ path-aliases.js unchanged. Skipping jsconfig.json generation.",
     );
   }
   // 3. Run formatter

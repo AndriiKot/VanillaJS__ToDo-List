@@ -46,9 +46,6 @@
       ],
       "@assets": [
         "app/assets"
-      ],
-      "@VALID_HTML_TAGS": [
-        "app/scripts/config"
       ]
     }
   },

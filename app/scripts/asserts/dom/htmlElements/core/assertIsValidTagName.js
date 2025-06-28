@@ -1,5 +1,5 @@
 import { isEmpty } from "@utils";
-import { VALID_HTML_TAGS } from "@VALID_HTML_TAGS";
+import { VALID_HTML_TAGS } from "@ui";
 
 export const assertIsValidTagName = (tagName) => {
   if (isEmpty(tagName)) {

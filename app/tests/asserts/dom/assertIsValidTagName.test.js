@@ -1,5 +1,5 @@
 import { assertIsValidTagName } from "@asserts";
-import { VALID_HTML_TAGS } from "@VALID_HTML_TAGS";
+import { VALID_HTML_TAGS } from "@ui";
 
 describe("assertIsValidTagName", () => {
   describe("valid HTML tag names (MUST be in exact casing)", () => {

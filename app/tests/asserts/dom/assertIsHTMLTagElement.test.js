@@ -1,5 +1,5 @@
 import { assertIsHTMLTagElement } from "@asserts";
-import { VALID_HTML_TAGS } from "@VALID_HTML_TAGS";
+import { VALID_HTML_TAGS } from "@ui";
 
 describe("assertIsHTMLTagElement", () => {
   describe("valid HTML elements (should NOT throw)", () => {

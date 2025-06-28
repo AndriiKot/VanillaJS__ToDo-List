@@ -1,2 +1,2 @@
 export * from "./hasTextContent.js";
-export * from "./hasClassName.js";
+export * from "./setTextContent.js";

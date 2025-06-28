@@ -22,5 +22,4 @@ export const aliases = {
   "@selectors": path.join(root, "scripts/core/"),
   "@html": path.join(root, "index.html"),
   "@assets": path.join(root, "assets"),
-  "@VALID_HTML_TAGS": path.join(root, "scripts/config/"),
 };

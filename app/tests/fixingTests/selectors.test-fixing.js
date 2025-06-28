@@ -2,22 +2,28 @@
  * @jest-environment jsdom
  */
 
-import {
-  getTodoInput,
-  getTodoList,
-  getTodoButton,
-  getTodoElements,
-  getTodoValidMessage,
-} from "@selectors";
+let getTodoInput;
+let getTodoList;
+let getTodoButton;
+let getTodoElements;
+let getTodoValidMessage;
 
 describe("DOM access helpers", () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     document.body.innerHTML = `
       <input class="todo__input" />
       <ul class="todo__list"></ul>
       <button class="todo__btn"></button>
       <p class="todo__error" aria-live="polite"></p>
     `;
+
+    const selectors = await import("@selectors");
+
+    getTodoInput = selectors.getTodoInput;
+    getTodoList = selectors.getTodoList;
+    getTodoButton = selectors.getTodoButton;
+    getTodoElements = selectors.getTodoElements;
+    getTodoValidMessage = selectors.getTodoValidMessage;
   });
 
   test("getTodoInput returns input element", () => {

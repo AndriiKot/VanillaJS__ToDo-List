@@ -1,23 +1,23 @@
-import { getElement } from "@ui";
+import { getHTMLTagElement } from "@ui";
 
-describe("getElement", () => {
+describe("getHTMLTagElement", () => {
   beforeEach(() => {
     document.body.innerHTML = "";
   });
 
   test("returns element for valid selector", () => {
     document.body.innerHTML = `<div class="test"></div>`;
-    const el = getElement(".test");
+    const el = getHTMLTagElement(".test");
     expect(el).toBeInstanceOf(HTMLElement);
   });
 
   test("returns null for non-existent selector", () => {
-    const el = getElement(".missing");
+    const el = getHTMLTagElement(".missing");
     expect(el).toBeNull();
   });
 
   test("throws for empty string selector", () => {
-    expect(() => getElement("")).toThrow(/not a valid selector/i);
+    expect(() => getHTMLTagElement("")).toThrow(/not a valid selector/i);
   });
 
   const invalidSelectors = [
@@ -34,7 +34,7 @@ describe("getElement", () => {
   ];
 
   test.each(invalidSelectors)("throws TypeError for %p", (input) => {
-    expect(() => getElement(input)).toThrow(TypeError);
-    expect(() => getElement(input)).toThrow(/string/i);
+    expect(() => getHTMLTagElement(input)).toThrow(TypeError);
+    expect(() => getHTMLTagElement(input)).toThrow(/string/i);
   });
 });

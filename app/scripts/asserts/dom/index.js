@@ -1,3 +1,1 @@
-export * from "./core/";
-export * from "./attributes/";
-export * from "./elements/";
+export * from "./htmlElements/";

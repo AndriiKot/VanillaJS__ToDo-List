@@ -11,9 +11,6 @@
       "@scripts": [
         "frontend/scripts"
       ],
-      "@tests": [
-        "frontend/tests"
-      ],
       "@asserts": [
         "frontend/scripts/asserts"
       ],
@@ -28,9 +25,6 @@
       ],
       "@app": [
         "frontend/scripts/app.js"
-      ],
-      "@selectors": [
-        "frontend/scripts/selectors"
       ],
       "@html": [
         "frontend/index.html"

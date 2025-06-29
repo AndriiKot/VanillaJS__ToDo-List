@@ -1,5 +1,3 @@
-"use strict";
-
 import { isEmpty } from "@utils";
 
 describe("isEmpty", () => {

@@ -1,5 +1,3 @@
-"use strict";
-
 import { safeString } from "@utils";
 
 describe("safeString", () => {

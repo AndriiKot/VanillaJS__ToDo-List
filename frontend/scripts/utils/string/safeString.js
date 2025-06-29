@@ -1,5 +1,3 @@
-"use strict";
-
 import { isString } from "@utils";
 
 export const safeString = (value) => {

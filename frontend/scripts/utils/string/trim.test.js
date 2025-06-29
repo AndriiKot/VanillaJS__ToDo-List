@@ -1,5 +1,3 @@
-"use strict";
-
 import { trim } from "@utils";
 
 describe("trim", () => {

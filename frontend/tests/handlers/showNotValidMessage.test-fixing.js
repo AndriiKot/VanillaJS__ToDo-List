@@ -1,4 +1,4 @@
-import { showNotValidMessage } from "@handlers";
+import { showNotValidMessage } from "@handler";
 
 describe("showNotValidMessage", () => {
   describe("valid cases", () => {

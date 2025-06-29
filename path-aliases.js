@@ -13,7 +13,6 @@ export const aliases = {
   "@tests": path.join(frontend, "tests"),
   "@asserts": path.join(frontend, "scripts/asserts"),
   "@features": path.join(frontend, "scripts/features"),
-  "@handlers": path.join(frontend, "scripts/features/todo/handlers/"),
   "@ui": path.join(frontend, "scripts/ui"),
   "@utils": path.join(frontend, "scripts/utils/"),
   "@app": path.join(frontend, "scripts/app.js"),

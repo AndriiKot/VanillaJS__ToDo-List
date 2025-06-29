@@ -20,7 +20,7 @@ let focusInput;
 beforeAll(async () => {
   const taskModule = await import("@task");
   const uiModule = await import("@ui");
-  const handlersModule = await import("@handlers");
+  const handlersModule = await import("@");
 
   addTaskToList = taskModule.addTaskToList;
   clearInputValue = taskModule.clearInputValue;

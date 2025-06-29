@@ -20,9 +20,6 @@
       "@features": [
         "frontend/scripts/features"
       ],
-      "@handlers": [
-        "frontend/scripts/features/todo/handlers"
-      ],
       "@ui": [
         "frontend/scripts/ui"
       ],

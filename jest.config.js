@@ -13,6 +13,7 @@ export default {
     "frontend/**/*.js",
     "!frontend/**/index.js",
     "!frontend/tests/**",
+    "!frontend/assets/**",
   ],
   coverageDirectory: "coverage",
 };

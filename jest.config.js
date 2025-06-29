@@ -8,10 +8,11 @@ export default {
   moduleNameMapper: {
     ...jestAliases,
   },
-
+  collectCoverage: true,
   collectCoverageFrom: [
-    "scripts/**/*.{js}",
-    "!scripts/test-utils/**",
-    "!**/node_modules/**",
+    "frontend/**/*.js",
+    "!frontend/**/index.js",
+    "!frontend/tests/**",
   ],
+  coverageDirectory: "coverage",
 };

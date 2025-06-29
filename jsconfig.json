@@ -2,19 +2,45 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@frontend": ["frontend"],
-      "@assets": ["frontend/assets"],
-      "@scripts": ["frontend/scripts"],
-      "@tests": ["frontend/tests"],
-      "@asserts": ["frontend/scripts/asserts"],
-      "@features": ["frontend/scripts/features"],
-      "@handlers": ["frontend/scripts/features/todo/handlers"],
-      "@ui": ["frontend/scripts/ui"],
-      "@utils": ["frontend/scripts/utils"],
-      "@app": ["frontend/scripts/app.js"],
-      "@selectors": ["frontend/scripts/selectors"],
-      "@html": ["frontend/index.html"]
+      "@frontend": [
+        "frontend"
+      ],
+      "@assets": [
+        "frontend/assets"
+      ],
+      "@scripts": [
+        "frontend/scripts"
+      ],
+      "@tests": [
+        "frontend/tests"
+      ],
+      "@asserts": [
+        "frontend/scripts/asserts"
+      ],
+      "@features": [
+        "frontend/scripts/features"
+      ],
+      "@handlers": [
+        "frontend/scripts/features/todo/handlers"
+      ],
+      "@ui": [
+        "frontend/scripts/ui"
+      ],
+      "@utils": [
+        "frontend/scripts/utils"
+      ],
+      "@app": [
+        "frontend/scripts/app.js"
+      ],
+      "@selectors": [
+        "frontend/scripts/selectors"
+      ],
+      "@html": [
+        "frontend/index.html"
+      ]
     }
   },
-  "include": ["app"]
+  "include": [
+    "frontend"
+  ]
 }

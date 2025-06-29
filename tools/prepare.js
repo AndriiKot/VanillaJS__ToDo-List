@@ -1,9 +1,9 @@
 import { setGitHooks } from "./git/setGitHooks.js";
-import { generateJsconfig } from "./generate/generateJsconfig.js";
+import { generateJsConfig } from "./generateJsConfig.js";
 
 function prepare() {
   setGitHooks();
-  generateJsconfig();
+  generateJsConfig();
 }
 
 prepare();

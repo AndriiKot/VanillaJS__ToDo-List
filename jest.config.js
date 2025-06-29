@@ -8,7 +8,7 @@ export default {
   moduleNameMapper: {
     ...jestAliases,
   },
-  collectCoverage: true,
+  collectCoverage: false,
   collectCoverageFrom: [
     "frontend/**/*.js",
     "!frontend/**/index.js",

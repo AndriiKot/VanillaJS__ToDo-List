@@ -3,7 +3,7 @@
 import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import { generateJsconfig } from "../tools/generate/generateJsconfig.js";
+import { generateJsConfig } from "../tools/generateJsConfig.js";
 
 const PATH_ALIASES = path.resolve("path-aliases.js");
 const TIMESTAMP_FILE = path.resolve(".git/.aliases.timestamp");
@@ -35,10 +35,10 @@ try {
   // 2. Generate jsconfig.json if path-aliases.js was modified
   if (hasPathAliasesChanged()) {
     console.log("🔄 path-aliases.js changed. Regenerating jsconfig.json...");
-    generateJsconfig();
+    generateJsConfig();
   } else {
     console.log(
-      "ℹ️ path-aliases.js unchanged. Skipping jsconfig.json generation.",
+      "ℹ️ path-aliases.js unchanged. Skipping jsconfig.json generation."
     );
   }
   // 3. Run formatter

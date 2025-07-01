@@ -1,8 +1,8 @@
-import { assertIsString, assertFoundHTMLTagElement } from "@asserts";
+import { assertIsString, assertIsHTMLTagElement } from "@asserts";
 
 export const getHTMLTagElement = (selector) => {
   assertIsString(selector);
   const el = document.querySelector(selector);
-  assertFoundHTMLTagElement(el);
+  assertIsHTMLTagElement(el);
   return el;
 };

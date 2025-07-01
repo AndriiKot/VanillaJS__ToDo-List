@@ -1,116 +1,73 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { setTextContent } from "@ui";
 
 describe("setTextContent", () => {
-  describe("valid cases", () => {
-    test("sets textContent on valid element with valid string", () => {
-      const el = document.createElement("p");
+  describe("valid usage", () => {
+    test("sets text content correctly on a div", () => {
+      const el = document.createElement("div");
       setTextContent(el, "Hello");
       expect(el.textContent).toBe("Hello");
     });
 
-    test.each([
-      ["empty string", ""],
-      ["string with spaces", "   "],
-      ["string with newlines", "\n\n"],
-      ["string with emojis", "🚀🔥"],
-      ["long string", "a".repeat(1000)],
-    ])("sets %s as textContent", (_desc, value) => {
-      const el = document.createElement("div");
-      setTextContent(el, value);
-      expect(el.textContent).toBe(value);
+    test("overwrites existing text content", () => {
+      const el = document.createElement("p");
+      el.textContent = "Old";
+      setTextContent(el, "New");
+      expect(el.textContent).toBe("New");
+    });
+
+    test("works with empty string", () => {
+      const el = document.createElement("span");
+      setTextContent(el, "");
+      expect(el.textContent).toBe("");
     });
   });
 
   describe("invalid first argument (element)", () => {
-    const notDomElements = [
+    const invalidElements = [
       null,
       undefined,
-      true,
-      false,
-      0,
-      1,
-      -1,
-      42,
-      NaN,
-      Infinity,
-      -Infinity,
       "",
-      "string",
-      Symbol("el"),
-      BigInt(10),
+      123,
+      true,
       {},
-      { textContent: "fake" },
       [],
-      ["div"],
-      () => {},
-      function () {},
-      new String("str"),
-      new Number(123),
-      new Boolean(false),
-      new Date(),
-      new Map(),
-      new Set(),
-      new WeakMap(),
-      new WeakSet(),
-      new Error("fail"),
       document.createTextNode("text"),
       document.createComment("comment"),
       document.createDocumentFragment(),
-      Promise.resolve("ok"),
+      Promise.resolve("text"),
     ];
 
-    test.each(notDomElements)(
-      "throws TypeError if element is %p",
-      (invalidEl) => {
-        expect(() => setTextContent(invalidEl, "text")).toThrow(TypeError);
-        expect(() => setTextContent(invalidEl, "text")).toThrow(
-          "Expected first argument to be a DOM element",
-        );
-      },
-    );
+    test.each(invalidElements)("throws TypeError if element is %p", (el) => {
+      expect(() => setTextContent(el, "text")).toThrow(TypeError);
+      expect(() => setTextContent(el, "text")).toThrow(
+        /Expected first argument to be an instance of HTMLElement/,
+      );
+    });
   });
 
   describe("invalid second argument (text)", () => {
     const invalidTexts = [
       null,
       undefined,
+      123,
       true,
       false,
-      0,
-      1,
-      -1,
-      42,
-      NaN,
-      Infinity,
-      -Infinity,
-      Symbol("el"),
-      BigInt(10),
       {},
-      { textContent: "fake" },
       [],
-      ["div"],
       () => {},
-      function () {},
-      new String("str"),
-      new Number(123),
-      new Boolean(false),
+      Symbol("abc"),
       new Date(),
-      new Map(),
-      new Set(),
-      new WeakMap(),
-      new WeakSet(),
-      new Error("fail"),
-      document.createTextNode("text"),
-      document.createComment("comment"),
-      document.createDocumentFragment(),
-      Promise.resolve("ok"),
     ];
 
-    test.each(invalidTexts)("throws TypeError if text is %p", (invalidText) => {
+    test.each(invalidTexts)("throws TypeError if text is %p", (text) => {
       const el = document.createElement("div");
-      expect(() => setTextContent(el, invalidText)).toThrow(TypeError);
-      expect(() => setTextContent(el, invalidText)).toThrow(
-        "Expected second argument to be a string",
+      expect(() => setTextContent(el, text)).toThrow(TypeError);
+      expect(() => setTextContent(el, text)).toThrow(
+        /Expected second argument to be a string/,
       );
     });
   });

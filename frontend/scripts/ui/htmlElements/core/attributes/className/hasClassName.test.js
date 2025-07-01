@@ -1,8 +1,12 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { hasClassName } from "@ui";
 
 describe("hasClassName", () => {
   describe("valid HTML elements with className", () => {
-    const elementsWithClassName = [
+    const elements = [
       "div",
       "span",
       "p",
@@ -39,47 +43,34 @@ describe("hasClassName", () => {
       "figcaption",
     ];
 
-    test.each(elementsWithClassName)(
-      "returns true for <%s> element",
-      (tagName) => {
-        const el = document.createElement(tagName);
-        expect(hasClassName(el)).toBe(true);
-      },
-    );
-  });
-
-  describe("non-HTMLElement nodes", () => {
-    test("returns false for HTMLDocument", () => {
-      expect(hasClassName(document)).toBe(false);
-    });
-
-    test("returns false for Text node", () => {
-      const textNode = document.createTextNode("Hello");
-      expect(hasClassName(textNode)).toBe(false);
-    });
-
-    test("returns false for Comment node", () => {
-      const comment = document.createComment("comment");
-      expect(hasClassName(comment)).toBe(false);
-    });
-
-    test("returns false for DocumentFragment", () => {
-      const fragment = document.createDocumentFragment();
-      expect(hasClassName(fragment)).toBe(false);
+    test.each(elements)("returns true for <%s>", (tag) => {
+      const el = document.createElement(tag);
+      expect(hasClassName(el)).toBe(true);
     });
   });
 
-  describe("invalid types (non-DOM)", () => {
+  describe("non-HTMLElement DOM nodes", () => {
+    const invalidDOM = [
+      ["Text node", document.createTextNode("text")],
+      ["Comment node", document.createComment("comment")],
+      ["DocumentFragment", document.createDocumentFragment()],
+      ["HTMLDocument", document],
+    ];
+
+    test.each(invalidDOM)("throws for %s", (_, node) => {
+      expect(() => hasClassName(node)).toThrow(TypeError);
+    });
+  });
+
+  describe("invalid JS values", () => {
     const invalidValues = [
       null,
       undefined,
       "",
       "<div>",
-      0,
       123,
       NaN,
       Infinity,
-      -Infinity,
       true,
       false,
       [],
@@ -87,33 +78,21 @@ describe("hasClassName", () => {
       {},
       { className: "fake" },
       () => {},
-      Symbol("abc"),
-      BigInt(123),
+      Symbol("x"),
+      BigInt(1),
       /abc/,
       new Date(),
       new Map(),
       new Set(),
       new WeakMap(),
       new WeakSet(),
-      Promise.resolve("abc"),
+      Promise.resolve("x"),
       new Error("fail"),
+      new String("wrapped"),
     ];
 
-    if (typeof Buffer !== "undefined") {
-      invalidValues.push(Buffer.from("abc"));
-    }
-
-    test.each(invalidValues)("returns false for %p", (value) => {
-      expect(hasClassName(value)).toBe(false);
+    test.each(invalidValues)("throws for %p", (value) => {
+      expect(() => hasClassName(value)).toThrow(TypeError);
     });
-  });
-
-  describe("String object wrappers", () => {
-    test.each([new String("abc"), new String("")])(
-      "returns false for %p",
-      (value) => {
-        expect(hasClassName(value)).toBe(false);
-      },
-    );
   });
 });

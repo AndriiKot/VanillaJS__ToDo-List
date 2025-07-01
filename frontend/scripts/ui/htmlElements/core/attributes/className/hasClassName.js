@@ -1,5 +1,5 @@
-import { isHTMLTagElement } from "@ui";
+import { hasHTMLElementProperty } from "@ui";
 
 export const hasClassName = (el) => {
-  return isHTMLTagElement(el) && "className" in el;
+  return hasHTMLElementProperty(el, "className");
 };

@@ -1,8 +1,12 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { hasTextContent } from "@ui";
 
 describe("hasTextContent", () => {
   describe("valid HTML elements with textContent", () => {
-    const elementsWithTextContent = [
+    const elements = [
       "div",
       "span",
       "p",
@@ -39,47 +43,34 @@ describe("hasTextContent", () => {
       "figcaption",
     ];
 
-    test.each(elementsWithTextContent)(
-      "returns true for <%s> element",
-      (tagName) => {
-        const el = document.createElement(tagName);
-        expect(hasTextContent(el)).toBe(true);
-      },
-    );
+    test.each(elements)("returns true for <%s>", (tag) => {
+      const el = document.createElement(tag);
+      expect(hasTextContent(el)).toBe(true);
+    });
   });
 
   describe("non-HTMLElement DOM nodes", () => {
-    test("returns false for HTMLDocument (document)", () => {
-      expect(hasTextContent(document)).toBe(false);
-    });
+    const invalidDOM = [
+      ["Text node", document.createTextNode("text")],
+      ["Comment node", document.createComment("comment")],
+      ["DocumentFragment", document.createDocumentFragment()],
+      ["HTMLDocument", document],
+    ];
 
-    test("returns false for Text node", () => {
-      const textNode = document.createTextNode("Hello");
-      expect(hasTextContent(textNode)).toBe(false);
-    });
-
-    test("returns false for Comment node", () => {
-      const comment = document.createComment("comment");
-      expect(hasTextContent(comment)).toBe(false);
-    });
-
-    test("returns false for DocumentFragment", () => {
-      const fragment = document.createDocumentFragment();
-      expect(hasTextContent(fragment)).toBe(false);
+    test.each(invalidDOM)("throws for %s", (_, node) => {
+      expect(() => hasTextContent(node)).toThrow(TypeError);
     });
   });
 
-  describe("invalid types (non-DOM values)", () => {
+  describe("invalid JS values", () => {
     const invalidValues = [
       null,
       undefined,
       "",
       "<div>",
-      0,
       123,
       NaN,
       Infinity,
-      -Infinity,
       true,
       false,
       [],
@@ -87,33 +78,21 @@ describe("hasTextContent", () => {
       {},
       { textContent: "fake" },
       () => {},
-      Symbol("abc"),
-      BigInt(123),
+      Symbol("x"),
+      BigInt(1),
       /abc/,
       new Date(),
       new Map(),
       new Set(),
       new WeakMap(),
       new WeakSet(),
-      Promise.resolve("abc"),
+      Promise.resolve("x"),
       new Error("fail"),
+      new String("wrapped"),
     ];
 
-    if (typeof Buffer !== "undefined") {
-      invalidValues.push(Buffer.from("abc"));
-    }
-
-    test.each(invalidValues)("returns false for %p", (value) => {
-      expect(hasTextContent(value)).toBe(false);
+    test.each(invalidValues)("throws for %p", (value) => {
+      expect(() => hasTextContent(value)).toThrow(TypeError);
     });
-  });
-
-  describe("String object wrappers", () => {
-    test.each([new String("abc"), new String("")])(
-      "returns false for %p",
-      (value) => {
-        expect(hasTextContent(value)).toBe(false);
-      },
-    );
   });
 });

@@ -1,4 +1,4 @@
-import { isString } from "@utils";
+import { isString, getObjectTypeString, getType } from "@utils";
 
 /**
  * @param {*} value
@@ -7,14 +7,10 @@ import { isString } from "@utils";
 export const assertIsString = (value, argName = "value") => {
   if (isString(value)) return;
 
-  let displayedValue;
-  try {
-    displayedValue = String(value);
-  } catch {
-    displayedValue = Object.prototype.toString.call(value); // [object Symbol] or [object BigInt] ...
-  }
+  const objectTypeString = getObjectTypeString(value);
+  const type = getType(value);
 
   throw new TypeError(
-    `Expected ${argName} to be a string, but received value ${displayedValue} of type ${typeof value}`,
+    `Expected ${argName} to be a string, but received value ${objectTypeString} of type ${type}`,
   );
 };

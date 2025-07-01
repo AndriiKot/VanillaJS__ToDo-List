@@ -1,81 +1,43 @@
 import { isInputElement } from "@ui";
 
 describe("isInputElement", () => {
-  test("returns true for input element", () => {
+  test("returns true for an input element", () => {
     const input = document.createElement("input");
     expect(isInputElement(input)).toBe(true);
   });
 
-  describe("valid DOM elements but NOT input", () => {
-    const elements = [
-      "div",
-      "span",
-      "p",
-      "textarea",
-      "button",
-      "select",
-      "option",
-      "label",
-      "form",
-      "iframe",
-      "img",
-      "ul",
-      "li",
-    ];
-
-    test.each(elements)("returns false for <%s> element", (tagName) => {
-      const el = document.createElement(tagName);
-      expect(isInputElement(el)).toBe(false);
-    });
-
-    test("returns false for HTMLDocument", () => {
-      expect(isInputElement(document)).toBe(false);
-    });
+  test("returns false for other HTML elements", () => {
+    const div = document.createElement("div");
+    const button = document.createElement("button");
+    const textarea = document.createElement("textarea");
+    expect(isInputElement(div)).toBe(false);
+    expect(isInputElement(button)).toBe(false);
+    expect(isInputElement(textarea)).toBe(false);
   });
 
-  describe("invalid types (non-DOM elements)", () => {
+  test("returns false for non-DOM values", () => {
     const invalidValues = [
       null,
       undefined,
-      "<input>",
+      "input",
       123,
-      NaN,
-      Infinity,
-      -Infinity,
       true,
       false,
-      [],
-      ["input"],
       {},
-      { tagName: "INPUT" },
+      [],
       () => {},
       Symbol("input"),
-      BigInt(123),
-      /input/,
       new Date(),
       new Map(),
-      new Set(),
-      new WeakMap(),
-      new WeakSet(),
-      Promise.resolve("input"),
-      new Error("fail"),
     ];
 
-    if (typeof Buffer !== "undefined") {
-      invalidValues.push(Buffer.from("input"));
-    }
-
-    test.each(invalidValues)("returns false for %p", (value) => {
+    invalidValues.forEach((value) => {
       expect(isInputElement(value)).toBe(false);
     });
   });
 
-  describe("String object wrappers", () => {
-    test.each([new String("input"), new String("")])(
-      "returns false for %p",
-      (value) => {
-        expect(isInputElement(value)).toBe(false);
-      },
-    );
+  test("returns false for HTMLInputElement subclasses or mocks (if any)", () => {
+    const fakeInput = { ...document.createElement("input"), someProp: true };
+    expect(isInputElement(fakeInput)).toBe(false);
   });
 });

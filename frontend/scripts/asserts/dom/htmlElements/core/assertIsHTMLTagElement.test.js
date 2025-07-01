@@ -32,7 +32,7 @@ describe("assertIsHTMLTagElement", () => {
     test.each(invalidValues)("throws TypeError for %p", (value) => {
       expect(() => assertIsHTMLTagElement(value)).toThrow(TypeError);
       expect(() => assertIsHTMLTagElement(value)).toThrow(
-        /Expected an instance of HTMLElement/,
+        /Expected .* to be an instance of HTMLElement, but received value .* of type .*/,
       );
     });
   });

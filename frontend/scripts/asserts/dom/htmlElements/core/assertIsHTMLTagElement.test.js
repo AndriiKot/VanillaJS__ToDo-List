@@ -30,9 +30,12 @@ describe("assertIsHTMLTagElement", () => {
     ];
 
     test.each(invalidValues)("throws TypeError for %p", (value) => {
-      expect(() => assertIsHTMLTagElement(value)).toThrow(TypeError);
-      expect(() => assertIsHTMLTagElement(value)).toThrow(
-        /Expected .* to be an instance of HTMLElement, but received value .* of type .*/,
+      const call = () => assertIsHTMLTagElement(value);
+      expect(call).toThrow(TypeError);
+      expect(call).toThrow(
+        new RegExp(
+          `Expected value to be an instance of HTMLElement, but received .* of type .*`,
+        ),
       );
     });
   });

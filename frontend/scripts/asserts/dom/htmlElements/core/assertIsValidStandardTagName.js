@@ -9,7 +9,6 @@ export const assertIsValidStandardTagName = (tagName) => {
   }
 
   if (!VALID_STANDARD_HTML_TAGS.includes(tagName)) {
-    console.log(VALID_STANDARD_HTML_TAGS);
     throw new Error(`Invalid Standard tag name: "${tagName}"`);
   }
 };

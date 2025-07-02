@@ -1,4 +1,5 @@
 import { clearInputValue } from "@ui";
+import { createExpectedTypeMessage } from "@asserts";
 
 describe("clearInputValue", () => {
   test("clears the value of a valid <input> element", () => {
@@ -47,7 +48,7 @@ describe("clearInputValue", () => {
     test.each(invalidInputs)("throws TypeError for %p", (value) => {
       expect(() => clearInputValue(value)).toThrow(TypeError);
       expect(() => clearInputValue(value)).toThrow(
-        /Expected a DOM element of type <input>/,
+        createExpectedTypeMessage("value", "a DOM element of type <input>"),
       );
     });
   });

@@ -1,13 +1,8 @@
 import { hasTextContent } from "@ui";
-import { getObjectTypeString, getType } from "@utils";
+import { throwTypeErrorWithTypeInfo } from "@asserts";
 
 export const assertHasTextContent = (el, argName = "value") => {
   if (hasTextContent(el)) return;
 
-  const objectTypeString = getObjectTypeString(el);
-  const type = getType(el);
-
-  throw new TypeError(
-    `Expected ${argName} to be a DOM element with textContent, but received ${objectTypeString} of type ${type}`,
-  );
+  throwTypeErrorWithTypeInfo(el, argName, "a DOM element with textContent");
 };

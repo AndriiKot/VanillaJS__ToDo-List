@@ -1,4 +1,5 @@
 import { getInputValue } from "@ui";
+import { createExpectedTypeMessage } from "@asserts";
 
 describe("getInputValue", () => {
   test("returns the value of a valid <input> element", () => {
@@ -46,7 +47,7 @@ describe("getInputValue", () => {
     test.each(invalidInputs)("throws TypeError for %p", (value) => {
       expect(() => getInputValue(value)).toThrow(TypeError);
       expect(() => getInputValue(value)).toThrow(
-        /Expected a DOM element of type <input>/,
+        createExpectedTypeMessage("value", "a DOM element of type <input>"),
       );
     });
   });

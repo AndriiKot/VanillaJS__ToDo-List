@@ -1,8 +1,14 @@
 import { isInputElement } from "@ui";
+import { throwTypeErrorWithTypeInfo } from "@asserts";
 
-export const assertIsInputElement = (el) => {
+/**
+ * Asserts that the given element is an <input> HTML element.
+ *
+ * @param {*} el - The element to check
+ * @param {string} argName - Optional argument name for error messages (default: "value")
+ */
+export const assertIsInputElement = (el, argName = "value") => {
   if (isInputElement(el)) return;
-  throw new TypeError(
-    `Expected a DOM element of type <input>, but got ${typeof el}`,
-  );
+
+  throwTypeErrorWithTypeInfo(el, argName, "a DOM element of type <input>");
 };

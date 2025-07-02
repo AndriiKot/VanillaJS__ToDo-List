@@ -13,7 +13,7 @@ describe("assertIsListItemLiElement", () => {
       null,
       undefined,
       "",
-      "li",
+      "text",
       123,
       true,
       false,
@@ -27,9 +27,9 @@ describe("assertIsListItemLiElement", () => {
       Symbol("el"),
       BigInt(10),
       {},
-      { tagName: "LI" },
+      { textContent: "fake" },
       [],
-      ["li"],
+      ["div"],
       () => {},
       function () {},
       new String("str"),
@@ -42,8 +42,8 @@ describe("assertIsListItemLiElement", () => {
       new WeakSet(),
       new Error("fail"),
       document.createElement("div"),
-      document.createElement("ul"),
-      document.createElement("input"),
+      document.createElement("textarea"),
+      document.createElement("select"),
       document.createTextNode("text"),
       document.createComment("comment"),
       document.createDocumentFragment(),
@@ -53,7 +53,7 @@ describe("assertIsListItemLiElement", () => {
     test.each(invalidValues)("throws TypeError for %p", (value) => {
       expect(() => assertIsListItemLiElement(value)).toThrow(TypeError);
       expect(() => assertIsListItemLiElement(value)).toThrow(
-        /Expected .* to be a <li> HTMLElement/,
+        /Expected .* to be a DOM element of type <li>, but received \[object .*\] of type .*/,
       );
     });
   });

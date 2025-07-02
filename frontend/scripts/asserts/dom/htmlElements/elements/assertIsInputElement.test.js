@@ -53,7 +53,7 @@ describe("assertIsInputElement", () => {
     test.each(invalidValues)("throws TypeError for %p", (value) => {
       expect(() => assertIsInputElement(value)).toThrow(TypeError);
       expect(() => assertIsInputElement(value)).toThrow(
-        /Expected a DOM element of type <input>/,
+        /Expected value to be a DOM element of type <input>, but received \[object .*\] of type .*/,
       );
     });
   });

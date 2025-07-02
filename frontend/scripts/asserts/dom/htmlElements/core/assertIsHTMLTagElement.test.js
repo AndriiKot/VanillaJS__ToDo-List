@@ -1,9 +1,9 @@
 import { assertIsHTMLTagElement } from "@asserts";
-import { VALID_HTML_TAGS } from "@ui";
+import { VALID_STANDARD_HTML_TAGS } from "@ui";
 
 describe("assertIsHTMLTagElement", () => {
   describe("valid HTML elements (should NOT throw)", () => {
-    test.each(VALID_HTML_TAGS)(
+    test.each(VALID_STANDARD_HTML_TAGS)(
       "does not throw for a valid <%s> element",
       (tagName) => {
         const el = document.createElement(tagName);

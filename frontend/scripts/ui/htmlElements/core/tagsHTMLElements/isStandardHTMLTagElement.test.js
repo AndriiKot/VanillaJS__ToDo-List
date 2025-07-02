@@ -3,14 +3,17 @@
  */
 
 import { isStandardHTMLTagElement } from "@ui";
-import { VALID_HTML_TAGS } from "@ui";
+import { VALID_STANDARD_HTML_TAGS } from "@ui";
 
 describe("isStandardHTMLTagElement", () => {
   describe("valid standard HTML tag elements", () => {
-    test.each(VALID_HTML_TAGS)("returns true for <%s> element", (tagName) => {
-      const el = document.createElement(tagName);
-      expect(isStandardHTMLTagElement(el)).toBe(true);
-    });
+    test.each(VALID_STANDARD_HTML_TAGS)(
+      "returns true for <%s> element",
+      (tagName) => {
+        const el = document.createElement(tagName);
+        expect(isStandardHTMLTagElement(el)).toBe(true);
+      },
+    );
   });
 
   describe("non-standard/custom tag elements", () => {

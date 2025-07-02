@@ -1,4 +1,4 @@
-export const VALID_HTML_TAGS = [
+export const VALID_STANDARD_HTML_TAGS = [
   "A",
   "ABBR",
   "ADDRESS",

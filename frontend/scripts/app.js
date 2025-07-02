@@ -1,26 +1,27 @@
 "use strict";
 
-import { getTodoElements } from "@ui";
-import {
-  hiddenNotValidMessage,
-  handleTodoTaskSubmission as addTodoTask,
-} from "@features";
+import { getTodoInput } from "@ui";
+import { getTodoList } from "@ui";
+import { getTodoButton } from "@ui";
+import { getTodoValidationMessage } from "@ui";
+
+import { handleClick } from "@features";
+import { handleKeyDown } from "@features";
+import { handleInput } from "@features";
 
 export const initTodoApp = () => {
-  const { todoInput, todoList, todoButton, todoValidMessage } =
-    getTodoElements();
+  const todoInput = getTodoInput(),
+    todoList = getTodoList(),
+    todoButton = getTodoButton(),
+    todoValidMessage = getTodoValidationMessage();
 
-  todoButton.addEventListener("click", () => {
-    addTodoTask(todoInput, todoList, todoValidMessage);
-  });
-
-  todoInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      addTodoTask(todoInput, todoList, todoValidMessage);
-    }
-  });
-
-  todoInput.addEventListener("input", () => {
-    hiddenNotValidMessage(todoValidMessage);
-  });
+  todoButton.addEventListener(
+    "click",
+    handleClick(todoInput, todoList, todoValidMessage),
+  );
+  todoInput.addEventListener(
+    "keydown",
+    handleKeyDown(todoInput, todoList, todoValidMessage),
+  );
+  todoInput.addEventListener("input", handleInput(todoValidMessage));
 };

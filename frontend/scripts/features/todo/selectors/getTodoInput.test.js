@@ -1,4 +1,4 @@
-import { getTodoInput } from "@ui";
+import { getTodoInput } from "@features";
 
 const TODO_INPUT_CLASS = "todo__input";
 

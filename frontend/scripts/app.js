@@ -1,13 +1,14 @@
 "use strict";
 
-import { getTodoInput } from "@ui";
-import { getTodoList } from "@ui";
-import { getTodoButton } from "@ui";
-import { getTodoValidationMessage } from "@ui";
-
-import { handleClick } from "@features";
-import { handleKeyDown } from "@features";
-import { handleInput } from "@features";
+import {
+  getTodoInput,
+  getTodoList,
+  getTodoButton,
+  getTodoValidationMessage,
+  handleClick,
+  handleKeyDown,
+  handleInput,
+} from "@features";
 
 export const initTodoApp = () => {
   const todoInput = getTodoInput(),

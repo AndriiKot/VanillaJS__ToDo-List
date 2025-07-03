@@ -1,4 +1,4 @@
-import { getTodoButton } from "@ui";
+import { getTodoButton } from "@features";
 
 const TODO_BUTTON_CLASS = "todo__btn";
 

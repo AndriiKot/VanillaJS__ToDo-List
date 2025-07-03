@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { getTodoValidationMessage } from "@ui";
+import { getTodoValidationMessage } from "@features";
 
 const TODO_ERROR_CLASS = "todo__error";
 

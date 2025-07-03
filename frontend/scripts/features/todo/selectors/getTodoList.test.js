@@ -1,4 +1,4 @@
-import { getTodoList } from "@ui";
+import { getTodoList } from "@features";
 
 const TODO_LIST_CLASS = "todo__list";
 

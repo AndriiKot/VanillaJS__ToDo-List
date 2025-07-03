@@ -22,4 +22,15 @@ describe("appendListItemLi", () => {
       ),
     );
   });
+
+  test("appends <li> to <ul> correctly", () => {
+    const list = document.createElement("ul");
+    const item = document.createElement("li");
+    item.textContent = "Item";
+
+    appendListItemLi(list, item);
+
+    expect(list.children.length).toBe(1);
+    expect(list.children[0]).toBe(item);
+  });
 });

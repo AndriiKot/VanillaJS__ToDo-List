@@ -1,7 +1,7 @@
-import { assertHasTextContent, assertIsString } from "@asserts";
+import { assertSupportsTextContent, assertIsString } from "@asserts";
 
 export const setTextContent = (el, text) => {
-  assertHasTextContent(el, "first argument");
+  assertSupportsTextContent(el, "first argument");
   assertIsString(text, "second argument");
   el.textContent = text;
 };

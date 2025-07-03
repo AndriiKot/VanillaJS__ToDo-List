@@ -7,6 +7,6 @@ export const assertSupportsTextContent = (el, argName = "value") => {
   throwTypeErrorWithTypeInfo(
     el,
     argName,
-    "a DOM element without supports textContent",
+    "an HTMLElement that supports textContent",
   );
 };

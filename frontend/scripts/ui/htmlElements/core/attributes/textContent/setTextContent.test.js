@@ -44,7 +44,7 @@ describe("setTextContent", () => {
     test.each(invalidElements)("throws TypeError if element is %p", (el) => {
       expect(() => setTextContent(el, "text")).toThrow(TypeError);
       expect(() => setTextContent(el, "text")).toThrow(
-        /Expected first argument to be an instance of HTMLElement/,
+        /Expected .* to be an instance of HTMLElement/,
       );
     });
   });
@@ -67,7 +67,7 @@ describe("setTextContent", () => {
       const el = document.createElement("div");
       expect(() => setTextContent(el, text)).toThrow(TypeError);
       expect(() => setTextContent(el, text)).toThrow(
-        /Expected second argument to be a string/,
+        /Expected .* to be a string/,
       );
     });
   });

@@ -1,7 +1,7 @@
-import { assertHasClassName, assertIsString } from "@asserts";
+import { assertIsHTMLTagElement, assertIsString } from "@asserts";
 
 export const setClassName = (el, className) => {
-  assertHasClassName(el, "first argument");
+  assertIsHTMLTagElement(el, "first argument");
   assertIsString(className, "second argument");
   el.className = className;
 };

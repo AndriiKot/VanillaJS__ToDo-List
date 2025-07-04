@@ -106,6 +106,11 @@ You can run it using Docker or directly with Node.js.
           </a>
         </td>
         <td height=100 width=100>
+        <a href=https://vitejs.dev/>
+          <img src=https://github.com/AndriiKot/___Icons__and__Links___/blob/main/icons/vitejs.svg alt=Vite>
+        </a>
+      </td>
+        <td height=100 width=100>
           <a href="https://jestjs.io/">
             <img src="icons/svg/jest.svg" alt="Jest">
           </a>

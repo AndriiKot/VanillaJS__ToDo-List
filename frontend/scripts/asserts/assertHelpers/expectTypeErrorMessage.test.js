@@ -8,7 +8,15 @@ describe("expectTypeErrorMessage", () => {
 
     expect(() => {
       expectTypeErrorMessage(fn, "value", "string");
-    }).not.toThrow(); // проверяем, что хелпер работает без ошибок
+    }).not.toThrow();
+  });
+
+  test("fails if function does not throw", () => {
+    const fn = () => {};
+
+    expect(() => {
+      expectTypeErrorMessage(fn, "value", "string");
+    }).toThrow("Expected the function to throw, but it did not.");
   });
 
   test("fails if error is not TypeError", () => {
@@ -18,7 +26,7 @@ describe("expectTypeErrorMessage", () => {
 
     expect(() => {
       expectTypeErrorMessage(fn, "value", "string");
-    }).toThrow(/Expected the function to throw a TypeError/); // Jest сам отлавливает fail
+    }).toThrow(/Expected the function to throw a TypeError/);
   });
 
   test("fails if error message does not match expected pattern", () => {
@@ -28,7 +36,7 @@ describe("expectTypeErrorMessage", () => {
 
     expect(() => {
       expectTypeErrorMessage(fn, "value", "string");
-    }).toThrow(/Expected.*to be.*string/i); // может быть конкретнее, если надо
+    }).toThrow(/Expected.*to be.*string/i);
   });
 
   test("works with custom argName and description", () => {

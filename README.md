@@ -93,6 +93,7 @@ You can run it using Docker or directly with Node.js.
     <thead>
       <tr>
         <th height=33 width=100>NodeJS</th>
+        <th height=33 width=100>Vite</th>
         <th height=33 width=100>Jest</th>
         <th height=33 width=100>ESLint</th>
         <th height=33 width=100>Prettier</th>

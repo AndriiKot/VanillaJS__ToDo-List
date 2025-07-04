@@ -3,7 +3,7 @@
 # ToDo List (VanillaJS)
 
 A Vanilla JavaScript "Todo List" application with unit tests, ESLint, Prettier,
-and a development server.
+and a development server with Vite.
 You can run it using Docker or directly with Node.js.
 
 [![npm version](https://img.shields.io/github/package-json/v/AndriiKot/VanillaJS__ToDo-List?filename=./package.json)](https://docs.npmjs.com/about-semantic-versioning)
@@ -292,7 +292,7 @@ npm run format
 
 | Command          | Description                            |
 | ---------------- | -------------------------------------- |
-| `npm run dev`    | Start the local server (`live-server`) |
+| `npm run dev`    | Start the local server (`Vite`) |
 | `npm test`       | Run tests using Jest                   |
 | `npm run lint`   | Run ESLint                             |
 | `npm run format` | Format code using Prettier             |

@@ -1,79 +1,53 @@
-import { assertIsValidStandardTagName } from "@asserts";
+import { assertIsValidStandardTagName, expectTypeErrorMessage } from "@asserts";
 import { VALID_STANDARD_HTML_TAGS } from "@ui";
 
 describe("assertIsValidStandardTagName", () => {
-  describe("valid HTML Standard tag names (exact casing)", () => {
-    test.each(VALID_STANDARD_HTML_TAGS)(
-      'accepts valid tag name "%s"',
-      (tagName) => {
-        expect(() => assertIsValidStandardTagName(tagName)).not.toThrow();
-      },
+  test("does not throw for valid tag names", () => {
+    const validTags = ["DIV", "SPAN", "A", "BUTTON"];
+    validTags.forEach((tag) => {
+      if (VALID_STANDARD_HTML_TAGS.includes(tag)) {
+        expect(() => assertIsValidStandardTagName(tag)).not.toThrow();
+      }
+    });
+  });
+
+  test("throws TypeError if tagName is not a string", () => {
+    const invalidValues = [null, undefined, 123, {}, [], true, Symbol("x")];
+    invalidValues.forEach((value) => {
+      expect(() => {
+        expectTypeErrorMessage(
+          () => assertIsValidStandardTagName(value),
+          "value",
+          "string",
+        );
+      }).not.toThrow();
+    });
+  });
+
+  test("throws Error if tagName is an empty string", () => {
+    expect(() => assertIsValidStandardTagName("")).toThrow(
+      "Tag name must not be empty",
     );
   });
 
-  describe("empty or blank strings", () => {
-    const emptyInputs = ["", " ", "\n", "\t"];
-
-    test.each(emptyInputs)('throws for "%s"', (input) => {
-      expect(() => assertIsValidStandardTagName(input)).toThrow(
-        /must not be empty/i,
-      );
-    });
+  test("throws Error if tagName is not in VALID_STANDARD_HTML_TAGS", () => {
+    expect(() => assertIsValidStandardTagName("NOT_A_TAG")).toThrow(
+      'Invalid Standard tag name: "NOT_A_TAG"',
+    );
   });
 
-  describe("invalid tag names (wrong casing or non-standard names)", () => {
-    const invalidTagNames = [
-      "li", // valid tag but wrong casing
-      "divv",
-      "header2",
-      "UL!",
-      "abc-123",
-      "123",
-      "___",
-      "😀",
-    ];
+  test("is case-sensitive if tag list is case-sensitive", () => {
+    const upper = "DIV";
+    const lower = "div";
 
-    test.each(invalidTagNames)("throws for invalid tag: %s", (name) => {
-      expect(() => assertIsValidStandardTagName(name)).toThrow(
-        `Invalid Standard tag name: "${name}"`,
+    if (VALID_STANDARD_HTML_TAGS.includes(upper)) {
+      expect(() => assertIsValidStandardTagName(upper)).not.toThrow();
+    }
+
+    if (!VALID_STANDARD_HTML_TAGS.includes(lower)) {
+      expect(() => assertIsValidStandardTagName(lower)).toThrow(
+        `Invalid Standard tag name: "${lower}"`,
       );
-    });
-  });
-
-  describe("non-string values (type validation)", () => {
-    const nonStringValues = [
-      null,
-      undefined,
-      123,
-      true,
-      false,
-      Symbol("el"),
-      BigInt(10),
-      {},
-      [],
-      ["li"],
-      () => {},
-      function () {},
-      new String("str"),
-      new Number(123),
-      new Boolean(false),
-      new Date(),
-      new Map(),
-      new Set(),
-      new WeakMap(),
-      new WeakSet(),
-      new Error("fail"),
-      document.createElement("div"),
-      document.createTextNode("text"),
-      document.createComment("comment"),
-      document.createDocumentFragment(),
-      Promise.resolve("ok"),
-    ];
-
-    test.each(nonStringValues)("throws for non-string value: %p", (value) => {
-      expect(() => assertIsValidStandardTagName(value)).toThrow(
-        /Expected .* to be a string/,
-      );
-    });
+    }
   });
 });

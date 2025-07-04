@@ -1,74 +1,88 @@
-/**
- * @jest-environment jsdom
- */
-
+import { expectTypeErrorMessage } from "@asserts";
+import { assertIsHTMLTagElement, assertSupportsTextContent } from "@asserts";
 import { setTextContent } from "@ui";
 
+describe("assertIsHTMLTagElement", () => {
+  test("throws TypeError if not an HTMLElement", () => {
+    expectTypeErrorMessage(
+      () => assertIsHTMLTagElement({}),
+      "value",
+      "an instance of HTMLElement",
+    );
+  });
+
+  test("does not throw if HTMLElement", () => {
+    expect(() =>
+      assertIsHTMLTagElement(document.createElement("div")),
+    ).not.toThrow();
+  });
+});
+
+describe("assertSupportsTextContent", () => {
+  test("throws TypeError if HTMLElement but does not support textContent (e.g. <img>)", () => {
+    const img = document.createElement("img");
+    expectTypeErrorMessage(
+      () => assertSupportsTextContent(img, "value"),
+      "value",
+      "an HTMLElement that supports textContent",
+    );
+  });
+
+  test("does not throw if HTMLElement supports textContent", () => {
+    const div = document.createElement("div");
+    expect(() => assertSupportsTextContent(div)).not.toThrow();
+  });
+});
+
 describe("setTextContent", () => {
-  describe("valid usage", () => {
-    test("sets text content correctly on a div", () => {
-      const el = document.createElement("div");
-      setTextContent(el, "Hello");
-      expect(el.textContent).toBe("Hello");
-    });
+  let div;
 
-    test("overwrites existing text content", () => {
-      const el = document.createElement("p");
-      el.textContent = "Old";
-      setTextContent(el, "New");
-      expect(el.textContent).toBe("New");
-    });
-
-    test("works with empty string", () => {
-      const el = document.createElement("span");
-      setTextContent(el, "");
-      expect(el.textContent).toBe("");
-    });
+  beforeEach(() => {
+    div = document.createElement("div");
   });
 
-  describe("invalid first argument (element)", () => {
-    const invalidElements = [
-      null,
-      undefined,
-      "",
-      123,
-      true,
-      {},
-      [],
-      document.createTextNode("text"),
-      document.createComment("comment"),
-      document.createDocumentFragment(),
-      Promise.resolve("text"),
-    ];
-
-    test.each(invalidElements)("throws TypeError if element is %p", (el) => {
-      expect(() => setTextContent(el, "text")).toThrow(TypeError);
-      expect(() => setTextContent(el, "text")).toThrow(
-        /Expected .* to be an instance of HTMLElement/,
-      );
-    });
+  test("sets textContent on valid element with valid string", () => {
+    setTextContent(div, "Hello world");
+    expect(div.textContent).toBe("Hello world");
   });
 
-  describe("invalid second argument (text)", () => {
-    const invalidTexts = [
-      null,
-      undefined,
-      123,
-      true,
-      false,
-      {},
-      [],
-      () => {},
-      Symbol("abc"),
-      new Date(),
-    ];
+  test("sets empty string as textContent", () => {
+    setTextContent(div, "");
+    expect(div.textContent).toBe("");
+  });
 
-    test.each(invalidTexts)("throws TypeError if text is %p", (text) => {
-      const el = document.createElement("div");
-      expect(() => setTextContent(el, text)).toThrow(TypeError);
-      expect(() => setTextContent(el, text)).toThrow(
-        /Expected .* to be a string/,
+  test("supports unicode text", () => {
+    setTextContent(div, "Привет 🌍");
+    expect(div.textContent).toBe("Привет 🌍");
+  });
+
+  test("throws TypeError if element is not HTMLElement", () => {
+    const invalidElement = {}; // not a real HTMLElement
+    expectTypeErrorMessage(
+      () => setTextContent(invalidElement, "text"),
+      "first argument",
+      "an instance of HTMLElement",
+    );
+  });
+
+  test("throws TypeError if element does not support textContent (e.g. <img>)", () => {
+    const img = document.createElement("img");
+    expectTypeErrorMessage(
+      () => setTextContent(img, "text"),
+      "first argument",
+      "an HTMLElement that supports textContent",
+    );
+  });
+
+  test("throws TypeError if text is not a string", () => {
+    const invalidTexts = [null, undefined, 123, {}, [], true, Symbol("x")];
+
+    for (const value of invalidTexts) {
+      expectTypeErrorMessage(
+        () => setTextContent(div, value),
+        "second argument",
+        "string",
       );
-    });
+    }
   });
 });

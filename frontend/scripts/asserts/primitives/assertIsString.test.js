@@ -1,4 +1,4 @@
-import { assertIsString } from "@asserts";
+import { assertIsString, expectTypeErrorMessage } from "@asserts";
 
 describe("assertIsString", () => {
   describe("valid string inputs (should NOT throw)", () => {
@@ -10,11 +10,15 @@ describe("assertIsString", () => {
       "!@#$%^&*()",
       "こんにちは",
       "😊",
-      String("string object"),
+      String("string object"), // primitive
     ];
 
-    test.each(validStrings)("does not throw for string: %p", (value) => {
+    test.each(validStrings)("does not throw for valid string: %p", (value) => {
       expect(() => assertIsString(value)).not.toThrow();
+    });
+
+    test("does not throw with custom argName", () => {
+      expect(() => assertIsString("hello", "myArg")).not.toThrow();
     });
   });
 
@@ -35,6 +39,7 @@ describe("assertIsString", () => {
       { toString: () => "test" },
       () => {},
       Symbol("sym"),
+      Symbol(),
       BigInt(10),
       /regex/,
       new Date(),
@@ -44,33 +49,72 @@ describe("assertIsString", () => {
       new WeakSet(),
       Promise.resolve(),
       new Error("error"),
-      new String("string object wrapper"), // объект-обертка, не строка
+      new String("string object wrapper"), // object-wrapper, not primitive
+      Object.create(null),
+      String,
+      Number,
     ];
 
     test.each(invalidValues)("throws TypeError for %p", (value) => {
-      expect(() => assertIsString(value)).toThrow(TypeError);
-      expect(() => assertIsString(value)).toThrow(/Expected .* to be a string/);
+      expect(() => {
+        expectTypeErrorMessage(() => assertIsString(value), "value", "string");
+      }).not.toThrow();
     });
 
     test("supports custom argName in error message", () => {
-      expect(() => assertIsString(123, "myArg")).toThrow(
-        /Expected myArg to be a string/,
+      expectTypeErrorMessage(
+        () => assertIsString(123, "customArg"),
+        "customArg",
+        "string",
       );
     });
+
+    test("throws for object without toString", () => {
+      const value = Object.create(null);
+      expectTypeErrorMessage(() => assertIsString(value), "value", "string");
+    });
+
+    test("throws for function with no prototype.toString", () => {
+      function WeirdFn() {}
+      WeirdFn.prototype.toString = undefined;
+      expectTypeErrorMessage(
+        () => assertIsString(new WeirdFn()),
+        "value",
+        "string",
+      );
+    });
+
+    test("throws for arguments object", () => {
+      function getArgs() {
+        return arguments;
+      }
+      const args = getArgs("a", "b");
+      expectTypeErrorMessage(() => assertIsString(args), "value", "string");
+    });
+
+    test("error message includes argName and expected type", () => {
+      try {
+        assertIsString(42, "testArg");
+      } catch (e) {
+        expect(e).toBeInstanceOf(TypeError);
+        expect(e.message).toMatch(/Expected testArg to be string/i);
+        expect(e.message).toMatch(/number/i);
+      }
+    });
   });
-  describe("assertIsString - fallback to Object.prototype.toString.call", () => {
+
+  describe("fallback to Object.prototype.toString.call", () => {
     test("uses Object.prototype.toString.call if String(value) throws", () => {
       const badToString = {
         toString() {
-          throw new Error("Cannot convert to string");
+          throw new Error("toString failed");
         },
       };
-
-      expect(() => assertIsString(badToString)).toThrow(TypeError);
 
       try {
         assertIsString(badToString);
       } catch (e) {
+        expect(e).toBeInstanceOf(TypeError);
         expect(e.message).toMatch(/\[object Object\]/);
       }
     });

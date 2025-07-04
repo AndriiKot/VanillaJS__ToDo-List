@@ -1,4 +1,5 @@
-import { isString, getObjectTypeString, getType } from "@utils";
+import { isString } from "@utils";
+import { throwTypeErrorWithTypeInfo } from "@asserts";
 
 /**
  * @param {*} value
@@ -7,10 +8,5 @@ import { isString, getObjectTypeString, getType } from "@utils";
 export const assertIsString = (value, argName = "value") => {
   if (isString(value)) return;
 
-  const objectTypeString = getObjectTypeString(value);
-  const type = getType(value);
-
-  throw new TypeError(
-    `Expected ${argName} to be a string, but received value ${objectTypeString} of type ${type}`,
-  );
+  throwTypeErrorWithTypeInfo(value, argName, "string");
 };

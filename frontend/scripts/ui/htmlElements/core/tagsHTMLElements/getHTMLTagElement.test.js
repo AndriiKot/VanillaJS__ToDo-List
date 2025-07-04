@@ -30,7 +30,7 @@ describe("getHTMLTagElement", () => {
     invalidSelectors.forEach((sel) => {
       expect(() => getHTMLTagElement(sel)).toThrow(TypeError);
       expect(() => getHTMLTagElement(sel)).toThrow(
-        /Expected .* to be a string/,
+        /Expected .* to be string/, // <- Обрати внимание: без "a"
       );
     });
   });

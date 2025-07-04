@@ -93,6 +93,7 @@ You can run it using Docker or directly with Node.js.
     <thead>
       <tr>
         <th height=33 width=100>NodeJS</th>
+        <th height=33 width=100>npm</th>
         <th height=33 width=100>Vite</th>
         <th height=33 width=100>Jest</th>
         <th height=33 width=100>ESLint</th>
@@ -104,6 +105,11 @@ You can run it using Docker or directly with Node.js.
         <td height=100 width=100>
           <a href="https://nodejs.org/en/">
             <img src="icons/svg/nodejs.svg" alt="NodeJS">
+          </a>
+        </td>
+        <td height=100 width=100>
+          <a href="https://www.npmjs.com/">
+            <img src="icons/svg/npm.svg" alt="npm">
           </a>
         </td>
         <td height=100 width=100>

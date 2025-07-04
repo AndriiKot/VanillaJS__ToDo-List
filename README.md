@@ -290,12 +290,12 @@ npm run format
 
 #### 📝 `package.json` Scripts
 
-| Command          | Description                            |
-| ---------------- | -------------------------------------- |
+| Command          | Description                     |
+| ---------------- | ------------------------------- |
 | `npm run dev`    | Start the local server (`Vite`) |
-| `npm test`       | Run tests using Jest                   |
-| `npm run lint`   | Run ESLint                             |
-| `npm run format` | Format code using Prettier             |
+| `npm test`       | Run tests using Jest            |
+| `npm run lint`   | Run ESLint                      |
+| `npm run format` | Format code using Prettier      |
 
 ---
 

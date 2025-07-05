@@ -1,7 +1,7 @@
-import { jestAliases } from "./tools/jest/generateAliases.js";
+import { jestAliases } from "../tools/jest/generateAliases.js";
 
 export default {
-  roots: ["<rootDir>/frontend"],
+  roots: ["../frontend"],
   testEnvironment: "jest-environment-jsdom",
   moduleFileExtensions: ["js", "json"],
 

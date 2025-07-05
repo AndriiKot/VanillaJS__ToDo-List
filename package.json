@@ -4,9 +4,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config config/vite.config.js",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
-    "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch",
-    "test:coverage": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --config config/jest.config.js",
+    "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch --config config/jest.config.js",
+    "test:coverage": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage --config config/jest.config.js",
     "format": "prettier frontend --write",
     "lint": "eslint frontend --config config/eslint.config.js",
     "prepare": "node tools/prepare.js"

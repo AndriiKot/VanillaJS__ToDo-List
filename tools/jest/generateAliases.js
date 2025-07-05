@@ -1,4 +1,4 @@
-import { aliases } from "../../path-aliases.js";
+import { aliases } from "../../config/path-aliases.js";
 
 export const jestAliases = Object.entries(aliases).reduce(
   (acc, [key, value]) => {

@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path"
-import { aliases } from "../path-aliases.js";
+import { aliases } from "../config/path-aliases.js";
 
 const rootDir = process.cwd();
 

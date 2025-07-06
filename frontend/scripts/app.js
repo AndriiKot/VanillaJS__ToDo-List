@@ -8,6 +8,7 @@ import {
   handleClickAddTodoButton,
   handleKeyDownTodo,
   handleInputTodo,
+  handleClickItemTodo,
 } from "@features";
 
 export const initTodoApp = () => {
@@ -20,6 +21,13 @@ export const initTodoApp = () => {
     "click",
     handleClickAddTodoButton(todoInput, todoList, todoValidMessage),
   );
+  todoList.addEventListener("click", (event) => {
+    const target = event.target.closest(".todo__item");
+
+    if (target && event.currentTarget.contains(target)) {
+      handleClickItemTodo(target, "todo__item--checked");
+    }
+  });
   todoInput.addEventListener(
     "keydown",
     handleKeyDownTodo(todoInput, todoList, todoValidMessage),

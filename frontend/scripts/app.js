@@ -5,9 +5,9 @@ import {
   getTodoList,
   getTodoButton,
   getTodoValidationMessage,
-  handleClick,
-  handleKeyDown,
-  handleInput,
+  handleClickAddTodoButton,
+  handleKeyDownTodo,
+  handleInputTodo,
 } from "@features";
 
 export const initTodoApp = () => {
@@ -18,11 +18,11 @@ export const initTodoApp = () => {
 
   todoButton.addEventListener(
     "click",
-    handleClick(todoInput, todoList, todoValidMessage),
+    handleClickAddTodoButton(todoInput, todoList, todoValidMessage),
   );
   todoInput.addEventListener(
     "keydown",
-    handleKeyDown(todoInput, todoList, todoValidMessage),
+    handleKeyDownTodo(todoInput, todoList, todoValidMessage),
   );
-  todoInput.addEventListener("input", handleInput(todoValidMessage));
+  todoInput.addEventListener("input", handleInputTodo(todoValidMessage));
 };

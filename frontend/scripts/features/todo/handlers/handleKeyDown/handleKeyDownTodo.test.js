@@ -1,6 +1,6 @@
-import { handleKeyDown } from "@features";
+import { handleKeyDownTodo } from "@features";
 
-describe("handleKeyDown", () => {
+describe("handleKeyDownTodo", () => {
   let input, list, validationMsg;
 
   beforeEach(() => {
@@ -13,7 +13,7 @@ describe("handleKeyDown", () => {
 
   test("calls addTodoTask on Enter key", () => {
     const event = new KeyboardEvent("keydown", { key: "Enter" });
-    const handler = handleKeyDown(input, list, validationMsg);
+    const handler = handleKeyDownTodo(input, list, validationMsg);
 
     handler(event);
 
@@ -22,7 +22,7 @@ describe("handleKeyDown", () => {
 
   test("does not call addTodoTask on other keys", () => {
     const event = new KeyboardEvent("keydown", { key: "Escape" });
-    const handler = handleKeyDown(input, list, validationMsg);
+    const handler = handleKeyDownTodo(input, list, validationMsg);
 
     handler(event);
 

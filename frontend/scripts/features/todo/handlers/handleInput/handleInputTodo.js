@@ -1,5 +1,5 @@
 import { hiddenNotValidMessage } from "@features";
 
-export const handleInput = (validationMsg) => () => {
+export const handleInputTodo = (validationMsg) => () => {
   hiddenNotValidMessage(validationMsg);
 };

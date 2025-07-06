@@ -1,6 +1,6 @@
-import { handleClick } from "@features";
+import { handleClickAddTodoButton } from "@features";
 
-describe("handleClick", () => {
+describe("handleClickAddTodoButton", () => {
   let input, list, message;
 
   beforeEach(() => {
@@ -20,7 +20,7 @@ describe("handleClick", () => {
   test("calls handleTodoTaskSubmission when invoked", () => {
     input.value = "  Learn Testing  ";
 
-    const handler = handleClick(input, list, message);
+    const handler = handleClickAddTodoButton(input, list, message);
     handler();
 
     expect(list.children.length).toBe(1);
@@ -34,7 +34,7 @@ describe("handleClick", () => {
   test("shows validation message if input is empty", () => {
     input.value = "   ";
 
-    const handler = handleClick(input, list, message);
+    const handler = handleClickAddTodoButton(input, list, message);
     handler();
 
     expect(list.children.length).toBe(0);

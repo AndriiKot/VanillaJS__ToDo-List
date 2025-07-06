@@ -1,3 +1,3 @@
-export * from "./handleKeyDown.js";
-export * from "./handleClick.js";
-export * from "./handleInput.js";
+export * from "./handleClik/";
+export * from "./handleInput/";
+export * from "./handleKeyDown/";

@@ -1,6 +1,6 @@
-import { handleInput } from "@features";
+import { handleInputTodo } from "@features";
 
-describe("handleInput", () => {
+describe("handleInputTodo", () => {
   let validationMsg;
 
   beforeEach(() => {
@@ -14,7 +14,7 @@ describe("handleInput", () => {
   });
 
   test("clears the validation message content", () => {
-    const handler = handleInput(validationMsg);
+    const handler = handleInputTodo(validationMsg);
     handler();
 
     expect(validationMsg.textContent).toBe("");

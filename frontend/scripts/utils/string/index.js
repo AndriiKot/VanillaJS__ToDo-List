@@ -5,3 +5,4 @@ export * from "./trim.js";
 export * from "./getType.js";
 export * from "./getObjectTypeString.js";
 export * from "./upper.js";
+export * from "./lower.js";

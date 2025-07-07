@@ -8,7 +8,7 @@ import { throwTypeErrorWithTypeInfo } from "@asserts";
  * @param {string} expectedDescription - Description of the expected type (default: "a non-null and non-undefined value").
  * @throws {TypeError} If the value is null or undefined.
  */
-export const assertIsNotNull = (
+export const assertIsDefined = (
   value,
   argName = "value",
   expectedDescription = "a non-null and non-undefined value",

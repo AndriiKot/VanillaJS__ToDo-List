@@ -1,6 +1,6 @@
-import { assertIsNotNull } from "@asserts";
+import { assertIsDefined } from "@asserts";
 
-describe("assertIsNotNull", () => {
+describe("assertIsDefined", () => {
   describe("valid (non-null and non-undefined) values", () => {
     const validValues = [
       "",
@@ -38,7 +38,7 @@ describe("assertIsNotNull", () => {
     ];
 
     test.each(validValues)("does not throw for %p", (value) => {
-      expect(() => assertIsNotNull(value, "arg")).not.toThrow();
+      expect(() => assertIsDefined(value, "arg")).not.toThrow();
     });
   });
 
@@ -46,8 +46,8 @@ describe("assertIsNotNull", () => {
     const invalidValues = [null, undefined];
 
     test.each(invalidValues)("throws TypeError for %p", (value) => {
-      expect(() => assertIsNotNull(value, "arg")).toThrow(TypeError);
-      expect(() => assertIsNotNull(value, "arg")).toThrow(
+      expect(() => assertIsDefined(value, "arg")).toThrow(TypeError);
+      expect(() => assertIsDefined(value, "arg")).toThrow(
         /arg.*non-null and non-undefined/i,
       );
     });

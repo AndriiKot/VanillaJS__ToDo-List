@@ -1,8 +1,9 @@
-export * from "./isHTMLTagElement.js";
 export * from "./getHTMLTagElement.js";
 export * from "./hasHTMLElementProperty.js";
-export * from "./isStandardHTMLTagElement.js";
+export * from "./createStandardHTMLTagElement.js";
 
+export * from "./isHTMLTagElement.js";
+export * from "./isStandardHTMLTagElement.js";
 export * from "./isMultimediaHTMLTagElement.js";
 export * from "./isVoidHTMLTagElement.js";
 

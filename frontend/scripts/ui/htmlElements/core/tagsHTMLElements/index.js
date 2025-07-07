@@ -1,5 +1,6 @@
 export * from "./getHTMLTagElement.js";
 export * from "./hasHTMLElementProperty.js";
+export * from "./describeElement.js";
 
 export * from "./isHTMLTagElement.js";
 export * from "./isStandardHTMLTagElement.js";

@@ -1,4 +1,4 @@
-import { assertIsElement, assertIsString, assertIsDefined } from "@asserts";
+import { assertIsNode, assertIsString, assertIsDefined } from "@asserts";
 import { describeElement } from "@ui";
 
 /**
@@ -10,7 +10,7 @@ import { describeElement } from "@ui";
  * @throws {TypeError} - If arguments are invalid or no match is found.
  */
 export const assertClosest = (element, selector) => {
-  assertIsElement(element, "first argument");
+  assertIsNode(element, "first argument");
   assertIsString(selector, "second argument");
 
   const match = element.closest(selector);

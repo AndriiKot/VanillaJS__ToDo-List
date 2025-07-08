@@ -52,4 +52,22 @@ describe("assertIsDefined", () => {
       );
     });
   });
+
+  describe("default argument values", () => {
+    test("throws with default argName and expectedDescription", () => {
+      expect(() => assertIsDefined(undefined)).toThrow(TypeError);
+      expect(() => assertIsDefined(undefined)).toThrow(
+        /value.*non-null and non-undefined/i,
+      );
+    });
+
+    test("throws with custom expectedDescription", () => {
+      expect(() => assertIsDefined(null, "input", "a valid object")).toThrow(
+        TypeError,
+      );
+      expect(() => assertIsDefined(null, "input", "a valid object")).toThrow(
+        /input.*a valid object/i,
+      );
+    });
+  });
 });

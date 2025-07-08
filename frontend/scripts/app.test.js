@@ -1,4 +1,5 @@
 import { initTodoApp } from "@app";
+import { getTodoItemLiCheckedClassName } from "@features";
 
 describe("initTodoApp", () => {
   let todoInput, todoButton, todoList, todoValidMessage;
@@ -37,31 +38,57 @@ describe("initTodoApp", () => {
     expect(todoValidMessage).toBeInstanceOf(HTMLElement);
   });
 
-  test("adds event listeners to elements and handlers respond to events", () => {
+  test("adds event listeners and handles all interactions", () => {
     initTodoApp();
 
-    let clickHandled = false;
-    let keydownHandled = false;
-    let inputHandled = false;
+    // Проверка: click на .todo__item → переключение класса
+    const li = document.createElement("li");
+    li.className = "todo__item";
+    const span = document.createElement("span");
+    li.appendChild(span);
+    todoList.appendChild(li);
 
+    expect(li.classList.contains(getTodoItemLiCheckedClassName())).toBe(false);
+
+    const clickEvent = new MouseEvent("click", { bubbles: true });
+    Object.defineProperty(clickEvent, "target", {
+      value: span,
+      configurable: true,
+    });
+    Object.defineProperty(clickEvent, "currentTarget", {
+      value: todoList,
+      configurable: true,
+    });
+
+    todoList.dispatchEvent(clickEvent);
+
+    expect(li.classList.contains(getTodoItemLiCheckedClassName())).toBe(true);
+
+    // Проверка: click по кнопке
+    let clickHandled = false;
     todoButton.addEventListener("click", () => {
       clickHandled = true;
     });
 
+    todoButton.dispatchEvent(new MouseEvent("click"));
+    expect(clickHandled).toBe(true);
+
+    // Проверка: keydown Enter
+    let keydownHandled = false;
     todoInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") keydownHandled = true;
     });
 
+    todoInput.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+    expect(keydownHandled).toBe(true);
+
+    // Проверка: input
+    let inputHandled = false;
     todoInput.addEventListener("input", () => {
       inputHandled = true;
     });
 
-    todoButton.dispatchEvent(new MouseEvent("click"));
-    todoInput.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
     todoInput.dispatchEvent(new Event("input"));
-
-    expect(clickHandled).toBe(true);
-    expect(keydownHandled).toBe(true);
     expect(inputHandled).toBe(true);
   });
 });

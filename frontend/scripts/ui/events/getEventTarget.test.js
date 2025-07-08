@@ -2,7 +2,7 @@ import { getEventTarget } from "@ui";
 
 describe("getEventTarget", () => {
   describe("valid input", () => {
-    test("возвращает event.target при валидном Event", () => {
+    test("returns event.target for a valid Event", () => {
       const div = document.createElement("div");
       const event = new MouseEvent("click");
       Object.defineProperty(event, "target", { value: div });
@@ -28,7 +28,7 @@ describe("getEventTarget", () => {
       ["function", () => {}],
       ["class instance (not Event)", new (class {})()],
       ["Promise", Promise.resolve()],
-    ])("throws on %s", (_, input) => {
+    ])("throws for %s", (_, input) => {
       expect(() => getEventTarget(input)).toThrow();
     });
   });

@@ -2,11 +2,11 @@ import { isElement } from "@ui";
 import { throwTypeErrorWithTypeInfo } from "@asserts";
 
 /**
- * Проверяет, что переданное значение является экземпляром Element.
+ * Checks whether the provided value is an instance of Element.
  *
- * @param {*} value - Значение для проверки.
- * @param {string} argName - Имя аргумента для контекста ошибки (по умолчанию "value").
- * @throws {TypeError} Если значение не является Element.
+ * @param {*} value - The value to validate.
+ * @param {string} argName - The argument name for error context (default: "value").
+ * @throws {TypeError} If the value is not an Element.
  */
 export const assertIsElement = (value, argName = "value") => {
   if (isElement(value)) return;

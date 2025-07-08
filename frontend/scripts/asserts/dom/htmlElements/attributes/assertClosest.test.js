@@ -4,7 +4,7 @@ describe("assertClosest", () => {
   let root, parent, child;
 
   beforeEach(() => {
-    // Создаем структуру DOM:
+    // Create the DOM:
     // <div id="root" class="container">
     //   <section class="section">
     //     <button class="btn">Click</button>

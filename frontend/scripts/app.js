@@ -22,15 +22,13 @@ export const initTodoApp = () => {
     handleClickAddTodoButton(todoInput, todoList, todoValidMessage),
   );
   todoList.addEventListener("click", (event) => {
-    const target = event.target.closest(".todo__item");
-
-    if (target && event.currentTarget.contains(target)) {
-      handleClickItemTodo(target, "todo__item--checked");
-    }
+    handleClickItemTodo(event);
   });
+
   todoInput.addEventListener(
     "keydown",
     handleKeyDownTodo(todoInput, todoList, todoValidMessage),
   );
+
   todoInput.addEventListener("input", handleInputTodo(todoValidMessage));
 };

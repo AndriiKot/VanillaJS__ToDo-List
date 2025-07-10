@@ -17,29 +17,34 @@ describe("handleTodoTaskSubmission", () => {
     document.body.innerHTML = "";
   });
 
-  test("adds task to list and clears input if input is valid", () => {
+  test("adds task to the list and clears the input if the input is valid", () => {
     input.value = "  Buy milk  ";
     handleTodoTaskSubmission(input, list, message);
 
     expect(list.children.length).toBe(1);
     const li = list.children[0];
+
     expect(li).toBeInstanceOf(HTMLLIElement);
-    expect(li.textContent).toBe("Buy milk");
     expect(li.className).toBe("todo__item");
 
-    expect(input.value).toBe("");
+    const [textNode, span] = li.childNodes;
+    expect(textNode.textContent).toBe("Buy milk");
 
+    expect(span).toBeInstanceOf(HTMLElement);
+    expect(span.textContent).toBe("×");
+    expect(span.getAttribute("aria-label")).toBe("Delete task");
+    expect(span.getAttribute("role")).toBe("button");
+
+    expect(input.value).toBe("");
     expect(message.textContent).toBe("");
   });
 
-  test("shows error message if input is empty or whitespace", () => {
+  test("shows an error message if input is empty or whitespace", () => {
     input.value = "   ";
     handleTodoTaskSubmission(input, list, message);
 
     expect(list.children.length).toBe(0);
-
     expect(message.textContent).toBe("Task cannot be empty");
-
     expect(document.activeElement).toBe(input);
   });
 });

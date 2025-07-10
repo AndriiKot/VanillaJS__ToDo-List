@@ -144,6 +144,25 @@
   color: var(--color-text-light);
 }
 
+.todo__item-remove {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-bg-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.todo__item-remove:hover {
+  background-color: var(--color-bg-gray-hover);
+}
+
 .todo__error {
   color: red;
   margin-top: 8px;

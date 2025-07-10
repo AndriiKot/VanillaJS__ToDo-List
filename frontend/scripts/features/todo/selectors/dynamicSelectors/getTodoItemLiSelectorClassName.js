@@ -1,4 +1,4 @@
-import { assertIsValidSelectorClassName } from "@asserts";
+import { makeSelectorClassName } from "@ui";
 
 /**
  * Returns the selector class name for a todo list item.
@@ -7,6 +7,5 @@ import { assertIsValidSelectorClassName } from "@asserts";
 
 export const getTodoItemLiSelectorClassName = () => {
   const selector = ".todo__item";
-  assertIsValidSelectorClassName(selector);
-  return selector;
+  return makeSelectorClassName(selector);
 };

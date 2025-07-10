@@ -9,6 +9,7 @@ import {
   handleKeyDownTodo,
   handleInputTodo,
   handleClickItemTodo,
+  handleClickDeleteTodoTaskElement,
 } from "@features";
 
 export const initTodoApp = () => {
@@ -23,6 +24,7 @@ export const initTodoApp = () => {
   );
   todoList.addEventListener("click", (event) => {
     handleClickItemTodo(event);
+    handleClickDeleteTodoTaskElement(event);
   });
 
   todoInput.addEventListener(

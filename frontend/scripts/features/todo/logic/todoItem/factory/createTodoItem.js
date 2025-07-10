@@ -2,25 +2,16 @@ import {
   createListItem,
   setListItemClassName,
   setListItemTextContent,
-  setTextContent,
-  setClassName,
-  createSpanElement,
 } from "@ui";
 
-import { getTodoItemLiRemoveClassName } from "@features";
+import { createTodoRemoveButton } from "@features";
 
 export const createTodoItem = (text, className = "todo__item") => {
-  const li = createListItem();
-  setListItemClassName(li, className);
-  setListItemTextContent(li, text);
+  const taskElement = createListItem();
+  setListItemClassName(taskElement, className);
+  setListItemTextContent(taskElement, text);
 
-  const span = createSpanElement();
-  setClassName(span, getTodoItemLiRemoveClassName());
-  setTextContent(span, "\u00d7");
-
-  span.setAttribute("aria-label", "Delete task");
-  span.setAttribute("role", "button");
-
-  li.appendChild(span);
-  return li;
+  const removeTaskButton = createTodoRemoveButton();
+  taskElement.appendChild(removeTaskButton);
+  return taskElement;
 };

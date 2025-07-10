@@ -1,12 +1,12 @@
 import {
   getTodoItemLiSelectorClassName,
-  getTodoItemLiRemoveClassName,
+  getTodoItemLiRemoveButtonClassName,
 } from "@features";
 import { safeClosest, getEventTarget, getEventCurrentTarget } from "@ui";
 
 export const getRemoveTodoContext = (event) => ({
   selector: getTodoItemLiSelectorClassName(),
-  className: getTodoItemLiRemoveClassName(),
+  className: getTodoItemLiRemoveButtonClassName(),
   target: safeClosest(getEventTarget(event), getTodoItemLiSelectorClassName()),
   currentTarget: getEventCurrentTarget(event),
 });

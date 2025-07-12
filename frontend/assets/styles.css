@@ -109,9 +109,12 @@
 .todo__item {
   cursor: pointer;
   font-size: 18px;
-  padding: 12px 10px 12px 50px;
+  padding: 12px 70px 12px 50px;
   position: relative;
   color: var(--color-text-dark);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .todo__item::before {

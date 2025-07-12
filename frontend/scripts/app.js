@@ -10,13 +10,22 @@ import {
   handleInputTodo,
   handleClickItemTodo,
   handleClickDeleteTodoTaskElement,
+  createTodoItem,
 } from "@features";
+
+import { appendListItemLi } from "@ui";
+import { loadTodos } from "@services";
 
 export const initTodoApp = () => {
   const todoInput = getTodoInput(),
     todoList = getTodoList(),
     todoButton = getTodoButton(),
     todoValidMessage = getTodoValidationMessage();
+
+  const storedTodos = loadTodos();
+  storedTodos.forEach((text) =>
+    appendListItemLi(todoList, createTodoItem(text)),
+  );
 
   todoButton.addEventListener(
     "click",

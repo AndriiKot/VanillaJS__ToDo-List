@@ -1,3 +1,7 @@
+import { getTodoList } from "@features";
+import { getTodoTextList } from "@features";
+import { saveTodos } from "@services";
+
 export const handleClickDeleteTodoTaskElement = (event) => {
   const target = event.target;
 
@@ -8,4 +12,8 @@ export const handleClickDeleteTodoTaskElement = (event) => {
   if (li && li.parentElement) {
     li.parentElement.removeChild(li);
   }
+
+  const list = getTodoList();
+  const todos = getTodoTextList(list);
+  saveTodos(todos);
 };

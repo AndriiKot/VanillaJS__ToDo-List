@@ -6,6 +6,7 @@
   --color-bg-accent-hover: #026b35;
   --color-bg-accent-active: #015a2c;
   --color-bg-disabled: #cccccc;
+  --color-bg-gray-hover: #ddd;
 
   --color-text-light: #fff;
   --color-text-dark: #111;
@@ -170,4 +171,70 @@
   color: red;
   margin-top: 8px;
   font-size: 0.9rem;
+}
+
+/* ============================
+   📱 Media Queries (Responsive)
+   ============================ */
+@media (max-width: 768px) {
+  .todo__box {
+    margin: 40px 10px;
+    padding: 20px 25px 40px;
+  }
+
+  .todo__row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .todo__btn {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .todo__input {
+    font-size: 16px;
+  }
+
+  .todo__title {
+    font-size: 18px;
+  }
+
+  .todo__item {
+    font-size: 16px;
+    padding: 10px 45px 10px 45px;
+  }
+
+  .todo__item-remove {
+    width: 32px;
+    height: 32px;
+    top: 8px;
+    right: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .todo__title {
+    font-size: 16px;
+  }
+
+  .todo__input {
+    font-size: 14px;
+  }
+
+  .todo__btn {
+    font-size: 16px;
+  }
+
+  .todo__item {
+    font-size: 14px;
+    padding: 10px 40px 10px 40px;
+  }
+
+  .todo__item-remove {
+    width: 28px;
+    height: 28px;
+  }
 }

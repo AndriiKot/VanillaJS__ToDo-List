@@ -148,7 +148,7 @@
   color: var(--color-text-light);
 }
 
-.todo__item-remove {
+.todo__item--remove {
   position: absolute;
   top: 5px;
   right: 10px;
@@ -163,7 +163,7 @@
   transition: background-color var(--transition-fast);
 }
 
-.todo__item-remove:hover {
+.todo__item--remove:hover {
   background-color: var(--color-bg-gray-hover);
 }
 
@@ -207,7 +207,7 @@
     padding: 10px 45px 10px 45px;
   }
 
-  .todo__item-remove {
+  .todo__item--remove {
     width: 32px;
     height: 32px;
     top: 8px;
@@ -233,7 +233,7 @@
     padding: 10px 40px 10px 40px;
   }
 
-  .todo__item-remove {
+  .todo__item--remove {
     width: 28px;
     height: 28px;
   }

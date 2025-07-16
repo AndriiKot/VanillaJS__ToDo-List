@@ -9,9 +9,9 @@ describe("getTodoTextList", () => {
 
   test("returns a list of task texts without remove buttons", () => {
     ul.innerHTML = `
-      <li>Task 1<span class="todo__item-remove">×</span></li>
-      <li>Task 2<span class="todo__item-remove">×</span></li>
-      <li>Task 3<span class="todo__item-remove">×</span></li>
+      <li>Task 1<span class="todo__item--remove">×</span></li>
+      <li>Task 2<span class="todo__item--remove">×</span></li>
+      <li>Task 3<span class="todo__item--remove">×</span></li>
     `;
 
     const result = getTodoTextList(ul);
@@ -20,8 +20,8 @@ describe("getTodoTextList", () => {
 
   test("ignores <li> without a text node (starts with <span>)", () => {
     ul.innerHTML = `
-      <li><span class="todo__item-remove">×</span></li>
-      <li>Task<span class="todo__item-remove">×</span></li>
+      <li><span class="todo__item--remove">×</span></li>
+      <li>Task<span class="todo__item--remove">×</span></li>
     `;
 
     const result = getTodoTextList(ul);
@@ -40,7 +40,7 @@ describe("getTodoTextList", () => {
 
   test("trims text from <li> if firstChild is a text node with surrounding spaces", () => {
     ul.innerHTML = `
-      <li>   Padded   <span class="todo__item-remove">×</span></li>
+      <li>   Padded   <span class="todo__item--remove">×</span></li>
     `;
 
     const result = getTodoTextList(ul);

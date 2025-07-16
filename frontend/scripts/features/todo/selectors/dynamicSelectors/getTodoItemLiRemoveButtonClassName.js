@@ -5,7 +5,7 @@ import { assertIsValidClassName } from "@asserts";
  * @returns {string}
  */
 export const getTodoItemLiRemoveButtonClassName = () => {
-  const className = "todo__item-remove";
+  const className = "todo__item--remove";
   assertIsValidClassName(className);
   return className;
 };

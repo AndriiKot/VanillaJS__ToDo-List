@@ -10,7 +10,7 @@ describe("createTodoItem", () => {
     const span = li.querySelector("span");
     expect(span).toBeInstanceOf(HTMLSpanElement);
     expect(span.textContent).toBe("\u00d7");
-    expect(span.className).toBe("todo__item-remove");
+    expect(span.className).toBe("todo__item--remove");
     expect(span.getAttribute("aria-label")).toBe("Delete task");
     expect(span.getAttribute("role")).toBe("button");
 
@@ -27,7 +27,7 @@ describe("createTodoItem", () => {
     const span = li.querySelector("span");
     expect(span).toBeInstanceOf(HTMLSpanElement);
     expect(span.textContent).toBe("\u00d7");
-    expect(span.className).toBe("todo__item-remove");
+    expect(span.className).toBe("todo__item--remove");
     expect(span.getAttribute("aria-label")).toBe("Delete task");
     expect(span.getAttribute("role")).toBe("button");
 

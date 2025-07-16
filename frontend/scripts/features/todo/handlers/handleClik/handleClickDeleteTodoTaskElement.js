@@ -5,7 +5,7 @@ import { saveTodos } from "@services";
 export const handleClickDeleteTodoTaskElement = (event) => {
   const target = event.target;
 
-  if (!target.classList.contains("todo__item-remove")) return;
+  if (!target.classList.contains("todo__item--remove")) return;
 
   const li = target.closest(".todo__item");
 

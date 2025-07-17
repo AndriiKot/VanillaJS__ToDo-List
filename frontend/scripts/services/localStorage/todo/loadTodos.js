@@ -1,11 +1,12 @@
 import { STORAGE_KEYS } from "@services";
+import { getRawItem, parseJSONWithFallback } from "@utils";
 
-export const loadTodos = () => {
+export const loadTodos = (defaultValue = []) => {
   try {
-    const stored = localStorage.getItem(STORAGE_KEYS.todo);
-    return stored ? JSON.parse(stored) : [];
+    const stored = getRawItem(localStorage, STORAGE_KEYS.todo, defaultValue);
+    return parseJSONWithFallback(stored, defaultValue);
   } catch (e) {
     console.error("Failed to load todos:", e);
-    return [];
+    return defaultValue;
   }
 };

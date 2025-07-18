@@ -12,6 +12,12 @@ describe("warnIfKeyMissing – logs warning only for null/undefined", () => {
     consoleWarnSpy.mockRestore();
   });
 
+  test('uses default contextName "storage" if not provided', () => {
+    warnIfKeyMissing("missingKey", null);
+    expect(consoleWarnSpy).toHaveBeenCalledWith(
+      'storage: key "missingKey" not found or value is missing.',
+    );
+  });
   test.each([
     [null, true],
     [undefined, true],

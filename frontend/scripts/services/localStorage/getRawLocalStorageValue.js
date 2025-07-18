@@ -1,8 +1,4 @@
-import {
-  assertIsLocalStorage,
-  assertCanUseLocalStorage,
-  assertIsString,
-} from "@asserts";
+import { assertValidLocalStorage, assertIsString } from "@asserts";
 
 /**
  * Returns raw string value from the provided storage by key.
@@ -14,8 +10,7 @@ import {
  * @throws {TypeError} if assertions fail
  */
 export const getRawLocalStorageValue = (storage, key) => {
-  assertIsLocalStorage(storage);
-  assertCanUseLocalStorage(storage);
+  assertValidLocalStorage(storage);
   assertIsString(key, "key");
 
   return storage.getItem(key);

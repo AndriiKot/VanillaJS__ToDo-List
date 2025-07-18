@@ -1,6 +1,5 @@
 import { getTodoList } from "@features";
-import { getTodoTextList } from "@features";
-import { saveTodos } from "@services";
+import { getTodoTextList, saveTodos } from "@features";
 
 export const handleClickDeleteTodoTaskElement = (event) => {
   const target = event.target;

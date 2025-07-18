@@ -11,10 +11,10 @@ import {
   handleClickItemTodo,
   handleClickDeleteTodoTaskElement,
   createTodoItem,
+  loadTodos,
 } from "@features";
 
 import { appendListItemLi } from "@ui";
-import { loadTodos } from "@services";
 
 export const initTodoApp = () => {
   const todoInput = getTodoInput(),

@@ -1,16 +1,16 @@
-import { STORAGE_KEYS, getRawLocalStorageValue } from "@services";
-import { parseJSONWithFallback } from "@utils";
+import { STORAGE_KEYS, readParsedLocalStorageValue } from "@services";
 
-export const loadTodos = (defaultValue = []) => {
-  try {
-    const stored = getRawLocalStorageValue(
-      localStorage,
-      STORAGE_KEYS.todo,
-      defaultValue,
-    );
-    return parseJSONWithFallback(stored, defaultValue);
-  } catch (e) {
-    console.error("Failed to load todos:", e);
-    return defaultValue;
-  }
+/**
+ * Loads todos from localStorage and ensures it returns an array of strings.
+ *
+ * @returns {string[]} - Array of todo item texts
+ */
+export const loadTodos = () => {
+  const storage = localStorage;
+  const key = STORAGE_KEYS.todo;
+  const defaultValue = [];
+
+  const result = readParsedLocalStorageValue(storage, key, defaultValue);
+
+  return Array.isArray(result) ? result : defaultValue;
 };

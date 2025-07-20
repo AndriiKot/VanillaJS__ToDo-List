@@ -1,6 +1,7 @@
 import { assertIsInputElement } from "@asserts";
 
-export const focusInput = (input) => {
+export const resetInput = (input) => {
   assertIsInputElement(input);
+  input.value = "";
   input.focus();
 };

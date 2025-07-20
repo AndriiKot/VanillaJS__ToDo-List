@@ -3,7 +3,7 @@ import {
   submitTodoTaskSuccessfully,
   showNotValidMessage,
 } from "@features";
-import { focusInput } from "@ui";
+import { resetInput } from "@ui";
 
 export const handleTodoTaskSubmission = (input, list, todoElementMessage) => {
   if (isValidTodoInputValue(input)) {
@@ -11,6 +11,5 @@ export const handleTodoTaskSubmission = (input, list, todoElementMessage) => {
   } else {
     showNotValidMessage(todoElementMessage, "Task cannot be empty");
   }
-  input.value = "";
-  focusInput(input);
+  resetInput(input);
 };

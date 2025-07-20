@@ -31,6 +31,7 @@ export const initTodoApp = () => {
     "click",
     handleClickAddTodoButton(todoInput, todoList, todoValidMessage),
   );
+
   todoList.addEventListener("click", (event) => {
     handleClickItemTodo(event);
     handleClickDeleteTodoTaskElement(event);

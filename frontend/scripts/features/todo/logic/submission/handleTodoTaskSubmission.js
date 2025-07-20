@@ -11,5 +11,6 @@ export const handleTodoTaskSubmission = (input, list, todoElementMessage) => {
   } else {
     showNotValidMessage(todoElementMessage, "Task cannot be empty");
   }
+  input.value = "";
   focusInput(input);
 };

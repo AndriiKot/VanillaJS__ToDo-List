@@ -96,6 +96,7 @@ You can run it using Docker or directly with Node.js.
         <th height=33 width=100>npm</th>
         <th height=33 width=100>Vite</th>
         <th height=33 width=100>Jest</th>
+        <th height=33 width=100>PostCSS</th>
         <th height=33 width=100>ESLint</th>
         <th height=33 width=100>Prettier</th>
       </tr>
@@ -120,6 +121,11 @@ You can run it using Docker or directly with Node.js.
         <td height=100 width=100>
           <a href="https://jestjs.io/">
             <img src="icons/svg/jest.svg" alt="Jest">
+          </a>
+        </td>
+        <td height=100 width=100>
+          <a href="https://postcss.org/">
+            <img src="icons/svg/postcss.svg" alt="PostCSS">
           </a>
         </td>
         <td height=100 width=100>

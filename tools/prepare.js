@@ -1,9 +1,4 @@
-import { setGitHooks } from "./git/setGitHooks.js";
-import { generateJsConfig } from "./generateJsConfig.js";
-
-function prepare() {
-  setGitHooks();
-  generateJsConfig();
+if (process.env.SKIP_PREPARE !== 'true') {
+  import('./git/setGitHooks.js').then(({ setGitHooks }) => setGitHooks());
+  import('./generateJsConfig.js').then(({ generateJsConfig }) => generateJsConfig());
 }
-
-prepare();

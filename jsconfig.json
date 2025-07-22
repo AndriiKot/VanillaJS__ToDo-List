@@ -17,6 +17,9 @@
       "@features": [
         "frontend/scripts/features"
       ],
+      "@services": [
+        "frontend/scripts/services"
+      ],
       "@ui": [
         "frontend/scripts/ui"
       ],

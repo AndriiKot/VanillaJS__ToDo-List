@@ -1,0 +1,20 @@
+services:
+  frontend:
+    build:
+      context: .
+      target: dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app/frontend
+      - ./config:/app/config
+    command: npm run dev
+
+  frontend-test:
+    build:
+      context: .
+      target: test
+    volumes:
+      - ./frontend:/app/frontend
+      - ./config:/app/config
+    command: npm test

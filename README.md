@@ -190,59 +190,31 @@ You can run it using Docker or directly with Node.js.
 <details>
   <summary>
 
-#### Run with Docker
+#### Run with Docker Compose
 
   </summary>
 
-##### Build the image
+##### Start development server
 
 ```bash
-docker build -t js-project .
+docker-compose up frontend
 ```
 
-##### Run the app (dev server)
-
-```bash
-docker run -p 8080:8080 js-project dev
-```
-
-Open [http://localhost:8080](http://localhost:8080) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ##### Run tests
 
 ```bash
-docker run --rm js-project
+docker-compose run --rm frontend-test
 ```
 
-<details>
-  <summary>
 
 ##### Stop and Remove Docker
 
-  </summary>
 
-##### 🔍 List running containers
 
 ```bash
-docker ps
-```
-
-##### Stop a container
-
-```bash
-docker stop <container_id>
-```
-
-##### Remove a container
-
-```bash
-docker rm <container_id>
-```
-
-##### Remove the image
-
-```bash
-docker rmi js-project
+docker-compose down
 ```
 
   </details>
@@ -270,7 +242,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:8080](http://localhost:8080) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ##### Run tests
 

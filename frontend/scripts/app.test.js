@@ -1,5 +1,6 @@
 import { initTodoApp } from "@app";
 import { getTodoItemLiCheckedClassName } from "@features";
+import { STORAGE_KEYS } from "@services";
 
 describe("initTodoApp", () => {
   let todoInput, todoButton, todoList, todoValidMessage;
@@ -38,25 +39,22 @@ describe("initTodoApp", () => {
     expect(todoValidMessage).toBeInstanceOf(HTMLElement);
   });
 
-  test("adds event listeners and handles all interactions", () => {
+  test("initTodoApp appends stored todos and sets event listeners", () => {
+    const storedTodos = ["Task 1", "Task 2"];
+    localStorage.setItem(STORAGE_KEYS.todo, JSON.stringify(storedTodos)); // <-- исправлено
+
     initTodoApp();
 
-    // Проверка: click на .todo__item → переключение класса
-    const li = document.createElement("li");
-    li.className = "todo__item";
-    const span = document.createElement("span");
-    li.appendChild(span);
-    todoList.appendChild(li);
+    expect(todoList.children.length).toBe(storedTodos.length);
+    expect(todoList.children[0].textContent).toContain("Task 1");
+    expect(todoList.children[1].textContent).toContain("Task 2");
 
+    const li = todoList.children[0];
     expect(li.classList.contains(getTodoItemLiCheckedClassName())).toBe(false);
 
     const clickEvent = new MouseEvent("click", { bubbles: true });
     Object.defineProperty(clickEvent, "target", {
-      value: span,
-      configurable: true,
-    });
-    Object.defineProperty(clickEvent, "currentTarget", {
-      value: todoList,
+      value: li,
       configurable: true,
     });
 
@@ -64,25 +62,22 @@ describe("initTodoApp", () => {
 
     expect(li.classList.contains(getTodoItemLiCheckedClassName())).toBe(true);
 
-    // Проверка: click по кнопке
-    let clickHandled = false;
+    let clicked = false;
     todoButton.addEventListener("click", () => {
-      clickHandled = true;
+      clicked = true;
     });
 
     todoButton.dispatchEvent(new MouseEvent("click"));
-    expect(clickHandled).toBe(true);
+    expect(clicked).toBe(true);
 
-    // Проверка: keydown Enter
-    let keydownHandled = false;
+    let enterPressed = false;
     todoInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") keydownHandled = true;
+      if (e.key === "Enter") enterPressed = true;
     });
 
     todoInput.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
-    expect(keydownHandled).toBe(true);
+    expect(enterPressed).toBe(true);
 
-    // Проверка: input
     let inputHandled = false;
     todoInput.addEventListener("input", () => {
       inputHandled = true;

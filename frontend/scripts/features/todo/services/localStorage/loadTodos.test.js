@@ -1,41 +1,32 @@
-import { saveTodos } from "./saveTodos";
+import { loadTodos } from "./loadTodos.js";
+import { STORAGE_KEYS } from "@services";
 
-describe("saveTodos", () => {
+describe("loadTodos", () => {
   beforeEach(() => {
     localStorage.clear();
   });
 
-  test("saves an array of todos to localStorage as JSON", () => {
-    const todos = ["Read book", "Write code"];
-    saveTodos(todos);
-
-    const saved = localStorage.getItem("todoList");
-    expect(saved).toBe(JSON.stringify(todos));
+  test("returns empty array as defaultValue when nothing stored", () => {
+    const result = loadTodos();
+    expect(result).toEqual([]);
   });
 
-  test("saves an empty array", () => {
-    saveTodos([]);
-    const saved = localStorage.getItem("todoList");
-    expect(saved).toBe("[]");
+  test("returns empty array if stored data is invalid JSON", () => {
+    localStorage.setItem(STORAGE_KEYS.todo, "not a json");
+    const result = loadTodos();
+    expect(result).toEqual([]);
   });
 
-  test("overwrites existing data in localStorage", () => {
-    localStorage.setItem("todoList", JSON.stringify(["Old task"]));
-    saveTodos(["New task"]);
-
-    const saved = localStorage.getItem("todoList");
-    expect(saved).toBe(JSON.stringify(["New task"]));
+  test("returns empty array if stored data is not an array", () => {
+    localStorage.setItem(STORAGE_KEYS.todo, JSON.stringify({ foo: "bar" }));
+    const result = loadTodos();
+    expect(result).toEqual([]);
   });
 
-  test("does not crash if todos is null", () => {
-    expect(() => saveTodos(null)).not.toThrow();
-    const saved = localStorage.getItem("todoList");
-    expect(saved).toBe("null");
-  });
-
-  test("does not crash if todos is undefined", () => {
-    expect(() => saveTodos(undefined)).not.toThrow();
-    const saved = localStorage.getItem("todoList");
-    expect(saved).toBe("undefined"); // JSON.stringify(undefined) is undefined
+  test("returns stored array if valid array JSON", () => {
+    const todos = ["task1", "task2"];
+    localStorage.setItem(STORAGE_KEYS.todo, JSON.stringify(todos));
+    const result = loadTodos();
+    expect(result).toEqual(todos);
   });
 });

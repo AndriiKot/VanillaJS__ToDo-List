@@ -1,4 +1,5 @@
-import { saveTodos } from "./saveTodos";
+import { saveTodos } from "./saveTodos.js";
+import { jest } from "@jest/globals";
 import { STORAGE_KEYS } from "@services";
 
 describe("saveTodos", () => {
@@ -41,5 +42,26 @@ describe("saveTodos", () => {
 
     const stored = localStorage.getItem(STORAGE_KEYS.todo);
     expect(stored).toBe("undefined");
+  });
+
+  test("logs error when localStorage.setItem throws", () => {
+    const mock = jest.spyOn(Storage.prototype, "setItem");
+    mock.mockImplementation(() => {
+      throw new Error("Test error");
+    });
+
+    const consoleSpy = jest
+      .spyOn(console, "error")
+      .mockImplementation(() => {});
+
+    saveTodos(["fail"]);
+
+    expect(consoleSpy).toHaveBeenCalledWith(
+      "Failed to save todos:",
+      expect.any(Error),
+    );
+
+    mock.mockRestore();
+    consoleSpy.mockRestore();
   });
 });

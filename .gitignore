@@ -1,21 +1,28 @@
 # Node.js
-
 node_modules/
 npm-debug.log*
 
+# Build output
+dist/
+
+# Logs
 logs/
 *.log
 
+# Test coverage
 coverage/
 
+# Environment variables
 .env
 .env.*
 
+# Cache files
 .prettiercache
 .eslintcache
 
+# System files
 .DS_Store
 Thumbs.db
 
+# Editor configs
 .vscode/
-

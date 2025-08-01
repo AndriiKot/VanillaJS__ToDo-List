@@ -42,10 +42,10 @@ try {
     );
   }
   // 3. Run formatter
-  execSync("npm run format", { stdio: "inherit" });
+  execSync("npm run format:fix", { stdio: "inherit" });
 
   // 4. Run linter
-  execSync("npm run lint", { stdio: "inherit" });
+  execSync("npm run lint:fix", { stdio: "inherit" });
 
   // 5. Run tests
   execSync("npm run test", { stdio: "inherit" });

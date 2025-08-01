@@ -3,14 +3,20 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "format": "prettier frontend --check",
+    "format:fix": "prettier frontend --write",
+    "lint:js": "eslint frontend --config config/eslint.config.js",
+    "lint:js:fix": "npm run lint:js -- --fix",
+    "lint:css": "stylelint \"frontend/**/*.css\" --config config/stylelint.config.js",
+    "lint:css:fix": "npm run lint:css -- --fix",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:fix": "npm run lint:js:fix && npm run lint:css:fix",
     "dev": "vite --config config/vite.config.js",
     "build": "vite build --config config/vite.config.js",
     "preview": "vite preview --config config/vite.config.js",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --config config/jest.config.js",
     "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch --config config/jest.config.js",
     "test:coverage": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage --config config/jest.config.js",
-    "format": "prettier frontend --write",
-    "lint": "eslint frontend --config config/eslint.config.js",
     "prepare": "node tools/prepare.js",
     "deploy": "gh-pages -d dist"
   },
@@ -25,6 +31,8 @@
     "jsdom": "^26.1.0",
     "postcss": "^8.5.6",
     "prettier": "^3.5.3",
+    "stylelint": "^16.23.0",
+    "stylelint-config-standard": "^39.0.0",
     "vite": "^6.3.5"
   }
 }

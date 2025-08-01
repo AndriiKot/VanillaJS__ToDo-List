@@ -5,14 +5,12 @@
   --color-bg-accent: #03793b;
   --color-bg-accent-hover: #026b35;
   --color-bg-accent-active: #015a2c;
-  --color-bg-disabled: #cccccc;
+  --color-bg-disabled: #ccc;
   --color-bg-gray-hover: #ddd;
-
   --color-text-light: #fff;
   --color-text-dark: #111;
   --color-text-muted: #8d8888;
-  --color-text-disabled: #666666;
-
+  --color-text-disabled: #666;
   --border-radius-large: 30px;
   --border-radius-medium: 10px;
   --transition-fast: 0.2s ease-in-out;
@@ -88,7 +86,7 @@
 .todo__btn:active {
   background-color: var(--color-bg-accent-active);
   transform: scale(0.97);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 2px 4px rgb(0 0 0 / 30%);
 }
 
 .todo__btn:focus {
@@ -113,7 +111,6 @@
   padding: 12px 70px 12px 50px;
   position: relative;
   color: var(--color-text-dark);
-  word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: normal;
 }
@@ -176,7 +173,7 @@
 /* ============================
    📱 Media Queries (Responsive)
    ============================ */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .todo__box {
     margin: 40px 10px;
     padding: 20px 25px 40px;
@@ -204,7 +201,7 @@
 
   .todo__item {
     font-size: 16px;
-    padding: 10px 45px 10px 45px;
+    padding: 10px 45px;
   }
 
   .todo__item--remove {
@@ -215,7 +212,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .todo__title {
     font-size: 16px;
   }
@@ -230,7 +227,7 @@
 
   .todo__item {
     font-size: 14px;
-    padding: 10px 40px 10px 40px;
+    padding: 10px 40px;
   }
 
   .todo__item--remove {

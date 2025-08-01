@@ -19,6 +19,7 @@ You can run it using Docker or directly with Node.js.
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](https://jestjs.io/)
 [![ESLint](https://img.shields.io/badge/linted%20with-eslint-blue)](https://eslint.org/)
 [![Prettier](https://img.shields.io/badge/styled%20with-prettier-ff69b4)](https://prettier.io/)
+[![Stylelint](https://img.shields.io/badge/linted%20with-stylelint-yellowgreen)](https://stylelint.io/)
 [![Node.js Version](https://img.shields.io/badge/node-20.x-green)](https://nodejs.org/en/docs)<table>
 
   <thead>

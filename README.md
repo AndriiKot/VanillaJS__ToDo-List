@@ -100,6 +100,7 @@ You can run it using Docker or directly with Node.js.
         <th height=33 width=100>PostCSS</th>
         <th height=33 width=100>ESLint</th>
         <th height=33 width=100>Prettier</th>
+        <th height=33 width=100>Stylelint</th>
       </tr>
     </thead>
     <tbody>
@@ -137,6 +138,11 @@ You can run it using Docker or directly with Node.js.
         <td height=100 width=100>
           <a href="https://prettier.io/">
             <img src="icons/svg/prettier.svg" alt="Prettier">
+          </a>
+        </td>
+        <td height=100 width=100>
+          <a href="https://stylelint.io/">
+            <img src="icons/svg/stylelint.svg" alt="Stylelint">
           </a>
         </td>
       </tr>

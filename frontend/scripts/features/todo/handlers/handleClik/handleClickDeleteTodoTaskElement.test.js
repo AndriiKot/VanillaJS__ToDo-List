@@ -2,6 +2,8 @@ import { handleClickDeleteTodoTaskElement } from "./handleClickDeleteTodoTaskEle
 import { getTodoList, getTodoTextList } from "@features";
 import { STORAGE_KEYS } from "@services";
 
+const TODO_LIST_SELECTOR = ".todo__list";
+
 beforeEach(() => {
   document.body.innerHTML = `
     <ul class="todo__list">
@@ -21,16 +23,15 @@ beforeEach(() => {
 test("does nothing if clicked target does not have todo__item--remove class", () => {
   const event = new MouseEvent("click");
   Object.defineProperty(event, "target", {
-    value: document.querySelector(".todo__list"),
+    value: document.querySelector(TODO_LIST_SELECTOR),
     enumerable: true,
   });
 
   expect(() => handleClickDeleteTodoTaskElement(event)).not.toThrow();
-  expect(getTodoList().children.length).toBe(2); // ничего не удалено
+  expect(getTodoList(TODO_LIST_SELECTOR).children.length).toBe(2);
 });
 
 test("does nothing if closest li.todo__item is null", () => {
-  // создадим span с классом, но без родителя li.todo__item
   const span = document.createElement("span");
   span.classList.add("todo__item--remove");
 
@@ -41,7 +42,7 @@ test("does nothing if closest li.todo__item is null", () => {
   });
 
   expect(() => handleClickDeleteTodoTaskElement(event)).not.toThrow();
-  expect(getTodoList().children.length).toBe(2); // ничего не удалено
+  expect(getTodoList(TODO_LIST_SELECTOR).children.length).toBe(2);
 });
 
 test("removes todo item and updates saved list", () => {
@@ -53,12 +54,14 @@ test("removes todo item and updates saved list", () => {
     enumerable: true,
   });
 
-  expect(getTodoList().children.length).toBe(2);
+  expect(getTodoList(TODO_LIST_SELECTOR).children.length).toBe(2);
 
   handleClickDeleteTodoTaskElement(event);
 
-  const updatedList = getTodoList();
+  const updatedList = getTodoList(TODO_LIST_SELECTOR);
   expect(updatedList.children.length).toBe(1);
+
+  expect(updatedList.children[0].textContent).toMatch(/Learn Jest/);
 
   const updatedTodos = getTodoTextList(updatedList);
   expect(updatedTodos).toEqual(["Learn Jest"]);

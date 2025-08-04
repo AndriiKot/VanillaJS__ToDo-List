@@ -12,7 +12,7 @@ export const handleClickDeleteTodoTaskElement = (event) => {
     li.parentElement.removeChild(li);
   }
 
-  const list = getTodoList();
+  const list = getTodoList(".todo__list");
   const todos = getTodoTextList(list);
   saveTodos(todos);
 };

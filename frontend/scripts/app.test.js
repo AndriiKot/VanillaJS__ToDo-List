@@ -21,7 +21,7 @@ describe("initTodoApp", () => {
             <button class="todo__btn">Add</button>
           </div>
           <ul class="todo__list"></ul>
-          <p class="todo__error" aria-live="polite"></p>
+          <div class="todo__error" aria-live="polite"></div>
         </div>
       </main>
     `;

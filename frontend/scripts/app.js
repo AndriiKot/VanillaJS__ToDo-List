@@ -19,7 +19,7 @@ import { appendListItemLi } from "@ui";
 export const initTodoApp = () => {
   const todoInput = getTodoInput(),
     todoList = getTodoList(".todo__list"),
-    todoButton = getTodoButton(),
+    todoButton = getTodoButton(".todo__btn"),
     todoValidMessage = getTodoValidationMessage();
 
   const storedTodos = loadTodos();

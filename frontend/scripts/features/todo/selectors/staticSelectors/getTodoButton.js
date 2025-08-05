@@ -1,3 +1,8 @@
 import { getHTMLTagElement } from "@ui";
+import { assertIsButtonElement } from "@asserts";
 
-export const getTodoButton = () => getHTMLTagElement(".todo__btn");
+export const getTodoButton = (className) => {
+  const el = getHTMLTagElement(className);
+  assertIsButtonElement(el);
+  return el;
+};

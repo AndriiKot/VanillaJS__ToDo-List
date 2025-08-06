@@ -13,7 +13,7 @@ import { assertIsDivElement } from "@asserts";
  * @throws {TypeError} - If the element does not exist or is not a <div>
  */
 
-export const getTodoValidationMessage = (className) => {
+export const getTodoValidMessage = (className) => {
   const el = getHTMLTagElement(className);
   assertIsDivElement(el);
   return el;

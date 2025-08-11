@@ -1,13 +1,13 @@
-export * from "./getHTMLTagElement.js";
-export * from "./hasHTMLElementProperty.js";
-export * from "./describeElement.js";
+export * from "./getHTMLTagElement";
+export * from "./hasHTMLElementProperty";
+export * from "./describeElement";
 
-export * from "./isHTMLTagElement.js";
-export * from "./isStandardHTMLTagElement.js";
-export * from "./isMultimediaHTMLTagElement.js";
-export * from "./isVoidHTMLTagElement.js";
-export * from "./isElement.js";
+export * from "./isHTMLTagElement";
+export * from "./isStandardHTMLTagElement";
+export * from "./isMultimediaHTMLTagElement";
+export * from "./isVoidHTMLTagElement";
+export * from "./isElement";
 
-export * from "./MULTIMEDIA_HTML_TAGS.js";
-export * from "./VALID_STANDARD_HTML_TAGS.js";
-export * from "./VOID_HTML_TAGS.js";
+export * from "./MULTIMEDIA_HTML_TAGS";
+export * from "./VALID_STANDARD_HTML_TAGS";
+export * from "./VOID_HTML_TAGS";

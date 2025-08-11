@@ -1,6 +1,6 @@
 export const PARENT_ALLOWED_CHILD_CATEGORIES = {
-  UL: new Set(["Flow content"]),
-  OL: new Set(["Flow content"]),
+  UL: new Set(["Flow content", "Metadata content"]),
+  OL: new Set(["Flow content", "Metadata content"]),
   DL: new Set(["Flow content"]),
   SELECT: new Set(["Phrasing content", "Metadata content"]),
   TABLE: new Set(["Flow content"]),

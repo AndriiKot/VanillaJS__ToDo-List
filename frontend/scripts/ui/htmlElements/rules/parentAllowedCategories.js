@@ -14,7 +14,7 @@ export const PARENT_ALLOWED_CHILD_CATEGORIES = {
   A: new Set(["Phrasing content"]),
   BUTTON: new Set(["Phrasing content"]),
   P: new Set(["Phrasing content"]),
-  LI: new Set(["Flow content"]),
+  LI: new Set(["Flow content", "Phrasing content"]),
   DIV: new Set(["Flow content"]),
   SECTION: new Set(["Flow content"]),
   ARTICLE: new Set(["Flow content"]),

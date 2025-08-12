@@ -2,6 +2,7 @@ import {
   createListItem,
   setListItemClassName,
   setListItemTextContent,
+  appendHTMLTagChild,
 } from "@ui";
 
 import { createTodoRemoveButton } from "@features";
@@ -12,6 +13,6 @@ export const createTodoItem = (text, className = "todo__item") => {
   setListItemTextContent(taskElement, text);
 
   const removeTaskButton = createTodoRemoveButton();
-  taskElement.appendChild(removeTaskButton);
+  appendHTMLTagChild(taskElement, removeTaskButton);
   return taskElement;
 };

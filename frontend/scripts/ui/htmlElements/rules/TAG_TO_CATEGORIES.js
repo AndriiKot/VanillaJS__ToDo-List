@@ -1,12 +1,11 @@
-import { TAG_CATEGORIES } from "./contentGroups.js";
+import { TAG_CATEGORIES } from "./TAG_CATEGORIES";
 
 export const TAG_TO_CATEGORIES = (() => {
   const map = {};
   for (const [category, tags] of Object.entries(TAG_CATEGORIES)) {
     for (const tag of tags) {
-      const upperTag = tag.toUpperCase();
-      if (!map[upperTag]) map[upperTag] = new Set();
-      map[upperTag].add(category);
+      if (!map[tag]) map[tag] = new Set();
+      map[tag].add(category);
     }
   }
   return map;

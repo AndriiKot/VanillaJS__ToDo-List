@@ -1,0 +1,20 @@
+export const PARENT_CHILD_EXCEPTIONS = {
+  A: new Set(["A"]),
+  BUTTON: new Set(["BUTTON"]),
+  LABEL: new Set(["LABEL"]),
+  FORM: new Set(["FORM"]),
+  P: new Set([
+    "DIV",
+    "SECTION",
+    "ARTICLE",
+    "HEADER",
+    "FOOTER",
+    "NAV",
+    "ASIDE",
+    "MAIN",
+    "TABLE",
+    "UL",
+    "OL",
+    "FORM",
+  ]),
+};

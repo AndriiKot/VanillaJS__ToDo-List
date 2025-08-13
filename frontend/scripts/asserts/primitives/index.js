@@ -1,2 +1,3 @@
-export * from "./assertIsString.js";
-export * from "./assertIsDefined.js";
+export * from "./assertIsString";
+export * from "./assertIsDefined";
+export * from "./assertIsNonEmptyString";

@@ -1,35 +1,32 @@
-import { assertIsCSSClassName } from "./assertIsCSSClassName.js";
+import { assertIsCSSClassName } from './assertIsCSSClassName.js';
 
-describe("assertIsCSSClassName", () => {
-  describe("valid class names", () => {
+describe('assertIsCSSClassName', () => {
+  describe('valid class names', () => {
     const validNames = [
-      "my-class",
-      "_header",
-      "-variable",
-      "btn123",
-      "こんにちは", // Unicode letters
-      "école", // accented letters
-      "-_fooBar123",
+      'my-class',
+      '_header',
+      '-variable',
+      'btn123',
+      'こんにちは', // Unicode letters
+      'école', // accented letters
+      '-_fooBar123',
     ];
 
-    test.each(validNames)(
-      "does not throw for valid class name: '%s'",
-      (value) => {
-        expect(() => assertIsCSSClassName(value)).not.toThrow();
-      },
-    );
+    test.each(validNames)("does not throw for valid class name: '%s'", (value) => {
+      expect(() => assertIsCSSClassName(value)).not.toThrow();
+    });
   });
 
-  describe("invalid class names", () => {
+  describe('invalid class names', () => {
     const invalidNames = [
-      "", // empty string
-      " ", // whitespace only
-      "123btn", // starts with a digit
-      "my class", // contains space
-      "btn!", // invalid character
-      "\n", // newline
-      "🙂emoji", // emoji at start
-      "1variable", // starts with digit
+      '', // empty string
+      ' ', // whitespace only
+      '123btn', // starts with a digit
+      'my class', // contains space
+      'btn!', // invalid character
+      '\n', // newline
+      '🙂emoji', // emoji at start
+      '1variable', // starts with digit
     ];
 
     test.each(invalidNames)("throws for invalid class name: '%s'", (value) => {
@@ -37,8 +34,8 @@ describe("assertIsCSSClassName", () => {
     });
   });
 
-  test("supports custom argument name in error message", () => {
-    const argName = "second argument";
-    expect(() => assertIsCSSClassName("", argName)).toThrow();
+  test('supports custom argument name in error message', () => {
+    const argName = 'second argument';
+    expect(() => assertIsCSSClassName('', argName)).toThrow();
   });
 });

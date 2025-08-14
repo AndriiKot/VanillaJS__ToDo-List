@@ -1,6 +1,6 @@
-import { assertIsInputElement } from "@asserts";
+import { assertIsInputElement } from '@asserts';
 
 export const clearInputValue = (input) => {
   assertIsInputElement(input);
-  input.value = "";
+  input.value = '';
 };

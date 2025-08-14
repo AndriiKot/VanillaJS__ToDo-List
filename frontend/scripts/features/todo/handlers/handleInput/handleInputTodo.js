@@ -1,4 +1,4 @@
-import { hiddenNotValidMessage } from "@features";
+import { hiddenNotValidMessage } from '@features';
 
 export const handleInputTodo = (validationMsg) => () => {
   hiddenNotValidMessage(validationMsg);

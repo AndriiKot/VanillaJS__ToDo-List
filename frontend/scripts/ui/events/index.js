@@ -1,3 +1,3 @@
-export * from "./isEvent.js";
-export * from "./getEventTarget.js";
-export * from "./getEventCurrentTarget.js";
+export * from './isEvent.js';
+export * from './getEventTarget.js';
+export * from './getEventCurrentTarget.js';

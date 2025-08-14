@@ -1,4 +1,4 @@
-import { assertIsValidSelector } from "@asserts";
+import { assertIsValidSelector } from '@asserts';
 
 /**
  * Asserts that the given CSS selector is a valid class selector (starts with '.').
@@ -10,7 +10,7 @@ import { assertIsValidSelector } from "@asserts";
 export const assertIsValidSelectorClassName = (selector) => {
   assertIsValidSelector(selector);
 
-  if (selector.startsWith(".")) return;
+  if (selector.startsWith('.')) return;
 
   throw new SyntaxError(`Selector must start with "."`);
 };

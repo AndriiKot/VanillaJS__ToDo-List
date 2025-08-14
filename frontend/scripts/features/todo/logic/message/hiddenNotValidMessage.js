@@ -1,5 +1,5 @@
-import { setTextContent } from "@ui";
+import { setTextContent } from '@ui';
 
 export const hiddenNotValidMessage = (element) => {
-  return setTextContent(element, "");
+  return setTextContent(element, '');
 };

@@ -1,5 +1,5 @@
-import { trim } from "@utils";
+import { trim } from '@utils';
 
 export const isEmpty = (str) => {
-  return trim(str) === "";
+  return trim(str) === '';
 };

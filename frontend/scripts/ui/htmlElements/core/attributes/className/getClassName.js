@@ -1,4 +1,4 @@
-import { assertIsHTMLTagElement } from "@asserts";
+import { assertIsHTMLTagElement } from '@asserts';
 
 export const getClassName = (el) => {
   assertIsHTMLTagElement(el);

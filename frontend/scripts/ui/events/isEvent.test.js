@@ -1,82 +1,82 @@
-import { isEvent } from "@ui";
+import { isEvent } from '@ui';
 
-describe("isEvent", () => {
-  describe("valid DOM Event instances", () => {
+describe('isEvent', () => {
+  describe('valid DOM Event instances', () => {
     const createEvents = () => {
       const safeEvents = [];
 
       try {
-        safeEvents.push(new Event("test"));
+        safeEvents.push(new Event('test'));
       } catch {
         /* not supported */
       }
       try {
-        safeEvents.push(new MouseEvent("click"));
+        safeEvents.push(new MouseEvent('click'));
       } catch {
         /* not supported */
       }
       try {
-        safeEvents.push(new KeyboardEvent("keydown"));
+        safeEvents.push(new KeyboardEvent('keydown'));
       } catch {
         /* not supported */
       }
       try {
-        safeEvents.push(new InputEvent("input"));
+        safeEvents.push(new InputEvent('input'));
       } catch {
         /* not supported */
       }
       try {
-        safeEvents.push(new FocusEvent("focus"));
+        safeEvents.push(new FocusEvent('focus'));
       } catch {
         /* not supported */
       }
       try {
-        safeEvents.push(new SubmitEvent("submit"));
+        safeEvents.push(new SubmitEvent('submit'));
       } catch {
         /* not supported */
       }
       try {
-        safeEvents.push(new CompositionEvent("compositionstart"));
+        safeEvents.push(new CompositionEvent('compositionstart'));
       } catch {
         /* not supported */
       }
       try {
-        safeEvents.push(new CustomEvent("custom"));
+        safeEvents.push(new CustomEvent('custom'));
       } catch {
         /* not supported */
       }
 
-      if (typeof DragEvent !== "undefined") {
+      if (typeof DragEvent !== 'undefined') {
         try {
-          safeEvents.push(new DragEvent("drag"));
+          safeEvents.push(new DragEvent('drag'));
         } catch {
           /* not supported */
         }
       }
-      if (typeof TouchEvent !== "undefined") {
+      if (typeof TouchEvent !== 'undefined') {
         try {
-          safeEvents.push(new TouchEvent("touchstart"));
+          safeEvents.push(new TouchEvent('touchstart'));
         } catch {
           /* not supported */
         }
       }
-      if (typeof UIEvent !== "undefined") {
+      if (typeof UIEvent !== 'undefined') {
         try {
-          safeEvents.push(new UIEvent("resize"));
+          safeEvents.push(new UIEvent('resize'));
         } catch {
           /* not supported */
         }
       }
-      if (typeof WheelEvent !== "undefined") {
+      if (typeof WheelEvent !== 'undefined') {
         try {
-          safeEvents.push(new WheelEvent("wheel"));
+          safeEvents.push(new WheelEvent('wheel'));
         } catch {
           /* not supported */
         }
       }
-      if (typeof ClipboardEvent !== "undefined") {
+      if (typeof ClipboardEvent !== 'undefined') {
         try {
-          safeEvents.push(new ClipboardEvent("copy"));
+          safeEvents.push(new ClipboardEvent('copy'));
         } catch {
           /* not supported */
         }
@@ -85,17 +85,17 @@ describe("isEvent", () => {
       return safeEvents;
     };
 
-    test.each(createEvents())("returns true for %p", (event) => {
+    test.each(createEvents())('returns true for %p', (event) => {
       expect(isEvent(event)).toBe(true);
     });
   });
 
-  describe("invalid non-event values", () => {
+  describe('invalid non-event values', () => {
     const invalidValues = [
       null,
       undefined,
-      "",
-      "event",
+      '',
+      'event',
       0,
       1,
       NaN,
@@ -103,31 +103,31 @@ describe("isEvent", () => {
       -Infinity,
       true,
       false,
-      Symbol("event"),
+      Symbol('event'),
       BigInt(123),
       {},
-      { type: "click", target: document.createElement("div") },
+      { type: 'click', target: document.createElement('div') },
       [],
-      ["click"],
+      ['click'],
       () => {},
       function () {},
-      new String("event"),
+      new String('event'),
       new Number(123),
       new Boolean(false),
       new Date(),
-      new Error("fail"),
+      new Error('fail'),
       new Map(),
       new Set(),
       new WeakMap(),
       new WeakSet(),
-      document.createElement("div"),
-      document.createTextNode("text"),
-      document.createComment("comment"),
+      document.createElement('div'),
+      document.createTextNode('text'),
+      document.createComment('comment'),
       document.createDocumentFragment(),
-      Promise.resolve("ok"),
+      Promise.resolve('ok'),
     ];
 
-    test.each(invalidValues)("returns false for %p", (value) => {
+    test.each(invalidValues)('returns false for %p', (value) => {
       expect(isEvent(value)).toBe(false);
     });
   });

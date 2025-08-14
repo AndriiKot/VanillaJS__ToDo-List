@@ -1,4 +1,4 @@
-import { assertIsString } from "@asserts";
+import { assertIsString } from '@asserts';
 
 export const lower = (str) => {
   assertIsString(str);

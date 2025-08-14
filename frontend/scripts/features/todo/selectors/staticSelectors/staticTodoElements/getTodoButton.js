@@ -1,5 +1,5 @@
-import { getHTMLTagElement } from "@ui";
-import { assertIsButtonElement } from "@asserts";
+import { getHTMLTagElement } from '@ui';
+import { assertIsButtonElement } from '@asserts';
 
 /**
  * Returns a <button> element with the given class selector.

@@ -1,7 +1,7 @@
-import { assertIsInputElement } from "@asserts";
+import { assertIsInputElement } from '@asserts';
 
 export const resetInput = (input) => {
   assertIsInputElement(input);
-  input.value = "";
+  input.value = '';
   input.focus();
 };

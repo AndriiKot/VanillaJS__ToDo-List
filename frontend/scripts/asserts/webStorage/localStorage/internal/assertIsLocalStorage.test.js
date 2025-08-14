@@ -1,24 +1,22 @@
-import { assertIsLocalStorage } from "./assertIsLocalStorage";
+import { assertIsLocalStorage } from './assertIsLocalStorage';
 
-describe("assertIsLocalStorage", () => {
-  describe("valid inputs (should NOT throw)", () => {
-    test("does not throw when passed globalThis.localStorage", () => {
+describe('assertIsLocalStorage', () => {
+  describe('valid inputs (should NOT throw)', () => {
+    test('does not throw when passed globalThis.localStorage', () => {
       expect(() => assertIsLocalStorage(globalThis.localStorage)).not.toThrow();
     });
 
-    test("does not throw with custom argName", () => {
-      expect(() =>
-        assertIsLocalStorage(globalThis.localStorage, "myStorage"),
-      ).not.toThrow();
+    test('does not throw with custom argName', () => {
+      expect(() => assertIsLocalStorage(globalThis.localStorage, 'myStorage')).not.toThrow();
     });
   });
 
-  describe("invalid inputs (should throw TypeError)", () => {
+  describe('invalid inputs (should throw TypeError)', () => {
     const invalidValues = [
       null,
       undefined,
       123,
-      "localStorage",
+      'localStorage',
       {},
       [],
       () => {},
@@ -39,32 +37,26 @@ describe("assertIsLocalStorage", () => {
       });
     }
 
-    test("throws with custom argName", () => {
-      const thrown = getThrown(() =>
-        assertIsLocalStorage("fakeStorage", "myStorage"),
-      );
+    test('throws with custom argName', () => {
+      const thrown = getThrown(() => assertIsLocalStorage('fakeStorage', 'myStorage'));
 
       expect(thrown).toBeInstanceOf(TypeError);
-      expect(thrown.message).toMatch(
-        /Expected\s+myStorage\s+to be\s+globalThis\.localStorage/i,
-      );
+      expect(thrown.message).toMatch(/Expected\s+myStorage\s+to be\s+globalThis\.localStorage/i);
     });
 
-    test("error message includes type information", () => {
-      const thrown = getThrown(() => assertIsLocalStorage(123, "store"));
+    test('error message includes type information', () => {
+      const thrown = getThrown(() => assertIsLocalStorage(123, 'store'));
 
       expect(thrown).toBeInstanceOf(TypeError);
-      expect(thrown.message).toMatch(
-        /Expected\s+store\s+to be\s+globalThis\.localStorage/i,
-      );
+      expect(thrown.message).toMatch(/Expected\s+store\s+to be\s+globalThis\.localStorage/i);
       expect(thrown.message).toMatch(/\[object Number\]/i);
       expect(thrown.message).toMatch(/type Number/i);
     });
 
-    test("fallback to [object Type] when toString fails", () => {
+    test('fallback to [object Type] when toString fails', () => {
       const fake = {};
       fake.toString = () => {
-        throw new Error("fail");
+        throw new Error('fail');
       };
 
       expect(() => assertIsLocalStorage(fake)).toThrow(/\[object Object\]/);
@@ -79,5 +71,5 @@ function getThrown(fn) {
   } catch (e) {
     return e;
   }
-  throw new Error("Function did not throw");
+  throw new Error('Function did not throw');
 }

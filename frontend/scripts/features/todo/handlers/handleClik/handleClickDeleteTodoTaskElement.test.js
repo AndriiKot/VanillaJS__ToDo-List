@@ -1,8 +1,8 @@
-import { handleClickDeleteTodoTaskElement } from "./handleClickDeleteTodoTaskElement";
-import { getTodoList, getTodoTextList } from "@features";
-import { STORAGE_KEYS } from "@services";
+import { handleClickDeleteTodoTaskElement } from './handleClickDeleteTodoTaskElement';
+import { getTodoList, getTodoTextList } from '@features';
+import { STORAGE_KEYS } from '@services';
 
-const TODO_LIST_SELECTOR = ".todo__list";
+const TODO_LIST_SELECTOR = '.todo__list';
 
 beforeEach(() => {
   document.body.innerHTML = `
@@ -20,9 +20,9 @@ beforeEach(() => {
   localStorage.clear();
 });
 
-test("does nothing if clicked target does not have todo__remove class", () => {
-  const event = new MouseEvent("click");
-  Object.defineProperty(event, "target", {
+test('does nothing if clicked target does not have todo__remove class', () => {
+  const event = new MouseEvent('click');
+  Object.defineProperty(event, 'target', {
     value: document.querySelector(TODO_LIST_SELECTOR),
     enumerable: true,
   });
@@ -31,12 +31,12 @@ test("does nothing if clicked target does not have todo__remove class", () => {
   expect(getTodoList(TODO_LIST_SELECTOR).children.length).toBe(2);
 });
 
-test("does nothing if closest li.todo__item is null", () => {
-  const span = document.createElement("span");
-  span.classList.add("todo__remove");
+test('does nothing if closest li.todo__item is null', () => {
+  const span = document.createElement('span');
+  span.classList.add('todo__remove');
 
-  const event = new MouseEvent("click");
-  Object.defineProperty(event, "target", {
+  const event = new MouseEvent('click');
+  Object.defineProperty(event, 'target', {
     value: span,
     enumerable: true,
   });
@@ -45,11 +45,11 @@ test("does nothing if closest li.todo__item is null", () => {
   expect(getTodoList(TODO_LIST_SELECTOR).children.length).toBe(2);
 });
 
-test("removes todo item and updates saved list", () => {
-  const deleteButton = document.querySelector(".todo__remove");
+test('removes todo item and updates saved list', () => {
+  const deleteButton = document.querySelector('.todo__remove');
 
-  const event = new MouseEvent("click", { bubbles: true });
-  Object.defineProperty(event, "target", {
+  const event = new MouseEvent('click', { bubbles: true });
+  Object.defineProperty(event, 'target', {
     value: deleteButton,
     enumerable: true,
   });
@@ -61,13 +61,11 @@ test("removes todo item and updates saved list", () => {
   const updatedList = getTodoList(TODO_LIST_SELECTOR);
   expect(updatedList.children.length).toBe(1);
 
-  expect(updatedList.children[0].querySelector(".todo__text").textContent).toBe(
-    "Learn Jest",
-  );
+  expect(updatedList.children[0].querySelector('.todo__text').textContent).toBe('Learn Jest');
 
   const updatedTodos = getTodoTextList(updatedList);
-  expect(updatedTodos).toEqual(["Learn Jest"]);
+  expect(updatedTodos).toEqual(['Learn Jest']);
 
   const stored = JSON.parse(localStorage.getItem(STORAGE_KEYS.todo));
-  expect(stored).toEqual(["Learn Jest"]);
+  expect(stored).toEqual(['Learn Jest']);
 });

@@ -1,18 +1,18 @@
-import { createTodoItemContent } from "./createTodoItemContent";
+import { createTodoItemContent } from './createTodoItemContent';
 
-describe("createTodoItemContent", () => {
-  test("creates a span with provided text and default class", () => {
-    const text = "My todo";
+describe('createTodoItemContent', () => {
+  test('creates a span with provided text and default class', () => {
+    const text = 'My todo';
     const el = createTodoItemContent(text);
 
     expect(el).toBeInstanceOf(HTMLSpanElement);
-    expect(el.className).toBe("todo__text");
+    expect(el.className).toBe('todo__text');
     expect(el.textContent).toBe(text);
   });
 
-  test("creates a span with provided text and custom class", () => {
-    const text = "Custom todo";
-    const customClass = "custom-class";
+  test('creates a span with provided text and custom class', () => {
+    const text = 'Custom todo';
+    const customClass = 'custom-class';
     const el = createTodoItemContent(text, customClass);
 
     expect(el).toBeInstanceOf(HTMLSpanElement);
@@ -20,12 +20,12 @@ describe("createTodoItemContent", () => {
     expect(el.textContent).toBe(text);
   });
 
-  test("creates a span with empty string text", () => {
-    const el = createTodoItemContent("");
-    expect(el.textContent).toBe("");
+  test('creates a span with empty string text', () => {
+    const el = createTodoItemContent('');
+    expect(el.textContent).toBe('');
   });
 
-  describe("throws when text is not a string", () => {
+  describe('throws when text is not a string', () => {
     const invalidValues = [
       123,
       -5,
@@ -38,16 +38,16 @@ describe("createTodoItemContent", () => {
       undefined,
       {},
       [],
-      Symbol("sym"),
+      Symbol('sym'),
       () => {},
     ];
 
-    test.each(invalidValues)("throws TypeError for text: %p", (value) => {
+    test.each(invalidValues)('throws TypeError for text: %p', (value) => {
       expect(() => createTodoItemContent(value)).toThrow();
     });
   });
 
-  describe("throws when className is not a string", () => {
+  describe('throws when className is not a string', () => {
     const invalidValues = [
       123,
       -5,
@@ -59,12 +59,12 @@ describe("createTodoItemContent", () => {
       null,
       {},
       [],
-      Symbol("sym"),
+      Symbol('sym'),
       () => {},
     ];
 
-    test.each(invalidValues)("throws TypeError for className: %p", (value) => {
-      expect(() => createTodoItemContent("Valid text", value)).toThrow();
+    test.each(invalidValues)('throws TypeError for className: %p', (value) => {
+      expect(() => createTodoItemContent('Valid text', value)).toThrow();
     });
   });
 });

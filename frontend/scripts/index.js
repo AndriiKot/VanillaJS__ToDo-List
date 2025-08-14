@@ -1,3 +1,3 @@
-import { initTodoApp } from "@app";
+import { initTodoApp } from '@app';
 
-window.addEventListener("DOMContentLoaded", initTodoApp);
+window.addEventListener('DOMContentLoaded', initTodoApp);

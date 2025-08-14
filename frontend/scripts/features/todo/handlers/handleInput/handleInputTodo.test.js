@@ -1,22 +1,22 @@
-import { handleInputTodo } from "@features";
+import { handleInputTodo } from '@features';
 
-describe("handleInputTodo", () => {
+describe('handleInputTodo', () => {
   let validationMsg;
 
   beforeEach(() => {
-    validationMsg = document.createElement("div");
-    validationMsg.textContent = "Task cannot be empty";
+    validationMsg = document.createElement('div');
+    validationMsg.textContent = 'Task cannot be empty';
     document.body.appendChild(validationMsg);
   });
 
   afterEach(() => {
-    document.body.innerHTML = "";
+    document.body.innerHTML = '';
   });
 
-  test("clears the validation message content", () => {
+  test('clears the validation message content', () => {
     const handler = handleInputTodo(validationMsg);
     handler();
 
-    expect(validationMsg.textContent).toBe("");
+    expect(validationMsg.textContent).toBe('');
   });
 });

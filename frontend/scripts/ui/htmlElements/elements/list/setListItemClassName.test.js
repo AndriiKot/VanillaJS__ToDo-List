@@ -2,60 +2,57 @@
  * @jest-environment jsdom
  */
 
-import { setListItemClassName } from "./setListItemClassName";
+import { setListItemClassName } from './setListItemClassName';
 
-describe("setListItemClassName", () => {
-  describe("valid cases", () => {
+describe('setListItemClassName', () => {
+  describe('valid cases', () => {
     const validClassNames = [
-      "todo-item",
-      "_header",
-      "-variable",
-      "btn123",
-      "école",
-      "こんにちは",
-      "-_fooBar123",
+      'todo-item',
+      '_header',
+      '-variable',
+      'btn123',
+      'école',
+      'こんにちは',
+      '-_fooBar123',
     ];
 
-    test.each(validClassNames)(
-      "sets className '%s' on a valid <li> element",
-      (className) => {
-        const li = document.createElement("li");
-        setListItemClassName(li, className);
-        expect(li.className).toBe(className);
-      },
-    );
+    test.each(validClassNames)("sets className '%s' on a valid <li> element", (className) => {
+      const li = document.createElement('li');
+      setListItemClassName(li, className);
+      expect(li.className).toBe(className);
+    });
   });
 
-  describe("invalid first argument (li element)", () => {
+  describe('invalid first argument (li element)', () => {
     const invalidElements = [
       null,
       undefined,
       123,
-      "li",
+      'li',
       {},
       [],
-      document.createElement("div"),
-      document.createElement("ul"),
-      document.createTextNode("text"),
-      document.createComment("comment"),
+      document.createElement('div'),
+      document.createElement('ul'),
+      document.createTextNode('text'),
+      document.createComment('comment'),
       document.createDocumentFragment(),
     ];
 
-    test.each(invalidElements)("throws TypeError if element is %p", (el) => {
-      expect(() => setListItemClassName(el, "todo-item")).toThrow();
+    test.each(invalidElements)('throws TypeError if element is %p', (el) => {
+      expect(() => setListItemClassName(el, 'todo-item')).toThrow();
     });
   });
 
-  describe("invalid second argument (className)", () => {
+  describe('invalid second argument (className)', () => {
     const invalidClassNames = [
-      "", // empty string
-      "   ", // whitespace only
-      "123btn", // starts with digit
-      "my class", // contains space
-      "btn!", // invalid character
-      "\n", // newline
-      "🙂emoji", // emoji at start
-      "1variable", // starts with digit
+      '', // empty string
+      '   ', // whitespace only
+      '123btn', // starts with digit
+      'my class', // contains space
+      'btn!', // invalid character
+      '\n', // newline
+      '🙂emoji', // emoji at start
+      '1variable', // starts with digit
 
       null,
       undefined,
@@ -67,11 +64,11 @@ describe("setListItemClassName", () => {
       true,
       false,
       [],
-      ["a", "b"],
+      ['a', 'b'],
       {},
-      { toString: () => "test" },
+      { toString: () => 'test' },
       () => {},
-      Symbol("sym"),
+      Symbol('sym'),
       Symbol(),
       BigInt(10),
       /regex/,
@@ -81,19 +78,16 @@ describe("setListItemClassName", () => {
       new WeakMap(),
       new WeakSet(),
       Promise.resolve(),
-      new Error("error"),
-      new String("string object wrapper"), // object wrapper, not primitive
+      new Error('error'),
+      new String('string object wrapper'), // object wrapper, not primitive
       Object.create(null),
       String,
       Number,
     ];
 
-    test.each(invalidClassNames)(
-      "throws TypeError if className is invalid: %p",
-      (className) => {
-        const li = document.createElement("li");
-        expect(() => setListItemClassName(li, className)).toThrow();
-      },
-    );
+    test.each(invalidClassNames)('throws TypeError if className is invalid: %p', (className) => {
+      const li = document.createElement('li');
+      expect(() => setListItemClassName(li, className)).toThrow();
+    });
   });
 });

@@ -1,10 +1,10 @@
-import { getTodoValidMessage } from "@features";
+import { getTodoValidMessage } from '@features';
 
-const TODO_ERROR_CLASS = "todo__error";
+const TODO_ERROR_CLASS = 'todo__error';
 
-describe("getTodoValidMessage", () => {
+describe('getTodoValidMessage', () => {
   beforeEach(() => {
-    document.body.innerHTML = "";
+    document.body.innerHTML = '';
   });
 
   test(`should return the <div> element with class .${TODO_ERROR_CLASS}`, () => {
@@ -14,22 +14,14 @@ describe("getTodoValidMessage", () => {
     expect(el.classList.contains(TODO_ERROR_CLASS)).toBe(true);
   });
 
-  test("should throw TypeError if element is not <div>", () => {
+  test('should throw TypeError if element is not <div>', () => {
     document.body.innerHTML = `<section class="${TODO_ERROR_CLASS}"></section>`;
-    expect(() => getTodoValidMessage(`.${TODO_ERROR_CLASS}`)).toThrow(
-      TypeError,
-    );
-    expect(() => getTodoValidMessage(`.${TODO_ERROR_CLASS}`)).toThrow(
-      /DOM element of type <div>/,
-    );
+    expect(() => getTodoValidMessage(`.${TODO_ERROR_CLASS}`)).toThrow(TypeError);
+    expect(() => getTodoValidMessage(`.${TODO_ERROR_CLASS}`)).toThrow(/DOM element of type <div>/);
   });
 
-  test("should throw TypeError if element does not exist", () => {
-    expect(() => getTodoValidMessage(`.${TODO_ERROR_CLASS}`)).toThrow(
-      TypeError,
-    );
-    expect(() => getTodoValidMessage(`.${TODO_ERROR_CLASS}`)).toThrow(
-      /instance of HTMLElement/,
-    );
+  test('should throw TypeError if element does not exist', () => {
+    expect(() => getTodoValidMessage(`.${TODO_ERROR_CLASS}`)).toThrow(TypeError);
+    expect(() => getTodoValidMessage(`.${TODO_ERROR_CLASS}`)).toThrow(/instance of HTMLElement/);
   });
 });

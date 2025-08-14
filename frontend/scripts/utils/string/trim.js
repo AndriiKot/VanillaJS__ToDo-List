@@ -1,4 +1,4 @@
-import { safeString } from "@utils";
+import { safeString } from '@utils';
 
 export const trim = (str) => {
   return safeString(str).trim();

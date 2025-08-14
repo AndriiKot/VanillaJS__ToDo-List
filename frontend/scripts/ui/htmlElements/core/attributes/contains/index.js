@@ -1,1 +1,1 @@
-export * from "./safeContains.js";
+export * from './safeContains.js';

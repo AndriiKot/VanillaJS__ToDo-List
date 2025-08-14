@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import {
   getStaticTodoElements,
@@ -9,33 +9,27 @@ import {
   handleClickDeleteTodoTaskElement,
   createTodoItem,
   loadTodos,
-} from "@features";
+} from '@features';
 
-import { appendListItemLi } from "@ui";
+import { appendListItemLi } from '@ui';
 
 export const initTodoApp = () => {
-  const { todoButton, todoInput, todoList, todoValidMessage } =
-    getStaticTodoElements();
+  const { todoButton, todoInput, todoList, todoValidMessage } = getStaticTodoElements();
 
   const storedTodos = loadTodos();
-  storedTodos.forEach((text) =>
-    appendListItemLi(todoList, createTodoItem(text)),
-  );
+  storedTodos.forEach((text) => appendListItemLi(todoList, createTodoItem(text)));
 
   todoButton.addEventListener(
-    "click",
+    'click',
     handleClickAddTodoButton(todoInput, todoList, todoValidMessage),
   );
 
-  todoList.addEventListener("click", (event) => {
+  todoList.addEventListener('click', (event) => {
     handleClickItemTodo(event);
     handleClickDeleteTodoTaskElement(event);
   });
 
-  todoInput.addEventListener(
-    "keydown",
-    handleKeyDownTodo(todoInput, todoList, todoValidMessage),
-  );
+  todoInput.addEventListener('keydown', handleKeyDownTodo(todoInput, todoList, todoValidMessage));
 
-  todoInput.addEventListener("input", handleInputTodo(todoValidMessage));
+  todoInput.addEventListener('input', handleInputTodo(todoValidMessage));
 };

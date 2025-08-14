@@ -1,1 +1,1 @@
-export * from "./getTodoTextList.js";
+export * from './getTodoTextList.js';

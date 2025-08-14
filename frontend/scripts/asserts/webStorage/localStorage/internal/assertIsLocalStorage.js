@@ -1,4 +1,4 @@
-import { throwTypeErrorWithTypeInfo } from "@asserts";
+import { throwTypeErrorWithTypeInfo } from '@asserts';
 
 /**
  * @private
@@ -17,8 +17,8 @@ import { throwTypeErrorWithTypeInfo } from "@asserts";
  * @param {*} storage - The value to verify as `globalThis.localStorage`
  * @throws {TypeError} if the value is not `globalThis.localStorage`
  */
-export const assertIsLocalStorage = (storage, argName = "localStorage") => {
+export const assertIsLocalStorage = (storage, argName = 'localStorage') => {
   if (storage !== globalThis.localStorage) {
-    throwTypeErrorWithTypeInfo(storage, argName, "globalThis.localStorage");
+    throwTypeErrorWithTypeInfo(storage, argName, 'globalThis.localStorage');
   }
 };

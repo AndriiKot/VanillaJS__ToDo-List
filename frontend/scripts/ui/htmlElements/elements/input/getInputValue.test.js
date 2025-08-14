@@ -1,19 +1,19 @@
-import { getInputValue } from "@ui";
-import { createExpectedTypeMessage } from "@asserts";
+import { getInputValue } from '@ui';
+import { createExpectedTypeMessage } from '@asserts';
 
-describe("getInputValue", () => {
-  test("returns the value of a valid <input> element", () => {
-    const input = document.createElement("input");
-    input.value = "Test value";
-    expect(getInputValue(input)).toBe("Test value");
+describe('getInputValue', () => {
+  test('returns the value of a valid <input> element', () => {
+    const input = document.createElement('input');
+    input.value = 'Test value';
+    expect(getInputValue(input)).toBe('Test value');
   });
 
-  describe("throws TypeError for invalid inputs", () => {
+  describe('throws TypeError for invalid inputs', () => {
     const invalidInputs = [
       null,
       undefined,
-      "",
-      "string",
+      '',
+      'string',
       0,
       123,
       -1,
@@ -23,12 +23,12 @@ describe("getInputValue", () => {
       true,
       false,
       [],
-      ["input"],
+      ['input'],
       {},
-      { value: "fake" },
+      { value: 'fake' },
       () => {},
       function () {},
-      Symbol("sym"),
+      Symbol('sym'),
       BigInt(10),
       /regex/,
       new Date(),
@@ -36,18 +36,18 @@ describe("getInputValue", () => {
       new Set(),
       new WeakMap(),
       new WeakSet(),
-      Promise.resolve("input"),
-      new Error("fail"),
-      document.createElement("div"),
-      document.createElement("textarea"),
-      document.createElement("select"),
-      document.createTextNode("text"),
+      Promise.resolve('input'),
+      new Error('fail'),
+      document.createElement('div'),
+      document.createElement('textarea'),
+      document.createElement('select'),
+      document.createTextNode('text'),
     ];
 
-    test.each(invalidInputs)("throws TypeError for %p", (value) => {
+    test.each(invalidInputs)('throws TypeError for %p', (value) => {
       expect(() => getInputValue(value)).toThrow(TypeError);
       expect(() => getInputValue(value)).toThrow(
-        createExpectedTypeMessage("value", "a DOM element of type <input>"),
+        createExpectedTypeMessage('value', 'a DOM element of type <input>'),
       );
     });
   });

@@ -1,4 +1,4 @@
-import { assertIsString } from "@asserts";
+import { assertIsString } from '@asserts';
 
 /**
  * Parses a JSON string into its corresponding JavaScript value.
@@ -14,6 +14,6 @@ import { assertIsString } from "@asserts";
  * @throws {SyntaxError} If the input string is not valid JSON.
  */
 export const parseJSON = (raw) => {
-  assertIsString(raw, "raw");
+  assertIsString(raw, 'raw');
   return JSON.parse(raw);
 };

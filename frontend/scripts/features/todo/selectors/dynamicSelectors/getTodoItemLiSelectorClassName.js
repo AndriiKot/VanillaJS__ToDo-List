@@ -1,4 +1,4 @@
-import { makeSelectorClassName } from "@ui";
+import { makeSelectorClassName } from '@ui';
 
 /**
  * Returns the selector class name for a todo list item.
@@ -6,6 +6,6 @@ import { makeSelectorClassName } from "@ui";
  */
 
 export const getTodoItemLiSelectorClassName = () => {
-  const selector = ".todo__item";
+  const selector = '.todo__item';
   return makeSelectorClassName(selector);
 };

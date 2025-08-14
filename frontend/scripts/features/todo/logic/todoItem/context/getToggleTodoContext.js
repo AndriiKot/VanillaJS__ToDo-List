@@ -1,8 +1,5 @@
-import {
-  getTodoItemLiSelectorClassName,
-  getTodoItemLiCheckedClassName,
-} from "@features";
-import { safeClosest, getEventTarget, getEventCurrentTarget } from "@ui";
+import { getTodoItemLiSelectorClassName, getTodoItemLiCheckedClassName } from '@features';
+import { safeClosest, getEventTarget, getEventCurrentTarget } from '@ui';
 
 export const getToggleTodoContext = (event) => ({
   selector: getTodoItemLiSelectorClassName(),

@@ -1,5 +1,5 @@
-import { assertIsString } from "@asserts";
-import { isEmpty } from "@utils";
+import { assertIsString } from '@asserts';
+import { isEmpty } from '@utils';
 
 /**
  * Asserts that the given string is a syntactically valid CSS selector.
@@ -13,15 +13,12 @@ import { isEmpty } from "@utils";
 export const assertIsValidSelector = (selector) => {
   assertIsString(selector);
 
-  if (isEmpty(selector))
-    throw new SyntaxError("Selector cannot be an empty string.");
+  if (isEmpty(selector)) throw new SyntaxError('Selector cannot be an empty string.');
 
   // Try using the selector in a safe dummy context
   try {
-    document.createElement("div").querySelector(selector);
+    document.createElement('div').querySelector(selector);
   } catch (err) {
-    throw new SyntaxError(
-      `Invalid CSS selector: "${selector}". ${err.message}`,
-    );
+    throw new SyntaxError(`Invalid CSS selector: "${selector}". ${err.message}`);
   }
 };

@@ -17,8 +17,8 @@
 export const assertCanUseLocalStorage = (storage) => {
   const canUse = (() => {
     try {
-      const testKey = "__test__";
-      storage.setItem(testKey, "1");
+      const testKey = '__test__';
+      storage.setItem(testKey, '1');
       storage.removeItem(testKey);
       return true;
     } catch {
@@ -28,7 +28,7 @@ export const assertCanUseLocalStorage = (storage) => {
 
   if (!canUse) {
     throw new Error(
-      "globalThis.localStorage is present but not usable at runtime — possibly due to browser restrictions (e.g., Safari private mode, quota exceeded, or disabled access).",
+      'globalThis.localStorage is present but not usable at runtime — possibly due to browser restrictions (e.g., Safari private mode, quota exceeded, or disabled access).',
     );
   }
 };

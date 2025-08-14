@@ -11,8 +11,8 @@
 export const formatValuePreview = (value, maxLength = 80) => {
   let str;
 
-  if (typeof value === "bigint") {
-    str = value.toString() + "n";
+  if (typeof value === 'bigint') {
+    str = value.toString() + 'n';
   } else if (
     value instanceof WeakMap ||
     value instanceof WeakSet ||
@@ -33,5 +33,5 @@ export const formatValuePreview = (value, maxLength = 80) => {
     str = String(value);
   }
 
-  return str.length > maxLength ? str.slice(0, maxLength) + "…" : str;
+  return str.length > maxLength ? str.slice(0, maxLength) + '…' : str;
 };

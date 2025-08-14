@@ -1,4 +1,4 @@
-import { getObjectTypeString, getType, formatValuePreview } from "@utils";
+import { getObjectTypeString, getType, formatValuePreview } from '@utils';
 
 /**
  * Universal function to throw a TypeError with detailed type information.
@@ -7,11 +7,7 @@ import { getObjectTypeString, getType, formatValuePreview } from "@utils";
  * @param {string} argName - the name of the argument for error message context
  * @param {string} expectedDescription - description of the expected type or condition
  */
-export const throwTypeErrorWithTypeInfo = (
-  value,
-  argName,
-  expectedDescription,
-) => {
+export const throwTypeErrorWithTypeInfo = (value, argName, expectedDescription) => {
   const objectTypeString = getObjectTypeString(value);
   const type = getType(value);
   const preview = formatValuePreview(value);

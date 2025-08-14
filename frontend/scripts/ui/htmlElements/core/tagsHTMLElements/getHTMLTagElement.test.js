@@ -2,9 +2,9 @@
  * @jest-environment jsdom
  */
 
-import { getHTMLTagElement } from "@ui";
+import { getHTMLTagElement } from '@ui';
 
-describe("getHTMLTagElement", () => {
+describe('getHTMLTagElement', () => {
   beforeEach(() => {
     document.body.innerHTML = `
       <div id="test-div" class="box"></div>
@@ -12,19 +12,19 @@ describe("getHTMLTagElement", () => {
     `;
   });
 
-  test("returns the correct HTMLElement for a valid selector", () => {
-    const div = getHTMLTagElement("#test-div");
+  test('returns the correct HTMLElement for a valid selector', () => {
+    const div = getHTMLTagElement('#test-div');
     expect(div).toBeInstanceOf(HTMLElement);
-    expect(div.id).toBe("test-div");
+    expect(div.id).toBe('test-div');
   });
 
-  test("works for input elements", () => {
-    const input = getHTMLTagElement("#input-field");
+  test('works for input elements', () => {
+    const input = getHTMLTagElement('#input-field');
     expect(input).toBeInstanceOf(HTMLInputElement);
-    expect(input.tagName).toBe("INPUT");
+    expect(input.tagName).toBe('INPUT');
   });
 
-  test("throws TypeError if selector is not a string", () => {
+  test('throws TypeError if selector is not a string', () => {
     const invalidSelectors = [null, undefined, 123, {}, [], () => {}];
 
     invalidSelectors.forEach((sel) => {
@@ -35,9 +35,9 @@ describe("getHTMLTagElement", () => {
     });
   });
 
-  test("throws TypeError if selector does not match an HTMLElement", () => {
-    expect(() => getHTMLTagElement("#non-existent")).toThrow(TypeError);
-    expect(() => getHTMLTagElement("#non-existent")).toThrow(
+  test('throws TypeError if selector does not match an HTMLElement', () => {
+    expect(() => getHTMLTagElement('#non-existent')).toThrow(TypeError);
+    expect(() => getHTMLTagElement('#non-existent')).toThrow(
       /Expected .* to be an instance of HTMLElement/,
     );
   });

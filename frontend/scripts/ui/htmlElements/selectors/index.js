@@ -1,1 +1,1 @@
-export * from "./makeSelectorClassName.js";
+export * from './makeSelectorClassName.js';

@@ -1,5 +1,5 @@
-import { getHTMLTagElement } from "@ui";
-import { assertIsListUlElement } from "@asserts";
+import { getHTMLTagElement } from '@ui';
+import { assertIsListUlElement } from '@asserts';
 
 /**
  * Returns a <ul> element with the given class selector.

@@ -6,8 +6,8 @@
 
 html {
   font-family:
-    system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji";
+    system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji';
   line-height: 1.15;
   text-size-adjust: 100%;
   tab-size: 4;
@@ -26,8 +26,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family:
-    ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
   font-size: 1em;
 }
 
@@ -67,9 +66,9 @@ textarea {
 }
 
 button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
+[type='button'],
+[type='reset'],
+[type='submit'] {
   appearance: auto;
 }
 
@@ -86,7 +85,7 @@ progress {
   height: auto;
 }
 
-[type="search"] {
+[type='search'] {
   appearance: textfield;
   outline-offset: -2px;
 }

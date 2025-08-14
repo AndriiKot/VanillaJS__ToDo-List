@@ -1,11 +1,11 @@
-import { warnIfKeyMissing } from "./warnIfKeyMissing.js";
-import { jest } from "@jest/globals";
+import { warnIfKeyMissing } from './warnIfKeyMissing.js';
+import { jest } from '@jest/globals';
 
-describe("warnIfKeyMissing – logs warning only for null/undefined", () => {
+describe('warnIfKeyMissing – logs warning only for null/undefined', () => {
   let consoleWarnSpy;
 
   beforeEach(() => {
-    consoleWarnSpy = jest.spyOn(console, "warn").mockImplementation(() => {});
+    consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
   });
 
   afterEach(() => {
@@ -13,7 +13,7 @@ describe("warnIfKeyMissing – logs warning only for null/undefined", () => {
   });
 
   test('uses default contextName "storage" if not provided', () => {
-    warnIfKeyMissing("missingKey", null);
+    warnIfKeyMissing('missingKey', null);
     expect(consoleWarnSpy).toHaveBeenCalledWith(
       'storage: key "missingKey" not found or value is missing.',
     );
@@ -21,8 +21,8 @@ describe("warnIfKeyMissing – logs warning only for null/undefined", () => {
   test.each([
     [null, true],
     [undefined, true],
-    ["", false],
-    ["string", false],
+    ['', false],
+    ['string', false],
     [0, false],
     [-1, false],
     [NaN, false],
@@ -33,10 +33,10 @@ describe("warnIfKeyMissing – logs warning only for null/undefined", () => {
     [[], false],
     [() => {}, false],
     [function foo() {}, false],
-    [Symbol("x"), false],
+    [Symbol('x'), false],
     [BigInt(10), false],
     [new Date(), false],
-    [new Error("error"), false],
+    [new Error('error'), false],
     [new Map(), false],
     [new Set(), false],
     [new WeakMap(), false],
@@ -44,8 +44,8 @@ describe("warnIfKeyMissing – logs warning only for null/undefined", () => {
     [Promise.resolve(), false],
     [Promise.reject().catch(() => {}), false],
     [Object.create(null), false],
-  ])("value: %p → shouldWarn: %s", (value, shouldWarn) => {
-    warnIfKeyMissing("key", value, "context");
+  ])('value: %p → shouldWarn: %s', (value, shouldWarn) => {
+    warnIfKeyMissing('key', value, 'context');
     if (shouldWarn) {
       expect(consoleWarnSpy).toHaveBeenCalledWith(
         'context: key "key" not found or value is missing.',

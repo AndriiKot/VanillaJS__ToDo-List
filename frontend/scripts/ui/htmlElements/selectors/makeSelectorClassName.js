@@ -1,4 +1,4 @@
-import { assertIsValidSelectorClassName } from "@asserts";
+import { assertIsValidSelectorClassName } from '@asserts';
 
 export const makeSelectorClassName = (selector) => {
   assertIsValidSelectorClassName(selector);

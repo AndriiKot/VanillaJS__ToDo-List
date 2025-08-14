@@ -1,4 +1,4 @@
-import { TAG_CATEGORIES } from "./TAG_CATEGORIES";
+import { TAG_CATEGORIES } from './TAG_CATEGORIES';
 
 export const TAG_TO_CATEGORIES = (() => {
   const map = {};

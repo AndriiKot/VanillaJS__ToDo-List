@@ -1,1 +1,1 @@
-export * from "./assertValidLocalStorage.js";
+export * from './assertValidLocalStorage.js';

@@ -1,6 +1,6 @@
-import { getStaticTodoElements } from "./getStaticTodoElements";
+import { getStaticTodoElements } from './getStaticTodoElements';
 
-describe("getStaticTodoElements", () => {
+describe('getStaticTodoElements', () => {
   beforeEach(() => {
     document.body.innerHTML = `
       <button class="todo__btn">Add</button>
@@ -10,7 +10,7 @@ describe("getStaticTodoElements", () => {
     `;
   });
 
-  it("should return all required static elements", () => {
+  it('should return all required static elements', () => {
     const elements = getStaticTodoElements();
 
     expect(elements.todoButton).toBeInstanceOf(HTMLElement);

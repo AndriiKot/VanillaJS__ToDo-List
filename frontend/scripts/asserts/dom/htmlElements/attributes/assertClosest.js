@@ -1,5 +1,5 @@
-import { assertIsNode, assertIsString, assertIsDefined } from "@asserts";
-import { describeElement } from "@ui";
+import { assertIsNode, assertIsString, assertIsDefined } from '@asserts';
+import { describeElement } from '@ui';
 
 /**
  * Asserts that the closest element matching the selector exists from the given element.
@@ -10,8 +10,8 @@ import { describeElement } from "@ui";
  * @throws {TypeError} - If arguments are invalid or no match is found.
  */
 export const assertClosest = (element, selector) => {
-  assertIsNode(element, "first argument");
-  assertIsString(selector, "second argument");
+  assertIsNode(element, 'first argument');
+  assertIsString(selector, 'second argument');
 
   const match = element.closest(selector);
 

@@ -1,20 +1,20 @@
-import { assertIsListUlElement } from "@asserts";
+import { assertIsListUlElement } from '@asserts';
 
-describe("assertIsListUlElement", () => {
-  describe("valid <ul> elements (should NOT throw)", () => {
-    test("does not throw for a valid <ul> element", () => {
-      const ul = document.createElement("ul");
+describe('assertIsListUlElement', () => {
+  describe('valid <ul> elements (should NOT throw)', () => {
+    test('does not throw for a valid <ul> element', () => {
+      const ul = document.createElement('ul');
       expect(() => assertIsListUlElement(ul)).not.toThrow();
     });
   });
 
-  describe("invalid inputs (should throw TypeError)", () => {
+  describe('invalid inputs (should throw TypeError)', () => {
     const invalidValues = [
       null,
       undefined,
-      "",
-      "ul",
-      "text",
+      '',
+      'ul',
+      'text',
       123,
       0,
       1,
@@ -25,14 +25,14 @@ describe("assertIsListUlElement", () => {
       true,
       false,
       {},
-      { tagName: "UL" },
+      { tagName: 'UL' },
       [],
-      ["ul"],
+      ['ul'],
       () => {},
       function () {},
-      Symbol("ul"),
+      Symbol('ul'),
       BigInt(100),
-      new String("ul"),
+      new String('ul'),
       new Number(42),
       new Boolean(false),
       new Date(),
@@ -40,25 +40,25 @@ describe("assertIsListUlElement", () => {
       new Set(),
       new WeakMap(),
       new WeakSet(),
-      new Error("fail"),
-      Promise.resolve("ul"),
+      new Error('fail'),
+      Promise.resolve('ul'),
 
       // Wrong DOM elements
-      document.createElement("div"),
-      document.createElement("li"),
-      document.createElement("ol"),
-      document.createElement("span"),
-      document.createElement("input"),
-      document.createElement("section"),
-      document.createElement("table"),
+      document.createElement('div'),
+      document.createElement('li'),
+      document.createElement('ol'),
+      document.createElement('span'),
+      document.createElement('input'),
+      document.createElement('section'),
+      document.createElement('table'),
 
       // Non-element DOM nodes
-      document.createTextNode("text"),
-      document.createComment("comment"),
+      document.createTextNode('text'),
+      document.createComment('comment'),
       document.createDocumentFragment(),
     ];
 
-    test.each(invalidValues)("throws TypeError for %p", (value) => {
+    test.each(invalidValues)('throws TypeError for %p', (value) => {
       expect(() => assertIsListUlElement(value)).toThrow(TypeError);
       expect(() => assertIsListUlElement(value)).toThrow(
         /Expected .* to be a DOM element of type <ul>/,
@@ -66,12 +66,9 @@ describe("assertIsListUlElement", () => {
     });
   });
 
-  describe("String object wrappers", () => {
-    test.each([new String("ul"), new String("")])(
-      "throws TypeError for %p",
-      (value) => {
-        expect(() => assertIsListUlElement(value)).toThrow(TypeError);
-      },
-    );
+  describe('String object wrappers', () => {
+    test.each([new String('ul'), new String('')])('throws TypeError for %p', (value) => {
+      expect(() => assertIsListUlElement(value)).toThrow(TypeError);
+    });
   });
 });

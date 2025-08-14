@@ -1,5 +1,5 @@
-import { hasHTMLElementProperty } from "@ui";
+import { hasHTMLElementProperty } from '@ui';
 
 export const hasTextContent = (el) => {
-  return hasHTMLElementProperty(el, "textContent");
+  return hasHTMLElementProperty(el, 'textContent');
 };

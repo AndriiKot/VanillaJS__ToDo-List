@@ -116,7 +116,7 @@
 }
 
 .todo__item::before {
-  content: "";
+  content: '';
   position: absolute;
   width: 25px;
   height: 25px;
@@ -138,7 +138,7 @@
 }
 
 .todo__item--checked::after {
-  content: "\2714";
+  content: '\2714';
   position: absolute;
   top: 11px;
   left: 15px;

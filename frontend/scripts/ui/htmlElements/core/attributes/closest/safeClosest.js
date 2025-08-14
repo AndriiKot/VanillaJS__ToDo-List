@@ -1,4 +1,4 @@
-import { assertClosest } from "@asserts";
+import { assertClosest } from '@asserts';
 
 /**
  * Safely finds the closest ancestor (including the element itself) that matches the selector.

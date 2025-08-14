@@ -1,4 +1,4 @@
-import { parseJSON } from "./parseJSON.js";
+import { parseJSON } from './parseJSON.js';
 
 /**
  * @private
@@ -20,11 +20,7 @@ export const parseJSONWithFallback = (raw, fallback = null) => {
   try {
     return parseJSON(raw);
   } catch (error) {
-    console.error(
-      `parseJSONWithFallback: Failed to parse JSON. Raw value:`,
-      raw,
-      error,
-    );
+    console.error(`parseJSONWithFallback: Failed to parse JSON. Raw value:`, raw, error);
     return fallback;
   }
 };

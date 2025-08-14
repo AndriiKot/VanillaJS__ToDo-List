@@ -1,2 +1,2 @@
-export * from "./parseJSON.js";
-export * from "./parseJSONWithFallback.js";
+export * from './parseJSON.js';
+export * from './parseJSONWithFallback.js';

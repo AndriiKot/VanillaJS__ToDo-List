@@ -1,4 +1,4 @@
-import { assertIsHTMLTagElement } from "@asserts";
+import { assertIsHTMLTagElement } from '@asserts';
 
 /**
  * Returns the tag name of a given HTML element.
@@ -8,6 +8,6 @@ import { assertIsHTMLTagElement } from "@asserts";
  */
 
 export const getTagName = (el) => {
-  assertIsHTMLTagElement(el, "first argument");
+  assertIsHTMLTagElement(el, 'first argument');
   return el.tagName;
 };

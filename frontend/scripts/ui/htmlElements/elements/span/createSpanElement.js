@@ -1,3 +1,3 @@
 export const createSpanElement = () => {
-  return document.createElement("span");
+  return document.createElement('span');
 };

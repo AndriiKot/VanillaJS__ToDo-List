@@ -1,1 +1,1 @@
-export * from "./isDivElement";
+export * from './isDivElement';

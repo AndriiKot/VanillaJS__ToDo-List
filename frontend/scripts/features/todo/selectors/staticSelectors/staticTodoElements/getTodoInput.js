@@ -1,5 +1,5 @@
-import { getHTMLTagElement } from "@ui";
-import { assertIsInputElement } from "@asserts";
+import { getHTMLTagElement } from '@ui';
+import { assertIsInputElement } from '@asserts';
 
 /**
  * Returns the <input> element used for todos.

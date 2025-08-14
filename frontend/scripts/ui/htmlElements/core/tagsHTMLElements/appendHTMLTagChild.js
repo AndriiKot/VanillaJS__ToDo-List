@@ -1,4 +1,4 @@
-import { assertIsAllowedHtmlChild } from "@asserts";
+import { assertIsAllowedHtmlChild } from '@asserts';
 
 export const appendHTMLTagChild = (parent, child) => {
   assertIsAllowedHtmlChild(parent, child);

@@ -1,4 +1,4 @@
-import { createExpectedTypeMessage } from "@asserts";
+import { createExpectedTypeMessage } from '@asserts';
 
 /**
  * Asserts that a function throws a TypeError with a message matching
@@ -19,7 +19,7 @@ export const expectTypeErrorMessage = (fn, argName, expectedDescription) => {
   }
 
   if (!thrown) {
-    throw new Error("Expected the function to throw, but it did not.");
+    throw new Error('Expected the function to throw, but it did not.');
   }
 
   if (!(thrown instanceof TypeError)) {
@@ -28,10 +28,7 @@ export const expectTypeErrorMessage = (fn, argName, expectedDescription) => {
     );
   }
 
-  const expectedPattern = createExpectedTypeMessage(
-    argName,
-    expectedDescription,
-  );
+  const expectedPattern = createExpectedTypeMessage(argName, expectedDescription);
 
   if (!expectedPattern.test(thrown.message)) {
     throw new Error(

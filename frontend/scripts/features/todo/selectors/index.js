@@ -1,2 +1,2 @@
-export * from "./staticSelectors/";
-export * from "./dynamicSelectors/";
+export * from './staticSelectors/';
+export * from './dynamicSelectors/';

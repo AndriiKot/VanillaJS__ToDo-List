@@ -1,4 +1,4 @@
-import { throwTypeErrorWithTypeInfo } from "@asserts";
+import { throwTypeErrorWithTypeInfo } from '@asserts';
 
 /**
  * Asserts that the given value is neither null nor undefined.
@@ -10,8 +10,8 @@ import { throwTypeErrorWithTypeInfo } from "@asserts";
  */
 export const assertIsDefined = (
   value,
-  argName = "value",
-  expectedDescription = "a non-null and non-undefined value",
+  argName = 'value',
+  expectedDescription = 'a non-null and non-undefined value',
 ) => {
   if (value === null || value === undefined) {
     throwTypeErrorWithTypeInfo(value, argName, expectedDescription);

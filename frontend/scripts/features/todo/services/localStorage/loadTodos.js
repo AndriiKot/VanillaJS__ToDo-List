@@ -1,4 +1,4 @@
-import { STORAGE_KEYS, readParsedLocalStorageValue } from "@services";
+import { STORAGE_KEYS, readParsedLocalStorageValue } from '@services';
 
 /**
  * Loads todos from localStorage and ensures it returns an array of strings.
@@ -8,11 +8,7 @@ import { STORAGE_KEYS, readParsedLocalStorageValue } from "@services";
 export const loadTodos = () => {
   const defaultValue = [];
 
-  const result = readParsedLocalStorageValue(
-    localStorage,
-    STORAGE_KEYS.todo,
-    defaultValue,
-  );
+  const result = readParsedLocalStorageValue(localStorage, STORAGE_KEYS.todo, defaultValue);
 
   return Array.isArray(result) ? result : defaultValue;
 };

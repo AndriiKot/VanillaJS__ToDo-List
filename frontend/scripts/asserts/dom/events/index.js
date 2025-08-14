@@ -1,1 +1,1 @@
-export * from "./assertIsEvent.js";
+export * from './assertIsEvent.js';

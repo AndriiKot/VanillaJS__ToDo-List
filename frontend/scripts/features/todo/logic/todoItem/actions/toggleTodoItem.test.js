@@ -1,10 +1,10 @@
-import { toggleTodoItem } from "./toggleTodoItem";
+import { toggleTodoItem } from './toggleTodoItem';
 
-describe("toggleTodoItem", () => {
-  const className = "todo__item--checked";
+describe('toggleTodoItem', () => {
+  const className = 'todo__item--checked';
 
-  test("adds class if not present", () => {
-    const el = document.createElement("li");
+  test('adds class if not present', () => {
+    const el = document.createElement('li');
 
     expect(el.classList.contains(className)).toBe(false);
 
@@ -13,8 +13,8 @@ describe("toggleTodoItem", () => {
     expect(el.classList.contains(className)).toBe(true);
   });
 
-  test("removes class if present", () => {
-    const el = document.createElement("li");
+  test('removes class if present', () => {
+    const el = document.createElement('li');
     el.classList.add(className);
 
     expect(el.classList.contains(className)).toBe(true);

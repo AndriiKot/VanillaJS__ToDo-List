@@ -1,8 +1,8 @@
-import { PARENT_ALLOWED_CHILD_CATEGORIES } from "./PARENT_ALLOWED_CHILD_CATEGORIES";
-import { PARENT_CHILD_EXCEPTIONS } from "./PARENT_CHILD_EXCEPTIONS";
-import { TAG_TO_CATEGORIES } from "./TAG_TO_CATEGORIES.js";
+import { PARENT_ALLOWED_CHILD_CATEGORIES } from './PARENT_ALLOWED_CHILD_CATEGORIES';
+import { PARENT_CHILD_EXCEPTIONS } from './PARENT_CHILD_EXCEPTIONS';
+import { TAG_TO_CATEGORIES } from './TAG_TO_CATEGORIES.js';
 
-const SPECIAL_ALLOWED_CHILDREN_UL_OL = ["LI", "SCRIPT", "TEMPLATE"];
+const SPECIAL_ALLOWED_CHILDREN_UL_OL = ['LI', 'SCRIPT', 'TEMPLATE'];
 
 export const isAllowedHtmlChild = (parentTag, childTag) => {
   const parent = parentTag.toUpperCase();
@@ -13,10 +13,7 @@ export const isAllowedHtmlChild = (parentTag, childTag) => {
     return false;
   }
 
-  if (
-    (parent === "UL" || parent === "OL") &&
-    !SPECIAL_ALLOWED_CHILDREN_UL_OL.includes(child)
-  ) {
+  if ((parent === 'UL' || parent === 'OL') && !SPECIAL_ALLOWED_CHILDREN_UL_OL.includes(child)) {
     return false;
   }
 

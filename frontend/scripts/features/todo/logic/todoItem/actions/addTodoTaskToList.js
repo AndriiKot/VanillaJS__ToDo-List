@@ -1,5 +1,5 @@
-import { getTrimmedInputValue, appendListItemLi } from "@ui";
-import { createTodoItem, getTodoTextList, saveTodos } from "@features";
+import { getTrimmedInputValue, appendListItemLi } from '@ui';
+import { createTodoItem, getTodoTextList, saveTodos } from '@features';
 
 export const addTodoTaskToList = (list, input) => {
   const taskText = getTrimmedInputValue(input);

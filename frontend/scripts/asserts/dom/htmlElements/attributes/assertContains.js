@@ -1,9 +1,9 @@
-import { assertIsNode, throwTypeErrorWithTypeInfo } from "@asserts";
-import { describeElement } from "@ui";
+import { assertIsNode, throwTypeErrorWithTypeInfo } from '@asserts';
+import { describeElement } from '@ui';
 
 export const assertContains = (parentNode, childNode) => {
-  assertIsNode(parentNode, "first argument - ParentNode");
-  assertIsNode(childNode, "second argument - ChildNode");
+  assertIsNode(parentNode, 'first argument - ParentNode');
+  assertIsNode(childNode, 'second argument - ChildNode');
 
   const isValid = parentNode.contains(childNode);
 

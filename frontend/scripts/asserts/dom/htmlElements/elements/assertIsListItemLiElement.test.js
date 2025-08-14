@@ -1,19 +1,19 @@
-import { assertIsListItemLiElement } from "@asserts";
+import { assertIsListItemLiElement } from '@asserts';
 
-describe("assertIsListItemLiElement", () => {
-  describe("valid <li> elements (should NOT throw)", () => {
-    test("does not throw for a valid <li> element", () => {
-      const li = document.createElement("li");
+describe('assertIsListItemLiElement', () => {
+  describe('valid <li> elements (should NOT throw)', () => {
+    test('does not throw for a valid <li> element', () => {
+      const li = document.createElement('li');
       expect(() => assertIsListItemLiElement(li)).not.toThrow();
     });
   });
 
-  describe("invalid inputs (should throw TypeError)", () => {
+  describe('invalid inputs (should throw TypeError)', () => {
     const invalidValues = [
       null,
       undefined,
-      "",
-      "text",
+      '',
+      'text',
       123,
       true,
       false,
@@ -24,15 +24,15 @@ describe("assertIsListItemLiElement", () => {
       NaN,
       Infinity,
       -Infinity,
-      Symbol("el"),
+      Symbol('el'),
       BigInt(10),
       {},
-      { textContent: "fake" },
+      { textContent: 'fake' },
       [],
-      ["div"],
+      ['div'],
       () => {},
       function () {},
-      new String("str"),
+      new String('str'),
       new Number(123),
       new Boolean(false),
       new Date(),
@@ -40,17 +40,17 @@ describe("assertIsListItemLiElement", () => {
       new Set(),
       new WeakMap(),
       new WeakSet(),
-      new Error("fail"),
-      document.createElement("div"),
-      document.createElement("textarea"),
-      document.createElement("select"),
-      document.createTextNode("text"),
-      document.createComment("comment"),
+      new Error('fail'),
+      document.createElement('div'),
+      document.createElement('textarea'),
+      document.createElement('select'),
+      document.createTextNode('text'),
+      document.createComment('comment'),
       document.createDocumentFragment(),
-      Promise.resolve("ok"),
+      Promise.resolve('ok'),
     ];
 
-    test.each(invalidValues)("throws TypeError for %p", (value) => {
+    test.each(invalidValues)('throws TypeError for %p', (value) => {
       expect(() => assertIsListItemLiElement(value)).toThrow(TypeError);
       expect(() => assertIsListItemLiElement(value)).toThrow(
         /Expected .* to be a DOM element of type <li>, but received \[object .*\] of type .*/,

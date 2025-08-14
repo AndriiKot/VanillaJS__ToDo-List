@@ -1,2 +1,2 @@
-export * from "./localStorage/";
-export * from "./STORAGE_KEYS.js";
+export * from './localStorage/';
+export * from './STORAGE_KEYS.js';

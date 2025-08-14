@@ -1,1 +1,1 @@
-export * from "./isValidTodoInputValue.js";
+export * from './isValidTodoInputValue.js';

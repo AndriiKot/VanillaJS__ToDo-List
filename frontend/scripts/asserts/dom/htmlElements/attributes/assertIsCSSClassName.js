@@ -1,5 +1,5 @@
-import { assertIsString } from "@asserts";
-import { isEmpty } from "@utils";
+import { assertIsString } from '@asserts';
+import { isEmpty } from '@utils';
 
 /**
  * Asserts that a value is a valid CSS class name.
@@ -26,10 +26,10 @@ import { isEmpty } from "@utils";
  * @throws {SyntaxError} - If not a valid CSS class name.
  */
 export const assertIsCSSClassName = (className) => {
-  assertIsString(className, "CSS class name or HTML class name");
+  assertIsString(className, 'CSS class name or HTML class name');
 
   if (isEmpty(className)) {
-    throw new SyntaxError("Class name cannot be empty.");
+    throw new SyntaxError('Class name cannot be empty.');
   }
 
   if (/\s/.test(className)) {

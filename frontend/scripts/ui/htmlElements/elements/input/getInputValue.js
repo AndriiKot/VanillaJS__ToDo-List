@@ -1,4 +1,4 @@
-import { assertIsInputElement } from "@asserts";
+import { assertIsInputElement } from '@asserts';
 
 export const getInputValue = (input) => {
   assertIsInputElement(input);

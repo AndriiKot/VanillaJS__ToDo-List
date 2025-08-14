@@ -1,18 +1,18 @@
-import { handleKeyDownTodo } from "@features";
+import { handleKeyDownTodo } from '@features';
 
-describe("handleKeyDownTodo", () => {
+describe('handleKeyDownTodo', () => {
   let input, list, validationMsg;
 
   beforeEach(() => {
-    input = document.createElement("input");
-    list = document.createElement("ul");
-    validationMsg = document.createElement("div");
+    input = document.createElement('input');
+    list = document.createElement('ul');
+    validationMsg = document.createElement('div');
 
-    input.value = "Test task";
+    input.value = 'Test task';
   });
 
-  test("calls addTodoTask on Enter key", () => {
-    const event = new KeyboardEvent("keydown", { key: "Enter" });
+  test('calls addTodoTask on Enter key', () => {
+    const event = new KeyboardEvent('keydown', { key: 'Enter' });
     const handler = handleKeyDownTodo(input, list, validationMsg);
 
     handler(event);
@@ -20,8 +20,8 @@ describe("handleKeyDownTodo", () => {
     expect(list.children.length).toBeGreaterThan(0);
   });
 
-  test("does not call addTodoTask on other keys", () => {
-    const event = new KeyboardEvent("keydown", { key: "Escape" });
+  test('does not call addTodoTask on other keys', () => {
+    const event = new KeyboardEvent('keydown', { key: 'Escape' });
     const handler = handleKeyDownTodo(input, list, validationMsg);
 
     handler(event);

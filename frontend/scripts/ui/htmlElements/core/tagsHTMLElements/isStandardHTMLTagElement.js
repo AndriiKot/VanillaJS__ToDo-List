@@ -1,5 +1,5 @@
-import { VALID_STANDARD_HTML_TAGS, getTagName } from "@ui";
-import { assertIsHTMLTagElement } from "@asserts";
+import { VALID_STANDARD_HTML_TAGS, getTagName } from '@ui';
+import { assertIsHTMLTagElement } from '@asserts';
 
 export const isStandardHTMLTagElement = (el) => {
   assertIsHTMLTagElement(el);

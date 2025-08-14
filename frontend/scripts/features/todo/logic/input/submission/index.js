@@ -1,1 +1,1 @@
-export * from "./submitTodoTaskSuccessfully.js";
+export * from './submitTodoTaskSuccessfully.js';

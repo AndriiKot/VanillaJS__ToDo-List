@@ -1,5 +1,5 @@
-import { getRawLocalStorageValue } from "@services";
-import { parseJSONWithFallback } from "@utils";
+import { getRawLocalStorageValue } from '@services';
+import { parseJSONWithFallback } from '@utils';
 
 /**
  * Reads and parses a JSON value from localStorage (or similar).

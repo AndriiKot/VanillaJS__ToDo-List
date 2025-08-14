@@ -1,1 +1,1 @@
-export * from "./safeClosest.js";
+export * from './safeClosest.js';

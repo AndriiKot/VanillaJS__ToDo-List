@@ -1,1 +1,1 @@
-export * from "./isButtonElement";
+export * from './isButtonElement';

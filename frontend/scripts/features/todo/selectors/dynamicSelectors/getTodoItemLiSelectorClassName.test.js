@@ -1,8 +1,8 @@
-import { getTodoItemLiSelectorClassName } from "@features";
+import { getTodoItemLiSelectorClassName } from '@features';
 
-describe("getTodoItemLiSelectorClassName", () => {
-  test("returns the correct class name selector", () => {
+describe('getTodoItemLiSelectorClassName', () => {
+  test('returns the correct class name selector', () => {
     const result = getTodoItemLiSelectorClassName();
-    expect(result).toBe(".todo__item");
+    expect(result).toBe('.todo__item');
   });
 });

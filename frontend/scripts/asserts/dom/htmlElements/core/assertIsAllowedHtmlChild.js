@@ -1,4 +1,4 @@
-import { isAllowedHtmlChild, getTagName } from "@ui";
+import { isAllowedHtmlChild, getTagName } from '@ui';
 
 export function assertIsAllowedHtmlChild(parentTag, childTag) {
   parentTag = getTagName(parentTag);

@@ -1,5 +1,5 @@
-import { getHTMLTagElement } from "@ui";
-import { assertIsDivElement } from "@asserts";
+import { getHTMLTagElement } from '@ui';
+import { assertIsDivElement } from '@asserts';
 
 /**
  * Returns a <div> element with the given class selector.

@@ -1,4 +1,4 @@
-import { assertIsValidClassName } from "@asserts";
+import { assertIsCSSClassName } from "@asserts";
 
 /**
  * Returns the class name for a remove button todo list item.
@@ -6,6 +6,6 @@ import { assertIsValidClassName } from "@asserts";
  */
 export const getTodoItemLiRemoveButtonClassName = () => {
   const className = "todo__item--remove";
-  assertIsValidClassName(className);
+  assertIsCSSClassName(className);
   return className;
 };

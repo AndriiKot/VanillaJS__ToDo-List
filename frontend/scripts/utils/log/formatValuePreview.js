@@ -1,22 +1,37 @@
 /**
- * Formats a value to a short preview string for error messages and logs.
- * - Handles JSON serialization safely
- * - Limits output length to avoid huge dumps
- * - Marks truncated output with an ellipsis
+ * Formats any JS value to a short, safe preview string for logs and errors.
+ * - Uses JSON.stringify for objects/arrays if possible
+ * - Falls back to String(value) if JSON.stringify returns undefined
+ * - Limits output length to avoid flooding logs
  *
  * @param {*} value - any JS value
- * @param {number} maxLength - maximum length of the preview
- * @returns {string} - formatted preview
+ * @param {number} maxLength - maximum preview length
+ * @returns {string} preview string
  */
-
 export const formatValuePreview = (value, maxLength = 80) => {
-  try {
-    const str = JSON.stringify(value);
-    if (str === undefined) {
-      return String(value);
+  let str;
+
+  if (typeof value === "bigint") {
+    str = value.toString() + "n";
+  } else if (
+    value instanceof WeakMap ||
+    value instanceof WeakSet ||
+    value instanceof Map ||
+    value instanceof Set ||
+    value instanceof Promise
+  ) {
+    str = String(value);
+  } else {
+    try {
+      str = JSON.stringify(value);
+    } catch {
+      str = String(value);
     }
-    return str.length > maxLength ? str.slice(0, maxLength) + "…" : str;
-  } catch {
-    return String(value);
   }
+
+  if (str === undefined) {
+    str = String(value);
+  }
+
+  return str.length > maxLength ? str.slice(0, maxLength) + "…" : str;
 };

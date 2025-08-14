@@ -8,19 +8,19 @@ beforeEach(() => {
   document.body.innerHTML = `
     <ul class="todo__list">
       <li class="todo__item">
-        Create Docker
-        <span class="todo__item--remove">×</span>
+        <span class="todo__text">Create Docker</span>
+        <span class="todo__remove">×</span>
       </li>
       <li class="todo__item">
-        Learn Jest
-        <span class="todo__item--remove">×</span>
+        <span class="todo__text">Learn Jest</span>
+        <span class="todo__remove">×</span>
       </li>
     </ul>
   `;
   localStorage.clear();
 });
 
-test("does nothing if clicked target does not have todo__item--remove class", () => {
+test("does nothing if clicked target does not have todo__remove class", () => {
   const event = new MouseEvent("click");
   Object.defineProperty(event, "target", {
     value: document.querySelector(TODO_LIST_SELECTOR),
@@ -33,7 +33,7 @@ test("does nothing if clicked target does not have todo__item--remove class", ()
 
 test("does nothing if closest li.todo__item is null", () => {
   const span = document.createElement("span");
-  span.classList.add("todo__item--remove");
+  span.classList.add("todo__remove");
 
   const event = new MouseEvent("click");
   Object.defineProperty(event, "target", {
@@ -46,7 +46,7 @@ test("does nothing if closest li.todo__item is null", () => {
 });
 
 test("removes todo item and updates saved list", () => {
-  const deleteButton = document.querySelector(".todo__item--remove");
+  const deleteButton = document.querySelector(".todo__remove");
 
   const event = new MouseEvent("click", { bubbles: true });
   Object.defineProperty(event, "target", {
@@ -61,7 +61,9 @@ test("removes todo item and updates saved list", () => {
   const updatedList = getTodoList(TODO_LIST_SELECTOR);
   expect(updatedList.children.length).toBe(1);
 
-  expect(updatedList.children[0].textContent).toMatch(/Learn Jest/);
+  expect(updatedList.children[0].querySelector(".todo__text").textContent).toBe(
+    "Learn Jest",
+  );
 
   const updatedTodos = getTodoTextList(updatedList);
   expect(updatedTodos).toEqual(["Learn Jest"]);

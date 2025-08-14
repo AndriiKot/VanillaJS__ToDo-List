@@ -1,18 +1,16 @@
-import {
-  createListItem,
-  setListItemClassName,
-  setListItemTextContent,
-  appendHTMLTagChild,
-} from "@ui";
+import { appendHTMLTagChild } from "@ui";
 
-import { createTodoRemoveButton } from "@features";
+import {
+  createTodoRemoveButton,
+  createTodoItemContent,
+  createTodoItemLi,
+} from "@features";
 
 export const createTodoItem = (text, className = "todo__item") => {
-  const taskElement = createListItem();
-  setListItemClassName(taskElement, className);
-  setListItemTextContent(taskElement, text);
+  const taskElement = createTodoItemLi(className);
 
-  const removeTaskButton = createTodoRemoveButton();
-  appendHTMLTagChild(taskElement, removeTaskButton);
+  appendHTMLTagChild(taskElement, createTodoItemContent(text));
+  appendHTMLTagChild(taskElement, createTodoRemoveButton());
+
   return taskElement;
 };

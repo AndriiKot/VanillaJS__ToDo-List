@@ -5,7 +5,7 @@ import { assertIsCSSClassName } from "@asserts";
  * @returns {string}
  */
 export const getTodoItemLiRemoveButtonClassName = () => {
-  const className = "todo__item--remove";
+  const className = "todo__remove";
   assertIsCSSClassName(className);
   return className;
 };

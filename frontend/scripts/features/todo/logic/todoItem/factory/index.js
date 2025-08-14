@@ -1,2 +1,4 @@
-export * from "./createTodoItem.js";
-export * from "./createTodoRemoveButton.js";
+export * from "./createTodoItem";
+export * from "./createTodoRemoveButton";
+export * from "./createTodoItemContent";
+export * from "./createTodoItemLi";

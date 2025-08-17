@@ -15,8 +15,9 @@
     "build": "vite build --config config/vite.config.js",
     "preview": "vite preview --config config/vite.config.js",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --config config/jest.config.js",
-    "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch --config config/jest.config.js",
-    "test:coverage": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage --config config/jest.config.js",
+    "test:watch": "npm run test -- --watch",
+    "test:coverage": "npm run test -- --coverage",
+    "test:failed": "npm run test -- --json --outputFile=.cache/jest-results.json || node tools/jest/printFailedTest.js",
     "prepare": "node tools/prepare.js",
     "deploy": "gh-pages -d dist"
   },

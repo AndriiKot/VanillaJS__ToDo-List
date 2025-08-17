@@ -9,6 +9,5 @@ export const loadTodos = () => {
   const defaultValue = [];
 
   const result = readParsedLocalStorageValue(localStorage, STORAGE_KEYS.todo, defaultValue);
-
   return Array.isArray(result) ? result : defaultValue;
 };

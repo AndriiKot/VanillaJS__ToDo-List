@@ -4,7 +4,6 @@ import { createTodoRemoveButton, createTodoItemContent, createTodoItemLi } from 
 
 export const createTodoItem = (text, className = 'todo__item') => {
   const taskElement = createTodoItemLi(className);
-
   appendHTMLTagChild(taskElement, createTodoItemContent(text));
   appendHTMLTagChild(taskElement, createTodoRemoveButton());
 

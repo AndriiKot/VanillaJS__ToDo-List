@@ -9,15 +9,30 @@ import {
   handleClickDeleteTodoTaskElement,
   createTodoItem,
   loadTodos,
+  createTodosChannel,
+  initTodosFromStorage,
 } from '@features';
 
 import { appendListItemLi } from '@ui';
+
+const todosChannel = createTodosChannel();
+
+todosChannel.addEventListener('message', (event) => {
+  const { type, todos } = event.data;
+
+  if (type === 'update') {
+    const { todoList } = getStaticTodoElements();
+    todoList.innerHTML = '';
+
+    todos.forEach((todo) => appendListItemLi(todoList, initTodosFromStorage(todo)));
+  }
+});
 
 export const initTodoApp = () => {
   const { todoButton, todoInput, todoList, todoValidMessage } = getStaticTodoElements();
 
   const storedTodos = loadTodos();
-  storedTodos.forEach((text) => appendListItemLi(todoList, createTodoItem(text)));
+  storedTodos.forEach((todo) => appendListItemLi(todoList, initTodosFromStorage(todo)));
 
   todoButton.addEventListener(
     'click',

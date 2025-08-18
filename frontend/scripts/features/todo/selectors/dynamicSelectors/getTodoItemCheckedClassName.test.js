@@ -1,4 +1,4 @@
-import { getTodoItemCheckedClassName } from '@features';
+import { getTodoItemCheckedClassName } from './getTodoItemCheckedClassName';
 
 describe('getTodoItemCheckedClassName', () => {
   test('returns the correct class name string', () => {

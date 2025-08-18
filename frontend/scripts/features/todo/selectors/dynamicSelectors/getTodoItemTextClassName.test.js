@@ -1,4 +1,4 @@
-import { getTodoItemTextClassName } from '@features';
+import { getTodoItemTextClassName } from './getTodoItemTextClassName';
 
 describe('getTodoItemTextClassName', () => {
   test('returns the correct class name string', () => {

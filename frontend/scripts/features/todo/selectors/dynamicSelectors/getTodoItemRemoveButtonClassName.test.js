@@ -1,4 +1,4 @@
-import { getTodoItemRemoveButtonClassName } from '@features';
+import { getTodoItemRemoveButtonClassName } from './getTodoItemRemoveButtonClassName';
 
 describe('getTodoItemRemoveButtonClassName', () => {
   test('returns the correct class name string', () => {

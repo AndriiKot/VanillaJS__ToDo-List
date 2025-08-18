@@ -1,2 +1,2 @@
-export * from './getTodosFromList.js';
-export * from './initTodosFromStorage';
+export * from './getTodosFromList';
+export * from './renderTodosFromStorage';

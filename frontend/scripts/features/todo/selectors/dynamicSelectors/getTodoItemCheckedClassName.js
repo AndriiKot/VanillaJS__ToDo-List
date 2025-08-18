@@ -1,4 +1,4 @@
-import { assertIsCSSClassName } from '@asserts';
+import { assertIsHTMLClassName } from '@asserts';
 
 /**
  * Returns the class name for a checked todo list item.
@@ -6,6 +6,6 @@ import { assertIsCSSClassName } from '@asserts';
  */
 export const getTodoItemCheckedClassName = () => {
   const className = 'todo__item--checked';
-  assertIsCSSClassName(className);
+  assertIsHTMLClassName(className);
   return className;
 };

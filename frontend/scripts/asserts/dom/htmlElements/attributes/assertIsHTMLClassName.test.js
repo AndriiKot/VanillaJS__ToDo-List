@@ -1,6 +1,6 @@
-import { assertIsCSSClassName } from './assertIsCSSClassName.js';
+import { assertIsHTMLClassName } from './assertIsHTMLClassName.js';
 
-describe('assertIsCSSClassName', () => {
+describe('assertIsHTMLClassName', () => {
   describe('valid class names', () => {
     const validNames = [
       'my-class',
@@ -13,7 +13,7 @@ describe('assertIsCSSClassName', () => {
     ];
 
     test.each(validNames)("does not throw for valid class name: '%s'", (value) => {
-      expect(() => assertIsCSSClassName(value)).not.toThrow();
+      expect(() => assertIsHTMLClassName(value)).not.toThrow();
     });
   });
 
@@ -30,12 +30,12 @@ describe('assertIsCSSClassName', () => {
     ];
 
     test.each(invalidNames)("throws for invalid class name: '%s'", (value) => {
-      expect(() => assertIsCSSClassName(value)).toThrow();
+      expect(() => assertIsHTMLClassName(value)).toThrow();
     });
   });
 
   test('supports custom argument name in error message', () => {
     const argName = 'second argument';
-    expect(() => assertIsCSSClassName('', argName)).toThrow();
+    expect(() => assertIsHTMLClassName('', argName)).toThrow();
   });
 });

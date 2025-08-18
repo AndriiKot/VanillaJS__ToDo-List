@@ -1,7 +1,7 @@
-import { assertIsCSSClassName } from '@asserts';
+import { assertIsHTMLClassName } from '@asserts';
 
 export const classNameToSelector = (className) => {
-  assertIsCSSClassName(className);
+  assertIsHTMLClassName(className);
   const selector = `.${className}`;
   return selector;
 };

@@ -5,7 +5,7 @@ import { makeSelectorClassName } from '@ui';
  * @returns {string}
  */
 
-export const getTodoItemLiSelectorClassName = () => {
+export const getTodoItemSelectorClassName = () => {
   const selector = '.todo__item';
   return makeSelectorClassName(selector);
 };

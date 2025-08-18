@@ -1,4 +1,4 @@
-import { getTodoItemLiCheckedClassName, handleClickItemTodo } from '@features';
+import { getTodoItemCheckedClassName, handleClickItemTodo } from '@features';
 
 describe('handleClickItemTodo', () => {
   test('toggles class on todo item when clicked', () => {
@@ -21,11 +21,11 @@ describe('handleClickItemTodo', () => {
       configurable: true,
     });
 
-    expect(li.classList.contains(getTodoItemLiCheckedClassName())).toBe(false);
+    expect(li.classList.contains(getTodoItemCheckedClassName())).toBe(false);
 
     handleClickItemTodo(event);
 
-    expect(li.classList.contains(getTodoItemLiCheckedClassName())).toBe(true);
+    expect(li.classList.contains(getTodoItemCheckedClassName())).toBe(true);
 
     document.body.removeChild(container);
   });

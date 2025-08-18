@@ -1,10 +1,10 @@
 import { setTextContent, setClassName, createSpanElement } from '@ui';
 
-import { getTodoItemLiRemoveButtonClassName } from '@features';
+import { getTodoItemRemoveButtonClassName } from '@features';
 
 export const createTodoRemoveButton = () => {
   const span = createSpanElement();
-  setClassName(span, getTodoItemLiRemoveButtonClassName());
+  setClassName(span, getTodoItemRemoveButtonClassName());
   setTextContent(span, '\u00d7');
 
   span.setAttribute('aria-label', 'Delete task');

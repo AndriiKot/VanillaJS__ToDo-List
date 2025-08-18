@@ -1,6 +1,6 @@
 import { toggleTodoItem, getToggleTodoContext, getStaticTodoElements } from '@features';
 import { safeContains } from '@ui';
-import { saveTodos } from '@features';
+import { saveTodosToLocalStorage } from '@features';
 
 export const handleClickItemTodo = (event) => {
   const { target, currentTarget, className } = getToggleTodoContext(event);
@@ -12,5 +12,5 @@ export const handleClickItemTodo = (event) => {
     checked: li.classList.contains('todo__item--checked'),
   }));
 
-  saveTodos(todos);
+  saveTodosToLocalStorage(todos);
 };

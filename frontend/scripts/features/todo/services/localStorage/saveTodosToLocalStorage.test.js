@@ -1,15 +1,15 @@
-import { saveTodos } from './saveTodos.js';
+import { saveTodosToLocalStorage } from './saveTodosToLocalStorage.js';
 import { jest } from '@jest/globals';
 import { STORAGE_KEYS } from '@services';
 
-describe('saveTodos', () => {
+describe('saveTodosToLocalStorage', () => {
   beforeEach(() => {
     localStorage.clear();
   });
 
   test('saves a list of todos to localStorage', () => {
     const todos = ['Task 1', 'Task 2'];
-    saveTodos(todos);
+    saveTodosToLocalStorage(todos);
 
     const stored = localStorage.getItem(STORAGE_KEYS.todo);
     expect(stored).toBe(JSON.stringify(todos));
@@ -17,28 +17,28 @@ describe('saveTodos', () => {
 
   test('overwrites existing data', () => {
     localStorage.setItem(STORAGE_KEYS.todo, JSON.stringify(['Old Task']));
-    saveTodos(['New Task']);
+    saveTodosToLocalStorage(['New Task']);
 
     const stored = localStorage.getItem(STORAGE_KEYS.todo);
     expect(stored).toBe(JSON.stringify(['New Task']));
   });
 
   test('saves an empty list correctly', () => {
-    saveTodos([]);
+    saveTodosToLocalStorage([]);
 
     const stored = localStorage.getItem(STORAGE_KEYS.todo);
     expect(stored).toBe('[]');
   });
 
   test('handles null without crashing', () => {
-    expect(() => saveTodos(null)).not.toThrow();
+    expect(() => saveTodosToLocalStorage(null)).not.toThrow();
 
     const stored = localStorage.getItem(STORAGE_KEYS.todo);
     expect(stored).toBe('null');
   });
 
   test('handles undefined without crashing', () => {
-    expect(() => saveTodos(undefined)).not.toThrow();
+    expect(() => saveTodosToLocalStorage(undefined)).not.toThrow();
 
     const stored = localStorage.getItem(STORAGE_KEYS.todo);
     expect(stored).toBe('undefined');
@@ -52,7 +52,7 @@ describe('saveTodos', () => {
 
     const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
 
-    saveTodos(['fail']);
+    saveTodosToLocalStorage(['fail']);
 
     expect(consoleSpy).toHaveBeenCalledWith('Failed to save todos:', expect.any(Error));
 

@@ -1,6 +1,6 @@
-import { getTodoTextList } from './getTodoTextList';
+import { getTodosFromList } from './getTodosFromList';
 
-describe('getTodoTextList', () => {
+describe('getTodosFromList', () => {
   let ul;
 
   beforeEach(() => {
@@ -14,12 +14,12 @@ describe('getTodoTextList', () => {
       <li><span class="todo__text">Task 3</span><span class="todo__remove">×</span></li>
     `;
 
-    const result = getTodoTextList(ul);
+    const result = getTodosFromList(ul);
     expect(result).toEqual(['Task 1', 'Task 2', 'Task 3']);
   });
 
   test('handles an empty <ul> without errors', () => {
-    const result = getTodoTextList(ul);
+    const result = getTodosFromList(ul);
     expect(result).toEqual([]);
   });
 
@@ -28,7 +28,7 @@ describe('getTodoTextList', () => {
       <li><span class="todo__text">   Padded   </span></li>
     `;
 
-    const result = getTodoTextList(ul);
+    const result = getTodosFromList(ul);
     expect(result).toEqual(['   Padded   ']); // no trim, as function does not trim
   });
 });

@@ -1,7 +1,7 @@
 import { STORAGE_KEYS } from '@services';
 import { createTodosChannel } from '@features';
 
-export const saveTodos = (todos) => {
+export const saveTodosToLocalStorage = (todos) => {
   try {
     localStorage.setItem(STORAGE_KEYS.todo, JSON.stringify(todos));
     createTodosChannel().postMessage({ type: 'update', todos });

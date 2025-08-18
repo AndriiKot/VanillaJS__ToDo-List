@@ -7,7 +7,6 @@ import {
   handleInputTodo,
   handleClickItemTodo,
   handleClickDeleteTodoTaskElement,
-  createTodoItem,
   loadTodos,
   createTodosChannel,
   initTodosFromStorage,

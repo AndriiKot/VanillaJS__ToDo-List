@@ -1,5 +1,5 @@
 import { initTodoApp } from '@app';
-import { getTodoItemLiCheckedClassName } from '@features';
+import { getTodoItemCheckedClassName } from '@features';
 import { STORAGE_KEYS } from '@services';
 
 describe('initTodoApp', () => {
@@ -50,7 +50,7 @@ describe('initTodoApp', () => {
     expect(todoList.children[1].textContent).toContain('Task 2');
 
     const li = todoList.children[0];
-    expect(li.classList.contains(getTodoItemLiCheckedClassName())).toBe(false);
+    expect(li.classList.contains(getTodoItemCheckedClassName())).toBe(false);
 
     const clickEvent = new MouseEvent('click', { bubbles: true });
     Object.defineProperty(clickEvent, 'target', {
@@ -60,7 +60,7 @@ describe('initTodoApp', () => {
 
     todoList.dispatchEvent(clickEvent);
 
-    expect(li.classList.contains(getTodoItemLiCheckedClassName())).toBe(true);
+    expect(li.classList.contains(getTodoItemCheckedClassName())).toBe(true);
 
     let clicked = false;
     todoButton.addEventListener('click', () => {

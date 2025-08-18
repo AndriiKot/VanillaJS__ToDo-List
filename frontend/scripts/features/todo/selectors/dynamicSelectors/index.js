@@ -1,3 +1,4 @@
-export * from './getTodoItemLiSelectorClassName.js';
-export * from './getTodoItemLiCheckedClassName.js';
-export * from './getTodoItemLiRemoveButtonClassName.js';
+export * from './getTodoItemSelectorClassName';
+export * from './getTodoItemCheckedClassName';
+export * from './getTodoItemRemoveButtonClassName';
+export * from './getTodoItemTextClassName';

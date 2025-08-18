@@ -1,5 +1,5 @@
 import { getTodoList } from '@features';
-import { getTodoTextList, saveTodos } from '@features';
+import { getTodosFromList, saveTodosToLocalStorage } from '@features';
 
 export const handleClickDeleteTodoTaskElement = (event) => {
   const target = event.target;
@@ -13,6 +13,6 @@ export const handleClickDeleteTodoTaskElement = (event) => {
   }
 
   const list = getTodoList('.todo__list');
-  const todos = getTodoTextList(list);
-  saveTodos(todos);
+  const todos = getTodosFromList(list);
+  saveTodosToLocalStorage(todos);
 };

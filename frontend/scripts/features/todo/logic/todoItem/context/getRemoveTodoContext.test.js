@@ -1,6 +1,6 @@
 import {
-  getTodoItemLiSelectorClassName,
-  getTodoItemLiRemoveButtonClassName,
+  getTodoItemSelectorClassName,
+  getTodoItemRemoveButtonClassName,
   getRemoveTodoContext,
 } from '@features';
 
@@ -8,9 +8,9 @@ describe('getRemoveTodoContext', () => {
   test('returns correct context with selector, className, target, currentTarget', () => {
     const currentTarget = document.createElement('ul');
     const li = document.createElement('li');
-    li.className = getTodoItemLiSelectorClassName().slice(1);
+    li.className = getTodoItemSelectorClassName().slice(1);
     const button = document.createElement('button');
-    button.className = getTodoItemLiRemoveButtonClassName().slice(1);
+    button.className = getTodoItemRemoveButtonClassName().slice(1);
 
     li.appendChild(button);
     currentTarget.appendChild(li);
@@ -27,8 +27,8 @@ describe('getRemoveTodoContext', () => {
 
     const context = getRemoveTodoContext(event);
 
-    expect(context.selector).toBe(getTodoItemLiSelectorClassName());
-    expect(context.className).toBe(getTodoItemLiRemoveButtonClassName());
+    expect(context.selector).toBe(getTodoItemSelectorClassName());
+    expect(context.className).toBe(getTodoItemRemoveButtonClassName());
     expect(context.target).toBe(li);
     expect(context.currentTarget).toBe(currentTarget);
   });

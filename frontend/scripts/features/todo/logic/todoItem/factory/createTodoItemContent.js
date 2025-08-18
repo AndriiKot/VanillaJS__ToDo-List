@@ -1,8 +1,19 @@
-import { createSpanElement, setClassName, setTextContent } from '@ui';
+import { createSpanElement, setTextContent } from '@ui';
+import { getTodoItemTextClassName } from '@features';
 
-export const createTodoItemContent = (text, className = 'todo__text') => {
+/**
+ * Creates a new span element with the provided text and the
+ * className returned by getTodoItemTextClassName.
+ *
+ * @param {string} text - The text content for the span element.
+ * @return {HTMLSpanElement} A new span element with the provided text
+ * and the correct class name.
+ */
+
+export const createTodoItemContent = (text) => {
+  const className = getTodoItemTextClassName();
   const spanTextContent = createSpanElement();
-  setClassName(spanTextContent, className);
+  spanTextContent.className = className;
   setTextContent(spanTextContent, text);
   return spanTextContent;
 };

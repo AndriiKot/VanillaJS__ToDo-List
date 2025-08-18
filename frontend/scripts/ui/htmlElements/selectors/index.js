@@ -1,1 +1,3 @@
-export * from './makeSelectorClassName.js';
+export * from './classNameToSelector';
+export * from './queryClassNameInElement';
+export * from './queryClassNameInDocument';

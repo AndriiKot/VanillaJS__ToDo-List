@@ -1,14 +1,10 @@
-import {
-  getTodoItemClassName,
-  getTodoItemCheckedClassName,
-  getToggleTodoContext,
-} from '@features';
+import { getTodoItemClassName, getTodoItemCheckedClassName, getToggleTodoContext } from '@features';
 
 describe('getToggleTodoContext', () => {
   test('returns correct context with className, target, currentTarget', () => {
     const currentTarget = document.createElement('ul');
     const li = document.createElement('li');
-    li.className = getTodoItemClassName(); 
+    li.className = getTodoItemClassName();
     const span = document.createElement('span');
 
     li.appendChild(span);

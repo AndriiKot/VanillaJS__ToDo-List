@@ -1,6 +1,6 @@
-import { getTodosFromList } from './getTodosFromList';
+import { serializeTodosFromList } from './serializeTodosFromList';
 
-describe('getTodosFromList', () => {
+describe('serializeTodosFromList', () => {
   let ul;
 
   beforeEach(() => {
@@ -14,12 +14,12 @@ describe('getTodosFromList', () => {
       <li><span class="todo__text">Task 3</span><span class="todo__remove">×</span></li>
     `;
 
-    const result = getTodosFromList(ul);
+    const result = serializeTodosFromList(ul);
     expect(result).toEqual(['Task 1', 'Task 2', 'Task 3']);
   });
 
   test('handles an empty <ul> without errors', () => {
-    const result = getTodosFromList(ul);
+    const result = serializeTodosFromList(ul);
     expect(result).toEqual([]);
   });
 
@@ -28,7 +28,7 @@ describe('getTodosFromList', () => {
       <li><span class="todo__text">   Padded   </span></li>
     `;
 
-    const result = getTodosFromList(ul);
+    const result = serializeTodosFromList(ul);
     expect(result).toEqual(['   Padded   ']); // no trim, as function does not trim
   });
 });

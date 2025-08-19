@@ -1,6 +1,5 @@
 import { assertIsElement, assertIsHTMLClassName } from '@asserts';
 
-
 /**
  * Toggles a class name on an HTML element.
  *

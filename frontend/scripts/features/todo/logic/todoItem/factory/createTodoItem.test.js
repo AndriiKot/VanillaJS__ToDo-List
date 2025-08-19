@@ -24,7 +24,7 @@ describe('createTodoItem', () => {
 
   test('creates a <li> element with empty string text', () => {
     const li = createTodoItem('');
-    
+
     // Check that the span exists and contains empty text
     const textSpan = li.querySelector('.todo__text');
     expect(textSpan.textContent).toBe('');

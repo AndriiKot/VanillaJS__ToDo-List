@@ -20,7 +20,7 @@ describe('addClassName', () => {
     addClassName(div, 'unique-class'); // try adding again
 
     // Count occurrences of the class name
-    const count = div.className.split(' ').filter(c => c === 'unique-class').length;
+    const count = div.className.split(' ').filter((c) => c === 'unique-class').length;
     expect(count).toBe(1); // should not be duplicated
   });
 

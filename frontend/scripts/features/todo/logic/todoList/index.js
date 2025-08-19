@@ -1,2 +1,2 @@
-export * from './getTodosFromList';
+export * from './serializeTodosFromList';
 export * from './renderTodosFromStorage';

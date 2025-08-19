@@ -1,5 +1,5 @@
 import { handleClickDeleteTodoTaskElement } from './handleClickDeleteTodoTaskElement';
-import { getTodoList, getTodosFromList } from '@features';
+import { getTodoList, serializeTodosFromList } from '@features';
 import { STORAGE_KEYS } from '@services';
 
 const TODO_LIST_SELECTOR = '.todo__list';
@@ -63,7 +63,7 @@ test('removes todo item and updates saved list', () => {
 
   expect(updatedList.children[0].querySelector('.todo__text').textContent).toBe('Learn Jest');
 
-  const updatedTodos = getTodosFromList(updatedList);
+  const updatedTodos = serializeTodosFromList(updatedList);
   expect(updatedTodos).toEqual(['Learn Jest']);
 
   const stored = JSON.parse(localStorage.getItem(STORAGE_KEYS.todo));

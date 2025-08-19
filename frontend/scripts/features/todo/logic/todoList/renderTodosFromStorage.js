@@ -16,5 +16,7 @@ import { initTodoItemFromStorage } from '@features';
  */
 
 export const renderTodosFromStorage = (todoListElement, todosDataArray) => {
-  todosDataArray.forEach((todo) => appendListItemLi(todoListElement, initTodoItemFromStorage(todo)));
+  todosDataArray.forEach((todo) =>
+    appendListItemLi(todoListElement, initTodoItemFromStorage(todo)),
+  );
 };

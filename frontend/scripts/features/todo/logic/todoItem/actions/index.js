@@ -1,2 +1,3 @@
-export * from './addTodoTaskToList.js';
-export * from './toggleTodoItem.js';
+export * from './addTodoTaskToList';
+export * from './toggleTodoItem';
+export * from './initTodoItemFromStorage';

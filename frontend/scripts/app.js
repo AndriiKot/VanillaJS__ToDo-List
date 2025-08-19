@@ -9,10 +9,8 @@ import {
   handleClickDeleteTodoTaskElement,
   loadTodos,
   createTodosChannel,
-  initTodosFromStorage,
+  renderTodosFromStorage,
 } from '@features';
-
-import { appendListItemLi } from '@ui';
 
 const todosChannel = createTodosChannel();
 
@@ -22,8 +20,7 @@ todosChannel.addEventListener('message', (event) => {
   if (type === 'update') {
     const { todoList } = getStaticTodoElements();
     todoList.innerHTML = '';
-
-    todos.forEach((todo) => appendListItemLi(todoList, initTodosFromStorage(todo)));
+    renderTodosFromStorage(todoList, todos);
   }
 });
 
@@ -31,7 +28,7 @@ export const initTodoApp = () => {
   const { todoButton, todoInput, todoList, todoValidMessage } = getStaticTodoElements();
 
   const storedTodos = loadTodos();
-  storedTodos.forEach((todo) => appendListItemLi(todoList, initTodosFromStorage(todo)));
+  renderTodosFromStorage(todoList, storedTodos);
 
   todoButton.addEventListener(
     'click',

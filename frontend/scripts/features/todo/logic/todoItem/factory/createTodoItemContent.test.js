@@ -17,7 +17,19 @@ describe('createTodoItemContent', () => {
 
   describe('throws when text is not a string', () => {
     const invalidValues = [
-      123, -5, 0, NaN, Infinity, true, false, null, undefined, {}, [], Symbol('sym'), () => {},
+      123,
+      -5,
+      0,
+      NaN,
+      Infinity,
+      true,
+      false,
+      null,
+      undefined,
+      {},
+      [],
+      Symbol('sym'),
+      () => {},
     ];
 
     test.each(invalidValues)('throws TypeError for text: %p', (value) => {

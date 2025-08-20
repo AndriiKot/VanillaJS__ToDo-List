@@ -1,11 +1,12 @@
 import { toggleTodoItem, getToggleTodoContext, serializeTodosFromList } from '@features';
-import { safeContains } from '@ui';
+import { resetInput, safeContains } from '@ui';
 import { saveTodosToLocalStorage } from '@features';
 
-export const handleClickItemTodo = (event) => {
+export const handleClickItemTodo = (event, todoList, todoInput) => {
   const { target, currentTarget, className } = getToggleTodoContext(event);
   safeContains(currentTarget, target);
   toggleTodoItem(target, className);
 
-  saveTodosToLocalStorage(serializeTodosFromList());
+  saveTodosToLocalStorage(serializeTodosFromList(todoList));
+  resetInput(todoInput);
 };

@@ -1,6 +1,7 @@
 import { serializeTodosFromList, saveTodosToLocalStorage } from '@features';
+import { resetInput } from '@ui';
 
-export const handleClickDeleteTodoTaskElement = (event) => {
+export const handleClickDeleteTodoTaskElement = (event, todoList, todoInput) => {
   const target = event.target;
 
   if (!target.classList.contains('todo__remove')) return;
@@ -10,6 +11,6 @@ export const handleClickDeleteTodoTaskElement = (event) => {
   if (li && li.parentElement) {
     li.parentElement.removeChild(li);
   }
-
-  saveTodosToLocalStorage(serializeTodosFromList());
+  saveTodosToLocalStorage(serializeTodosFromList(todoList));
+  resetInput(todoInput);
 };

@@ -36,8 +36,8 @@ export const initTodoApp = () => {
   );
 
   todoList.addEventListener('click', (event) => {
-    handleClickItemTodo(event);
-    handleClickDeleteTodoTaskElement(event);
+    handleClickItemTodo(event, todoList, todoInput);
+    handleClickDeleteTodoTaskElement(event, todoList, todoInput);
   });
 
   todoInput.addEventListener('keydown', handleKeyDownTodo(todoInput, todoList, todoValidMessage));

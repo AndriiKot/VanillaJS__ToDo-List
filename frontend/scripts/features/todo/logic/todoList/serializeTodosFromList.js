@@ -1,7 +1,6 @@
 import { getTodoItemCheckedClassName, getStaticTodoElements } from '@features';
 
-export const serializeTodosFromList = () => {
-  const { todoList } = getStaticTodoElements();
+export const serializeTodosFromList = (todoList) => {
   return Array.from(todoList.children, (li) => {
     return {
       text: li.querySelector('.todo__text').textContent,

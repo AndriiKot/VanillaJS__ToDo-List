@@ -74,4 +74,21 @@ describe('handleClickTodoList', () => {
     expect(features.saveTodosToLocalStorage).toHaveBeenCalledWith([{ text: 'mocked task' }]);
     expect(ui.resetInput).toHaveBeenCalledWith(todoInput);
   });
+  test('does nothing if clicking outside .todo__item', () => {
+    const outside = document.createElement('div');
+    handleClickTodoList({ target: outside, currentTarget: todoList }, todoList, todoInput);
+
+    // функции saveTodosToLocalStorage и resetInput всё равно должны вызываться
+    expect(features.saveTodosToLocalStorage).toHaveBeenCalled();
+    expect(ui.resetInput).toHaveBeenCalled();
+  });
+
+  test('does nothing if removeBtn.closest(.todo__item) returns null', () => {
+    const fakeRemove = document.createElement('span');
+    fakeRemove.className = 'todo__remove';
+    handleClickTodoList({ target: fakeRemove, currentTarget: todoList }, todoList, todoInput);
+
+    expect(features.saveTodosToLocalStorage).toHaveBeenCalled();
+    expect(ui.resetInput).toHaveBeenCalled();
+  });
 });

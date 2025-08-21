@@ -13,7 +13,7 @@ import { isEmpty } from '@utils';
 export const assertIsValidSelector = (selector) => {
   assertIsString(selector);
 
-  if (isEmpty(selector)) throw new SyntaxError('Selector cannot be an empty string.');
+  if (isEmpty(selector)) throw new SyntaxError('CSS Selector cannot be an empty string.');
 
   // Try using the selector in a safe dummy context
   try {

@@ -5,27 +5,26 @@ import {
   handleClickAddTodoButton,
   handleKeyDownTodo,
   handleInputTodo,
-  handleClickItemTodo,
-  handleClickDeleteTodoTaskElement,
+  handleClickTodoList,
   loadTodos,
   createTodosChannel,
   renderTodosFromStorage,
 } from '@features';
 
-const todosChannel = createTodosChannel();
-
-todosChannel.addEventListener('message', (event) => {
-  const { type, todos } = event.data;
-
-  if (type === 'update') {
-    const { todoList } = getStaticTodoElements();
-    todoList.innerHTML = '';
-    renderTodosFromStorage(todoList, todos);
-  }
-});
-
 export const initTodoApp = () => {
   const { todoButton, todoInput, todoList, todoValidMessage } = getStaticTodoElements();
+
+  const todosChannel = createTodosChannel();
+
+  todosChannel.addEventListener('message', (event) => {
+    const { type, todos } = event.data;
+
+    if (type === 'update') {
+      const { todoList } = getStaticTodoElements();
+      todoList.innerHTML = '';
+      renderTodosFromStorage(todoList, todos);
+    }
+  });
 
   const storedTodos = loadTodos();
   renderTodosFromStorage(todoList, storedTodos);
@@ -36,8 +35,7 @@ export const initTodoApp = () => {
   );
 
   todoList.addEventListener('click', (event) => {
-    handleClickItemTodo(event, todoList, todoInput);
-    handleClickDeleteTodoTaskElement(event, todoList, todoInput);
+    handleClickTodoList(event, todoList, todoInput);
   });
 
   todoInput.addEventListener('keydown', handleKeyDownTodo(todoInput, todoList, todoValidMessage));

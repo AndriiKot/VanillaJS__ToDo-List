@@ -1,4 +1,4 @@
-import { getTodoItemCheckedClassName, getStaticTodoElements } from '@features';
+import { getTodoItemCheckedClassName } from '@features';
 
 export const serializeTodosFromList = (todoList) => {
   return Array.from(todoList.children, (li) => {

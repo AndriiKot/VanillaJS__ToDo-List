@@ -7,7 +7,7 @@ describe('serializeTodosFromList', () => {
     ul = document.createElement('ul');
   });
 
-  test('returns a list of task texts from .todo__text elements', () => {
+  test('returns a list of task objects with text and checked properties', () => {
     ul.innerHTML = `
       <li><span class="todo__text">Task 1</span><span class="todo__remove">×</span></li>
       <li><span class="todo__text">Task 2</span><span class="todo__remove">×</span></li>
@@ -15,7 +15,11 @@ describe('serializeTodosFromList', () => {
     `;
 
     const result = serializeTodosFromList(ul);
-    expect(result).toEqual(['Task 1', 'Task 2', 'Task 3']);
+    expect(result).toEqual([
+      { text: 'Task 1', checked: false },
+      { text: 'Task 2', checked: false },
+      { text: 'Task 3', checked: false },
+    ]);
   });
 
   test('handles an empty <ul> without errors', () => {
@@ -23,12 +27,12 @@ describe('serializeTodosFromList', () => {
     expect(result).toEqual([]);
   });
 
-  test('returns texts even if there are surrounding spaces', () => {
+  test('returns texts correctly even with surrounding spaces', () => {
     ul.innerHTML = `
       <li><span class="todo__text">   Padded   </span></li>
     `;
 
     const result = serializeTodosFromList(ul);
-    expect(result).toEqual(['   Padded   ']); // no trim, as function does not trim
+    expect(result).toEqual([{ text: '   Padded   ', checked: false }]);
   });
 });

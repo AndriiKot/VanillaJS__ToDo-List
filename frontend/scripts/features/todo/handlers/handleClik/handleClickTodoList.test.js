@@ -12,13 +12,17 @@ jest.unstable_mockModule('@features', () => ({
   })),
   serializeTodosFromList: jest.fn(() => [{ text: 'mocked task' }]),
   saveTodosToLocalStorage: jest.fn(),
+  getTodoItemRemoveButtonClassName: jest.fn(() => 'todo__remove'),
+  getTodoItemClassName: jest.fn(() => 'todo__item'),
 }));
 
 jest.unstable_mockModule('@ui', () => ({
   resetInput: jest.fn(),
+  classNameToSelector: jest.fn((cls) => `.${cls}`),
+  getElementTarget: jest.fn((event) => event.target),
+  validatedClosest: jest.fn((el, selector) => el.closest(selector)),
 }));
 
-// Import the function after mocking dependencies
 const { handleClickTodoList } = await import('./handleClickTodoList');
 const features = await import('@features');
 const ui = await import('@ui');
@@ -74,11 +78,11 @@ describe('handleClickTodoList', () => {
     expect(features.saveTodosToLocalStorage).toHaveBeenCalledWith([{ text: 'mocked task' }]);
     expect(ui.resetInput).toHaveBeenCalledWith(todoInput);
   });
+
   test('does nothing if clicking outside .todo__item', () => {
     const outside = document.createElement('div');
     handleClickTodoList({ target: outside, currentTarget: todoList }, todoList, todoInput);
 
-    // функции saveTodosToLocalStorage и resetInput всё равно должны вызываться
     expect(features.saveTodosToLocalStorage).toHaveBeenCalled();
     expect(ui.resetInput).toHaveBeenCalled();
   });

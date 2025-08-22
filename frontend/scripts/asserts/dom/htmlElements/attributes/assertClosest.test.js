@@ -1,63 +1,40 @@
-import { assertClosest } from '@asserts';
+import { assertClosest } from './assertClosest';
 
 describe('assertClosest', () => {
-  let root, parent, child;
-
+  let container;
   beforeEach(() => {
-    // Create the DOM:
-    // <div id="root" class="container">
-    //   <section class="section">
-    //     <button class="btn">Click</button>
-    //   </section>
-    // </div>
-    root = document.createElement('div');
-    root.id = 'root';
-    root.className = 'container';
-
-    parent = document.createElement('section');
-    parent.className = 'section';
-
-    child = document.createElement('button');
-    child.className = 'btn';
-
-    parent.appendChild(child);
-    root.appendChild(parent);
-    document.body.appendChild(root);
+    document.body.innerHTML = `
+      <div class="parent">
+        <ul class="list">
+          <li class="item">
+            <span class="child">Hello</span>
+          </li>
+        </ul>
+      </div>
+    `;
+    container = document.querySelector('.parent');
   });
 
-  afterEach(() => {
-    root.remove();
+  it('does not throw if element has matching closest ancestor', () => {
+    const child = container.querySelector('.child');
+    expect(() => assertClosest(child, '.item')).not.toThrow();
+    expect(() => assertClosest(child, '.list')).not.toThrow();
+    expect(() => assertClosest(child, '.parent')).not.toThrow();
   });
 
-  test('returns the element itself if it matches the selector', () => {
-    const result = assertClosest(child, '.btn');
-    expect(result).toBe(child);
+  it('does not throw if the element itself matches the selector', () => {
+    const item = container.querySelector('.item');
+    expect(() => assertClosest(item, '.item')).not.toThrow();
   });
 
-  test('returns the closest matching ancestor', () => {
-    const result = assertClosest(child, '.section');
-    expect(result).toBe(parent);
+  it('throws TypeError if element is not a DOM Element', () => {
+    expect(() => assertClosest(null, '.item')).toThrow(TypeError);
+    expect(() => assertClosest(123, '.item')).toThrow(TypeError);
+    expect(() => assertClosest({}, '.item')).toThrow(TypeError);
   });
 
-  test('returns the root element when it matches the selector', () => {
-    const result = assertClosest(child, '.container');
-    expect(result).toBe(root);
-  });
-
-  test('throws if no matching ancestor exists', () => {
-    expect(() => assertClosest(child, '.not-exist')).toThrow(TypeError);
-    expect(() => assertClosest(child, '.not-exist')).toThrow(
-      /<button\.btn>\.closest result.*selector ".not-exist"/i,
-    );
-  });
-
-  test('throws if first argument is not an Element', () => {
-    expect(() => assertClosest(null, '.btn')).toThrow(TypeError);
-    expect(() => assertClosest('not-element', '.btn')).toThrow(TypeError);
-  });
-
-  test('throws if second argument is not a string', () => {
-    expect(() => assertClosest(child, null)).toThrow(TypeError);
-    expect(() => assertClosest(child, {})).toThrow(TypeError);
+  it('throws SyntaxError for invalid selector', () => {
+    const child = container.querySelector('.child');
+    expect(() => assertClosest(child, '???invalid')).toThrow(SyntaxError);
   });
 });

@@ -1,20 +1,28 @@
 import { serializeTodosFromList, saveTodosToLocalStorage } from '@features';
-import { resetInput } from '@ui';
-import { toggleTodoItem, getToggleTodoContext } from '@features';
+import { resetInput, classNameToSelector, getElementTarget, validatedClosest } from '@ui';
+import {
+  toggleTodoItem,
+  getToggleTodoContext,
+  getTodoItemRemoveButtonClassName,
+  getTodoItemClassName,
+} from '@features';
 
 export const handleClickTodoList = (event, todoList, todoInput) => {
-  const removeBtn = event.target.closest('.todo__remove');
+  const target = getElementTarget(event);
+  const removeBtn = validatedClosest(
+    target,
+    classNameToSelector(getTodoItemRemoveButtonClassName()),
+  );
   if (removeBtn) {
-    const li = removeBtn.closest('.todo__item');
+    const li = validatedClosest(removeBtn, classNameToSelector(getTodoItemClassName()));
     if (li) {
       li.remove();
     }
   }
 
-  const li = event.target.closest('.todo__item');
-  if (li && todoList.contains(li)) {
+  const li = validatedClosest(target, classNameToSelector(getTodoItemClassName()));
+  if (li) {
     const { target, className } = getToggleTodoContext(event);
-
     toggleTodoItem(target, className);
   }
   saveTodosToLocalStorage(serializeTodosFromList(todoList));

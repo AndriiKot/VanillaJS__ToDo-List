@@ -1,4 +1,4 @@
 export * from './assertSupportsTextContent';
 export * from './assertContains';
-export * from './assertClosest';
 export * from './assertIsHTMLClassName';
+export * from './assertClosest';

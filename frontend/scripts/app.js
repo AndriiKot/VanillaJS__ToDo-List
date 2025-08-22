@@ -20,7 +20,6 @@ export const initTodoApp = () => {
     const { type, todos } = event.data;
 
     if (type === 'update') {
-      const { todoList } = getStaticTodoElements();
       todoList.innerHTML = '';
       renderTodosFromStorage(todoList, todos);
     }

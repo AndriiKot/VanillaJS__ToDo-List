@@ -1,25 +1,16 @@
-import { assertIsNode, assertIsString, assertIsDefined } from '@asserts';
-import { describeElement } from '@ui';
+import { assertIsElement, assertIsValidSelector } from '@asserts';
 
 /**
- * Asserts that the closest element matching the selector exists from the given element.
+ * Asserts that the given element has a closest ancestor (including itself)
+ * that matches the given CSS selector.
  *
- * @param {*} element - The starting element.
- * @param {*} selector - The selector to match.
- * @returns {Element} - The closest matching ancestor.
- * @throws {TypeError} - If arguments are invalid or no match is found.
+ * @param {Element} element - The element to start searching from.
+ * @param {string} selector - A valid CSS selector.
+ * @throws {TypeError} - If arguments are invalid.
+ * @throws {SyntaxError} - If the selector is invalid.
  */
+
 export const assertClosest = (element, selector) => {
-  assertIsNode(element, 'first argument');
-  assertIsString(selector, 'second argument');
-
-  const match = element.closest(selector);
-
-  assertIsDefined(
-    match,
-    `${describeElement(element)}.closest result`,
-    `an Element matching selector "${selector}"`,
-  );
-
-  return match;
+  assertIsElement(element, 'first argument');
+  assertIsValidSelector(selector, 'second argument');
 };

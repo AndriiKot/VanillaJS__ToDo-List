@@ -1,6 +1,6 @@
-import { safeClosest } from '@ui';
+import { validatedClosest } from '@ui';
 
-describe('safeClosest', () => {
+describe('validatedClosest', () => {
   let root, parent, child;
 
   beforeEach(() => {
@@ -31,34 +31,27 @@ describe('safeClosest', () => {
   });
 
   test('returns the element itself if it matches the selector', () => {
-    const result = safeClosest(child, '.btn');
+    const result = validatedClosest(child, '.btn');
     expect(result).toBe(child);
   });
 
   test('returns the closest matching ancestor', () => {
-    const result = safeClosest(child, '.section');
+    const result = validatedClosest(child, '.section');
     expect(result).toBe(parent);
   });
 
   test('returns the root element when it matches the selector', () => {
-    const result = safeClosest(child, '.container');
+    const result = validatedClosest(child, '.container');
     expect(result).toBe(root);
   });
 
-  test('throws if no matching ancestor exists', () => {
-    expect(() => safeClosest(child, '.not-exist')).toThrow(TypeError);
-    expect(() => safeClosest(child, '.not-exist')).toThrow(
-      /<BUTTON\.btn>\.closest result.*selector ".not-exist"/i,
-    );
-  });
-
   test('throws if first argument is not an Element', () => {
-    expect(() => safeClosest(null, '.btn')).toThrow(TypeError);
-    expect(() => safeClosest('not-element', '.btn')).toThrow(TypeError);
+    expect(() => validatedClosest(null, '.btn')).toThrow(TypeError);
+    expect(() => validatedClosest('not-element', '.btn')).toThrow(TypeError);
   });
 
   test('throws if second argument is not a string', () => {
-    expect(() => safeClosest(child, null)).toThrow(TypeError);
-    expect(() => safeClosest(child, {})).toThrow(TypeError);
+    expect(() => validatedClosest(child, null)).toThrow(TypeError);
+    expect(() => validatedClosest(child, {})).toThrow(TypeError);
   });
 });

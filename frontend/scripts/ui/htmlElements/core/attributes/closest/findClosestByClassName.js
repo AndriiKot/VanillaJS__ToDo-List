@@ -1,3 +1,4 @@
+import { classNameToSelector } from '@ui';
 import { assertClosest } from '@asserts';
 
 /**
@@ -7,12 +8,13 @@ import { assertClosest } from '@asserts';
  * If no matching ancestor is found, returns `null`.
  *
  * @param {*} element - The element to start searching from.
- * @param {*} selector - A CSS selector string to match.
+ * @param {*} className - A CSS selector string to match.
  * @returns {Element|null} The matched element, or `null` if no match is found.
  * @throws {TypeError} If `element` is not a DOM Element.
  * @throws {SyntaxError} If `selector` is not a valid CSS selector.
  */
-export const validatedClosest = (element, selector) => {
+export const findClosestByClassName = (element, className) => {
+  const selector = classNameToSelector(className);
   assertClosest(element, selector);
   return element.closest(selector);
 };

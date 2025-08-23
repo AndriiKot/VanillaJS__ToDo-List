@@ -1,6 +1,6 @@
-import { validatedClosest } from '@ui';
+import { findClosestBySelector } from '@ui';
 
-describe('validatedClosest', () => {
+describe('findClosestBySelector', () => {
   let root, parent, child;
 
   beforeEach(() => {
@@ -31,27 +31,27 @@ describe('validatedClosest', () => {
   });
 
   test('returns the element itself if it matches the selector', () => {
-    const result = validatedClosest(child, '.btn');
+    const result = findClosestBySelector(child, '.btn');
     expect(result).toBe(child);
   });
 
   test('returns the closest matching ancestor', () => {
-    const result = validatedClosest(child, '.section');
+    const result = findClosestBySelector(child, '.section');
     expect(result).toBe(parent);
   });
 
   test('returns the root element when it matches the selector', () => {
-    const result = validatedClosest(child, '.container');
+    const result = findClosestBySelector(child, '.container');
     expect(result).toBe(root);
   });
 
   test('throws if first argument is not an Element', () => {
-    expect(() => validatedClosest(null, '.btn')).toThrow(TypeError);
-    expect(() => validatedClosest('not-element', '.btn')).toThrow(TypeError);
+    expect(() => findClosestBySelector(null, '.btn')).toThrow(TypeError);
+    expect(() => findClosestBySelector('not-element', '.btn')).toThrow(TypeError);
   });
 
   test('throws if second argument is not a string', () => {
-    expect(() => validatedClosest(child, null)).toThrow(TypeError);
-    expect(() => validatedClosest(child, {})).toThrow(TypeError);
+    expect(() => findClosestBySelector(child, null)).toThrow(TypeError);
+    expect(() => findClosestBySelector(child, {})).toThrow(TypeError);
   });
 });

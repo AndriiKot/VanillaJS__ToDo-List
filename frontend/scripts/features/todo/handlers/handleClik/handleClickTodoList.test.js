@@ -20,7 +20,7 @@ jest.unstable_mockModule('@ui', () => ({
   resetInput: jest.fn(),
   classNameToSelector: jest.fn((cls) => `.${cls}`),
   getElementTarget: jest.fn((event) => event.target),
-  validatedClosest: jest.fn((el, selector) => el.closest(selector)),
+  findClosestByClassName: jest.fn((el, className) => el.closest(`.${className}`)),
 }));
 
 const { handleClickTodoList } = await import('./handleClickTodoList');
@@ -59,6 +59,7 @@ describe('handleClickTodoList', () => {
     handleClickTodoList({ target: firstRemoveBtn, currentTarget: todoList }, todoList, todoInput);
 
     expect(todoList.querySelectorAll('.todo__item').length).toBe(1);
+    expect(features.toggleTodoItem).not.toHaveBeenCalled(); // remove shouldn't toggle
   });
 
   test('toggles a task when clicking on .todo__text', () => {
@@ -79,12 +80,13 @@ describe('handleClickTodoList', () => {
     expect(ui.resetInput).toHaveBeenCalledWith(todoInput);
   });
 
-  test('does nothing if clicking outside .todo__item', () => {
+  test('still saves to storage and resets input if clicking outside .todo__item', () => {
     const outside = document.createElement('div');
     handleClickTodoList({ target: outside, currentTarget: todoList }, todoList, todoInput);
 
     expect(features.saveTodosToLocalStorage).toHaveBeenCalled();
     expect(ui.resetInput).toHaveBeenCalled();
+    expect(features.toggleTodoItem).not.toHaveBeenCalled();
   });
 
   test('does nothing if removeBtn.closest(.todo__item) returns null', () => {
@@ -92,6 +94,7 @@ describe('handleClickTodoList', () => {
     fakeRemove.className = 'todo__remove';
     handleClickTodoList({ target: fakeRemove, currentTarget: todoList }, todoList, todoInput);
 
+    expect(features.toggleTodoItem).not.toHaveBeenCalled();
     expect(features.saveTodosToLocalStorage).toHaveBeenCalled();
     expect(ui.resetInput).toHaveBeenCalled();
   });

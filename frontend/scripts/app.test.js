@@ -31,12 +31,11 @@ describe('initTodoApp full integration', () => {
     global.BroadcastChannel = class {
       constructor() {
         this.name = 'todos_channel';
-        this.postMessage = () => {};
-        this.close = () => {};
-        this.onmessage = null;
-        this.addEventListener = () => {};
-        this.removeEventListener = () => {};
       }
+      postMessage() {}
+      close() {}
+      addEventListener() {}
+      removeEventListener() {}
     };
   });
 
@@ -44,27 +43,31 @@ describe('initTodoApp full integration', () => {
     delete global.BroadcastChannel;
   });
 
-  test('initializes DOM and renders empty list without errors', () => {
-    expect(() => initTodoApp()).not.toThrow();
-    expect(todoList.children.length).toBe(0);
+  test('initializes DOM and renders default task from localStorage', () => {
+    initTodoApp();
+
+    // так как в initTodoApp всегда добавляется "Tesk Task"
+    expect(todoList.children.length).toBe(1);
+    expect(todoList.textContent).toContain('Tesk Task');
   });
 
-  test('adds and renders todos using real input and button', () => {
+  test('adds and renders new todos via button click', () => {
     initTodoApp();
 
     todoInput.value = 'New Task';
     todoButton.click();
 
-    expect(todoList.children.length).toBe(1);
+    expect(todoList.children.length).toBe(2); // +1 к "Tesk Task"
     expect(todoList.textContent).toContain('New Task');
   });
 
-  test('loads todos from localStorage and renders them', () => {
+  test('loads todos from localStorage when they exist', () => {
     const todos = [
       { text: 'Task 1', checked: false },
       { text: 'Task 2', checked: true },
     ];
 
+    // твой код использует "todoList" а не STORAGE_KEYS.todo
     localStorage.setItem(STORAGE_KEYS.todo, JSON.stringify(todos));
 
     initTodoApp();

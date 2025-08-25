@@ -1,2 +1,3 @@
-export * from './loadTodos.js';
-export * from './saveTodosToLocalStorage.js';
+export * from './loadTodos';
+export * from './saveTodosToLocalStorage';
+export * from './initTodosToLocalStorage';

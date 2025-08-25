@@ -10,6 +10,7 @@ import {
   createTodosChannel,
   renderTodosFromStorage,
   initTodosToLocalStorage,
+  handleTodosChannelMessage,
 } from '@features';
 
 export const initTodoApp = () => {
@@ -18,12 +19,7 @@ export const initTodoApp = () => {
   initTodosToLocalStorage();
 
   todosChannel.addEventListener('message', (event) => {
-    const { type, todos } = event.data;
-
-    if (type === 'update') {
-      todoList.innerHTML = '';
-      renderTodosFromStorage(todoList, todos);
-    }
+    handleTodosChannelMessage(event.data, todoList);
   });
 
   const storedTodos = loadTodos();

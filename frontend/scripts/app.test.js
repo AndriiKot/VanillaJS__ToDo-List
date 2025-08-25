@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { initTodoApp } from './app';
-import { STORAGE_KEYS } from '@services/localStorage/STORAGE_KEYS';
+import { STORAGE_KEYS } from '@services';
 
 describe('initTodoApp full integration', () => {
   let todoInput, todoButton, todoList;
@@ -43,12 +43,10 @@ describe('initTodoApp full integration', () => {
     delete global.BroadcastChannel;
   });
 
-  test('initializes DOM and renders default task from localStorage', () => {
+  test('initializes DOM with empty list when no todos exist', () => {
     initTodoApp();
 
-    // так как в initTodoApp всегда добавляется "Tesk Task"
-    expect(todoList.children.length).toBe(1);
-    expect(todoList.textContent).toContain('Tesk Task');
+    expect(todoList.children.length).toBe(0);
   });
 
   test('adds and renders new todos via button click', () => {
@@ -57,8 +55,9 @@ describe('initTodoApp full integration', () => {
     todoInput.value = 'New Task';
     todoButton.click();
 
-    expect(todoList.children.length).toBe(2); // +1 к "Tesk Task"
-    expect(todoList.textContent).toContain('New Task');
+    const items = [...todoList.querySelectorAll('li')];
+    expect(items.length).toBe(1);
+    expect(items[0].textContent).toContain('New Task');
   });
 
   test('loads todos from localStorage when they exist', () => {
@@ -67,13 +66,13 @@ describe('initTodoApp full integration', () => {
       { text: 'Task 2', checked: true },
     ];
 
-    // твой код использует "todoList" а не STORAGE_KEYS.todo
     localStorage.setItem(STORAGE_KEYS.todo, JSON.stringify(todos));
 
     initTodoApp();
 
-    expect(todoList.children.length).toBe(2);
-    expect(todoList.textContent).toContain('Task 1');
-    expect(todoList.textContent).toContain('Task 2');
+    const items = [...todoList.querySelectorAll('li')];
+    expect(items.length).toBe(2);
+    expect(items[0].textContent).toContain('Task 1');
+    expect(items[1].textContent).toContain('Task 2');
   });
 });

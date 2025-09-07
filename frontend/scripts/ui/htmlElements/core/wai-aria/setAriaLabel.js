@@ -19,7 +19,13 @@ import { assertIsElement, assertIsNonEmptyString } from '@asserts';
  * @returns {void} This function does not return a value; it mutates the element by setting its `aria-label` attribute.
  */
 export const setAriaLabel = (el, label) => {
-  assertIsElement(el, 'First argument');
-  assertIsNonEmptyString(label, 'Second argument (aria-label value)');
+  assertIsElement(
+    el,
+    'First argument of setAriaLabel (DOM element: HTMLElement, SVGElement, MathMLElement)',
+  );
+  assertIsNonEmptyString(
+    label,
+    'Second argument of setAriaLabel (aria-label value, must be a non-empty string)',
+  );
   el.setAttribute('aria-label', label);
 };

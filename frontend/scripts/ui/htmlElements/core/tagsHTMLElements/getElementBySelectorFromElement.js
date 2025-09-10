@@ -15,7 +15,7 @@ import { assertIsElement, assertIsString } from '@asserts';
  * @throws {TypeError} - If `root` is not an `Element`, `selector` is not a string,
  *                       or the matched element is not a valid `Element`.
  */
-export const getHTMLTagElementFromElement = (root, selector) => {
+export const getElementBySelectorFromElement = (root, selector) => {
   assertIsElement(root);
   assertIsString(selector);
   const el = root.querySelector(selector);

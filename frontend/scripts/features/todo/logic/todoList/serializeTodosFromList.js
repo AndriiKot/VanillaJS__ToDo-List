@@ -1,10 +1,10 @@
-import { getTodoItemCheckedClassName } from '@features';
-import { getTextContent } from '@ui';
+import { getTodoItemCheckedClassName, getTodoItemTextClassName } from '@features';
+import { getTextContent, getElementByClassNameFromElement } from '@ui';
 
 export const serializeTodosFromList = (todoList) => {
   return Array.from(todoList.children, (li) => {
     return {
-      text: getTextContent(li.querySelector('.todo__text')),
+      text: getTextContent(getElementByClassNameFromElement(li, getTodoItemTextClassName())),
       checked: li.matches(`.${getTodoItemCheckedClassName()}`),
     };
   });

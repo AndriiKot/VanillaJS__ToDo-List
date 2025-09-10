@@ -11,7 +11,7 @@ import { assertIsString, assertIsElement } from '@asserts';
  * @returns {Element} - The matched element.
  * @throws {TypeError} - If the selector is not a string or the matched element is not a valid `Element`.
  */
-export const getHTMLTagElementFromDocument = (selector) => {
+export const getElementBySelectorFromDocument = (selector) => {
   assertIsString(selector);
   const el = document.querySelector(selector);
   assertIsElement(el);

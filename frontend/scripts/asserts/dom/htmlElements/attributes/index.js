@@ -3,3 +3,4 @@ export * from './assertContains';
 export * from './assertIsHTMLClassName';
 export * from './assertClosest';
 export * from './assertRole';
+export * from './assertIsDataAttributeName';

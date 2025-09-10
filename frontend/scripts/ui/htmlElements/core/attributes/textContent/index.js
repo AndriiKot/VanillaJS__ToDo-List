@@ -1,2 +1,3 @@
-export * from './setTextContent.js';
-export * from './supportsTextContent.js';
+export * from './setTextContent';
+export * from './supportsTextContent';
+export * from './getTextContent';

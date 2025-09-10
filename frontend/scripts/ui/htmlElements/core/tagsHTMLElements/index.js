@@ -1,4 +1,5 @@
 export * from './getHTMLTagElementFromDocument';
+export * from './getHTMLTagElementFromElement';
 export * from './hasHTMLElementProperty';
 export * from './describeElement';
 export * from './appendHTMLTagChild';

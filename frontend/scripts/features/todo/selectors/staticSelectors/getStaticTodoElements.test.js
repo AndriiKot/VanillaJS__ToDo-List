@@ -3,10 +3,10 @@ import { getStaticTodoElements } from './getStaticTodoElements';
 describe('getStaticTodoElements', () => {
   beforeEach(() => {
     document.body.innerHTML = `
-      <button class="todo__btn">Add</button>
-      <input class="todo__input" />
-      <ul class="todo__list"></ul>
-      <div class="todo__error"></div>
+      <button data-js-todo-btn-add>Add</button>
+      <input data-js-todo-new-task-input />
+      <ul data-js-todo-list></ul>
+      <div data-js-todo-error-empty-task></div>
     `;
   });
 

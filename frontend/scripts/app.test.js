@@ -13,18 +13,24 @@ describe('initTodoApp full integration', () => {
         <div class="todo__box">
           <h2 class="todo__title">To Do List</h2>
           <div class="todo__row">
-            <input class="todo__input" type="text" autocomplete="off" placeholder="What needs to be done?" autofocus />
-            <button class="todo__btn">Add</button>
+            <input
+              data-js-todo-new-task-input
+              type="text"
+              autocomplete="off"
+              placeholder="What needs to be done?"
+              autofocus
+            />
+            <button data-js-todo-btn-add>Add</button>
           </div>
-          <ul class="todo__list"></ul>
-          <div class="todo__error" aria-live="polite"></div>
+          <ul data-js-todo-list></ul>
+          <div data-js-todo-error-empty-task aria-live="polite"></div>
         </div>
       </main>
     `;
 
-    todoInput = document.querySelector('.todo__input');
-    todoList = document.querySelector('.todo__list');
-    todoButton = document.querySelector('.todo__btn');
+    todoInput = document.querySelector('[data-js-todo-new-task-input]');
+    todoList = document.querySelector('[data-js-todo-list]');
+    todoButton = document.querySelector('[data-js-todo-btn-add]');
 
     localStorage.clear();
 

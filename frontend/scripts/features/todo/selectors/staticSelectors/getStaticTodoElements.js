@@ -1,4 +1,4 @@
-import { TODO_STATIC_CLASS_NAME_SELECTORS } from './TODO_STATIC_CLASS_NAME_SELECTORS';
+import { TODO_STATIC_DATA_SELECTORS } from './TODO_STATIC_DATA_SELECTORS';
 import {
   getTodoButton,
   getTodoInput,
@@ -6,7 +6,7 @@ import {
   getTodoValidMessage,
 } from './staticTodoElements/';
 
-const { todoButton, todoInput, todoList, todoValidMessage } = TODO_STATIC_CLASS_NAME_SELECTORS;
+const { todoButton, todoInput, todoList, todoValidMessage } = TODO_STATIC_DATA_SELECTORS;
 
 export const getStaticTodoElements = () => ({
   todoButton: getTodoButton(todoButton),

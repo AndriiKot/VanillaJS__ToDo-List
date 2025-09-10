@@ -1,4 +1,4 @@
-import { getHTMLTagElement } from '@ui';
+import { getHTMLTagElementFromDocument } from '@ui';
 import { assertIsButtonElement } from '@asserts';
 
 /**
@@ -14,7 +14,7 @@ import { assertIsButtonElement } from '@asserts';
  */
 
 export const getTodoButton = (className) => {
-  const el = getHTMLTagElement(className);
+  const el = getHTMLTagElementFromDocument(className);
   assertIsButtonElement(el);
   return el;
 };

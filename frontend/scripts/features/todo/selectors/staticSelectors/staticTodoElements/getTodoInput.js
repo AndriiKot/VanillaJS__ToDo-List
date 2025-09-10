@@ -1,4 +1,4 @@
-import { getHTMLTagElement } from '@ui';
+import { getHTMLTagElementFromDocument } from '@ui';
 import { assertIsInputElement } from '@asserts';
 
 /**
@@ -9,7 +9,7 @@ import { assertIsInputElement } from '@asserts';
  */
 
 export const getTodoInput = (className) => {
-  const el = getHTMLTagElement(className);
+  const el = getHTMLTagElementFromDocument(className);
   assertIsInputElement(el);
   return el;
 };

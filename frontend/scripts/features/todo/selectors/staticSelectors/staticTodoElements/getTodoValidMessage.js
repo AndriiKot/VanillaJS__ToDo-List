@@ -1,4 +1,4 @@
-import { getHTMLTagElement } from '@ui';
+import { getHTMLTagElementFromDocument } from '@ui';
 import { assertIsDivElement } from '@asserts';
 
 /**
@@ -14,7 +14,7 @@ import { assertIsDivElement } from '@asserts';
  */
 
 export const getTodoValidMessage = (className) => {
-  const el = getHTMLTagElement(className);
+  const el = getHTMLTagElementFromDocument(className);
   assertIsDivElement(el);
   return el;
 };

@@ -1,4 +1,4 @@
-import { getHTMLTagElement } from '@ui';
+import { getHTMLTagElementFromDocument } from '@ui';
 import { assertIsListUlElement } from '@asserts';
 
 /**
@@ -14,7 +14,7 @@ import { assertIsListUlElement } from '@asserts';
  */
 
 export const getTodoList = (className) => {
-  const el = getHTMLTagElement(className);
+  const el = getHTMLTagElementFromDocument(className);
   assertIsListUlElement(el);
   return el;
 };

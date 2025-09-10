@@ -1,4 +1,4 @@
-import { assertIsElement, assertIsString } from '@asserts';
+import { assertIsString } from '@asserts';
 import { getElementBySelectorFromElement } from './getElementBySelectorFromElement'; // путь подкорректируй
 
 /**
@@ -14,7 +14,6 @@ import { getElementBySelectorFromElement } from './getElementBySelectorFromEleme
  *                       or no matching element is found.
  */
 export const getElementByClassNameFromElement = (root, className) => {
-  assertIsElement(root, "Fist argument 'root' must be a valid DOM Element.");
   assertIsString(className, "Second argument 'className' must be a string.");
   return getElementBySelectorFromElement(root, `.${className}`);
 };

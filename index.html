@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List (VanillaJS)</title>
-    <script type="module" crossorigin src="./assets/index-C8HX_2Y-.js"></script>
+    <script type="module" crossorigin src="./assets/index-BphKomYg.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-7Esf-Jw1.css">
   </head>
 
@@ -15,15 +15,16 @@
         <div class="todo__row">
           <input
             class="todo__input"
+            data-js-todo-new-task-input
             type="text"
             autocomplete="off"
             placeholder="What needs to be done?"
             autofocus
           >
-          <button class="todo__btn">Add</button>
+          <button class="todo__btn" data-js-todo-btn-add>Add</button>
         </div>
-        <ul class="todo__list"></ul>
-        <div class="todo__error" aria-live="polite"></div>
+        <ul class="todo__list" data-js-todo-list></ul>
+        <div class="todo__error" data-js-todo-error-empty-task aria-live="polite"></div>
       </div>
     </main>
   </body>

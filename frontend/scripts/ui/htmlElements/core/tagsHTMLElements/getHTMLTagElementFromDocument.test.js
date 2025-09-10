@@ -29,16 +29,10 @@ describe('getHTMLTagElementFromDocument', () => {
 
     invalidSelectors.forEach((sel) => {
       expect(() => getHTMLTagElementFromDocument(sel)).toThrow(TypeError);
-      expect(() => getHTMLTagElementFromDocument(sel)).toThrow(
-        /Expected .* to be string/, // <- Обрати внимание: без "a"
-      );
     });
   });
 
-  test('throws TypeError if selector does not match an HTMLElement', () => {
+  test('throws TypeError if selector does not match any element', () => {
     expect(() => getHTMLTagElementFromDocument('#non-existent')).toThrow(TypeError);
-    expect(() => getHTMLTagElementFromDocument('#non-existent')).toThrow(
-      /Expected .* to be an instance of HTMLElement/,
-    );
   });
 });

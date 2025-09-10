@@ -1,19 +1,19 @@
 import { assertIsElement, assertIsString } from '@asserts';
 
 /**
- * Gets a valid HTML tag element by a CSS selector,
+ * Gets a valid DOM element by a CSS selector,
  * starting from a provided root element.
  *
  * This function ensures:
- *  - The root element is a valid HTMLElement.
+ *  - The root element is a valid `Element` (e.g., HTMLElement, SVGElement, MathMLElement).
  *  - The selector provided is a string.
- *  - The element returned is a valid `HTMLElement`.
+ *  - The element returned is a valid `Element`.
  *
- * @param {HTMLElement} root - The root element to query within.
+ * @param {Element} root - The root element (can be HTMLElement, SVGElement, MathMLElement).
  * @param {string} selector - The CSS selector relative to the root element.
- * @returns {HTMLElement} - The matched HTML element.
- * @throws {TypeError} - If `root` is not an HTMLElement, `selector` is not a string,
- *                       or the matched element is not a valid HTMLElement.
+ * @returns {Element} - The matched element.
+ * @throws {TypeError} - If `root` is not an `Element`, `selector` is not a string,
+ *                       or the matched element is not a valid `Element`.
  */
 export const getHTMLTagElementFromElement = (root, selector) => {
   assertIsElement(root);

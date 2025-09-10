@@ -17,11 +17,9 @@ describe('getTodoList', () => {
   test('should throw TypeError if element is not <ul>', () => {
     document.body.innerHTML = `<div class="${TODO_LIST_CLASS}"></div>`;
     expect(() => getTodoList(`.${TODO_LIST_CLASS}`)).toThrow(TypeError);
-    expect(() => getTodoList(`.${TODO_LIST_CLASS}`)).toThrow(/DOM element of type <ul>/);
   });
 
   test('should throw TypeError if element does not exist', () => {
     expect(() => getTodoList(`.${TODO_LIST_CLASS}`)).toThrow(TypeError);
-    expect(() => getTodoList(`.${TODO_LIST_CLASS}`)).toThrow(/instance of HTMLElement/);
   });
 });

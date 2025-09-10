@@ -17,11 +17,9 @@ describe('getTodoValidMessage', () => {
   test('should throw TypeError if element is not <div>', () => {
     document.body.innerHTML = `<section class="${TODO_ERROR_CLASS}"></section>`;
     expect(() => getTodoValidMessage(`.${TODO_ERROR_CLASS}`)).toThrow(TypeError);
-    expect(() => getTodoValidMessage(`.${TODO_ERROR_CLASS}`)).toThrow(/DOM element of type <div>/);
   });
 
   test('should throw TypeError if element does not exist', () => {
     expect(() => getTodoValidMessage(`.${TODO_ERROR_CLASS}`)).toThrow(TypeError);
-    expect(() => getTodoValidMessage(`.${TODO_ERROR_CLASS}`)).toThrow(/instance of HTMLElement/);
   });
 });

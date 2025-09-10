@@ -1,20 +1,19 @@
-import { assertIsString, assertIsHTMLTagElement } from '@asserts';
+import { assertIsString, assertIsElement } from '@asserts';
 
 /**
- * Gets a valid HTML tag element from the DOM by a CSS selector,
- * starting from the `document` root.
+ * Gets a valid DOM element from the document by a CSS selector.
  *
  * This function ensures:
  *  - The selector provided is a string.
- *  - The element returned is a valid `HTMLElement` (not `null`, `SVGElement`, etc.).
+ *  - The element returned is a valid `Element` (e.g., HTMLElement, SVGElement, MathMLElement).
  *
  * @param {string} selector - The CSS selector used to query the document.
- * @returns {HTMLElement} - The matched HTML element.
- * @throws {TypeError} - If the selector is not a string or the element is not a valid HTMLElement.
+ * @returns {Element} - The matched element.
+ * @throws {TypeError} - If the selector is not a string or the matched element is not a valid `Element`.
  */
 export const getHTMLTagElementFromDocument = (selector) => {
   assertIsString(selector);
   const el = document.querySelector(selector);
-  assertIsHTMLTagElement(el);
+  assertIsElement(el);
   return el;
 };

@@ -9,5 +9,5 @@ import { assertSupportsTextContent } from '@asserts';
  */
 export const getTextContent = (el) => {
   assertSupportsTextContent(el);
-  return el.textContent ?? '';
+  return el.textContent;
 };

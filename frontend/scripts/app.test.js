@@ -81,4 +81,62 @@ describe('initTodoApp full integration', () => {
     expect(items[0].textContent).toContain('Task 1');
     expect(items[1].textContent).toContain('Task 2');
   });
+
+  test('shows validation message when typing into input', () => {
+    initTodoApp();
+
+    todoInput.value = 'test';
+    todoInput.dispatchEvent(new Event('input'));
+
+    const message = document.querySelector('[data-js-todo-error-empty-task]');
+    expect(message.textContent).toBe('');
+  });
+
+  test('handles BroadcastChannel update message', () => {
+    const created = [];
+    global.BroadcastChannel = class {
+      constructor(name) {
+        this.name = name;
+        this._listeners = {};
+        created.push(this);
+      }
+      addEventListener(event, cb) {
+        this._listeners[event] = this._listeners[event] || [];
+        this._listeners[event].push(cb);
+      }
+      removeEventListener(event, cb) {
+        const list = this._listeners[event] || [];
+        this._listeners[event] = list.filter((fn) => fn !== cb);
+      }
+      postMessage(data) {
+        const list = this._listeners['message'] || [];
+        list.forEach((fn) => fn({ data }));
+      }
+      close() {}
+    };
+
+    initTodoApp();
+
+    expect(created.length).toBeGreaterThan(0);
+    created[0].postMessage({
+      type: 'update',
+      todos: [{ text: 'From Channel', checked: false }],
+    });
+
+    const items = [...todoList.querySelectorAll('li')];
+    expect(items.length).toBe(1);
+    expect(items[0].textContent).toContain('From Channel');
+  });
+
+  test('handles click on todoList', () => {
+    initTodoApp();
+
+    todoInput.value = 'Clickable Task';
+    todoButton.click();
+
+    const firstItem = todoList.querySelector('li');
+    firstItem.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+    expect(todoList.querySelectorAll('li').length).toBe(1);
+  });
 });

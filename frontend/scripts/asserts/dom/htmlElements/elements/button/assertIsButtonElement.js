@@ -7,6 +7,7 @@ import { throwTypeErrorWithTypeInfo } from '@asserts';
  * @param {*} el - The element to check
  * @param {string} argName - Optional argument name for error messages (default: "value")
  */
+
 export const assertIsButtonElement = (el, argName = 'value') => {
   if (isButtonElement(el)) return;
 

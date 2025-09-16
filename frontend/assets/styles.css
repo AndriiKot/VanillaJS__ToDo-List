@@ -188,6 +188,10 @@
    📱 Media Queries (Responsive)
    ============================ */
 @media (width <= 768px) {
+  .todo__label {
+    font-size: 18px;
+  }
+
   .todo__box {
     margin: 40px 10px;
     padding: 20px 25px 40px;
@@ -244,6 +248,10 @@
 }
 
 @media (width <= 480px) {
+  .todo__label {
+    font-size: 14px;
+  }
+
   .todo__title {
     font-size: 16px;
   }

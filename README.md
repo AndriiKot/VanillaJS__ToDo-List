@@ -29,6 +29,7 @@ You can run it using Docker or directly with Node.js.
       <th height=33 width=100>JavaScript</th>
       <th height=33 width=100>DOM</th>
       <th height=33 width=100>localStorage</th>
+      <th height=33 width=100>Broadcast Channel API</th>
     </tr>
   </thead>
   <tbody>
@@ -56,6 +57,11 @@ You can run it using Docker or directly with Node.js.
       <td height=100 width=100>
         <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">
           <img src="icons/svg/localstorage.svg" alt="localStorage">
+        </a>
+      </td>
+      <td height=100 width=100>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API">
+          <img src="icons/svg/broadcast-channel-app.svg" alt="Broadcast Channel API">
         </a>
       </td>
     </tr>

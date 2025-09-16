@@ -1,6 +1,6 @@
 {
   "name": "todo-list--vanillajs",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "type": "module",
   "scripts": {
     "format": "prettier frontend  --config ./config/prettier.config.js --check",

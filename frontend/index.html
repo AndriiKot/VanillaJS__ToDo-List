@@ -29,17 +29,18 @@
     <main class="todo">
       <div class="todo__box">
         <h2 class="todo__title">To Do List</h2>
-        <div class="todo__row">
+        <form class="todo__form">
+          <label class="todo__label">What needs to be done?</label>
           <input
             class="todo__input"
             data-js-todo-new-task-input
             type="text"
             autocomplete="off"
-            placeholder="What needs to be done?"
+            placeholder=" "
             autofocus
           >
           <button class="todo__btn" data-js-todo-btn-add>Add</button>
-        </div>
+        </form>
         <ul class="todo__list" data-js-todo-list></ul>
         <div class="todo__error" data-js-todo-error-empty-task aria-live="polite"></div>
       </div>

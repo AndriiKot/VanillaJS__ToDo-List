@@ -10,6 +10,7 @@
   --color-text-light: #fff;
   --color-text-dark: #111;
   --color-text-muted: #8d8888;
+  --color-text-label: #aaa;
   --color-text-disabled: #666;
   --border-radius-large: 30px;
   --border-radius-medium: 10px;
@@ -46,7 +47,16 @@
   margin-bottom: 30px;
 }
 
-.todo__row {
+.todo__label {
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  color: var(--color-text-label);
+  translate: 0 -50%;
+}
+
+.todo__form {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -54,6 +64,12 @@
   border-radius: var(--border-radius-large);
   margin-bottom: 30px;
   padding-left: 10px;
+
+  &:has(.todo__input:not(:placeholder-shown)) .todo__label {
+    color: var(--color-black);
+    scale: 0.7;
+    translate: -2em -2.2em;
+  }
 }
 
 .todo__input {
@@ -184,7 +200,7 @@
   }
 
   .todo__btn {
-    width: 100%;
+    width: 50%;
     padding: 10px;
   }
 

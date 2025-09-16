@@ -6,34 +6,11 @@ A Vanilla JavaScript "Todo List" application with unit tests, ESLint, Prettier,
 and a development server with Vite.
 You can run it using Docker or directly with Node.js.
 
-
-## 🚀 Key Features
-
-- **📝 Task Management**: Create, edit, and delete todo items
-- **💾 Persistent Storage**: Tasks persist after browser reload/close using **localStorage**
-- **🌐 Offline Functionality**: Works completely offline - no internet required
-- **🔄 Cross-Tab Sync**: Real-time synchronization between browser tabs using **Broadcast Channel API**
-- **📱 Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
-- **✅ Validation**: Input validation with user-friendly error messages
-- **🎨 Modern UI**: Clean and intuitive user interface
-
-## 🔧 How It Works
-
-### localStorage Persistence
-- All tasks are automatically saved to the browser's localStorage
-- Data persists even after closing the browser or restarting the computer
-- No server required - everything runs client-side
-
-### Broadcast Channel API Synchronization
-- Instant synchronization between multiple open tabs/windows
-- Changes made in one tab immediately appear in all other tabs
-- Perfect for users who work with multiple browser windows
-
 ### Offline Capability
+
 - Fully functional without internet connection
 - Once loaded, the application works completely offline
 - Tasks are synced when tabs are open simultaneously
-
 
 [![npm version](https://img.shields.io/github/package-json/v/AndriiKot/VanillaJS__ToDo-List?filename=./package.json)](https://docs.npmjs.com/about-semantic-versioning)
 [![License](https://img.shields.io/github/license/AndriiKot/VanillaJS__ToDo-List)](https://choosealicense.com/licenses/mit/)
@@ -96,6 +73,30 @@ You can run it using Docker or directly with Node.js.
     </tr>
   </tbody>
 </table>
+
+## 🚀 Key Features
+
+- **📝 Task Management**: Create, edit, and delete todo items
+- **💾 Persistent Storage**: Tasks persist after browser reload/close using **localStorage**
+- **🌐 Offline Functionality**: Works completely offline - no internet required
+- **🔄 Cross-Tab Sync**: Real-time synchronization between browser tabs using **Broadcast Channel API**
+- **📱 Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- **✅ Validation**: Input validation with user-friendly error messages
+- **🎨 Modern UI**: Clean and intuitive user interface
+
+## 🔧 How It Works
+
+### localStorage Persistence
+
+- All tasks are automatically saved to the browser's localStorage
+- Data persists even after closing the browser or restarting the computer
+- No server required - everything runs client-side
+
+### Broadcast Channel API Synchronization
+
+- Instant synchronization between multiple open tabs/windows
+- Changes made in one tab immediately appear in all other tabs
+- Perfect for users who work with multiple browser windows
 
 <details>
   <summary>
@@ -250,10 +251,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 docker-compose run --rm frontend-test
 ```
 
-
 ##### Stop and Remove Docker
-
-
 
 ```bash
 docker-compose down

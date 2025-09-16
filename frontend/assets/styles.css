@@ -67,9 +67,10 @@
   padding-left: 10px;
 
   &:has(.todo__input:not(:placeholder-shown)) .todo__label {
-    color: var(--color-black);
+    color: var(--color-text-label);
     scale: 0.7;
     translate: -2em -2.2em;
+    transition: all 0.5s ease-in-out;
   }
 }
 

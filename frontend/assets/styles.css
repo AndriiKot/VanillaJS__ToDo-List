@@ -53,6 +53,7 @@
   left: 25px;
   color: var(--color-text-label);
   translate: 0 -50%;
+  pointer-events: none;
 }
 
 .todo__form {

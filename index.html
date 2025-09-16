@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="apple-itunes-app"
+      content="app-id=APP_ID, app-argument=https://andriikot.github.io/VanillaJS__ToDo-List/"
+    >
     <!-- favicons -->
     <link
       rel="icon"
@@ -45,5 +49,25 @@
         <div class="todo__error" data-js-todo-error-empty-task aria-live="polite"></div>
       </div>
     </main>
+    <script>
+      (function () {
+        function isInAppBrowser() {
+          return /(Twitter|LinkedIn|Instagram|Facebook|Line|WhatsApp|Telegram)/i.test(
+            navigator.userAgent,
+          );
+        }
+
+        if (isInAppBrowser()) {
+          const url = 'https://andriikot.github.io/VanillaJS__ToDo-List/';
+          const chromeUrl = `googlechrome://${url}`;
+
+          window.location.href = chromeUrl;
+
+          setTimeout(() => {
+            alert('📱 Откройте в Safari для полного функционала');
+          }, 1000);
+        }
+      })();
+    </script>
   </body>
 </html>

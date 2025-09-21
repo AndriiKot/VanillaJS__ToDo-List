@@ -42,7 +42,23 @@
           >
           <button class="todo__btn" type="button" data-js-todo-btn-add>Add</button>
         </form>
-        <ul class="todo__list" data-js-todo-list></ul>
+        <ul class="todo__list" data-js-todo-list="">
+          <li class="todo__item todo__item--checked">
+            <input type="button" class="todo__check" aria-label="Mark task as done">
+            <label class="todo__text">some task</label>
+            <button type="button" class="todo__remove" aria-label="Delete task">×</button>
+          </li>
+          <li class="todo__item">
+            <input type="button" class="todo__check" aria-label="Mark task as done">
+            <label class="todo__text">some task 2</label>
+            <button type="button" class="todo__remove" aria-label="Delete task">×</button>
+          </li>
+          <li class="todo__item todo__item--checked">
+            <input type="button" class="todo__check" aria-label="Mark task as done">
+            <label class="todo__text">some task 3</label>
+            <button type="button" class="todo__remove" aria-label="Delete task">×</button>
+          </li>
+        </ul>
         <div class="todo__error" data-js-todo-error-empty-task aria-live="polite"></div>
       </div>
     </main>

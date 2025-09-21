@@ -52,7 +52,7 @@
   top: 50%;
   left: 25px;
   color: var(--color-text-label);
-  translate: 0 -50%;
+  transform: translate(0, -50%);
   pointer-events: none;
 }
 
@@ -126,43 +126,43 @@
 .todo__item {
   cursor: pointer;
   font-size: 20px;
-  padding: 12px 70px 12px 50px;
   position: relative;
   color: var(--color-text-dark);
   overflow-wrap: break-word;
   white-space: normal;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.todo__item--checked {
-  color: var(--color-text-muted);
-  text-decoration: line-through;
-}
-
-.todo__item::before {
-  content: '';
-  position: absolute;
-  bottom: 3px;
-  left: 5px;
+.todo__check {
   width: 40px;
   height: 40px;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='9.5' fill='none' stroke='%2303793b' stroke-width='1'/></svg>");
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: inline-block;
   background-repeat: no-repeat;
+  background-position: center;
   background-size: 40px 40px;
+  margin-right: 10px; /* расстояние между первым и средним элементом */
 }
 
-.todo__item--checked::before {
+.todo__item--checked .todo__check {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10' fill='%2303793b'/><path d='M8.5 12.5l2.5 2.5 4.5-5' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-  background-size: 40px 40px;
+}
+
+.todo__item:not(.todo__item--checked) .todo__check {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='9.5' fill='none' stroke='%2303793b' stroke-width='1'/></svg>");
 }
 
 .todo__text {
+  flex-grow: 1;
   padding-left: 10px;
 }
 
 .todo__remove {
-  position: absolute;
-  top: 5px;
-  right: 10px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -220,24 +220,6 @@
 
   .todo__item {
     font-size: 18px;
-    padding: 10px 45px;
-  }
-
-  .todo__item::before {
-    content: '';
-    position: absolute;
-    bottom: 3px;
-    left: 5px;
-    width: 35px;
-    height: 35px;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='9.5' fill='none' stroke='%2303793b' stroke-width='1'/></svg>");
-    background-repeat: no-repeat;
-    background-size: 35px 35px;
-  }
-
-  .todo__item--checked::before {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10' fill='%2303793b'/><path d='M8.5 12.5l2.5 2.5 4.5-5' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-    background-size: 35px 35px;
   }
 
   .todo__remove {
@@ -267,24 +249,6 @@
 
   .todo__item {
     font-size: 16px;
-    padding: 10px 40px;
-  }
-
-  .todo__item::before {
-    content: '';
-    position: absolute;
-    bottom: 3px;
-    left: 5px;
-    width: 28px;
-    height: 28px;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='9.5' fill='none' stroke='%2303793b' stroke-width='1'/></svg>");
-    background-repeat: no-repeat;
-    background-size: 28px 28px;
-  }
-
-  .todo__item--checked::before {
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10' fill='%2303793b'/><path d='M8.5 12.5l2.5 2.5 4.5-5' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-    background-size: 28px 28px;
   }
 
   .todo__remove {

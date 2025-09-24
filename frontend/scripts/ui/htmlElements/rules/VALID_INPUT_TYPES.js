@@ -19,6 +19,5 @@ export const VALID_INPUT_TYPES = [
   'week',
   'time',
   'color',
-  'range'
+  'range',
 ];
-

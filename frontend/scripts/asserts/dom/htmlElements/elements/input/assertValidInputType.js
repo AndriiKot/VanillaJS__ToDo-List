@@ -9,8 +9,7 @@ import { VALID_INPUT_TYPES } from '@ui';
 export const assertValidInputType = (type) => {
   if (!VALID_INPUT_TYPES.includes(type)) {
     throw new TypeError(
-      `Invalid <input> type: "${type}". Must be one of: ${VALID_INPUT_TYPES.join(', ')}`
+      `Invalid <input> type: "${type}". Must be one of: ${VALID_INPUT_TYPES.join(', ')}`,
     );
   }
 };
-

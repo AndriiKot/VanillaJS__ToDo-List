@@ -12,4 +12,3 @@ export const createInputElement = (type = 'text') => {
   input.type = type;
   return input;
 };
-

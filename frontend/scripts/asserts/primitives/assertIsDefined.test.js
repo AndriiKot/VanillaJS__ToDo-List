@@ -1,4 +1,4 @@
-import { assertIsDefined } from '@asserts';
+import { assertIsDefined } from './assertIsDefined';
 
 describe('assertIsDefined', () => {
   describe('valid (non-null and non-undefined) values', () => {

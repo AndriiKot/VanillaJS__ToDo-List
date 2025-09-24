@@ -1,2 +1,2 @@
-export * from './getRawLocalStorageValue.js';
-export * from './readParsedLocalStorageValue.js';
+export * from './getRawLocalStorageValue';
+export * from './readParsedLocalStorageValue';

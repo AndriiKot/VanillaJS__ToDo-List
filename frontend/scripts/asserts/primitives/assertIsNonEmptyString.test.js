@@ -1,4 +1,4 @@
-import { assertIsNonEmptyString } from './assertIsNonEmptyString.js';
+import { assertIsNonEmptyString } from './assertIsNonEmptyString';
 
 describe('assertIsNonEmptyString', () => {
   describe('valid non-empty strings (should NOT throw)', () => {

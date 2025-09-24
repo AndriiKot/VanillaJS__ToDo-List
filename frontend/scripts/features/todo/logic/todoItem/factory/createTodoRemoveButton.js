@@ -1,5 +1,6 @@
 import { setTextContent, setClassName, setRole, setAriaLabel, createButtonElement } from '@ui';
 import { getTodoItemRemoveButtonClassName } from '@features';
+import { assertIsNonEmptyString } from '@asserts';
 
 /**
  * Creates a remove button element for a todo item.
@@ -20,12 +21,14 @@ import { getTodoItemRemoveButtonClassName } from '@features';
  *   button for a todo item.
  */
 
-export const createTodoRemoveButton = () => {
+export const createTodoRemoveButton = (task) => {
+  assertIsNonEmptyString(task, 'createTodoRemoveButton: task');
+
   const button = createButtonElement('button');
   setClassName(button, getTodoItemRemoveButtonClassName());
   setTextContent(button, '\u00d7');
 
-  setAriaLabel(button, 'Delete task');
+  setAriaLabel(button, `Delete task: ${task}`);
   setRole(button, 'button');
 
   return button;

@@ -1,0 +1,24 @@
+export const VALID_INPUT_TYPES = [
+  'text',
+  'password',
+  'email',
+  'number',
+  'tel',
+  'url',
+  'search',
+  'checkbox',
+  'radio',
+  'file',
+  'hidden',
+  'submit',
+  'reset',
+  'button',
+  'date',
+  'datetime-local',
+  'month',
+  'week',
+  'time',
+  'color',
+  'range'
+];
+

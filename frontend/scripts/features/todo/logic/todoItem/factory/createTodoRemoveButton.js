@@ -12,13 +12,14 @@ import { assertIsNonEmptyString } from '@asserts';
  * - The button contains the "×" symbol (U+00D7) as its visible text content.
  * - The button is assigned a class name from `getTodoItemRemoveButtonClassName()`
  *   to apply the correct styling.
- * - The button is given an `aria-label="Delete task"` attribute so that
- *   screen readers announce it as "Delete task" instead of "×".
+ * - The button is given an `aria-label` describing the task, e.g. "Delete task: Buy milk",
+ *   so that screen readers announce it properly.
  * - Although `<button>` already has an implicit role, `role="button"` is set
  *   explicitly to reinforce its interactive purpose for assistive technologies.
  *
- * @returns {HTMLButtonElement} A `<button>` element configured as a remove
- *   button for a todo item.
+ * @param {string} task - The text of the todo task, used in `aria-label` for accessibility.
+ * @returns {HTMLButtonElement} A `<button>` element configured as a remove button for the todo item.
+ * @throws {TypeError} If `task` is not a non-empty string.
  */
 
 export const createTodoRemoveButton = (task) => {

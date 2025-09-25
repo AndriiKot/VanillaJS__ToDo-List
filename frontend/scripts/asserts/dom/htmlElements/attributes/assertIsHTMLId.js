@@ -47,4 +47,3 @@ export const assertIsHTMLId = (id, { checkUnique = false } = {}) => {
     }
   }
 };
-

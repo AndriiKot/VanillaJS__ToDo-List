@@ -47,9 +47,7 @@ describe('assertIsHTMLId', () => {
     });
 
     test('throws if id already exists in document when checkUnique=true', () => {
-      expect(() => assertIsHTMLId('unique-id', { checkUnique: true })).toThrow(
-        /already exists/i,
-      );
+      expect(() => assertIsHTMLId('unique-id', { checkUnique: true })).toThrow(/already exists/i);
     });
 
     test('does not throw if id is unique in document when checkUnique=true', () => {

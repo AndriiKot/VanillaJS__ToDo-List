@@ -4,3 +4,4 @@ export * from './span/';
 export * from './button/';
 export * from './div/';
 export * from './form/';
+export * from './label/';

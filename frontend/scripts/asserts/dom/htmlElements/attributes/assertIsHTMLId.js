@@ -7,17 +7,20 @@ import { isEmpty } from '@utils';
  * Rules:
  * - must be a non-empty string
  * - must not contain spaces
- * - should be unique within the document (optional runtime check)
  * - recommended: start with letter/underscore/hyphen and contain only
  *   letters, digits, hyphens, underscores (CSS-safe id)
+ * - optional: ensure uniqueness in the document
+ * - optional: ensure existence in the document
  *
  * @param {*} id - The value to validate.
  * @param {Object} [options]
- * @param {boolean} [options.checkUnique=false] - If true, also check uniqueness in document.
- * @throws {TypeError} - If not a string.
- * @throws {SyntaxError} - If not a valid id.
+ * @param {boolean} [options.checkUnique=false] - If true, ensures the ID does not already exist in the document.
+ * @param {boolean} [options.mustExist=false] - If true, ensures the ID already exists in the document.
+ * @throws {TypeError} - If the value is not a string.
+ * @throws {SyntaxError} - If the value is not a valid id or uniqueness check fails.
+ * @throws {Error} - If mustExist is true and no element with the given ID is found.
  */
-export const assertIsHTMLId = (id, { checkUnique = false } = {}) => {
+export const assertIsHTMLId = (id, { mode = 'ignore' } = {}) => {
   assertIsString(id, 'HTML id');
 
   if (isEmpty(id)) {
@@ -40,10 +43,26 @@ export const assertIsHTMLId = (id, { checkUnique = false } = {}) => {
     );
   }
 
-  if (checkUnique && typeof document !== 'undefined') {
-    const existing = document.getElementById(id);
-    if (existing) {
-      throw new SyntaxError(`ID must be unique: "${id}" already exists in the document.`);
-    }
+  if (typeof document === 'undefined') return;
+
+  const modeHandlers = {
+    ignore: () => {},
+    unique: () => {
+      if (document.getElementById(id)) {
+        throw new SyntaxError(`ID must be unique: "${id}" already exists in the document.`);
+      }
+    },
+    mustExist: () => {
+      if (!document.getElementById(id)) {
+        throw new Error(`No element with id "${id}" exists in the document.`);
+      }
+    },
+  };
+
+  const handler = modeHandlers[mode];
+  if (!handler) {
+    throw new SyntaxError(`Invalid mode "${mode}". Expected "ignore" | "unique" | "mustExist".`);
   }
+
+  handler();
 };

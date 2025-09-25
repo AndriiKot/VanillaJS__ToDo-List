@@ -102,3 +102,22 @@ progress {
 summary {
   display: list-item;
 }
+
+/* ==========================
+   Base styles for all checkbox inputs
+   ========================== */
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+input[type='checkbox']:checked {
+  background-color: transparent; /* фон можно задавать через класс */
+}

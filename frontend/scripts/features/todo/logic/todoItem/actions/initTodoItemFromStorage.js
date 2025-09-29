@@ -10,8 +10,7 @@ import { addClassName } from '@ui';
  * @return {HTMLElement} The initialized todo item.
  */
 export const initTodoItemFromStorage = ({ text, checked }) => {
-  const item = createTodoItem(text);
-
+  const item = createTodoItem(text, checked);
   if (checked) {
     addClassName(item, getTodoItemCheckedClassName());
   }

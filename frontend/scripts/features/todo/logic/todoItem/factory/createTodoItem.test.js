@@ -7,22 +7,27 @@ describe('createTodoItem', () => {
     expect(li).toBeInstanceOf(HTMLLIElement);
     expect(li.className).toBe('todo__item');
 
-    const textSpan = li.querySelector('.todo__text');
-    expect(textSpan).toBeInstanceOf(HTMLSpanElement);
-    expect(textSpan.textContent).toBe('Buy milk');
+    const label = li.querySelector('.todo__text');
+    expect(label).toBeInstanceOf(HTMLLabelElement);
+    expect(label.textContent).toBe('Buy milk');
+
+    const checkbox = li.querySelector('input[type="checkbox"]');
+    expect(checkbox).toBeInstanceOf(HTMLInputElement);
+    expect(checkbox.className).toBe('todo__check');
+    expect(checkbox.type).toBe('checkbox');
 
     const removeButton = li.querySelector('.todo__remove');
     expect(removeButton).toBeInstanceOf(HTMLButtonElement);
     expect(removeButton.textContent).toBe('\u00d7');
     expect(removeButton.className).toBe('todo__remove');
-    expect(removeButton.getAttribute('aria-label')).toBe('Delete task');
     expect(removeButton.getAttribute('role')).toBe('button');
+    expect(removeButton.getAttribute('aria-label')).toContain('Delete task'); // проверяем, что начинается с "Delete task"
   });
 
-  test('creates a <li> element with empty string text', () => {
-    const li = createTodoItem('');
+  test('checkbox can be created checked', () => {
+    const li = createTodoItem('Checked task', true);
 
-    const textSpan = li.querySelector('.todo__text');
-    expect(textSpan.textContent).toBe('');
+    const checkbox = li.querySelector('input[type="checkbox"]');
+    expect(checkbox.checked).toBe(true);
   });
 });

@@ -11,10 +11,10 @@ describe('assertIsLabelElement', () => {
       document.createElement('div'),
       document.createElement('button'),
       document.createElement('input'),
-      document.createElement('textarea')
+      document.createElement('textarea'),
     ];
 
-    elements.forEach(el => {
+    elements.forEach((el) => {
       expect(() => assertIsLabelElement(el)).toThrow(TypeError);
     });
   });
@@ -32,10 +32,10 @@ describe('assertIsLabelElement', () => {
       () => {},
       Symbol('label'),
       new Date(),
-      new Map()
+      new Map(),
     ];
 
-    invalidValues.forEach(value => {
+    invalidValues.forEach((value) => {
       expect(() => assertIsLabelElement(value)).toThrow(TypeError);
     });
   });

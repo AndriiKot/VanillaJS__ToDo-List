@@ -3,3 +3,4 @@ export * from './createTodoRemoveButton';
 export * from './createTodoItemContent';
 export * from './createTodoItemLi';
 export * from './createTodoCheckbox';
+export * from './createTodoCheckboxLabel';

@@ -103,9 +103,6 @@ summary {
   display: list-item;
 }
 
-/* ==========================
-   Base styles for all checkbox inputs
-   ========================== */
 input[type='checkbox'] {
   -webkit-appearance: none;
   -moz-appearance: none;

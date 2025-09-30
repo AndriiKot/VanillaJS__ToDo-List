@@ -1,5 +1,5 @@
-import { assertIsHTMLId } from '@asserts';
-import { assertIsNonEmptyString, assertIsHTMLClassName } from '@asserts';
+import { assertIsNonEmptyString, assertIsHTMLClassName, assertIsHTMLId } from '@asserts';
+import { setAttributesSafe } from '@ui';
 
 /**
  * Creates a <label> element with text and links it to a form input via the htmlFor attribute.
@@ -10,16 +10,19 @@ import { assertIsNonEmptyString, assertIsHTMLClassName } from '@asserts';
  * @param {string} [options.className] - Optional CSS class name
  * @returns {HTMLLabelElement} The created <label> element
  * @throws {TypeError} If htmlFor or text are invalid, or className is invalid
- * @throws {SyntaxError} If htmlFor is not a valid HTML id
+ * @throws {SyntaxError} If htmlFor is not a valid export const
+ *
+ *
  */
 export const createLabelForInput = ({ htmlFor, text, className }) => {
   assertIsHTMLId(htmlFor);
-  assertIsNonEmptyString(text, 'createLabelForInput text content');
+  assertIsNonEmptyString(text, 'crcreateLabelForInputext content');
   assertIsHTMLClassName(className);
 
   const label = document.createElement('label');
   label.htmlFor = htmlFor;
   label.textContent = text;
   label.className = className;
+
   return label;
 };

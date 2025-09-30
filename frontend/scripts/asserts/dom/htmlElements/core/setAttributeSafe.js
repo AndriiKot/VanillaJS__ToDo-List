@@ -7,46 +7,53 @@ const ATTRIBUTE_TO_PROPERTY = {
   maxlength: 'maxLength',
   readonly: 'readOnly',
   tabindex: 'tabIndex',
-  selected: 'selected',
 };
 
-/**
- * Safely sets an attribute on an element.
- *
- * @param {HTMLElement} el - Target element
- * @param {string} key - The attribute key
- * @param {*} value - The attribute value
- * @param {Object} options - Options object
- * @param {boolean} options.assertElement - Whether to assert the element is valid. Default to true.
- * @returns {HTMLElement} The element
- */
 export const setAttributeSafe = (el, key, value, options = {}) => {
   const { assertElement: checkEl = true } = options;
 
-  if (checkEl) assertIsElement(el);
+  if (checkEl) {
+    try {
+      assertIsElement(el);
+    } catch (error) {
+      throw new TypeError('Invalid element');
+    }
+  }
+
   if (!el || typeof el.setAttribute !== 'function') return el;
 
   const prop = ATTRIBUTE_TO_PROPERTY[key] ?? key;
 
   // Boolean attributes
   if (BOOLEAN_ATTRIBUTES.includes(key)) {
-    const boolValue = !!value;
+    if (value) {
+      // Для boolean атрибутов устанавливаем значение как имя атрибута
+      el.setAttribute(key, key);
+      // Устанавливаем свойство (если оно существует)
+      if (prop in el) el[prop] = true;
+    } else {
+      el.removeAttribute(key);
+      if (prop in el) el[prop] = false;
+    }
 
-    // Устанавливаем стандартное свойство, если оно есть
-    if (prop in el) el[prop] = boolValue;
-
-    // Создаем свойство для прямого доступа через el[attr] (для jsdom)
+    // Для доступа через el[attr] создаем свойство
     Object.defineProperty(el, key, {
       get() {
-        return boolValue;
+        return value;
+      },
+      set(newValue) {
+        value = !!newValue;
+        if (value) {
+          el.setAttribute(key, key);
+          if (prop in el) el[prop] = true;
+        } else {
+          el.removeAttribute(key);
+          if (prop in el) el[prop] = false;
+        }
       },
       configurable: true,
       enumerable: true,
     });
-
-    // Устанавливаем или удаляем атрибут в DOM
-    if (boolValue) el.setAttribute(key, key);
-    else el.removeAttribute(key);
 
     // String attributes
   } else if (STRING_ATTRIBUTES.includes(key)) {
@@ -54,14 +61,15 @@ export const setAttributeSafe = (el, key, value, options = {}) => {
     el.setAttribute(key, stringValue);
     if (prop in el) el[prop] = stringValue;
 
+    // Для доступа через el[attr]
     Object.defineProperty(el, key, {
       get() {
         return stringValue;
       },
       set(newValue) {
-        const val = String(newValue);
-        el.setAttribute(key, val);
-        if (prop in el) el[prop] = val;
+        const newStringValue = String(newValue);
+        el.setAttribute(key, newStringValue);
+        if (prop in el) el[prop] = newStringValue;
       },
       configurable: true,
       enumerable: true,
@@ -73,14 +81,15 @@ export const setAttributeSafe = (el, key, value, options = {}) => {
     el.setAttribute(key, String(numValue));
     if (prop in el) el[prop] = numValue;
 
+    // Для доступа через el[attr]
     Object.defineProperty(el, key, {
       get() {
         return numValue;
       },
       set(newValue) {
-        const val = Number(newValue);
-        el.setAttribute(key, String(val));
-        if (prop in el) el[prop] = val;
+        const newNumValue = Number(newValue);
+        el.setAttribute(key, String(newNumValue));
+        if (prop in el) el[prop] = newNumValue;
       },
       configurable: true,
       enumerable: true,
@@ -91,13 +100,14 @@ export const setAttributeSafe = (el, key, value, options = {}) => {
     const stringValue = String(value);
     el.setAttribute(key, stringValue);
 
+    // Для доступа через el[attr]
     Object.defineProperty(el, key, {
       get() {
         return stringValue;
       },
       set(newValue) {
-        const val = String(newValue);
-        el.setAttribute(key, val);
+        const newStringValue = String(newValue);
+        el.setAttribute(key, newStringValue);
       },
       configurable: true,
       enumerable: true,

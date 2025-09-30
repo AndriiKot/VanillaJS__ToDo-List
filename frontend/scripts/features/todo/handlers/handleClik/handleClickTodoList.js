@@ -11,7 +11,7 @@ import {
  * Handles a click event on a todo list.
  *
  * Removes a todo item if the event target is a remove button.
- * Toggles a todo item if the event target is a todo item.
+ * Toggles a todo item only if the target is the checkbox itself.
  * Saves the current state of the todo list to local storage.
  * Resets the todo input field.
  *
@@ -21,20 +21,25 @@ import {
  */
 export const handleClickTodoList = (event, todoList, todoInput) => {
   const target = getElementTarget(event);
-  const removeBtn = findClosestByClassName(target, getTodoItemRemoveButtonClassName());
 
+  const removeBtn = findClosestByClassName(target, getTodoItemRemoveButtonClassName());
   if (removeBtn) {
     const li = findClosestByClassName(removeBtn, getTodoItemClassName());
     if (li) {
       li.remove();
+      saveTodosToLocalStorage(serializeTodosFromList(todoList));
+      resetInput(todoInput);
     }
-  }
-  const li = findClosestByClassName(target, getTodoItemClassName());
-  if (!removeBtn && li) {
-    const { target, className } = getToggleTodoContext(event);
-    toggleTodoItem(target, className);
+    return;
   }
 
-  saveTodosToLocalStorage(serializeTodosFromList(todoList));
-  resetInput(todoInput);
+  if (target.matches('.todo__check')) {
+    const li = findClosestByClassName(target, getTodoItemClassName());
+    if (li) {
+      const { target: checkbox, className } = getToggleTodoContext(event);
+      toggleTodoItem(checkbox, className);
+    }
+    saveTodosToLocalStorage(serializeTodosFromList(todoList));
+    resetInput(todoInput);
+  }
 };

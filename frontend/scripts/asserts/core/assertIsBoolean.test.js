@@ -12,7 +12,7 @@ describe('assertIsBoolean', () => {
   test('throws TypeError for non-boolean values', () => {
     const invalidValues = [0, 1, '', 'true', null, undefined, [], {}, () => {}];
 
-    invalidValues.forEach(value => {
+    invalidValues.forEach((value) => {
       expect(() => assertIsBoolean(value, 'checked')).toThrow(TypeError);
     });
   });

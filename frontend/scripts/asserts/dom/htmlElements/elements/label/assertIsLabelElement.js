@@ -13,4 +13,3 @@ export const assertIsLabelElement = (el, argName = 'value') => {
 
   throwTypeErrorWithTypeInfo(el, argName, 'a DOM element of type <label>');
 };
-

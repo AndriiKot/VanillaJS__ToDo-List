@@ -2,15 +2,7 @@ import { assertIsHTMLId } from './assertIsHTMLId';
 
 describe('assertIsHTMLId', () => {
   describe('valid ids', () => {
-    const validIds = [
-      'todo-item',
-      '_root',
-      '-section1',
-      'btn123',
-      'こんにちは',
-      'école',
-      '按钮',
-    ];
+    const validIds = ['todo-item', '_root', '-section1', 'btn123', 'こんにちは', 'école', '按钮'];
 
     test.each(validIds)("does not throw for valid id: '%s'", (value) => {
       expect(() => assertIsHTMLId(value)).not.toThrow();
@@ -18,15 +10,7 @@ describe('assertIsHTMLId', () => {
   });
 
   describe('invalid ids', () => {
-    const invalidIds = [
-      '',
-      ' ',
-      '123btn',
-      'my id',
-      'id!',
-      '\n',
-      '🙂emoji',
-    ];
+    const invalidIds = ['', ' ', '123btn', 'my id', 'id!', '\n', '🙂emoji'];
 
     test.each(invalidIds)("throws for invalid id: '%s'", (value) => {
       expect(() => assertIsHTMLId(value)).toThrow();

@@ -12,7 +12,7 @@ describe('createLabelForInput', () => {
     const label = createLabelForInput({
       htmlFor: 'test-input',
       text: 'Test Label',
-      className: 'label-class'
+      className: 'label-class',
     });
 
     expect(label.tagName).toBe('LABEL');
@@ -22,20 +22,16 @@ describe('createLabelForInput', () => {
   });
 
   test('throws if htmlFor does not exist', () => {
-    expect(() => 
-      createLabelForInput({ htmlFor: 'nonexistent', text: 'Label' })
-    ).toThrow(Error);
+    expect(() => createLabelForInput({ htmlFor: 'nonexistent', text: 'Label' })).toThrow(Error);
   });
 
   test('throws if text is empty', () => {
-    expect(() => 
-      createLabelForInput({ htmlFor: 'test-input', text: '' })
-    ).toThrow();
+    expect(() => createLabelForInput({ htmlFor: 'test-input', text: '' })).toThrow();
   });
 
   test('throws if className is invalid', () => {
-    expect(() => 
-      createLabelForInput({ htmlFor: 'test-input', text: 'Text', className: 'bad class' })
+    expect(() =>
+      createLabelForInput({ htmlFor: 'test-input', text: 'Text', className: 'bad class' }),
     ).toThrow();
   });
 });

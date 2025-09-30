@@ -2,50 +2,33 @@ import { createTodoCheckbox } from './createTodoCheckbox';
 
 describe('createTodoCheckbox', () => {
   beforeEach(() => {
-    document.body.innerHTML = ''; 
+    document.body.innerHTML = '';
   });
 
-  test('creates input element with correct properties', () => {
-    const el = createTodoCheckbox({
-      type: 'checkbox',
-      id: 'todo-1',
-      className: 'todo__checkbox',
-    });
+  test('creates a checkbox input element with correct properties', () => {
+    const el = createTodoCheckbox({ id: 'todo-1', checked: true });
 
     expect(el.tagName).toBe('INPUT');
     expect(el.type).toBe('checkbox');
     expect(el.id).toBe('todo-1');
-    expect(el.className).toBe('todo__checkbox');
+    expect(el.className).toBe('todo__check');
+    expect(el.checked).toBe(true);
+  });
+
+  test('defaults checked to false', () => {
+    const el = createTodoCheckbox({ id: 'todo-2' });
+    expect(el.checked).toBe(false);
   });
 
   test('throws when id is empty or invalid', () => {
-    expect(() =>
-      createTodoCheckbox({ type: 'checkbox', id: '', className: 'c' }),
-    ).toThrow();
-
-    expect(() =>
-      createTodoCheckbox({ type: 'checkbox', id: '123bad', className: 'c' }),
-    ).toThrow();
+    expect(() => createTodoCheckbox({ id: '' })).toThrow();
+    expect(() => createTodoCheckbox({ id: '123bad' })).toThrow();
+    expect(() => createTodoCheckbox({ id: null })).toThrow();
+    expect(() => createTodoCheckbox({ id: undefined })).toThrow();
   });
 
-  test('throws when className is empty or invalid', () => {
-    expect(() =>
-      createTodoCheckbox({ type: 'checkbox', id: 'id1', className: '' }),
-    ).toThrow();
-
-    expect(() =>
-      createTodoCheckbox({ type: 'checkbox', id: 'id1', className: 'bad class' }),
-    ).toThrow();
-  });
-
-  test('throws when type is invalid', () => {
-    expect(() =>
-      createTodoCheckbox({ type: 'invalid', id: 'id1', className: 'c' }),
-    ).toThrow();
-  });
-
-  test('defaults to type="checkbox" if type is omitted', () => {
-    const el = createTodoCheckbox({ id: 'todo-2', className: 'todo__checkbox' });
-    expect(el.type).toBe('checkbox');
+  test('throws when checked is not boolean', () => {
+    expect(() => createTodoCheckbox({ id: 'todo-3', checked: 'yes' })).toThrow();
+    expect(() => createTodoCheckbox({ id: 'todo-4', checked: 1 })).toThrow();
   });
 });

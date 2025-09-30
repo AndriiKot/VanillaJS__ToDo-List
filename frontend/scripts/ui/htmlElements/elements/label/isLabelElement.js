@@ -7,4 +7,3 @@
 export const isLabelElement = (el) => {
   return el instanceof HTMLLabelElement;
 };
-

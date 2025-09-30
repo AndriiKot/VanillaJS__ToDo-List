@@ -1,34 +1,48 @@
-import { appendHTMLTagChild, createLabelForInput } from '@ui';
-
+import { appendHTMLTagChild } from '@ui';
 import {
   createTodoCheckbox,
   createTodoRemoveButton,
   createTodoItemContent,
   createTodoItemLi,
   getTodoItemClassName,
+  generateTodoTaskId,
+  createTodoCheckboxLabel,
 } from '@features';
-import { generateUUID } from '@services';
 
 /**
- * Creates a todo item element with provided text and default class.
+ * Creates a single todo list item element (`<li>`) with a checkbox, label, and remove button.
  *
  * @param {string} text - The text content of the todo item.
- * @return {HTMLLIElement} The todo item element.
+ * @param {boolean} [isChecked=false] - Whether the checkbox should be initially checked.
+ * @returns {HTMLLIElement} The fully constructed todo item element.
+ *
+ * @example
+ * const todoItem = createTodoItem('Do the dishes', true);
+ * document.querySelector('#todo-list').appendChild(todoItem);
+ * console.log(todoItem.querySelector('input[type="checkbox"]').checked); // true
+ * console.log(todoItem.querySelector('label').textContent); // "Do the dishes"
  */
-
-export const createTodoItem = (text) => {
+export const createTodoItem = (text, isChecked = false) => {
   const className = getTodoItemClassName();
   const taskElement = createTodoItemLi(className);
-  const safeTaskId = 'taskId-' + generateUUID();
+  const taskId = generateTodoTaskId();
+
   appendHTMLTagChild(
     taskElement,
-    createTodoCheckbox({ id: safeTaskId, type: 'checkbox', className: 'todo__check' }),
+    createTodoCheckbox({
+      id: taskId,
+      checked: isChecked,
+    }),
   );
-  // appendHTMLTagChild(taskElement, createTodoItemContent(text));
+
   appendHTMLTagChild(
     taskElement,
-    createLabelForInput({ htmlFor: safeTaskId, text: text, className: 'todo__text' }),
+    createTodoCheckboxLabel({
+      htmlFor: taskId,
+      text: text,
+    }),
   );
+
   appendHTMLTagChild(taskElement, createTodoRemoveButton(text));
 
   return taskElement;

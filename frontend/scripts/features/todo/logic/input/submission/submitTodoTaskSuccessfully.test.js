@@ -22,25 +22,51 @@ describe('submitTodoTaskSuccessfully', () => {
 
     submitTodoTaskSuccessfully(list, input);
 
+    // Проверяем, что появился один элемент списка
     expect(list.children.length).toBe(1);
 
     const li = list.children[0];
-    const [textNode, span] = li.childNodes;
+    const checkbox = li.querySelector('input[type="checkbox"]');
+    const label = li.querySelector('label');
+    const button = li.querySelector('button');
 
-    // Check the <li> element
+    // Проверка <li>
     expect(li).toBeInstanceOf(HTMLLIElement);
-    expect(li.className).toBe('todo__item');
+    expect(li.classList.contains('todo__item')).toBe(true);
 
-    // Check the task text
-    expect(textNode.textContent).toBe('New Task');
+    // Проверка чекбокса
+    expect(checkbox).toBeInstanceOf(HTMLInputElement);
+    expect(checkbox.type).toBe('checkbox');
+    expect(checkbox.checked).toBe(false); // новый таск всегда по умолчанию "не выполнен"
 
-    // Check the delete <span> element
-    expect(span).toBeInstanceOf(HTMLElement);
-    expect(span.textContent).toBe('×');
-    expect(span.getAttribute('aria-label')).toBe('Delete task');
-    expect(span.getAttribute('role')).toBe('button');
+    // Проверка текста задачи
+    expect(label).toBeInstanceOf(HTMLLabelElement);
+    expect(label.textContent).toBe('New Task');
+    expect(label.getAttribute('for')).toMatch(/^taskId-/); // указывает на id чекбокса
 
-    // Check that the input value was cleared
+    // Проверка кнопки удаления
+    expect(button).toBeInstanceOf(HTMLButtonElement);
+    expect(button.textContent).toBe('×');
+    expect(button.getAttribute('aria-label')).toBe('Delete task: New Task');
+    expect(button.getAttribute('role')).toBe('button');
+
+    // Проверка очистки input после добавления
     expect(input.value).toBe('');
+  });
+
+  test('adds multiple items if called multiple times', () => {
+    input.value = 'Task 1';
+    submitTodoTaskSuccessfully(list, input);
+
+    input.value = 'Task 2';
+    submitTodoTaskSuccessfully(list, input);
+
+    const items = list.querySelectorAll('li');
+    expect(items).toHaveLength(2);
+
+    const [first, second] = items;
+
+    expect(first.querySelector('label').textContent).toBe('Task 1');
+    expect(second.querySelector('label').textContent).toBe('Task 2');
   });
 });

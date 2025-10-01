@@ -25,22 +25,26 @@ describe('handleClickAddTodoButton', () => {
 
     expect(list.children.length).toBe(1);
 
-    const listItem = list.children[0];
-    const [textNode, span] = listItem.childNodes;
+    const li = list.children[0];
+    const [checkbox, label, button] = li.children;
 
-    // Check task text
-    expect(textNode.textContent).toBe('Learn Testing');
+    expect(li.tagName).toBe('LI');
+    expect(li.className).toBe('todo__item');
 
-    // Check delete button
-    expect(span).toBeInstanceOf(HTMLElement);
-    expect(span.textContent).toBe('×');
-    expect(span.getAttribute('aria-label')).toBe('Delete task');
-    expect(span.getAttribute('role')).toBe('button');
+    expect(checkbox).toBeInstanceOf(HTMLInputElement);
+    expect(checkbox.type).toBe('checkbox');
 
-    // Check that input field was cleared
+    expect(label).toBeInstanceOf(HTMLLabelElement);
+    expect(label.textContent).toBe('Learn Testing');
+    expect(label.htmlFor).toBe(checkbox.id);
+
+    expect(button).toBeInstanceOf(HTMLButtonElement);
+    expect(button.textContent).toBe('×');
+    expect(button.getAttribute('aria-label')).toBe(`Delete task: Learn Testing`);
+    expect(button.getAttribute('role')).toBe('button');
+
     expect(input.value).toBe('');
 
-    // Check that the validation message is cleared
     expect(message.textContent).toBe('');
   });
 

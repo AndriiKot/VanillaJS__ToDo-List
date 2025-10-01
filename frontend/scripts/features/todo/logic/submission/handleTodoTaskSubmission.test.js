@@ -27,13 +27,18 @@ describe('handleTodoTaskSubmission', () => {
     expect(li).toBeInstanceOf(HTMLLIElement);
     expect(li.className).toBe('todo__item');
 
-    const [textNode, span] = li.childNodes;
-    expect(textNode.textContent).toBe('Buy milk');
+    const checkbox = li.querySelector('input[type="checkbox"]');
+    const label = li.querySelector('label.todo__text');
+    const button = li.querySelector('button.todo__remove');
 
-    expect(span).toBeInstanceOf(HTMLElement);
-    expect(span.textContent).toBe('×');
-    expect(span.getAttribute('aria-label')).toBe('Delete task');
-    expect(span.getAttribute('role')).toBe('button');
+    expect(checkbox).toBeInstanceOf(HTMLInputElement);
+    expect(label).toBeInstanceOf(HTMLLabelElement);
+    expect(label.textContent).toBe('Buy milk');
+
+    expect(button).toBeInstanceOf(HTMLButtonElement);
+    expect(button.textContent).toBe('×');
+    expect(button.getAttribute('aria-label')).toBe('Delete task: Buy milk');
+    expect(button.getAttribute('role')).toBe('button');
 
     expect(input.value).toBe('');
     expect(message.textContent).toBe('');

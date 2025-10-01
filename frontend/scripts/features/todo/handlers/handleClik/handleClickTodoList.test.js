@@ -35,12 +35,14 @@ describe('handleClickTodoList', () => {
       <main class="todo">
         <ul class="todo__list">
           <li class="todo__item">
-            <span class="todo__text">task 1</span>
-            <span class="todo__remove">×</span>
+            <input type="checkbox" id="task-1" class="todo__check">
+            <label class="todo__text" for="task-1">task 1</label>
+            <button type="button" class="todo__remove" aria-label="Delete task: task 1" role="button">×</button>
           </li>
           <li class="todo__item">
-            <span class="todo__text">task 2</span>
-            <span class="todo__remove">×</span>
+            <input type="checkbox" id="task-2" class="todo__check">
+            <label class="todo__text" for="task-2">task 2</label>
+            <button type="button" class="todo__remove" aria-label="Delete task: task 2" role="button">×</button>
           </li>
         </ul>
         <input class="todo__input" type="text" />
@@ -59,15 +61,15 @@ describe('handleClickTodoList', () => {
     handleClickTodoList({ target: firstRemoveBtn, currentTarget: todoList }, todoList, todoInput);
 
     expect(todoList.querySelectorAll('.todo__item').length).toBe(1);
-    expect(features.toggleTodoItem).not.toHaveBeenCalled(); // remove shouldn't toggle
+    expect(features.toggleTodoItem).not.toHaveBeenCalled(); 
   });
 
-  test('toggles a task when clicking on .todo__text', () => {
-    const firstText = todoList.querySelector('.todo__text');
+  test('toggles a task when clicking on .todo__text (label)', () => {
+    const firstLabel = todoList.querySelector('.todo__text');
 
-    handleClickTodoList({ target: firstText, currentTarget: todoList }, todoList, todoInput);
+    handleClickTodoList({ target: firstLabel, currentTarget: todoList }, todoList, todoInput);
 
-    expect(features.toggleTodoItem).toHaveBeenCalledWith(firstText, firstText.className);
+    expect(features.toggleTodoItem).toHaveBeenCalledWith(firstLabel, firstLabel.className);
   });
 
   test('saves tasks to localStorage via saveTodosToLocalStorage', () => {
@@ -90,7 +92,7 @@ describe('handleClickTodoList', () => {
   });
 
   test('does nothing if removeBtn.closest(.todo__item) returns null', () => {
-    const fakeRemove = document.createElement('span');
+    const fakeRemove = document.createElement('button');
     fakeRemove.className = 'todo__remove';
     handleClickTodoList({ target: fakeRemove, currentTarget: todoList }, todoList, todoInput);
 

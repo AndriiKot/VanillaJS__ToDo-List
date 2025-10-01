@@ -12,23 +12,26 @@ describe('addTodoTaskToList', () => {
     list = document.getElementById('todo-list');
   });
 
-  test('adds a trimmed todo item to the list', () => {
+  test('adds a trimmed todo item to the list with proper structure', () => {
     addTodoTaskToList(list, input);
 
-    const listItems = list.querySelectorAll('li');
-    expect(listItems).toHaveLength(1);
+    const item = list.querySelector('li.todo__item');
+    expect(item).not.toBeNull();
 
-    const item = listItems[0];
-    const [textNode, span] = item.childNodes;
+    const checkbox = item.querySelector('input.todo__check');
+    expect(checkbox).toBeInstanceOf(HTMLInputElement);
+    expect(checkbox.type).toBe('checkbox');
 
-    expect(item.tagName).toBe('LI');
-    expect(item.className).toBe('todo__item');
-    expect(textNode.textContent).toBe('Buy milk');
+    const label = item.querySelector('label.todo__text');
+    expect(label).toBeInstanceOf(HTMLLabelElement);
+    expect(label.textContent).toBe('Buy milk');
+    expect(label.htmlFor).toBe(checkbox.id);
 
-    expect(span).toBeInstanceOf(HTMLElement);
-    expect(span.textContent).toBe('×');
-    expect(span.getAttribute('aria-label')).toBe('Delete task');
-    expect(span.getAttribute('role')).toBe('button');
+    const removeBtn = item.querySelector('button.todo__remove');
+    expect(removeBtn).toBeInstanceOf(HTMLButtonElement);
+    expect(removeBtn.textContent).toBe('×');
+    expect(removeBtn.getAttribute('aria-label')).toBe('Delete task: Buy milk');
+    expect(removeBtn.getAttribute('role')).toBe('button');
   });
 
   test('adds multiple items if called multiple times', () => {
@@ -38,16 +41,9 @@ describe('addTodoTaskToList', () => {
     input.value = 'Second';
     addTodoTaskToList(list, input);
 
-    const items = list.querySelectorAll('li');
-
-    expect(items).toHaveLength(2);
-
-    const [firstText, secondText] = [
-      items[0].childNodes[0].textContent,
-      items[1].childNodes[0].textContent,
-    ];
-
-    expect(firstText).toBe('First');
-    expect(secondText).toBe('Second');
+    const labels = list.querySelectorAll('label.todo__text');
+    expect(labels).toHaveLength(2);
+    expect(labels[0].textContent).toBe('First');
+    expect(labels[1].textContent).toBe('Second');
   });
 });

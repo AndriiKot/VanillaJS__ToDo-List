@@ -1,76 +1,39 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta
-      name="apple-itunes-app"
-      content="app-id=APP_ID, app-argument=https://andriikot.github.io/VanillaJS__ToDo-List/"
-    >
-    <link rel="stylesheet" href="./assets/normalize.css">
-    <link rel="stylesheet" href="./assets/styles.css">
-    <!-- favicons -->
-    <link
-      rel="icon"
-      type="image/png"
-      href="./assets/images/favicons/favicon-96x96.png"
-      sizes="96x96"
-    >
-    <link rel="icon" type="image/svg+xml" href="./assets/images/favicons/favicon.svg">
-    <link rel="shortcut icon" href="./assets/images/favicons/favicon.ico">
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="./assets/images/favicons/apple-touch-icon.png"
-    >
-    <link rel="manifest" href="./assets/images/favicons/site.webmanifest">
-    <!-- files -->
-    <script type="module" src="./scripts/index.js"></script>
-    <title>To Do List (VanillaJS)</title>
-  </head>
 
-  <body>
-    <main class="todo">
-      <div class="todo__box">
-        <h2 class="todo__title">To Do List</h2>
-        <form class="todo__form">
-          <label class="todo__label" for="new-task">What needs to be done?</label>
-          <input
-            class="todo__input"
-            name="new-task"
-            data-js-todo-new-task-input
-            type="text"
-            autocomplete="off"
-            placeholder=" "
-            autofocus
-          >
-          <button class="todo__btn" type="button" aria-label="Add new task" data-js-todo-btn-add>
-            Add
-          </button>
-        </form>
-        <ul class="todo__list" data-js-todo-list=""></ul>
-        <div class="todo__error" data-js-todo-error-empty-task aria-live="polite"></div>
-      </div>
-    </main>
-    <script>
-      (function () {
-        function isInAppBrowser() {
-          return /(Twitter|LinkedIn|Instagram|Facebook|Line|WhatsApp|Telegram)/i.test(
-            navigator.userAgent,
-          );
-        }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-itunes-app" content="app-id=APP_ID, app-argument=https://andriikot.github.io/VanillaJS__ToDo-List/">
+  <link rel="stylesheet" href="./assets/normalize.css">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <!-- favicons -->
+  <link rel="icon" type="image/png" href="./assets/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/favicons/favicon.svg">
+  <link rel="shortcut icon" href="./assets/images/favicons/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="./assets/images/favicons/site.webmanifest">
+  <!-- files -->
+  <script type="module" src="./scripts/index.js"></script>
+  <title>To Do List (VanillaJS)</title>
+</head>
 
-        if (isInAppBrowser()) {
-          const url = 'https://andriikot.github.io/VanillaJS__ToDo-List/';
-          const chromeUrl = `googlechrome://${url}`;
+<body>
+  <main class="todo">
+    <div class="todo__box">
+      <h2 id="todo-title" class="todo__title">To Do List</h2>
+      <form class="todo__form">
+        <label class="todo__label" for="new-task">What needs to be done?</label>
+        <input id="new-task" class="todo__input" name="new-task" data-js-todo-new-task-input type="text" autocomplete="off"
+          placeholder=" " autofocus>
+        <button class="todo__btn" type="button" aria-label="Add new task" data-js-todo-btn-add>
+          Add
+        </button>
+      </form>
+      <ul class="todo__list" aria-labelledby="todo-title" data-js-todo-list=""></ul>
+      <div class="todo__error" role="status" aria-live="polite" data-js-todo-error-empty-task></div>
+    </div>
+  </main>
+</body>
 
-          window.location.href = chromeUrl;
-
-          setTimeout(() => {
-            alert('📱 Откройте в Safari для полного функционала');
-          }, 1000);
-        }
-      })();
-    </script>
-  </body>
 </html>

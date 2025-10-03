@@ -24,8 +24,8 @@
     <link rel="manifest" href="./assets/site-Cd4POUlz.webmanifest">
     <!-- files -->
     <title>To Do List (VanillaJS)</title>
-    <script type="module" crossorigin src="./assets/index-VLhVkCbg.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DQCwYffY.css">
+    <script type="module" crossorigin src="./assets/index-C34IN6pe.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DuempfPO.css">
   </head>
 
   <body>
@@ -43,9 +43,11 @@
             placeholder=" "
             autofocus
           >
-          <button class="todo__btn" type="button" data-js-todo-btn-add>Add</button>
+          <button class="todo__btn" type="button" aria-label="Add new task" data-js-todo-btn-add>
+            Add
+          </button>
         </form>
-        <ul class="todo__list" data-js-todo-list></ul>
+        <ul class="todo__list" data-js-todo-list=""></ul>
         <div class="todo__error" data-js-todo-error-empty-task aria-live="polite"></div>
       </div>
     </main>

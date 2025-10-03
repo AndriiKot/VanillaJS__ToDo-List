@@ -9,7 +9,6 @@
   --color-bg-gray-hover: #ddd;
   --color-text-light: #fff;
   --color-text-dark: #111;
-  --color-text-muted: #8d8888;
   --color-text-label: #aaa;
   --color-text-disabled: #666;
   --border-radius-large: 30px;
@@ -121,18 +120,19 @@
 
 .todo__list {
   list-style-type: none;
+  padding: 4px;
 }
 
 .todo__item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+
   cursor: pointer;
   font-size: 20px;
   position: relative;
   color: var(--color-text-dark);
   overflow-wrap: break-word;
   white-space: normal;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   width: 100%;
   padding: 0 0 8px;
 }
@@ -145,8 +145,11 @@
 
 .todo__text {
   flex-grow: 1;
-  padding-left: 10px;
   cursor: pointer;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .todo__text::before {
@@ -159,6 +162,11 @@
   border-radius: 50%;
   vertical-align: middle;
   transition: background-color 0.2s ease;
+}
+
+.todo__check:checked + .todo__text {
+  text-decoration: line-through;
+  color: var(--color-text-label, #999);
 }
 
 .todo__check:checked + .todo__text::before {
@@ -202,7 +210,7 @@
    📱 Media Queries (Responsive)
    ============================ */
 @media (width <= 768px) {
-  .todo__check {
+  .todo__text::before {
     width: 35px;
     height: 35px;
   }
@@ -249,7 +257,7 @@
 }
 
 @media (width <= 480px) {
-  .todo__check {
+  .todo__text::before {
     width: 28px;
     height: 28px;
   }
@@ -279,5 +287,30 @@
     height: 28px;
     top: 0;
     right: 4px;
+  }
+}
+
+@media (width <= 360px) {
+  .todo__form {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .todo__label {
+    font-size: 14px;
+    padding: 0 0 36px 0;
+  }
+
+  .todo__input {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px 11px 12px 13px;
+  }
+
+  .todo__btn {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    margin: 0 0 0 -5px;
   }
 }

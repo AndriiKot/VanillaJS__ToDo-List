@@ -1,5 +1,4 @@
 import { assertIsNonEmptyString, assertIsHTMLClassName, assertIsHTMLId } from '@asserts';
-import { setAttributesSafe } from '@ui';
 
 /**
  * Creates a <label> element with text and links it to a form input via the htmlFor attribute.

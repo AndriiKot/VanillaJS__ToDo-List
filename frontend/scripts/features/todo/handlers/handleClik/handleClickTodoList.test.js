@@ -61,7 +61,7 @@ describe('handleClickTodoList', () => {
     handleClickTodoList({ target: firstRemoveBtn, currentTarget: todoList }, todoList, todoInput);
 
     expect(todoList.querySelectorAll('.todo__item').length).toBe(1);
-    expect(features.toggleTodoItem).not.toHaveBeenCalled(); 
+    expect(features.toggleTodoItem).not.toHaveBeenCalled();
   });
 
   test('toggles a task when clicking on .todo__text (label)', () => {

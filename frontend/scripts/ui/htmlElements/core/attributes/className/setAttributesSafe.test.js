@@ -1,6 +1,5 @@
 // setAttributesSafe.test.js
 import { setAttributesSafe } from './setAttributesSafe.js';
-import { BOOLEAN_ATTRIBUTES, STRING_ATTRIBUTES, NUMERIC_ATTRIBUTES } from '@ui';
 
 describe('setAttributesSafe', () => {
   let el;
@@ -50,7 +49,7 @@ describe('setAttributesSafe', () => {
       checked: true,
       maxlength: 5,
       placeholder: 'Test',
-      disabled: false
+      disabled: false,
     };
     setAttributesSafe(el, attrs);
 

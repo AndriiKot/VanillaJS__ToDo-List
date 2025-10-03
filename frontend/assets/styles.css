@@ -126,7 +126,6 @@
 .todo__item {
   display: grid;
   grid-template-columns: 1fr auto;
-
   cursor: pointer;
   font-size: 20px;
   position: relative;
@@ -145,7 +144,6 @@
 .todo__text {
   flex-grow: 1;
   cursor: pointer;
-
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -166,13 +164,6 @@
 .todo__check:checked + .todo__text {
   text-decoration: line-through;
   color: var(--color-text-label, #999);
-}
-
-.todo__check:checked + .todo__text::before {
-  background-color: var(--color-bg-accent);
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M6 12l4 4 8-8' fill='none' stroke='white' stroke-width='2'/></svg>");
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 .todo__check:checked + .todo__text::before {
@@ -203,6 +194,7 @@
 .todo__remove:hover {
   background-color: var(--color-bg-gray-hover);
 }
+
 .todo__remove:focus-visible {
   outline: 2px solid var(--color-bg-accent);
   outline-offset: 3px;
@@ -304,9 +296,10 @@
     gap: 8px;
     align-items: stretch;
   }
+
   .todo__label {
     font-size: 14px;
-    padding: 0 0 36px 0;
+    padding: 0 0 36px;
   }
 
   .todo__input {

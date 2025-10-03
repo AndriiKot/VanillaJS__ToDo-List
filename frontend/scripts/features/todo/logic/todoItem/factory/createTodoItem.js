@@ -2,7 +2,6 @@ import { appendHTMLTagChild } from '@ui';
 import {
   createTodoCheckbox,
   createTodoRemoveButton,
-  createTodoItemContent,
   createTodoItemLi,
   getTodoItemClassName,
   generateTodoTaskId,

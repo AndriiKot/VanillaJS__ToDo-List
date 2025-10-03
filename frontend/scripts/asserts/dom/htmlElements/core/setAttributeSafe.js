@@ -16,7 +16,7 @@ export const setAttributeSafe = (el, key, value, options = {}) => {
     try {
       assertIsElement(el);
     } catch (error) {
-      throw new TypeError('Invalid element');
+      throw new TypeError(`Invalid element provided: ${error.message}`);
     }
   }
 

@@ -1,5 +1,4 @@
 import { getTodoCheckboxClassName } from './getTodoCheckboxClassName';
-import { assertIsHTMLClassName } from '@asserts';
 
 describe('getTodoCheckboxClassName', () => {
   test('returns a valid string', () => {
